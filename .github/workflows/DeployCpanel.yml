@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 2
 
       - name: FTP-Deploy-Action
-        uses: git@github.com:akrammed/edugato.git
+        uses: akrammed/edugato@main
         with:
           ftp-server: ${{ secrets.FTP_SERVER }}
           ftp-username: ${{ secrets.FTP_USERNAME }}
