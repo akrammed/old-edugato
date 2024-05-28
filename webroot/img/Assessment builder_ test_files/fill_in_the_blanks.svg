@@ -1,0 +1,7 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.3" y="0.3" width="31.4" height="31.4" rx="1.7" fill="#F9F9F9"/>
+<rect width="3" height="24.5" transform="matrix(-4.44001e-08 1 1 4.30333e-08 3.75 12.5)" fill="#333333"/>
+<rect x="0.875" y="0.875" width="5.25" height="22.75" transform="matrix(-4.44001e-08 1 1 4.30333e-08 3.75 17.75)" stroke="#9B51E0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+<rect width="3" height="15.75" transform="matrix(-4.44001e-08 1 1 4.30333e-08 3.75 7.25)" fill="#333333"/>
+<rect x="0.3" y="0.3" width="31.4" height="31.4" rx="1.7" stroke="#E5E9F2" stroke-width="0.6"/>
+</svg>

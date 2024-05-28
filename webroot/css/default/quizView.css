@@ -1,0 +1,31 @@
+
+.feedback-element {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.header-feedback {
+    margin: 30%;
+    margin-top: -1%;
+    margin-bottom: 10%;
+}
+
+.feedback-title {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.feedback-body {
+    margin: 30%;
+    margin-top: -4%;
+}
+.retake{
+    margin-left: 0% !important;
+    border-radius: 0%;    
+    height: 33px;
+}
+
+.content-feedback{
+    font-weight: 100;
+}

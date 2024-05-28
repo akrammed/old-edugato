@@ -1,0 +1,11 @@
+msgid "About US"
+msgstr "حولنا"
+
+msgid "Home"
+msgstr "الرئيسية"
+
+msgid "About"
+msgstr "حول"
+
+msgid "Courses"
+msgstr "الدورات"
