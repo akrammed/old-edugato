@@ -59,7 +59,7 @@
     }
   ?>
             <div id="options-container-ordering"></div>
-            <button id="add-option-ordering" style="    margin-left: 0%;
+            <button id="add-option-ordering" style="margin-left: 0%;
     height: 35px;
     border-radius: 0%;" class="custom-plus-btn  btn nav-btn  me-md-4 edugato-btn-bleu"> <span
                     class="custom-plus">+</span> Add Option</button>
