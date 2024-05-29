@@ -1625,7 +1625,7 @@ function orderingOption(url) {
         return optionsObject;
     }
 
-    $("#add-option-ordering").click(function () {
+    $("#add-option-ordering").click(function (event) {
         $("#remove-option-ordering").show();
         event.preventDefault();
         optionCount++;
@@ -1642,11 +1642,13 @@ function orderingOption(url) {
         newOption.append('</div>');
         newOption.append('</div>');
         $("#options-container-ordering").append(newOption);
+        console.log(optionCount)
 
     });
 
-    $("#remove-option-ordering").click(function () {
+    $("#remove-option-ordering").click(function (event) {
         event.preventDefault();
+        console.log(123);
         if (optionCount > 1) {
             optionCount--;
             $("#optionCount-ordering").val(optionCount);
@@ -1654,13 +1656,15 @@ function orderingOption(url) {
 
             $(".option-container-ordering:last").remove();
 
-            if (optionCount === 4) {
+            if (optionCount === 2) {
                 $(this).addClass("disabled");
             }
-            if (optionCount < 4) {
-                optionCount = 4;
+            if (optionCount < 2) {
+                optionCount = 2;
             }
         }
+
+        console.log(optionCount)
     });
 
     $('#sub-test-text-ordering').on('click', function (event) {
