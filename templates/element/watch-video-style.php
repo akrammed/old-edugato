@@ -192,6 +192,17 @@ width: 266px;margin-left: -43%;
     border-radius: 3%;
 }
 
+@media (max-width: 1200px) {
+
+.custom-quiz-iframe {
+    height: 537px !important;
+    margin-top: 0%;
+    margin-left: 11%;
+    width: 78%;
+    border-radius: 3%;
+}
+}
+
 @media (max-width: 500px) {
     .video-container {
         position: relative;

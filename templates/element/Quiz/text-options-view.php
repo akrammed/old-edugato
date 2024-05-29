@@ -28,7 +28,7 @@
                             <?php echo $this->element('icons/avatar'); ?>
                         </div>
                         <div class="speech-container">
-                            <h2 style="font-size: 18px;font-weight: 600;"><?= $questions[0]['question'] ?> ?</h2>
+                            <h2 class="question-cat"><?= $questions[0]['question'] ?> </h2>
                         </div>
                     </div>
 
@@ -209,6 +209,11 @@ $(document).ready(function(event) {
 <style>
 body {
     background-color: #F6F8FB !important;
+}
+
+.question-cat {
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .container-loading {
@@ -483,7 +488,7 @@ body {
 }
 
 .quiz-title-2 {
-    margin-left: -12%;
+    margin-left: -11%;
     color: black;
     font-size: 24px;
     font-weight: 700;
@@ -502,40 +507,139 @@ body {
 
 
 
-@media (min-width: 1200px) {
-   
-}
-
-
-/* Styles for normal PCs and laptops */
-@media (max-width: 1200px) {
-    .btn-next {
-        display: block;
-        margin-left: 86%;
-    }
-}
-
-/* Styles for tablets */
-@media (max-width: 992px) {
-   
-}
-
-/* Styles for phones */
-@media (max-width: 768px) {
-   
-}
-
-
-@media (max-width: 500px) {
-
-
+@media only screen and (min-width: 769px) {
     .container-loading .progress {
         margin: 0 auto;
-        width: 326px;
-        margin-left: 9%;
+        width: 183%;
+        margin-left: -44%;
         margin-top: -5%;
         height: 17px;
         background-color: #ECEFF4 !important;
+    }
+
+    .quiz-title-2 {
+        margin-left: -10%;
+        color: black;
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 3%;
+        margin-bottom: 4%;
+    }
+
+
+    .btn-next {
+        display: block;
+        margin-left: 78%;
+    }
+
+    .btn-skip {
+        margin-left: 6%;
+    }
+
+    .answers ol {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        margin-left: 5%;
+    }
+
+    .content {
+        text-align: center;
+        width: 72%;
+        margin-left: 10%;
+    }
+
+    .answers {
+        border-bottom: 3px solid #ECEFF4;
+        margin-top: 5%;
+        color: white;
+        width: 72%;
+        height: 47px;
+        margin-left: 10%;
+    }
+
+    .options ol {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        margin-left: 14%;
+    }
+
+
+    #continue {
+        background-color: rgb(255, 255, 255);
+        color: rgb(1, 106, 28);
+        border: 2px solid rgb(1, 106, 28);
+        margin-top: 3.5%;
+        width: 22%;
+        margin-left: 72%;
+    }
+
+    .correct-icon-btn {
+        margin-left: 1%;
+        width: 252px;
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 2%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .question-cat {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .content {
+        color: white;
+        text-align: center;
+        width: 76%;
+        border-bottom: 3px solid #ECEFF4;
+        margin-left: 10%;
+    }
+
+    .icon-alert {
+        width: 56%;
+
+    }
+
+    .container-loading .progress {
+        margin: 0 auto;
+        width: 99%;
+        margin-left: 1%;
+        margin-top: -5%;
+        height: 17px;
+        background-color: #ECEFF4 !important;
+    }
+
+    .options ol {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        margin-left: 7%;
+    }
+
+    .answers li,
+    .options li {
+        font-size: 64% !important;
+        width: 18%;
+    }
+
+    .options {
+        margin-top: 4%;
+        margin-left: 8%;
+    }
+
+    .answers {
+        border-bottom: 3px solid #ECEFF4;
+        margin-top: 5%;
+        color: white;
+        height: 47px;
+        width: 79%;
+        margin-left: 9%;
     }
 
     .quiz-title-2 {

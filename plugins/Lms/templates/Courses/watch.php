@@ -342,7 +342,7 @@ $(document).ready(function() {
             console.log("Quiz source: " + quizSrc); // Debugging
             $('.learning-content').css('height', '100vh');
             $('#iframe').attr('src', quizSrc);
-            $('#iframe').show().css('height', '500px');
+            $('#iframe').show().css('height', '537px');
             $('#vdd').hide();
             $('.contentControle').hide();
         }
