@@ -43,8 +43,8 @@ foreach ($options as $key => $value) {
     }
     echo '<div class="col-sm-3 card" style="background-color: transparent;border: none;">'; 
     echo  $this->Html->image('/img/uploads/picture/'.$value->qoption, ['alt' => 'Option ' . $key,'id'=>'Option-'.$key,'style'=>'    border: 5px solid #CBD4E1;
-    border-radius: 15%;height: 165px;
-    width: 181px;', 'class'=>'Option-'.$key.' image-view clickable img-custom']);
+    border-radius: 15%;height: 100%;
+    width: 100%;', 'class'=>'Option-'.$key.' image-view clickable img-custom']);
     echo '</div>'; 
      $i++;
 };
