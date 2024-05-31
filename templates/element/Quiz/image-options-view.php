@@ -17,10 +17,7 @@
     <section id="section-1">
 
         <div class="container">
-            <div class="row">
-                <h1 class="title quiz-title-2">
-                    Choose the correct answer</h1>
-            </div>
+
             <div class="row">
                 <div class="content">
                     <div class="conversation" style="margin-left: 10%;">
@@ -44,9 +41,10 @@ foreach ($options as $key => $value) {
         $correctImg = $i;
         $correct = 'Option-'.$key;
     }
-    echo '<div class="col-sm-3 card">'; 
-    echo  $this->Html->image('/img/uploads/picture/'.$value->qoption, ['alt' => 'Option ' . $key,'id'=>'Option-'.$key,'style'=>'height: 86%;
-    margin-top: 6%;', 'class'=>'Option-'.$key.' image-view clickable img-custom']);
+    echo '<div class="col-sm-3 card" style="background-color: transparent;border: none;">'; 
+    echo  $this->Html->image('/img/uploads/picture/'.$value->qoption, ['alt' => 'Option ' . $key,'id'=>'Option-'.$key,'style'=>'    border: 5px solid #CBD4E1;
+    border-radius: 15%;height: 165px;
+    width: 181px;', 'class'=>'Option-'.$key.' image-view clickable img-custom']);
     echo '</div>'; 
      $i++;
 };
@@ -114,7 +112,8 @@ $(document).ready(function(event) {
     var selected;
     $(document).on('click', '[class^=Option-]', function() {
         $('#check').prop('disabled', false).css('opacity', '1');
-        $('[id^=Option-]').css('border', 'none');
+        $('[id^=Option-]').css('border', '5px solid #CBD4E1');
+        $('[id^=Option-]').css('border-radius', '15%');
         selected = $(this);
         console.log(selected);
         var imageId = $(this).attr('id').split('-')[1];
@@ -175,19 +174,21 @@ $(document).ready(function(event) {
         margin-top: 4%;
         margin-left: 1% !important;
     }
-    .img-custom{
+
+    .img-custom {
         height: 86% !important;
     }
+
     .footer {
-    height: 70px;
-    border-top: 3px solid #ECEFF4;
-    padding: 20px 0;
-    position: revert !important;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        height: 70px;
+        border-top: 3px solid #ECEFF4;
+        padding: 20px 0;
+        position: revert !important;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 </style>
