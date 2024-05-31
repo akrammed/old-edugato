@@ -73,7 +73,7 @@
         <div class="row custom-row">
             <div class="card-deck" >
                 <div class="card">
-                    <h5 class="card-title custom-card-title text-center">Audio options</h5>
+                    <h5 class="card-title custom-card-title text-center">Talk to answer</h5>
                     <div class="card-body">
                         <a href="#" id="image-option" data-quiz-type="recordToAnswerType"
                             class="navbar-brand edugato-navbar-logo optionsType">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <h5 class="card-title custom-card-title text-center">Listen to answer options</h5>
+                    <h5 class="card-title custom-card-title text-center">Listen to answer </h5>
                     <div class="card-body">
                         <a href="#" id="image-option" data-quiz-type="listenToAnswerTypeOption"
                             class="navbar-brand edugato-navbar-logo optionsType">
