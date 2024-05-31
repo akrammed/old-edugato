@@ -71,11 +71,19 @@
             </div>
         </div>
         <div class="row custom-row">
-            <div class="card-deck" style="width: 37%;">
+            <div class="card-deck" >
                 <div class="card">
                     <h5 class="card-title custom-card-title text-center">Audio options</h5>
                     <div class="card-body">
                         <a href="#" id="image-option" data-quiz-type="recordToAnswerType"
+                            class="navbar-brand edugato-navbar-logo optionsType">
+                            <?= $this->Html->image('audio.svg', ['class'=>'card-img-top custom-img']) ?></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h5 class="card-title custom-card-title text-center">Listen to answer options</h5>
+                    <div class="card-body">
+                        <a href="#" id="image-option" data-quiz-type="listenToAnswerTypeOption"
                             class="navbar-brand edugato-navbar-logo optionsType">
                             <?= $this->Html->image('audio.svg', ['class'=>'card-img-top custom-img']) ?></a>
                     </div>

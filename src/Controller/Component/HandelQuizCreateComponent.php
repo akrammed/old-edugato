@@ -53,6 +53,14 @@ class HandelQuizCreateComponent extends Component
                         
                   
                     break;
+                case 11:
+                        $name = $data['questions']->getClientFilename();
+                            $targetPath = WWW_ROOT. DS .'img' .DS .'uploads'. DS .'audio'. DS . $name;
+                                if ($data['questions']->getSize() > 0 && $data['questions']->getError() == 0) {
+                                    $data['questions']->moveTo($targetPath);
+                                    $data['questions'] = $name;
+                                }
+                    break;
                 case 9 :
                     for ($i=1 ; $i < 5 ; $i++) { 
                         $data = $this->app->upload($data,'option'.$i,'video');
@@ -64,6 +72,9 @@ class HandelQuizCreateComponent extends Component
             }
         
             if ($data['optionCount'] > 0  && $data['type'] != 2) {
+                if (!is_array($data['options'])) {
+                    $data['options'] = explode(',', $data['options']);
+                }
                     foreach ($data['options'] as $key => $value) {
                         $emptyOption = [
                             'qoption' => null ,
@@ -84,6 +95,10 @@ class HandelQuizCreateComponent extends Component
                         }if($data['type'] == 6 ){
                             $option->qoption = $key;
                             $option->oorder = $value;
+                        }
+                        if($data['type'] == 11 ){
+                            $option->qoption = $value;
+                            $option->oorder = $key;
                         }
                         elseif($data['type'] != 1 && $data['type'] != 7){
                             $option->qoption = $value;
@@ -113,7 +128,7 @@ class HandelQuizCreateComponent extends Component
                     $optionsTable->save($option);
                 }
                 }
-                if ($data['questionCount'] > 0  && $data['type'] != 2 && $data['type'] != 6) {
+                if ($data['questionCount'] > 0  && $data['type'] != 2 && $data['type'] != 6 && $data['type'] != 11) {
                     foreach ($data['question'] as $key => $value) {
                         $emptyOption = [
                             'question' => null ,
