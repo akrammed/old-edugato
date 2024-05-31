@@ -71,7 +71,15 @@ var optiosScript = {
                 'action' => 'createAjax'
             ]) ?>")
 
-    }
+    },
+    'listenToAnswerTypeOption': function() {
+        listenToAnswerOption("<?= $this->Url->build([
+                'plugin' => null,
+                'controller' => 'Quizs',
+                'action' => 'createAjax'
+            ]) ?>")
+
+    },
 
 }
 </script>
@@ -131,6 +139,9 @@ var optiosScript = {
                     </div>
                     <div class="typeQuiz" id="recordToAnswerType" style="display:none">
                         <?php echo $this->element("Quiz/audio-options"); ?>
+                    </div>
+                    <div class="typeQuiz" id="listenToAnswerTypeOption" style="display:none">
+                        <?php echo $this->element("Quiz/listen-to-answer"); ?>
                     </div>
 
                 </section>

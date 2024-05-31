@@ -169,11 +169,11 @@ function textOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -359,11 +359,11 @@ function recordToAnswer(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -537,11 +537,11 @@ function gapsOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -724,11 +724,11 @@ function dropDownOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -971,11 +971,11 @@ function imageOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -1215,11 +1215,11 @@ function vedioOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -1391,11 +1391,11 @@ function trueFalseOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -1566,11 +1566,11 @@ function matchOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -1711,15 +1711,15 @@ function orderingOption(url) {
                         timer: 3000,
 
                     }).then(() => {
-                    if (response.source === 'short') {
-                        $('#popupContainer').css('display', 'block');
-                        $('#popupContainer').css('opacity', '1');
-                        $('#add-short-pop-up').css('display', 'block');
-                         $('#quiz-short').val(response.quiz);
-                         $('#quiz-id').val(response.id);
-                      } else {
-                        location.reload();
-                      }
+                        if (response.source === 'short') {
+                            $('#popupContainer').css('display', 'block');
+                            $('#popupContainer').css('opacity', '1');
+                            $('#add-short-pop-up').css('display', 'block');
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -1886,12 +1886,12 @@ function baseMatchOption(url) {
                             $('#popupContainer').css('display', 'block');
                             $('#popupContainer').css('opacity', '1');
                             $('#add-short-pop-up').css('display', 'block');
-                             $('#quiz-short').val(response.quiz);
-                             $('#quiz-id').val(response.id);
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
 
-                      } else {
-                        location.reload();
-                      }
+                        } else {
+                            location.reload();
+                        }
                     });
 
 
@@ -2086,5 +2086,185 @@ function audioOption(url) {
 
         //     }
         // });
+    });
+}
+
+function listenToAnswerOption(url) {
+    var correctValue = '';
+
+    $("#section-2-listen-to-answer").hide();
+    $("#add-option-listen-to-answer").hide();
+    $("#prev-button-listen-to-answer").hide();
+    $("#sub-listen-to-answer").hide();
+    $("#remove-option-listen-to-answer").hide();
+    $("#correct-input-listen-to-answer").hide();
+
+    $("#next-button-listen-to-answer").click(function (event) {
+        event.preventDefault();
+        $("#section-1-listen-to-answer").hide();
+        $("#section-2-listen-to-answer").show();
+        $("#add-option-listen-to-answer").show();
+        $("#prev-button-listen-to-answer").show();
+        $("#next-button-listen-to-answer").hide();
+        $("#sub-listen-to-answer").show();
+        $("#correct-input-listen-to-answer").show();
+    });
+
+    $("#prev-button-listen-to-answer").click(function (event) {
+        event.preventDefault();
+        $("#section-2-listen-to-answer").hide();
+        $("#add-option-listen-to-answer").hide();
+        $("#section-1-listen-to-answer").show();
+        $("#prev-button-listen-to-answer").hide();
+        $("#next-button-listen-to-answer").show();
+        $("#sub-listen-to-answer").hide();
+        $("#correct-input-listen-to-answer").hide();
+    })
+
+    var optionCounttext = 4;
+    console.log(optionCounttext);
+    function getAnswers(optionCount) {
+        var optionsArray = [];
+        for (let index = 1; index <= optionCount; index++) {
+            var element = $('#option_' + index + '-text').val();
+            optionsArray.push(element);
+        }
+        return optionsArray;
+    }
+      
+    $("#add-option-listen-to-answer").click(function (event) {
+        $("#remove-option-listen-to-answer").show();
+        event.preventDefault();
+        console.log(getAnswers(optionCounttext));
+        optionCounttext++;
+        var newOption = $(`<div class="option-container-text" id="op${optionCounttext}">`);
+        newOption.append(`<div class="row">`)
+        newOption.append('<div class="col-sm-12">');
+        newOption.append($(
+            '<input type="text" style="margin-left: 0%;" class="desc-input" value ="Option ' +
+            optionCounttext + '"  id="option_' + optionCounttext + '-listen-to-answer" name="option_' + optionCounttext +
+            '">'));
+        newOption.append('</div>');
+        newOption.append('</div>');
+        newOption.append('</div>');
+        $("#conter-listen-to-answer").append(newOption);
+
+    });
+
+    var correctData = {};
+
+    $(document).on('dblclick', '[id^=option_]', function () {
+
+        var optionValue = $(this).val();
+
+        if ($(this).css('background-color') === 'rgb(0, 63, 145)') {
+            $(this).css('background-color', 'white');
+            $(this).css('color', '#003F91');
+            correctData[optionValue] = false;
+        } else {
+            $(this).css('background-color', '#003F91');
+            $(this).css('color', 'white');
+            correctData[optionValue] = true;
+        }
+
+
+        console.log(correctData);
+        console.log(test);
+    });
+
+
+
+    $("#remove-option-listen-to-answer").click(function (event) {
+        event.preventDefault();
+        if (optionCounttext > 1) {
+            $(`#op${optionCounttext}`).remove();
+            optionCounttext--;
+            $("#optionCount-listen-to-answer").val(optionCounttext);
+
+
+
+
+            if (optionCounttext === 1) {
+                $(this).addClass("disabled");
+            }
+            if (optionCount < 1) {
+                optionCount = 1;
+            }
+        }
+    });
+
+   
+    
+    $('#sub-listen-to-answer').on('click', function (event) {
+        event.preventDefault();
+        var csrfToken = $('#myForm-listen-to-answer input[name="_csrfToken"]').val();
+
+        var textData = getAnswers(optionCounttext);
+       
+        var audio = $(`#question-listen-to-answer`)[0].files[0];
+        console.log(audio)
+        var lessonId = $(`input[name="lesson_id"]`).attr('value');
+        var formData = new FormData();
+        formData.append('title', $("#title-listen-to-answer").val());
+        formData.append('description', $("#description-listen-to-answer").val());
+        formData.append('questions', audio);
+        formData.append('optionCount', optionCounttext);
+        formData.append('questionCount', 1);
+        formData.append('type', 11);
+        formData.append('lesson_id', lessonId);
+        formData.append('options', textData);
+
+        console.log('formData', formData)
+        $.ajax({
+            url: url,
+            data: formData,
+            method: 'POST',
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-Token': csrfToken
+            },
+            success: function (response) {
+                $('#popupContainer-white').css('display', 'none');
+                console.log(response);
+                if (response.result) {
+                    $('#popupContainer, #overlay').animate({ opacity: 0 }, 200, function () {
+                        $(this).hide();
+                        $(`#${popUpName}`).css('display', 'none');
+                        $('#cId').remove();
+                        $('#lId').remove();
+                        $('#chaId').remove();
+
+                    })
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Quiz has been saved",
+                        showConfirmButton: false,
+                        timer: 3000,
+
+                    }).then(() => {
+                        if (response.source === 'short') {
+                            $('#popupContainer').css('display', 'block');
+                            $('#popupContainer').css('opacity', '1');
+                            $('#add-short-pop-up').css('display', 'block');
+                            $('#quiz-short').val(response.quiz);
+                            $('#quiz-id').val(response.id);
+                        } else {
+                            location.reload();
+                        }
+                    });
+
+
+
+
+                }
+            },
+
+            fail: function (xhr, status, error) {
+                console.error('AJAX error:', status, error);
+
+            }
+        });
     });
 }
