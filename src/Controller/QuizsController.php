@@ -121,6 +121,7 @@ class QuizsController extends AppController
         if(empty($data)){
             $data = $query;
         }
+        
         $quizResult = $this->HandelQuizCreate->createQuiz($data);
 
 
