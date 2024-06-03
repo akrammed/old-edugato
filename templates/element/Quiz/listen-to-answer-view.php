@@ -221,13 +221,8 @@ $(document).ready(function(event) {
         var correctAnswer = <?= json_encode($currentList)?>;
         correctAnswer = correctAnswer.sort().map(option => option[0]).join(' ');
         const unsortedElements = isArraySorted(optionPositions);
-        console.log(unsortedElements);
-        unsortedElements.forEach(function(element) {
-            $(".sortable-list").find(`[data-count="${element }"]`).css("background-color",
-                "red");
-        });
-
-        if (unsortedElements === true) {
+        
+        if (unsortedElements === true ) {
             $('#skip').hide();
             $(".correct-alert").show();
             $(".wrong-alert").hide();
@@ -235,7 +230,11 @@ $(document).ready(function(event) {
             $('.footer').css('background-color', '#E1FCDE');
             $('#check').hide();
             $('#continue').show();
-        } else {
+        } if(unsortedElements !== true) {
+            unsortedElements.forEach(function(element) {
+            $(".sortable-list").find(`[data-count="${element }"]`).css("background-color",
+                "red");
+        });
             $('#check').hide();
             $('#continue').show();
             $('#continue').css('color', '#B1000F');
