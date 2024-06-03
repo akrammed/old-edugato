@@ -35,6 +35,9 @@ switch ($quiz->quiztype_id) {
                       case 10 :
                         echo $this->element('Quiz/audio-options-view');
                           break;
+                      case 11 :
+                        echo $this->element('Quiz/listen-to-answer-view');
+                          break;
     
         default:
         # code...

@@ -2124,9 +2124,10 @@ function listenToAnswerOption(url) {
     var optionCounttext = 4;
     console.log(optionCounttext);
     function getAnswers(optionCount) {
+        console.log(optionCount)
         var optionsArray = [];
         for (let index = 1; index <= optionCount; index++) {
-            var element = $('#option_' + index + '-text').val();
+            var element = $('#option_' + index + '-listen-to-answer').val();
             optionsArray.push(element);
         }
         return optionsArray;
@@ -2135,9 +2136,9 @@ function listenToAnswerOption(url) {
     $("#add-option-listen-to-answer").click(function (event) {
         $("#remove-option-listen-to-answer").show();
         event.preventDefault();
-        console.log(getAnswers(optionCounttext));
         optionCounttext++;
-        var newOption = $(`<div class="option-container-text" id="op${optionCounttext}">`);
+  
+        var newOption = $(`<div class="option-container-listen-to-answer" id="op${optionCounttext}">`);
         newOption.append(`<div class="row">`)
         newOption.append('<div class="col-sm-12">');
         newOption.append($(
@@ -2148,7 +2149,8 @@ function listenToAnswerOption(url) {
         newOption.append('</div>');
         newOption.append('</div>');
         $("#conter-listen-to-answer").append(newOption);
-
+        getAnswers(optionCounttext)
+        console.log(getAnswers(optionCounttext));
     });
 
     var correctData = {};
@@ -2199,10 +2201,10 @@ function listenToAnswerOption(url) {
         event.preventDefault();
         var csrfToken = $('#myForm-listen-to-answer input[name="_csrfToken"]').val();
 
+        console.log(optionCounttext);
         var textData = getAnswers(optionCounttext);
        
         var audio = $(`#question-listen-to-answer`)[0].files[0];
-        console.log(audio)
         var lessonId = $(`input[name="lesson_id"]`).attr('value');
         var formData = new FormData();
         formData.append('title', $("#title-listen-to-answer").val());
