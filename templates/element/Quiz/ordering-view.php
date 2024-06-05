@@ -51,7 +51,7 @@ shuffle($optionsList);
 ?>
 
 
-                        <?php
+<?php
     
     $i = 0;
     foreach ($optionsList as $value) {?>
@@ -175,11 +175,8 @@ $(document).ready(function(event) {
             return false;
         }
         for (let i = 0; i < arr.length - 1; i++) {
-            // Convert elements to numbers for comparison
             const current = parseInt(arr[i]);
             const next = parseInt(arr[i + 1]);
-
-            // Check if current element is greater than next element
             if (current > next) {
                 return false;
             }

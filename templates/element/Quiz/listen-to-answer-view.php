@@ -132,32 +132,28 @@ $(document).ready(function(event) {
     $('#check').prop('disabled', true).css('opacity', '0.2');
 
     $('.speaker').on('click', function() {
-        // Get the audio element
         var audio = $('#questionAudio')[0];
 
-        // Check if audio is paused, if so, play it, otherwise pause it
         if (audio.paused) {
             audio.play();
         } else {
             audio.pause();
         }
     });
-    // Move item from options to answers
     $('.options').on('click', 'li', function() {
-        var selectedOption = $(this).text().trim(); // Trim leading and trailing whitespace
+        var selectedOption = $(this).text().trim(); 
         var selectedId = $(this).attr('id');
         var count = $(this).attr('data-count');
         console.log(count)
 
         $('#check').prop('disabled', false).css('opacity', '1');
-        // Remove from options
         $(this).text('');
         $(this).css('background-color', '#FFFFFF');
 
         if (selectedOption !== '') {
             $('.answers ol').append('<li class="item" data-count="' + count + '" id="' + selectedId +
                 '">' + selectedOption +
-                '</li>'); // Append to answers
+                '</li>'); 
             optionPositions.push(count);
         }
 
@@ -199,7 +195,6 @@ $(document).ready(function(event) {
         for (let i = 0; i < arr.length - 1; i++) {
             const current = arr[i];
             const next = arr[i + 1];
-
             if (current > next) {
                 for (let j = i; j < arr.length; j++) {
                     unsortedPositions.push(j);
