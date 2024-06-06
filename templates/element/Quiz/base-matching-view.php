@@ -132,6 +132,11 @@ shuffle($shuffeldOptions);
             console.log(unsortedElements);
             if (unsortedElements === true) {
                 correctEvents();
+                optionPositions.forEach(function(element) {
+                    $(".answers-question li").css("background-color",
+                        "#17BF33");
+                });
+                
             }
             if (unsortedElements !== true) {
                 unsortedElements.forEach(function(element) {
