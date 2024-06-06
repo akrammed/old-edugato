@@ -5,7 +5,7 @@
                 <div class="wrong-alert">
                     <?php echo $this->element('icons/wrong'); ?>
                     <h3 class="correct-title correct-icon-btn">
-                        correct answer : <br> <span class="wrong-answer-2"></span></h3>
+                     That was not correct !<br> <span class="wrong-answer-2"></span></h3>
                 </div>
                 <div class="correct-alert">
                     <?php echo $this->element('icons/correct'); ?>
