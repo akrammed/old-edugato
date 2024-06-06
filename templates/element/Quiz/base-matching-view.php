@@ -128,7 +128,7 @@ shuffle($shuffeldOptions);
             e.preventDefault();
             var correctAnswer = <?= json_encode($currentList) ?>;
             correctAnswer = correctAnswer.sort().map(option => option[0]).join(' ');
-            const unsortedElements = hasWrongPositions(optionPositions);
+            const unsortedElements = hasWrongPositionsMatch(optionPositions);
             console.log(unsortedElements);
             if (unsortedElements === true) {
                 correctEvents();

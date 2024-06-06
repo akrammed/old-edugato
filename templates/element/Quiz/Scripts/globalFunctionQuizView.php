@@ -56,10 +56,31 @@
                 }
             }
             return unsortedPositions;
-        }
+        }        
 
         function hasWrongPositions(arr) {
             const unsortedPositions = getUnsortedPositions(arr);
+            return unsortedPositions.length === 0 ? true : unsortedPositions;
+        }
+
+
+        function getUnsortedPositionsMatch(arr) {
+            const unsortedPositions = [];
+            if (arr.length === 0) {
+                return unsortedPositions;
+            }
+            for (let i = 0; i < arr.length - 1; i++) {
+                const current = arr[i];
+                const next = arr[i + 1];
+                if (current > next) {
+                        unsortedPositions.push(current, next);
+                }
+            }
+            return unsortedPositions;
+        }
+
+        function hasWrongPositionsMatch(arr) {
+            const unsortedPositions = getUnsortedPositionsMatch(arr);
             return unsortedPositions.length === 0 ? true : unsortedPositions;
         }
 
