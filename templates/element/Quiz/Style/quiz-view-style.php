@@ -28,8 +28,9 @@ body {
 
 .avatar-question {
     font-size: 16px;
-    margin-top: 2%;
+    margin-top: 3%;
     font-weight: 600;
+    margin-left: 2%;
 }
 
 .options-list {
@@ -106,7 +107,7 @@ body {
 }
 
 .continue-btn {
-    margin-top: 4%;
+    margin-top: 3%;
     background-color: white;
     color: rgb(1, 106, 28);
     border-color: rgb(1, 106, 28);
