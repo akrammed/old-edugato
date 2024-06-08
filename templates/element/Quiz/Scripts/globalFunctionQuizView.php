@@ -40,6 +40,13 @@
         $(".wrong-alert").show();
     }
 
+    function reTry(element) {
+        $(element).on('click', function(e) {
+
+
+        });
+    }
+
     function getUnsortedPositions(arr) {
         const unsortedPositions = [];
         if (arr.length === 0) {
@@ -62,28 +69,31 @@
         const unsortedPositions = getUnsortedPositions(arr);
         return unsortedPositions.length === 0 ? true : unsortedPositions;
     }
+
     function getUnsortedElements(arr) {
-    const unsortedIndices = new Set();
-    console.log(arr)
-    var lastElement  = arr[arr.length - 1];
-    for (let i = 0; i < arr.length - 1; i++) {
-        if (arr[i] != i+1 ) {
-            unsortedIndices.add(i);
+        const unsortedIndices = new Set();
+        console.log(arr)
+        var lastElement = arr[arr.length - 1];
+        for (let i = 0; i < arr.length - 1; i++) {
+            if (arr[i] != i + 1) {
+                unsortedIndices.add(i);
+            }
         }
-    }
-    console.log(lastElement)
-    console.log(arr.length )
-    if (lastElement != arr.length) {
-        unsortedIndices.add( arr.length - 1);
-    }
+        console.log(lastElement)
+        console.log(arr.length)
+        if (lastElement != arr.length) {
+            unsortedIndices.add(arr.length - 1);
+        }
 
-    const unsortedElements = Array.from(unsortedIndices).map(index => arr[index]);
+        const unsortedElements = Array.from(unsortedIndices).map(index => arr[index]);
 
-    return unsortedElements;
-}
+        return unsortedElements;
+    }
 
     function hasWrongPositionsMatch(arr) {
         const unsortedPositions = getUnsortedElements(arr);
         return unsortedPositions.length === 0 ? true : unsortedPositions;
     }
+
+    
 </script>
