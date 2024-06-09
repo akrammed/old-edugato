@@ -67,6 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: center;
 }
 
 .col-skip {
@@ -107,9 +108,30 @@ body {
 }
 
 .continue-btn {
-    margin-top: 3%;
     background-color: white;
     color: rgb(1, 106, 28);
     border-color: rgb(1, 106, 28);
+}
+
+.image-card {
+    height: 150px;
+    background-color: transparent;
+    border: none;
+    width: 170px;
+}
+
+.image-groupe {
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+}
+
+@media (max-width: 1000px) {
+    .image-card {
+        height: 117px;
+        background-color: transparent;
+        border: none;
+        width: 124px;
+    }
 }
 </style>
