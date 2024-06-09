@@ -32,7 +32,7 @@ body {
     font-weight: 600;
     margin-left: 2%;
 }
-
+.answer-list ,
 .options-list {
     display: flex;
     justify-content: center;
@@ -44,11 +44,12 @@ body {
     color: white;
     background-color: #7F77FF;
     padding: 2%;
-    border-radius: 9%;
+    border-radius: 18px;
     margin: 1%;
     cursor: pointer;
     list-style-type: none;
     font-size: 11px;
+    text-align: center;
 }
 
 .footer {
@@ -124,6 +125,9 @@ body {
     display: flex;
     margin-top: 3%;
     justify-content: center;
+}
+.answers{
+    height: 100px;
 }
 
 @media (max-width: 1000px) {

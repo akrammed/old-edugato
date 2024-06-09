@@ -22,13 +22,15 @@
         $(".wrong-alert").hide();
         $('#onehundred').prop('checked', true);
         $('.footer').css('background-color', '#E1FCDE');
-        $('#check').hide();
-        $('#continue').show();
+        $('#check').show();
+        $('#check').css('background-color','white');
+        $('#continue').hide();
     }
 
     function wrongEvents() {
-        $('#check').hide();
-        $('#continue').show();
+        $('#check').css('background-color','white');
+        $('#check').show();
+        $('#continue').hide();
         $('#continue').css('color', '#B1000F');
         $('#continue').css('border-color', '#B1000F');
         $('#skip').hide();
