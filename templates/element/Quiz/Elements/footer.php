@@ -16,7 +16,7 @@
             </div>
             <div class="col-6 col-check">
                 <button id="check" class="check-btn">Check</button>
-                <button id="continue" class="check-btn continue-btn">continue</button>
+                <button id="continue" class="check-btn continue-btn">Check</button>
             </div>
         </div>
     </div>
