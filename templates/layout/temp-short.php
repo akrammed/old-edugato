@@ -33,18 +33,19 @@ $cakeDescription = 'EduGato';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
     <?= $this->element('Script/jQuery') ?>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .montserrat-body {
-            font-family: "Montserrat", sans-serif !important;
-            font-optical-sizing: auto !important;
-            font-weight: 300 !important;
-            font-style: normal !important;
-        }
+       .poppins-medium {
+        font-family: "Poppins", sans-serif !important;
+        font-weight: 700;
+        font-style: normal !important;
+        color: #27313F !important;
+    }
     </style>
        <?= $this->element('Script/jQuery') ?>
 </head>
 
-<body >
+<body class="poppins-medium ">
    
         <?= $this->fetch('content') ?>
         <?php echo $this->element('admin-popup'); ?>

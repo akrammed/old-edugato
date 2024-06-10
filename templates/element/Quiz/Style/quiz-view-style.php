@@ -13,9 +13,9 @@ body {
 }
 
 .quiz-title {
-    font-size: 29px;
+    font-size: 26px;
     color: black;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .avatar-container {
