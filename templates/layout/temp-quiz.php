@@ -19,14 +19,7 @@ $cakeDescription = 'Edugato';
 <!DOCTYPE html>
 <html>
 
-<style>
-.montserrat-body {
-    font-family: "Montserrat", sans-serif !important;
-    font-optical-sizing: auto !important;
-    font-weight: 300 !important;
-    font-style: normal !important;
-}
-</style>
+
 
 <head>
     <?= $this->Html->charset() ?>
@@ -44,6 +37,8 @@ $cakeDescription = 'Edugato';
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <style>
@@ -53,7 +48,7 @@ $cakeDescription = 'Edugato';
         font-style: normal !important;
         color: #27313F !important;
     }
-    </style>
+</style>
 <body class="poppins-medium">
     <div id="app" class="">
 

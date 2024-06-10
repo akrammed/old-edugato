@@ -27,6 +27,8 @@ $cakeDescription = 'Lms';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <?= $this->Html->css([
         'panel/app', 'panel/font', 'panel/panel',
@@ -41,16 +43,16 @@ $cakeDescription = 'Lms';
     <?= $this->fetch('script') ?>
     <?= $this->element('Script/jQuery') ?>
     <style>
-    .montserrat-body {
-        font-family: "Montserrat", sans-serif !important;
-        font-optical-sizing: auto !important;
-        font-weight: 300 !important;
+     .poppins-medium {
+        font-family: "Poppins", sans-serif !important;
+        font-weight: 700;
         font-style: normal !important;
+        color: #27313F !important;
     }
     </style>
 </head>
 
-<body class="montserrat-body">
+<body class="poppins-medium ">
     <div id="panel_app">
 
         <?= $this->element('Lms.Panel/nav')?>
