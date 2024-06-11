@@ -117,14 +117,15 @@
 
 .circle {
     border: 3px solid #27313F;
-    border-radius: 58%;
-    font-size: 17px;
-    /* padding: 1%; */
+    border-radius: 200px;
+    font-size: 10px;
+    padding: 1%;
     padding-left: 5px;
-    padding-right: 5px;
-    color:#27313F;
+    padding-right: 6px;
+    color: #27313F;
     margin-top: 7%;
-    margin-left: 1%;
+    margin-left: -9%;
+    width: 20px;
 }
 
 .activities-count {
@@ -185,21 +186,21 @@ width: 266px;margin-left: -43%;
 }
 
 .custom-quiz-iframe {
-    height: 500px;
+    height: 450px;
     margin-top: 0%;
-    margin-left: 11%;
-    width: 78%;
-    border-radius: 3%;
+    margin-left: 13%;
+    width: 74%;
+    border-radius: 31px
 }
 
 @media (max-width: 1200px) {
 
 .custom-quiz-iframe {
-    height: 537px !important;
+    height:     450px !important;
     margin-top: 0%;
-    margin-left: 11%;
-    width: 78%;
-    border-radius: 3%;
+    margin-left: 13%;
+    width: 74%;
+    border-radius: 31px
 }
 }
 
@@ -275,8 +276,8 @@ width: 266px;margin-left: -35%;
         margin-top: -3%;
         margin-left: 2%;
         width: 97%;
-        border-radius: 3%;
+        border-radius: 31px
     }
 }
-}
+
 </style>

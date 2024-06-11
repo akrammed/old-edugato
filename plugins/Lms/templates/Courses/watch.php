@@ -2,21 +2,14 @@
     <d class="layout-container">
         <!-- Menu -->
 
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="border-radius:4%;">
-            <div class="container-xxl flex-grow-1 container-p-y" style="margin-bottom: -15%;margin-left: -15%;">
-                <div class="d-flex form-switch align-items-center">
-                    <label class="form-check-label me-2" for="flexSwitchCheckDefault" style="font-size: 11px;">Dark
-                        mode</label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
-                        style="margin-left: 27%;height: 15px;">
-                </div>
-            </div>
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="border-radius: 19px;">
+
 
             <div class="app-brand demo">
 
-                <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="card mb-4 custom-course-progress">
-                        <div class="card-body">
+                <div class="container-xxl mb-4">
+                    <div class="center-element">
+                        <div class="card-body" style="padding: 0%;">
 
                             <div class="text-dark  fw-semibold" style="margin-bottom: 1%;font-size: 14px;">
                                 <?= $course->title ?></div>
@@ -42,54 +35,61 @@
             </div>
             <ul class="menu-inner py-1">
 
-                <?php $countC = 0; $countL = 0; $firstTitle = null ;  $firstVideo = null; foreach ($lessons as $l) {
+                <?php $countC = 0;
+                $countL = 0;
+                $firstTitle = null;
+                $firstVideo = null;
+                foreach ($lessons as $l) {
                     $countL++;
-                    
+
                     if (!$firstVideo) {
                         $firstVideo = $l->chapters[0]->vedio;
                         $firstTitle = $l->chapters[0]->chapter;
                     }
-                    ?>
-                <?php foreach ($l->chapters as $chap) { 
-                            $countC++;
-                     }?>
+                ?>
+                <?php foreach ($l->chapters as $chap) {
+                        $countC++;
+                    } ?>
 
 
 
-                <li class="menu-item custom-menu-item active" style="width: 100%;margin-bottom: 4%;">
+                <li class="menu-item custom-menu-item active"
+                    style="width: 100%;margin-bottom: 4%;border-radius: 21px;">
                     <a href="javascript:void(0);" class="menu-link menu-toggle "
                         style="border-radius: 6%; background-color: #EAF3FF !important;">
                         <h3 class="circle"><?= $countL ?></h3>
-                        <div data-i18n="Layouts" style="margin-left: 6%;"><?= $l->lesson?><br>
+                        <div data-i18n="Layouts" style="margin-left: 12%;"><?= $l->lesson ?><br>
                             <span class="activities-count"><?= $countC ?> Activities</span>
                         </div>
 
                     </a>
 
                     <ul class="menu-sub">
-                        <?php foreach ($l->chapters as $chap) { 
-                            $countC++;?>
+                        <?php foreach ($l->chapters as $chap) {
+                                $countC++; ?>
                         <li class="menu-item  ">
                             <a href="#" id="<?= $countC ?>" class="menu-link chapter-element chap "
                                 style="border-bottom: 2px solid #CBD4E1;    height: 59px;" data-count="<?= $countC ?>"
                                 <?php if ($chap->vedio) { ?> data-video="<?= $chap->vedio ?>" <?php } else { ?>
                                 data-quizze="<?= $chap->quizz ?>" <?php } ?> data-title="<?= $chap->chapter ?>">
                                 <?php if ($chap->vedio) {
-                                  ?>
-                                <?php echo $this->element('icons/video');?>
-                                <?php }else{?>
-                                <?php echo $this->element('icons/quiz');?>
-                                <?php }?><span style="margin-left: 5%;font-size: 14px;"> <?= $chap->chapter ?>
-                                    </span>
+                                        ?>
+                                <?php echo $this->element('icons/video'); ?>
+                                <?php } else { ?>
+                                <?php echo $this->element('icons/quiz'); ?>
+                                <?php } ?><span style="margin-left: 5%;font-size: 11px;font-weight: 600;">
+                                    <?= $chap->chapter ?>
+                                </span>
 
                             </a>
-                            
+
                         </li>
-                        <?php } $countC = 0; ?>
+                        <?php }
+                            $countC = 0; ?>
 
                     </ul>
                 </li>
-                <?php  }?>
+                <?php  } ?>
 
             </ul>
         </aside>
@@ -99,112 +99,94 @@
         <div class="layout-page">
 
 
-            <div class="navbar-container">
 
-                <nav style="width: 56% !important; margin-left: 2%;"
-                    class="right-navbar layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-                    id="layout-navbar">
-                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                            <i class="bx bx-menu bx-sm"></i>
-                        </a>
-                    </div>
+            <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme custom-navbar-style"
+                id="layout-navbar">
+                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                        <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                </div>
 
-                    <div class="navbar-nav-right d-flex align-items-center w-100" id="navbar-collapse">
-                        <!-- Center Title -->
-                        <div class="navbar-nav mx-auto">
-                            <div class="nav-item">
-                                <div class="text-dark text-center navbar-title-course">
-                                    <?= $course->title ?>
-                                </div>
-                            </div>
+                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                    <div class="navbar-nav align-items-center">
+                        <div class="nav-item d-flex align-items-center">
+                            <span class="navbar-title"><?= $course->title ?></span>
                         </div>
                     </div>
-                </nav>
-
-                <div style="width: 36% !important;margin-left: -2%;"
-                    class="left-navbar layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme">
-
-                    <div class="navbar-nav-right d-flex align-items-center">
-                        <ul class="navbar-nav flex-row align-items-center ms-auto"
-                            style="    margin-left: 18% !important;">
-
-                            <li class="nav-item lh-1 me-3 custom-display">
-                                <?php echo $this->element('icons/score'); ?>
-
-                            </li>
-                            <li class="nav-item lh-1 me-3 custom-display">
-                                <?php echo $this->element('icons/points'); ?>
-
-                            </li>
-
-                            <li class="nav-item lh-1 me-3 custom-display">
-                                <?php echo $this->element('icons/notification'); ?>
-
-                            </li>
-                            <!-- User -->
-                            <li class="nav-item navbar-dropdown dropdown-user dropdown custom-margin">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                    data-bs-toggle="dropdown">
-                                    <div class="avatar avatar-online">
-                                        <?= $this->Html->image('profile.png', ['class' => 'w-px-40 h-auto rounded-circle']) ?>
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-
-                                    <li>
-                                        <a class="dropdown-item" href="https://www.edugato.net/profile" style="color:black">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="https://www.edugato.net/logout" style="color:black">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--/ User -->
-                        </ul>
-                    </div>
 
 
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+                        <li class="nav-item lh-1 me-3 custom-display">
+                            <?php echo $this->element('icons/score'); ?>
+
+                        </li>
+                        <li class="nav-item lh-1 me-3 custom-display">
+                            <?php echo $this->element('icons/points'); ?>
+
+                        </li>
+
+                        <li class="nav-item lh-1 me-3 custom-display">
+                            <?php echo $this->element('icons/notification'); ?>
+
+                        </li>
+                        <!-- User -->
+                        <li class="nav-item navbar-dropdown dropdown-user dropdown custom-margin">
+                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                                data-bs-toggle="dropdown">
+                                <div class="avatar avatar-online">
+                                    <?= $this->Html->image('profile.png', ['class' => 'w-px-40 h-auto rounded-circle']) ?>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+
+                                <li>
+                                    <a class="dropdown-item" href="https://www.edugato.net/profile" style="color:black">
+                                        <i class="bx bx-user me-2"></i>
+                                        <span class="align-middle">My Profile</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="https://www.edugato.net/logout" style="color:black">
+                                        <i class="bx bx-power-off me-2"></i>
+                                        <span class="align-middle">Log Out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </nav>
+
+
+
 
 
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <!-- Content -->
 
-                <div class="container-xxl flex-grow-1 container-p-y" style="    width: 99%;margin: 0%;margin-left: -0.5%;">
+                <div class="container-xxl flex-grow-1 container-p-y content-container">
                     <div class="row" id="section-1">
 
-                        <div class="card-group mb-5" style="height: 484px;">
+                        <div class="card-group" style="height: 460px;">
 
-                            <div class="card custom-height">
-                                <div class="text-center" style="margin-top: 17%;">
+                            <div class="card custom-height sub-content-container">
+                                <div class="text-center center-element">
                                     <h5 class="card-title">Welcome to <?= $course->title ?> </h5>
                                     <h6 class="card-subtitle text-muted"></h6>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                     <div class="row" id="section-2">
-
-
-                        <div class="card-group mb-5">
-
-                            <div class="card">
-
+                        <div class="card-group " style="height: 460px;">
+                            <div class="card border-radius-31">
                                 <div class="card-body d-flex justify-content-between align-items-center">
                                     <div class="d-flex flex-column align-items-start" style="margin-left: 10%;">
                                         <button id="prev" type="button" class="btn  custom-btn">
@@ -225,14 +207,13 @@
                                 </div>
 
                                 <div class="video-container">
-                                    <video class="custom-video" id="vdd" disablePictureInPicture
+                                    <video class="custom-video" id="vdd" disablePictureInPicture controls
                                         controlslist="nodownload">
                                         <source id="sr"
                                             src="<?= $this->Url->webroot('img/uploads/video/' . $firstVideo); ?>"
                                             type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
-                                    <?php echo $this->element('video-controls'); ?>
 
                                 </div>
 
@@ -301,14 +282,6 @@ $(document).ready(function() {
     function setContent(video, quizz, title) {
         $('.card-title').text(title);
         if (video) {
-            $('#pause-icon').hide();
-            $('#p-icon').show();
-            $('#n-icon').show();
-            $('#s-icon').show();
-            $('#f-icon').show();
-            $('#f-icon').show();
-            $('#play-icon').show();
-            $('.progress-bar2').show();
             var videoSrc = "<?= $this->Url->webroot('img/uploads/video/') ?>" + video;
             $('#sr').attr('src', videoSrc);
             $('#iframe').hide();
@@ -323,26 +296,16 @@ $(document).ready(function() {
                     ' minutes)');
                 $('.card-subtitle-2').text(minutes + ':' + formattedSeconds +
                     ' minutes)');
-
-
             });
 
 
-
         } else if (quizz) {
-            $('#p-icon').hide();
-            $('#n-icon').hide();
-            $('#f-icon').hide();
-            $('#s-icon').hide();
-            $('#pause-icon').hide();
-            $('#play-icon').hide();
-            $('.progress-bar2').hide();
             $('.card-subtitle').text('');
             var quizSrc = "<?php echo $this->Url->build('/quizs/view/'); ?>" + quizz;
             console.log("Quiz source: " + quizSrc); // Debugging
             $('.learning-content').css('height', '100vh');
             $('#iframe').attr('src', quizSrc);
-            $('#iframe').show().css('height', '537px');
+            $('#iframe').show().css('height', '460px');
             $('#vdd').hide();
             $('.contentControle').hide();
         }
@@ -411,3 +374,56 @@ $(document).ready(function() {
     });
 });
 </script>
+
+
+<style>
+.navbar-title {
+    color: black;
+}
+
+.custom-navbar-style {
+    border-radius: 31px !important;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-video {
+    width: 90%;
+    height: auto;
+    border-radius: 31px;
+}
+
+.custom-btn {
+    background-color: #F6F8FB;
+    border-color: #F6F8FB;
+    box-shadow: none;
+    color: #5C17E5;
+    border-radius: 18px !important;
+}
+
+.content-container {
+    width: 100%;
+    margin: 0%;
+}
+
+.sub-content-container {
+    border-radius: 31px !important;
+}
+
+.center-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.border-radius-31 {
+    border-radius: 31px !important;
+}
+
+
+</style>
