@@ -16,7 +16,7 @@
 
 .video-container {
     position: relative;
-    width: 75%;
+    width: 70%;
     margin: auto;
 }
 
@@ -186,11 +186,10 @@ width: 266px;margin-left: -43%;
 }
 
 .custom-quiz-iframe {
-    height: 450px;
     margin-top: 0%;
-    margin-left: 13%;
-    width: 74%;
-    border-radius: 31px
+    margin-left: 18%;
+    width: 64%;
+    border-radius: 31px;
 }
 
 @media (max-width: 1200px) {

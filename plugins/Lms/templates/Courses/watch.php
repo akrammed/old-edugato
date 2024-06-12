@@ -7,7 +7,7 @@
 
             <div class="app-brand demo">
 
-                <div class="container-xxl mb-4">
+                <div class="container-xxl mb-4" style="margin-left: -17%;">
                     <div class="center-element">
                         <div class="card-body" style="padding: 0%;">
 
@@ -188,18 +188,18 @@
                         <div class="card-group " style="height: 460px;">
                             <div class="card border-radius-31">
                                 <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div class="d-flex flex-column align-items-start" style="margin-left: 10%;">
+                                    <div class="d-flex flex-column align-items-start" style="margin-left: 16.5%;">
                                         <button id="prev" type="button" class="btn  custom-btn">
                                             <?php echo $this->element('icons/previous'); ?>
-                                            <span class="custom-display">Previous</span> </button>
+                                            <span class="custom-display prev-title">Previous</span> </button>
                                     </div>
                                     <div class="text-center">
                                         <h5 class="card-title"><?= $firstTitle ?></h5>
                                         <h6 class="card-subtitle text-muted subtitle"></h6>
                                     </div>
-                                    <div class="d-flex flex-column align-items-end " style="margin-right: 10%;">
+                                    <div class="d-flex flex-column align-items-end " style="margin-right: 16.5%;">
                                         <button id="next" type="button" class="btn custom-btn"><span
-                                                class="custom-display">Next</span>
+                                                class="custom-display next-title">Next</span>
 
                                             <?php echo $this->element('icons/next'); ?>
                                         </button>
@@ -425,5 +425,15 @@ $(document).ready(function() {
     border-radius: 31px !important;
 }
 
+.next-title{
+    margin-right: 6px;
+    font-size: 17px;
+    font-weight: 500;
+}
+.prev-title {
+    margin-left: 6px;
+    font-size: 17px;
+    font-weight: 500;
+}
 
 </style>
