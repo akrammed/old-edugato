@@ -235,7 +235,7 @@
                 <div class="content-backdrop fade"></div>
             </div>
         </div>
-        <!-- / Layout page -->
+       
 </div>
 
 <!-- Overlay -->
