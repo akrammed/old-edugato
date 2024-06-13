@@ -1,4 +1,4 @@
-<svg style=" margin-left: -25%;" width="25" height="24" viewBox="0 0 25 24" fill="none"
+<svg style=" margin-left: -20%;" width="25" height="24" viewBox="0 0 25 24" fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd"
         d="M7.53906 15.412C7.53906 15.0297 7.84902 14.7197 8.23137 14.7197H14.896C15.2783 14.7197 15.5883 15.0297 15.5883 15.412C15.5883 15.7944 15.2783 16.1043 14.896 16.1043H8.23137C7.84902 16.1043 7.53906 15.7944 7.53906 15.412Z"

@@ -99,9 +99,10 @@
 
 .custom-menu-item {
     width: 90% !important;
-    background-color: #EAF3FF !important;
+    background-color: #F6F8FB !important;
     margin-left: 5% !important;
     border-radius: 5%;
+    margin-bottom: 8px !important;
 }
 
 .progress-bar {
@@ -134,8 +135,11 @@
 }
 
 .chapter-element {
-    background-color: #F6F8FB;
     color:#27313F !important;
+    height: 62px;
+    background-color: white;
+    border-radius: 8px !important;
+    margin-bottom: 6px !important;
 }
 .custom-course-progress{
 width: 266px;margin-left: -43%;
@@ -145,11 +149,14 @@ width: 266px;margin-left: -43%;
 }
 
 .menu-link:focus {
-    background-color: #DBE3FC !important;
+    background-color: white !important;
 }
 
-.menu-link.active {
-    background-color: #DBE3FC !important;
+
+.sub-menu-link.active {
+    background-color: white !important;
+    box-shadow: 0px 0px 31px #DADADA;
+    color: #5C17E5 !important;
 }
 
 .card-title {
