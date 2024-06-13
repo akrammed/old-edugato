@@ -68,10 +68,10 @@
 
                                         <?php if ($chap->vedio) {
                                         ?>
-                                            <?php echo $this->element('icons/video'); ?>
+                                          <span style="margin-left: -13%;">  <?php echo $this->element('icons/video'); ?></span>
                                         <?php } else { ?>
 
-                                            <span id="quiz-icon-stat"> <?php echo $this->element('icons/quiz'); ?></span>
+                                            <span style="margin-left: -13%;"> <?php echo $this->element('icons/quiz'); ?></span>
                                            
                                         <?php } ?><span class="course-title-style">
                                             <?= $chap->chapter ?>
