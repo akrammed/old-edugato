@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'Edugato : shorts';
+$cakeDescription = 'Edugato : course';
 ?>
 <!DOCTYPE html>
 <html>
