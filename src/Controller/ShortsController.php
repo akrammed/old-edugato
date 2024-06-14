@@ -107,7 +107,7 @@ class ShortsController extends AppController
     }
 
     public function watch($id = null) {
-        $this->viewBuilder()->setLayout('temp-short');
+        $this->viewBuilder()->setLayout('short-layout');
         $shortsList = $this->Shorts->find('all', [
             'order' => ['Shorts.id' => 'ASC'] 
         ])->toArray();
