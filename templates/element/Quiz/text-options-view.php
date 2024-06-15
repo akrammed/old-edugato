@@ -9,15 +9,12 @@ $i = 0;
 <div class="quiz-body">
 
     <div class="container">
-        <div class="row quiz-title-row">
-            <h1 class="title quiz-title">
-                Choose the correct answer</h1>
-        </div>
         <div class="row">
-            <div class="content">
+            <div class="content" style="margin-top: 4%;">
                 <div class="conversation">
                     <div class="avatar-container">
                         <?php echo $this->element('icons/avatar'); ?>
+                        <?php echo $this->element('icons/talikng-bubbls'); ?>
                         <h2 class="avatar-question"><?= $questions[0]['question'] ?> </h2>
                     </div>
                 </div>
@@ -50,28 +47,38 @@ $(document).ready(function(event) {
     var selectedOptions = [];
     var selectedOption;
     $(document).on('click', '[class^=option-element]', function() {
-        $('#check').prop('disabled', false).css('opacity', '1');
-        selected = $(this);
-        console.log(selected);
-        var optionId = $(this).attr('id').split('-')[1];
-        $('[class^=option-element]').css('border', '2px solid');
-        $(this).css('border', '4px solid greenyellow');
-        selectedOption = parseInt(optionId);
-    });
+    selected = $(this);
+    console.log(selected);
+    var optionId = $(this).attr('id').split('-')[1];
+    $('[class^=option-element]').css('border', '2px solid');
+    $(this).css('border', '4px solid #17BF33');
+    selectedOption = parseInt(optionId);
+    var correctAnswer = <?php echo json_encode($correctOption); ?>;
+    
+    if (correctAnswer === selectedOption) {
+        $('[class^=option-element]').each(function() {
+            if ($(this).css('background-color') === 'rgb(255, 0, 0)') {
+                $(this).css('background-color', '#7F77FF');
+            }
+        });
+        $('#option-' + selectedOption).css('background-color', '#17BF33');
+        correctEvents();
+    } else {
+        // Change all elements with red background to #7F77FF
+        $('[class^=option-element]').each(function() {
+            if ($(this).css('background-color') === 'rgb(255, 0, 0)') {
+                $(this).css('background-color', '#7F77FF');
+            }
+        });
+        $('#option-' + correctAnswer).css('background-color', '#17BF33');
+        $('#option-' + selectedOption).css('background-color', 'red');
+        $('#option-' + selectedOption).css('border-color', 'red');
+        wrongEvents();
+    }
+});
 
-    $('#check').on('click', function(e) {
-        e.preventDefault();
-        var correctAnswer = <?php echo json_encode($correctOption); ?>;
-        if (correctAnswer === selectedOption) {
-            $('#option-' + selectedOption).css('background-color', 'greenyellow');
-            correctEvents();
-        } else {
-            $('#option-' + correctAnswer).css('background-color', 'greenyellow');
-            $('#option-' + selectedOption).css('background-color', 'red');
-            $('#option-' + selectedOption).css('border-color', 'red');
-            wrongEvents();
-        }
-    });
+
+  
 });
 </script>
 <style>

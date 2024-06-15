@@ -23,20 +23,24 @@ body {
     justify-content: center;
     margin-top: 2%;
     margin-left: 1%;
-    border-bottom: 1px solid #CBD4E1;
 }
 
 .avatar-question {
     font-size: 16px;
-    margin-top: 3%;
+    margin-top: -3%;
     font-weight: 600;
-    margin-left: 2%;
+    margin-left: -1%;
+    background-color: white;
+    padding: 2%;
+    height: 70%;
+    border-radius: 39px;
+    box-shadow: 0px 0px 20px #dddddd;
 }
-.answer-list ,
+
+.answer-list,
 .options-list {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #CBD4E1;
 }
 
 .option-element {
@@ -48,13 +52,12 @@ body {
     margin: 1%;
     cursor: pointer;
     list-style-type: none;
-    font-size: 11px;
+    font-size: 13px;
     text-align: center;
 }
 
 .footer {
-    height: 70px;
-    border-top: 3px solid #ECEFF4;
+    height: 90px;
     padding: 20px 0;
     position: fixed;
     bottom: 0;
@@ -126,7 +129,8 @@ body {
     margin-top: 3%;
     justify-content: center;
 }
-.answers{
+
+.answers {
     height: 100px;
 }
 

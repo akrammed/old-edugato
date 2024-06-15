@@ -8,7 +8,7 @@
 
 .container-loading .progress {
     margin: 0 auto;
-    width: 600px;
+    width: 615px;
     margin-left: -26%;
     margin-top: -5%;
     height: 17px;

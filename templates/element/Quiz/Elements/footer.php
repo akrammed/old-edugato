@@ -12,11 +12,8 @@
                     <h3 class="correct-title correct-icon-btn">
                         That's correct !</h3>
                 </div>
-                <button id="skip" class="skip-btn">Skip</button>
             </div>
             <div class="col-6 col-check">
-                <button id="check" class="check-btn">Check</button>
-                <button id="continue" class="check-btn continue-btn">Check</button>
             </div>
         </div>
     </div>
