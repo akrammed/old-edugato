@@ -25,6 +25,10 @@
         $('#check').show();
         $('#check').css('background-color','white');
         $('#continue').hide();
+        var audio = document.getElementById('correct-sound');
+        if (audio) {
+            audio.play();
+        }
     }
 
     function wrongEvents() {
@@ -40,6 +44,10 @@
         $('.footer').css('background-color', '#FFD4D8')
         $(this).css('background-color', 'rgb(216,72,72,1)');
         $(".wrong-alert").show();
+        var audio = document.getElementById('false-sound');
+        if (audio) {
+            audio.play();
+        }
     }
 
     function reTry(element) {

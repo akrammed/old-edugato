@@ -39,6 +39,7 @@ $i = 0;
 </div>
 
 <?php echo $this->element('Quiz/Elements/footer'); ?>
+<?php echo $this->element('Quiz/Elements/sounds-effects'); ?>
 <?php echo $this->element('Quiz/Scripts/globalFunctionQuizView'); ?>
 
 <script>
@@ -64,7 +65,6 @@ $(document).ready(function(event) {
         $('#option-' + selectedOption).css('background-color', '#17BF33');
         correctEvents();
     } else {
-        // Change all elements with red background to #7F77FF
         $('[class^=option-element]').each(function() {
             if ($(this).css('background-color') === 'rgb(255, 0, 0)') {
                 $(this).css('background-color', '#7F77FF');
