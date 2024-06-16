@@ -1,10 +1,4 @@
-<div   class="load-wrapp">
-    <div class="load-1" id="recording-status">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-</div>
+
 <style>
 
 /* -----------------------------------------
@@ -35,7 +29,7 @@
   width: 15px;
   height: 15px;
   border-radius: 15px;
-  background-color: #4b9cdb;
+  background-color: #ffffff;
 }
 
 .ring-1 {
@@ -43,7 +37,7 @@
   height: 10px;
   margin: 0 auto;
   padding: 10px;
-  border: 7px dashed #4b9cdb;
+  border: 7px dashed #ffffff;
   border-radius: 100%;
 }
 
@@ -52,7 +46,7 @@
   width: 45px;
   height: 45px;
   margin: 0 auto;
-  border: 4px solid #4b9cdb;
+  border: 4px solid #ffffff;
   border-radius: 100%;
 }
 
@@ -88,7 +82,7 @@
   width: 12px;
   height: 12px;
   border-radius: 4px;
-  background-color: #4b9cdb;
+  background-color: #ffffff;
 }
 
 .spinner {
@@ -105,7 +99,7 @@
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  background-color: #4b9cdb;
+  background-color: #ffffff;
 }
 
 .bubble-2 {
@@ -118,7 +112,7 @@
   width: 15px;
   height: 6px;
   border-radius: 2px;
-  background-color: #4b9cdb;
+  background-color: #ffffff;
 }
 
 /* =Animate the stuff
