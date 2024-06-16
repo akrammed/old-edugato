@@ -126,7 +126,7 @@ body {
 
 .image-groupe {
     display: flex;
-    margin-top: 3%;
+    margin-top: 1.5%;
     justify-content: center;
 }
 
