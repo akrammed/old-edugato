@@ -78,6 +78,8 @@ class AppController extends Controller
         }
         if (($controller === 'Homes') &&($plugin === 'Lms')) {
             $this->Authentication->allowUnauthenticated(['home','about','contact','courses','payment','comming']);
+        } elseif ($controller === 'Assistant') {
+            $this->Authentication->addUnauthenticatedActions(['getAssistant']);
         }
 
     }
