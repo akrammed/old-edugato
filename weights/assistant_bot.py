@@ -1,12 +1,17 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import httpx
 
 app = FastAPI()
 
-OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY'
-
-client = httpx.AsyncClient(headers={"Authorization": f"Bearer {OPENAI_API_KEY}"})
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8765"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 class AssistantRequest(BaseModel):
     prompt: str
@@ -22,70 +27,94 @@ class QuizResponse(BaseModel):
     is_correct: bool
     correction: str
 
+OPENAI_API_KEY = 'skdjfoij3m4i2j343kmlkdfkaj32k3j4'
+
 @app.post("/assistant/")
 async def get_assistant_response(request: AssistantRequest) -> AssistantResponse:
     try:
-        response = await fetch_assistant_response(request.prompt)
-        return AssistantResponse(response=response)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        prompt = request.prompt
+        print(f"Received prompt: {prompt}")
 
-async def fetch_assistant_response(prompt: str) -> str:
-    try:
-        url = "https://api.openai.com/v1/engines/gpt-3.5-turbo/completions"
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {OPENAI_API_KEY}"
-        }
         data = {
             "model": "gpt-3.5-turbo",
             "messages": [
                 {"role": "system", "content": "EduGato is your English teacher assistant."},
-                {"role": "user", "content": prompt},
-                {"role": "assistant", "content": "As your English teacher, let me explain that concept."},
-                {"role": "assistant", "content": "Here's an example to illustrate."},
-                {"role": "assistant", "content": "Would you like more examples or clarification on this topic?"},
+                {"role": "user", "content": prompt}
             ]
         }
-        async with httpx.AsyncClient() as client:
-            response = await client.post(url, headers=headers, json=data)
-            response_data = response.json()
-            return response_data['choices'][0]['message']['content']
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/quiz/")
-async def check_quiz_answer(request: QuizRequest) -> QuizResponse:
-    try:
-        response = await fetch_quiz_correction(request.question, request.user_answer)
-        return QuizResponse(is_correct=response['is_correct'], correction=response['correction'])
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-async def fetch_quiz_correction(question: str, user_answer: str) -> dict:
-    try:
-        url = "https://api.openai.com/v1/engines/gpt-3.5-turbo/completions"
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {OPENAI_API_KEY}"
         }
+
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                "https://api.openai.com/v1/chat/completions",
+                json=data,
+                headers=headers
+            )
+            response.raise_for_status()
+            response_data = response.json()
+            assistant_response = response_data['choices'][0]['message']['content']
+
+        return AssistantResponse(response=assistant_response)
+
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 401:
+            raise HTTPException(status_code=401, detail="Invalid API key provided")
+        else:
+            raise HTTPException(status_code=500, detail=f"HTTP error occurred: {e}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error occurred: {e}")
+
+@app.post("/quiz/")
+async def check_quiz_answer(request: QuizRequest) -> QuizResponse:
+    try:
+        question = request.question
+        user_answer = request.user_answer
+
         data = {
             "model": "gpt-3.5-turbo",
             "messages": [
                 {"role": "system", "content": "You are an assistant that helps verify and correct quiz answers."},
-                {"role": "user", "content": f"Question: {question}\nUser's Answer: {user_answer}"},
-                {"role": "assistant", "content": "Let's check if the user's answer is correct and provide the correct answer if it is not."},
+                {"role": "user", "content": f"Question: {question}\nUser's Answer: {user_answer}"}
             ]
         }
+
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {OPENAI_API_KEY}"
+        }
+
         async with httpx.AsyncClient() as client:
-            response = await client.post(url, headers=headers, json=data)
+            response = await client.post(
+                "https://api.openai.com/v1/chat/completions",
+                json=data,
+                headers=headers
+            )
+            response.raise_for_status()
             response_data = response.json()
             assistant_message = response_data['choices'][0]['message']['content']
-            is_correct = "correct" in assistant_message.lower()
-            return {"is_correct": is_correct, "correction": assistant_message}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+        is_correct = "correct" in assistant_message.lower()
+        return QuizResponse(is_correct=is_correct, correction=assistant_message)
+
+    except httpx.HTTPStatusError as e:
+        if e.response.status_code == 401:
+            raise HTTPException(status_code=401, detail="Invalid API key provided")
+        else:
+            raise HTTPException(status_code=500, detail=f"HTTP error occurred: {e}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error occurred: {e}")
+
+@app.get("/test/")
+async def test_endpoint():
+    return {"message": "This is a test endpoint for GET requests"}
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    print(f"Incoming request: {request.method} {request.url}")
+    response = await call_next(request)
+    return response
+

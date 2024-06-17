@@ -97,19 +97,11 @@ return function (RouteBuilder $routes): void {
         $builder->fallbacks();
     });
 
-    /*
-     * If you need a different set of middleware or none at all,
-     * open new scope and define routes there.
-     *
-     * ```
-     * $routes->scope('/api', function (RouteBuilder $builder): void {
-     *     // No $builder->applyMiddleware() here.
-     *
-     *     // Parse specified extensions from URLs
-     *     // $builder->setExtensions(['json', 'xml']);
-     *
-     *     // Connect API actions here.
-     * });
-     * ```
-     */
+
+    $routes->scope('/api', function (RouteBuilder $builder) {
+      $builder->connect('/quiz/check-answer', ['controller' => 'Quiz', 'action' => 'checkAnswer', 'prefix' => 'Api']);
+      $builder->connect('/assistant/get-response', ['controller' => 'Assistant', 'action' => 'getAssistant', 'prefix' => 'Api']);
+      $builder->fallbacks(DashedRoute::class);
+  });
+  
 };
