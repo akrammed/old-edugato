@@ -117,7 +117,7 @@
 <body>
     <section>
         <div class="container py-5">
-
+	<!-- oussaama -->
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-4">
 
@@ -202,7 +202,7 @@
         });
     });
     </script>
-
+	<!-- oussaama -->
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js">
     </script>
