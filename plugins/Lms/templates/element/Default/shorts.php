@@ -26,7 +26,7 @@ margin-bottom: 2%;padding: 0%;">
                             <div class="card-header" style="padding:0 !important; max-height:295px !important;">
                                 <source>
                                 <video style="height: 297px;" class="courseImage course-img img-fluid" src="
-                <?php echo $this->Url->build('/webroot/img/uploads/video/' . $short['video'], ['class' => 'course-img img-fluid']) ?>
+                <?php echo $this->Url->build('/img/uploads/video/' . $short['video'], ['class' => 'course-img img-fluid']) ?>
                 " autoplay muted loop disablePictureInPicture controlslist="nodownload noplaybackrate"></video>
                                 </source>
                             </div>
