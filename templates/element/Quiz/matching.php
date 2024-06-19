@@ -42,7 +42,7 @@
 
     ?>
 
-            <?php $j = 1 ; for ($i = 1; $i <= 4; $i++): ?>
+            <?php $j = 1 ; for ($i = 1; $i <= 3; $i++): ?>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -76,18 +76,7 @@
                 </div>
             </div>
             <?php $j++;  endfor; ?>
-            <div id="options-container-match"></div>
-            <button id="add-option-match" style="    margin-left: 0%;
-    height: 35px;
-    border-radius: 0%;" class="custom-plus-btn  btn nav-btn  me-md-4 edugato-btn-bleu"> <span
-                    class="custom-plus">+</span> Add Option</button>
-            <input type="hidden" id="optionCount-match" value="4">
-            <button id="remove-option-match" style="margin-left: 0%;
-    height: 35px;
-    border-radius: 0%;" class="custom-plus-btn  btn nav-btn  me-md-4 edugato-btn-bleu"> <span
-                    class="custom-plus">-</span> Remove Option</button>
-
-        </section>
+         
 
         <button id="next-button-match" style="margin-left: 0%;height: 41px;
     border-radius: 0%;" class="next-btn btn nav-btn  me-md-4 edugato-btn-bleu">Ready to
