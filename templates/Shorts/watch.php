@@ -1,48 +1,4 @@
-<style>
-.hidden-section {
-    display: none;
-    /* Initially hide the sections */
-}
 
-#scrolledDiv {
-    scroll-behavior: smooth;
-    /* Add this line */
-}
-
-#scContent {
-    overflow-y: scroll;
-}
-
-.sec {
-    height: 619px;
-}
-
-.avatar-question {
-    display: flex;
-    width: 290px;
-    padding: 16px 20px;
-    align-items: center;
-    border-radius: 60px;
-    border: 1px solid var(--Outline-Container, rgba(154, 168, 188, 0.20));
-    background: var(--Background-Primary, #FFF);
-    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.04);
-    color: black !important;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px;
-}
-
-.custom-video-container {
-    padding: 0%;
-    padding-left: 0%;
-    height: 620px;
-}
-</style>
-</head>
-
-<body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Side bar -->
@@ -197,3 +153,43 @@
         }
     });
     </script>
+    <style>
+.hidden-section {
+    display: none;
+}
+
+#scrolledDiv {
+    scroll-behavior: smooth;
+}
+
+#scContent {
+    overflow-y: scroll;
+}
+
+.sec {
+    height: 619px;
+}
+
+.avatar-question {
+    display: flex;
+    width: 290px;
+    padding: 16px 20px;
+    align-items: center;
+    border-radius: 60px;
+    border: 1px solid var(--Outline-Container, rgba(154, 168, 188, 0.20));
+    background: var(--Background-Primary, #FFF);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.04);
+    color: black !important;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.custom-video-container {
+    padding: 0%;
+    padding-left: 0%;
+    height: 620px;
+}
+</style>
