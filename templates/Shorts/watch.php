@@ -72,7 +72,7 @@
             var currentScrollTop = $(this).scrollTop();
             var scrollDirection = currentScrollTop > lastScrollTop ? "down" : "up";
             if(scrollDirection === "down" && !ajaxSent) {
-             scroll("down");
+            scroll("down");
             } else if(scrollDirection === "up" && !ajaxSent) {
             scroll("up");
             }
