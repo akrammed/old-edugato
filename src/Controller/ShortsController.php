@@ -108,14 +108,16 @@ class ShortsController extends AppController
 
     public function watch($id = null) {
         $this->viewBuilder()->setLayout('short-layout');
-        $shortsList = $this->Shorts->find('all', [
-            'order' => ['Shorts.id' => 'ASC'] 
+        $shortIds = $this->Shorts->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'id', 
+            'order' => ['Shorts.id' => 'ASC']
         ])->toArray();
     
         if ($id !== null) {
             $shortsWithIdFirst = [];
-            foreach ($shortsList as $short) {
-                if ($short->id == $id) {
+            foreach ($shortIds as $short) {
+                if ($short == $id) {
                     array_unshift($shortsWithIdFirst, $short);
                 } else {
                     $shortsWithIdFirst[] = $short;
