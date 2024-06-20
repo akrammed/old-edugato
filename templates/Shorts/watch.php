@@ -12,7 +12,7 @@
                 <div class="content-wrapper">
                     <div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
                         <div class="row">
-                            <div class="col-md-9 w" style="min-height:619px!important; border-radius: 16px ">
+                            <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
                                 <div class="card mb-3">
                                     <div class="row ">
                                         <div class="col-md-4" id="scrolledDiv">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <div class="card mb-3" style="min-height: 499px !important; border-radius: 16px; ">
                                     <div class="row g-0">
 
@@ -172,7 +172,7 @@
 
 .avatar-question {
     display: flex;
-    width: 290px;
+    width: 245px;
     padding: 16px 20px;
     align-items: center;
     border-radius: 60px;
