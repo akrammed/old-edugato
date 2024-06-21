@@ -158,14 +158,14 @@
 
         function verifyI(i){
             if(i == 0){
-                $('#btnScrollUp').hide();
+                $('#btnScrollUp').prop('disabled', true);
             } else {
-                $('#btnScrollUp').show();
+                $('#btnScrollUp').prop('disabled', false);
             }
             if(i == shortsArray.length - 1){
-                $('#btnScrollDown').hide();
+                $('#btnScrollDown').prop('disabled', true);
             } else {
-                $('#btnScrollDown').show();
+                $('#btnScrollDown').prop('disabled', false);
             }
         }
     });

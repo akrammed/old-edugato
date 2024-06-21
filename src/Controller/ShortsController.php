@@ -124,8 +124,10 @@ class ShortsController extends AppController
                 }
             }
             $shortsList = $shortsWithIdFirst;
+        }else{
+            $shortsList = array_values($shortsList);
         }
-        
+        // dd($shortsList);
         $this->set(compact('shortsList'));
     }
 
