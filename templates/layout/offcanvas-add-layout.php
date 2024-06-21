@@ -57,26 +57,25 @@ $cakeDescription = 'Edugato';
         font-style: normal !important;
         color: #27313F !important;
     }
+
+    .container-custom-offcanvas {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        top: 0px;
+    }
     </style>
 </head>
 
-<body class="poppins-medium ">
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            <?php echo $this->element('admin/aside'); ?>
-            <div class="layout-page">
-                <?php echo $this->element('admin/nav'); ?>
-                <div class="content-wrapper">
+<body class="poppins-medium " style="background-color: white;">
+    <div id="app" class="container-custom-offcanvas">
 
-                    <?= $this->Flash->render() ?>
-                    <?= $this->fetch('content') ?>
-                    <?php echo $this->element('admin/add-course'); ?>
-                    <?php echo $this->element('admin/add-short'); ?>
-                    <?php echo $this->element('admin/add-quiz'); ?>
-                    <?php echo $this->element('admin/add-user'); ?>
-                </div>
-                <div class="layout-overlay layout-menu-toggle"></div>
-                <?= $this->Html->script([
+        <?= $this->Flash->render() ?>
+        <?= $this->fetch('content') ?>
+
+    </div>
+    <?= $this->Html->script([
 
     'default-layout/vendor/libs/jquery/jquery',
     'default-layout/vendor/libs/popper/popper',
@@ -87,7 +86,7 @@ $cakeDescription = 'Edugato';
     'default-layout/js/main',
     'default-layout/js/dashboards-analytics'
     ]) ?>
-                <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>

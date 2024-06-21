@@ -45,7 +45,14 @@ class AppController extends Controller
 
         parent::initialize();
 
-        $this->loadComponent('Flash');
+        $this->loadComponent('Flash', [
+            'element' => [
+                'success' => 'flash/success',
+                'error' => 'flash/error',
+                'warning' => 'flash/warning',
+                'default' => 'flash/default'
+            ]
+        ]);
         $this->loadComponent('Authentication.Authentication');
         $this->request->getSession()->write('Config.language', 'ar');
         $this->fetchGlobalTableLocator();

@@ -13,3 +13,4 @@ if (!isset($params['escape']) || $params['escape'] !== false) {
 }
 ?>
 <div class="<?= h($class) ?>" onclick="this.classList.add('hidden');"><?= $message ?></div>
+
