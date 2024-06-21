@@ -1,4 +1,4 @@
-<div class="layout-wrapper layout-content-navbar">
+<div class="layout-wrapper layout-content-navbar" id="main">
     <div class="layout-container">
         <!-- Side bar -->
         <?php echo $this->element('aside'); ?>
@@ -16,7 +16,7 @@
                                 <div class="row ">
                                     <div class="col-md-4" id="scrolledDiv">
                                     </div>
-                                    <div class="col-md-8" id="main">
+                                    <div class="col-md-8" >
                                             <section class="sec" id="section">
                                                 <div class="card-body h-100" id="take-quiz-2">
                                                     <div class="conversation h-100 w-100 d-flex justify-content-center align-items-center">
@@ -77,6 +77,13 @@
             scroll("up");
             }
             lastScrollTop = currentScrollTop;
+        });
+        $(document).keydown(function(event) {
+        if (event.key === 'ArrowUp' && i > 0) {
+            scroll("up");
+        } else if (event.key === 'ArrowDown' && i < shortsArray.length - 1) {
+            scroll("down");
+        }
         });
         $('#btnScrollUp').click(function() {
            scroll("up");
@@ -171,6 +178,11 @@
     });
 </script>
 <style>
+    #main{
+        
+  overflow: hidden; /* Prevents scrolling in both directions */
+
+    }
     .hidden-section {
         display: none;
     }
@@ -179,9 +191,13 @@
         scroll-behavior: smooth;
     }
 
-    #scContent {
+    #scrolledDiv {
         overflow-y: scroll;
+        scrollbar-width: none;
     }
+    #scrolledDiv::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
 
     .sec {
         height: 619px;
