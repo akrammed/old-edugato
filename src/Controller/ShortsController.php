@@ -108,7 +108,7 @@ class ShortsController extends AppController
 
     public function watch($id = null) {
         $this->viewBuilder()->setLayout('short-layout');
-        $shortIds = $this->Shorts->find('list', [
+        $shortsList = $this->Shorts->find('list', [
             'keyField' => 'id',
             'valueField' => 'id', 
             'order' => ['Shorts.id' => 'ASC']
@@ -116,7 +116,7 @@ class ShortsController extends AppController
     
         if ($id !== null) {
             $shortsWithIdFirst = [];
-            foreach ($shortIds as $short) {
+            foreach ($shortsList as $short) {
                 if ($short == $id) {
                     array_unshift($shortsWithIdFirst, $short);
                 } else {
