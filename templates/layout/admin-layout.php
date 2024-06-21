@@ -68,6 +68,10 @@ $cakeDescription = 'Edugato';
                 <?php echo $this->element('admin/nav'); ?>
                 <div class="content-wrapper">
                     <?= $this->fetch('content') ?>
+                    <?php echo $this->element('admin/add-course'); ?>
+                    <?php echo $this->element('admin/add-short'); ?>
+                    <?php echo $this->element('admin/add-quiz'); ?>
+                    <?php echo $this->element('admin/add-user'); ?>
                 </div>
                 <div class="layout-overlay layout-menu-toggle"></div>
                 <?= $this->Html->script([
