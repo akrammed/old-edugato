@@ -58,6 +58,9 @@ $cakeDescription = 'Edugato';
         color: #27313F !important;
     }
     </style>
+    <?= $this->Html->css('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css') ?>
+    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') ?>
+    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js') ?>
 </head>
 
 <body class="poppins-medium ">

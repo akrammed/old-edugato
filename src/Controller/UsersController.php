@@ -24,7 +24,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->setLayout('temp-panel');
+        $this->viewBuilder()->setLayout('admin-layout');
         $query = $this->Users->find()
             ->contain(['Roles', 'Locations', 'Courses']);
         $users = $this->paginate($query);
@@ -58,6 +58,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
+                return $this->redirect(['action' => 'add']);
             }else{
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
@@ -77,7 +78,7 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $this->viewBuilder()->setLayout('temp-panel');
+        $this->viewBuilder()->setLayout('admin-layout');
         $user = $this->Users->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
@@ -103,7 +104,6 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
