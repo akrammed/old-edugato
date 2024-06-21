@@ -61,12 +61,16 @@ $cakeDescription = 'Edugato';
 </head>
 
 <body class="poppins-medium ">
-    <div id="app" class="">
-
-        <?= $this->fetch('content') ?>
-
-    </div>
-    <?= $this->Html->script([
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <?php echo $this->element('admin/aside'); ?>
+            <div class="layout-page">
+                <?php echo $this->element('admin/nav'); ?>
+                <div class="content-wrapper">
+                    <?= $this->fetch('content') ?>
+                </div>
+                <div class="layout-overlay layout-menu-toggle"></div>
+                <?= $this->Html->script([
 
     'default-layout/vendor/libs/jquery/jquery',
     'default-layout/vendor/libs/popper/popper',
@@ -77,7 +81,7 @@ $cakeDescription = 'Edugato';
     'default-layout/js/main',
     'default-layout/js/dashboards-analytics'
     ]) ?>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+                <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
