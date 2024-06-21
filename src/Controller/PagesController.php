@@ -71,4 +71,10 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    public function dashboard() {
+        $this->viewBuilder()->setLayout('admin-layout');
+    }
+
+
 }

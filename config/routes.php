@@ -70,10 +70,11 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/course/watch/:id', ['plugin'=> 'Lms','controller' => 'Courses', 'action' => 'watch', 'watch']);
         $builder->connect('/dashboard', ['plugin'=> 'Lms','controller' => 'Homes', 'action' => 'dashboard', 'dashboard']);
         $builder->connect('/payment', ['plugin'=>'Lms','controller' => 'Homes', 'action' => 'payment', 'payment']);
-          $builder->connect('/add-lesson', ['plugin'=> 'Lms','controller' => 'Lessons', 'action' => 'add', 'add-lesson']);
+        $builder->connect('/add-lesson', ['plugin'=> 'Lms','controller' => 'Lessons', 'action' => 'add', 'add-lesson']);
         $builder->connect('/edit-lesson', ['plugin'=> 'Lms','controller' => 'Lessons', 'action' => 'edit', 'edit-lesson']);
         $builder->connect('/edit-chapter', ['plugin'=> 'Lms','controller' => 'Chapters', 'action' => 'edit', 'edit-chapter']);
         $builder->connect('/add-chapter', ['plugin'=> 'Lms','controller' => 'Chapters', 'action' => 'add', 'add-chapter']);
+        $builder->connect('/admin', ['controller' => 'Pages', 'action' => 'dashboard', 'admin']);
 
 
         /*
