@@ -19,7 +19,7 @@
                                 <h6 class="cours-title-aside">
                                 <?= $this->Html->link(
                    $this->Html->image('logo.png', ['class' => 'img-cover','style'=>'width: 100px;']),
-                   '/home-lms',
+                   '/',
                   ['escape' => false, 'class' => 'navbar-brand navbar-order d-flex align-items-center justify-content-center mr-0']
                 ) ?>
                                 </h6>
@@ -32,7 +32,7 @@
             <ul class="flex flex-col justify-center items-center">
                 <li class="menu-item custom-menu-item active parent-lesson-element ">
                 <div class="mb-3">
-                    <a href="javascript:void(0);" id="btn" class="  lesson-element-style">
+                    <a href="/" id="btn" class="  lesson-element-style">
                         <?php echo $this->element('icons/home'); ?>
         
                             <span  class="activities-count sideBariItem"> Home</span>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="mb-3">
 
-                    <a href="javascript:void(0);" class="  lesson-element-style">
+                    <a href="/courses" class="  lesson-element-style">
                         <?php echo $this->element('icons/graduated'); ?>
                     
                             <span class="activities-count sideBariItem">Courses</span>
@@ -60,7 +60,7 @@
                     </a>
                 </div>
                 <div class="mb-3">
-                    <a href="javascript:void(0);" class="  lesson-element-style">
+                    <a href="/profile" class="  lesson-element-style">
                         <?php echo $this->element('icons/profile'); ?>
                     
                             <span class="activities-count sideBariItem">Profile</span>
@@ -68,14 +68,7 @@
 
                     </a>
                 </div>
-                    <ul class="menu-sub">
-                        <li class="menu-item">
-                            <a style="height: 48px !important;" href="#" id="1" class="menu-link sub-menu-link chapter-element chap">
-                                <span class="icon-video" style="margin-left: -13%;"></span>
-                                <span class="course-title-style"> chapter 1 </span>
-                            </a>
-                        </li>
-                    </ul>
+             
                 </li>
             </ul>
         </aside>
