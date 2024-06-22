@@ -65,20 +65,9 @@
         var firstShortId = shortsArray[i];
         var ajaxSent = false;
         var lastScrollTop = 0;
-
         debounceLog(firstShortId);
         verifyI(i);
-        $('#scrolledDiv').on('scroll', function() {
-            var currentScrollTop = $(this).scrollTop();
-            var scrollDirection = currentScrollTop > lastScrollTop ? "down" : "up";
-            if (scrollDirection === "down" && !ajaxSent) {
-                scroll("down");
-            } else if (scrollDirection === "up" && !ajaxSent) {
-                scroll("up");
-            }
-            lastScrollTop = currentScrollTop;
-        });
-        $(document).on("wheel", scrollWithMouse);
+ 
         $(document).keydown(function(event) {
             if (event.key === 'ArrowUp') {
                 scroll("up");
@@ -94,15 +83,6 @@
             scroll("down");
         });
 
-        function scrollWithMouse(event) {
-            if (event.originalEvent.deltaY < 0) { // Scroll up (negative deltaY)
-                scroll("up");
-
-            } else {
-                scroll("down");
-            }
-            event.preventDefault(); // Prevent default page scrolling
-        }
         var timeout;
 
         function scroll(type) {
