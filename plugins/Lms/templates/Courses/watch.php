@@ -549,4 +549,22 @@ $(document).ready(function() {
     font-size: 14px;
     font-weight: 600;
 }
+.layout-content-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.layout-menu {
+    overflow-y: auto;
+    height: 100vh;
+} 
+
+.bg-menu-theme .ps__thumb-y, .bg-menu-theme .ps__rail-y.ps--clicking > .ps__thumb-y {
+    width: 8px !important;
+    height: 100px !important;
+    border-radius: 20px;
+    background-color: #888 !important;
+}
 </style>
