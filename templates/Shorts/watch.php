@@ -16,19 +16,19 @@
                                 <div class="row ">
                                     <div class="col-md-4" id="scrolledDiv">
                                     </div>
-                                    <div class="col-md-8" >
-                                            <section class="sec" id="section">
-                                                <div class="card-body h-100" id="take-quiz-2">
-                                                    <div class="conversation h-100 w-100 d-flex justify-content-center align-items-center">
-                                                        <div class="avatar-container d-flex flex-row align-items-center">
-                                                            <?php echo $this->element('icons/avatar'); ?>
-                                                            <?php echo $this->element('icons/talikng-bubbls'); ?>
+                                    <div class="col-md-8">
+                                        <section class="sec" id="section">
+                                            <div class="card-body h-100" id="take-quiz-2">
+                                                <div class="conversation h-100 w-100 d-flex justify-content-center align-items-center">
+                                                    <div class="avatar-container d-flex flex-row align-items-center">
+                                                        <?php echo $this->element('icons/avatar'); ?>
+                                                        <?php echo $this->element('icons/talikng-bubbls'); ?>
 
-                                                            <h2 class="avatar-question">Focus ! a quiz is coming !</h2>
-                                                        </div>
+                                                        <h2 class="avatar-question">Focus ! a quiz is coming !</h2>
                                                     </div>
                                                 </div>
-                                            </section>
+                                            </div>
+                                        </section>
                                     </div>
 
                                 </div>
@@ -59,58 +59,71 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        const shortsArray = <?= json_encode($shortsList) ?>; 
+        const shortsArray = <?= json_encode($shortsList) ?>;
         console.log(shortsArray);
         var i = 0;
         var firstShortId = shortsArray[i];
         var ajaxSent = false;
         var lastScrollTop = 0;
-        
+
         debounceLog(firstShortId);
         verifyI(i);
         $('#scrolledDiv').on('scroll', function() {
             var currentScrollTop = $(this).scrollTop();
             var scrollDirection = currentScrollTop > lastScrollTop ? "down" : "up";
-            if(scrollDirection === "down" && !ajaxSent) {
-             scroll("down");
-            } else if(scrollDirection === "up" && !ajaxSent) {
-            scroll("up");
+            if (scrollDirection === "down" && !ajaxSent) {
+                scroll("down");
+            } else if (scrollDirection === "up" && !ajaxSent) {
+                scroll("up");
             }
             lastScrollTop = currentScrollTop;
         });
+        $(document).on("wheel", scrollWithMouse);
         $(document).keydown(function(event) {
-        if (event.key === 'ArrowUp' && i > 0) {
-            scroll("up");
-        } else if (event.key === 'ArrowDown' && i < shortsArray.length - 1) {
-            scroll("down");
-        }
-        });
-        $('#btnScrollUp').click(function() {
-           scroll("up");
-        });
-        $('#btnScrollDown').click(function() {
-         scroll("down");
+            if (event.key === 'ArrowUp') {
+                scroll("up");
+            } else if (event.key === 'ArrowDown') {
+                scroll("down");
+            }
         });
 
+        $('#btnScrollUp').click(function() {
+            scroll("up");
+        });
+        $('#btnScrollDown').click(function() {
+            scroll("down");
+        });
+
+        function scrollWithMouse(event) {
+            if (event.originalEvent.deltaY < 0) { // Scroll up (negative deltaY)
+                scroll("up");
+
+            } else {
+                scroll("down");
+            }
+            event.preventDefault(); // Prevent default page scrolling
+        }
         var timeout;
-        function scroll(type){
-            if(type === "down"){
+
+        function scroll(type) {
+            if (type === "down") {
                 i++;
-                if(i < shortsArray.length) {
+                if (i < shortsArray.length) {
                     shortId = shortsArray[i];
                     debounceLog(shortId);
                     verifyI(i);
                 }
-            }else{
+            } else {
                 i--;
-                if(i < shortsArray.length) {
+                if (i < shortsArray.length) {
                     shortId = shortsArray[i];
                     debounceLog(shortId);
                     verifyI(i);
                 }
             }
-  
+
         }
+
         function debounceLog(shortId) {
             clearTimeout(timeout);
             timeout = setTimeout(function() {
@@ -163,13 +176,13 @@
             }, 150);
         }
 
-        function verifyI(i){
-            if(i == 0){
+        function verifyI(i) {
+            if (i == 0) {
                 $('#btnScrollUp').prop('disabled', true);
             } else {
                 $('#btnScrollUp').prop('disabled', false);
             }
-            if(i == shortsArray.length - 1){
+            if (i == shortsArray.length - 1) {
                 $('#btnScrollDown').prop('disabled', true);
             } else {
                 $('#btnScrollDown').prop('disabled', false);
@@ -178,11 +191,13 @@
     });
 </script>
 <style>
-    #main{
-        
-  overflow: hidden; /* Prevents scrolling in both directions */
+    #main {
+
+        overflow: hidden;
+        /* Prevents scrolling in both directions */
 
     }
+
     .hidden-section {
         display: none;
     }
@@ -194,10 +209,13 @@
     #scrolledDiv {
         overflow-y: scroll;
         scrollbar-width: none;
+        overflow: hidden;
     }
+
     #scrolledDiv::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
-}
+        display: none;
+        /* Hide scrollbar for Chrome, Safari, and Opera */
+    }
 
     .sec {
         height: 619px;
@@ -223,6 +241,6 @@
     .custom-video-container {
         padding: 0%;
         padding-left: 0%;
-        height: 620px;
+        height: 625px;
     }
 </style>
