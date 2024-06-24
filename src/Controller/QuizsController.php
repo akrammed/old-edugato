@@ -52,7 +52,9 @@ class QuizsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
-    {
+    { 
+
+        $this->viewBuilder()->setLayout('add-layout');
         $quiz = $this->Quizs->newEmptyEntity();
         if ($this->request->is('post')) {
             $quiz = $this->Quizs->patchEntity($quiz, $this->request->getData());

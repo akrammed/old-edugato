@@ -63,6 +63,8 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/comming-lms', ['plugin'=>'Lms','controller' => 'Homes', 'action' => 'comming', 'comming-lms']);
         $builder->connect('/contact', ['plugin'=>'Lms','controller' => 'Homes', 'action' => 'contact', 'contact']);
         $builder->connect('/courses', ['plugin'=>'Lms','controller' => 'Homes', 'action' => 'courses', 'courses']);
+        $builder->connect('/list-courses', ['plugin'=>'Lms','controller' => 'Courses', 'action' => 'index', 'list-courses']);
+        $builder->connect('/learning-paths', ['controller' => 'learningpaths', 'action' => 'index', 'learning-paths']);
         $builder->connect('/login', ['plugin'=> null,'controller' => 'Users', 'action' => 'login', 'login']);
         $builder->connect('/logout', ['plugin'=> null,'controller' => 'Users', 'action' => 'Logout', 'logout']);
         $builder->connect('/create', ['plugin'=> null,'controller' => 'Users', 'action' => 'create', 'create']);

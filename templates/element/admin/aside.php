@@ -10,127 +10,44 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item active ">
+        <li class="menu-item" style="height: 40px;">
             <?= $this->Html->link(
-                '<i class="menu-icon tf-icons bx bx-home-circle text-dark"></i><div data-i18n="Analytics" class="text-dark">Dashboard</div>',
+                 $this->element('icons/home').'<div data-i18n="Analytics" class="text-dark m-2">Dashboard</div>',
                 '/admin',
                 [
                     'class' => 'menu-link',
+                    'style' => 'height: 40px;',
                     'escape' => false,
                 ]
             );
             ?>
         </li>
-        <li class="menu-header small text-dark">
-            <span class="menu-header-text">Courses</span>
+        <li class="menu-item" style="height: 40px;">
+            <?= $this->Html->link(
+                 $this->element('icons/direction right') .'<div data-i18n="Analytics" class="text-dark m-2">Learning Paths</div>',
+                '/learning-paths',
+                [
+                    'class' => 'menu-link',
+                    'style' => 'height: 40px;',
+                    'escape' => false,
+                ]
+            );
+            ?>
         </li>
-        <li class="menu-item ">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top text-dark"></i>
-                <div data-i18n="Courses" class="text-dark">Courses</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <?= $this->Html->link(
-                        '<div data-i18n="Courses List" class="text-dark">Courses List</div>',
-                        '/lms/courses',
-                        [
-                            'class' => 'menu-link',
-                            'escape' => false,
-                        ]
-                    );
-                    ?>
-                </li>
-                <li class="menu-item">
-
-
-
-
-                    <?= $this->Html->link(
-                        '<div data-i18n="Account Settings" class="text-dark"">add Course</div>',
-                        '#',
-                        [
-                            'class' => 'menu-link',
-                            'data-bs-toggle' => 'offcanvas',
-                            'data-bs-target' => '#offcanvasEndCourse',
-                            'aria-controls' => 'offcanvasEnd',
-                            'escape' => false,
-                        ]
-                    );
-                    ?>
-
-
-                </li>
-            </ul>
+        <li class="menu-item" style="height: 40px;">
+            <?= $this->Html->link(
+                $this->element('icons/graduated').'<div data-i18n="Analytics" class="text-dark m-2">Courses</div>',
+                '/list-courses',
+                [
+                    'class' => 'menu-link',
+                    'style' => 'height: 40px;',
+                    'escape' => false,
+                ]
+            );
+            ?>
         </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-copy text-dark"></i>
-                <div data-i18n="Shorts" class="text-dark">Shorts</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <?= $this->Html->link(
-                        '<div data-i18n="Account Settings" class="text-dark">Shorts List</div>',
-                        '/shorts',
-                        [
-                            'class' => 'menu-link',
-                            'escape' => false,
-                        ]
-                    );
-                    ?>
-                </li>
-                <li class="menu-item">
-                    <?= $this->Html->link(
-                        '<div data-i18n="Account Settings" class="text-dark">add Short</div>',
-                        '/admin',
-                        [
-                           'class' => 'menu-link',
-                            'data-bs-toggle' => 'offcanvas',
-                            'data-bs-target' => '#offcanvasEndShort',
-                            'aria-controls' => 'offcanvasEnd',
-                            'escape' => false,
-                        ]
-                    );
-                    ?>
-
-
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt text-dark"></i>
-                <div data-i18n="Quizs" class="text-dark">Quizs</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <?= $this->Html->link(
-                        '<div data-i18n="Account Settings" class="text-dark">Quizs List</div>',
-                        '/admin',
-                        [
-                            'class' => 'menu-link',
-                            'escape' => false,
-                        ]
-                    );
-                    ?>
-                </li>
-                <li class="menu-item">
-                    <?= $this->Html->link(
-                        '<div data-i18n="Account Settings" class="text-dark">add Quiz</div>',
-                        '#',
-                        [
-                           'class' => 'menu-link',
-                            'data-bs-toggle' => 'offcanvas',
-                            'data-bs-target' => '#offcanvasEndQuiz',
-                            'aria-controls' => 'offcanvasEnd',
-                            'escape' => false,
-                        ]
-                    );
-                    ?>
-                </li>
-            </ul>
-        </li>
+       
+       
         <li class="menu-header small text-dark">
             <span class="menu-header-text">Users</span>
         </li>
