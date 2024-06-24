@@ -77,7 +77,7 @@ class AppController extends Controller
 
 
         if (($controller === 'Pages')) {
-            $this->Authentication->allowUnauthenticated(['display', 'about', 'contact', 'dashboard']);
+            $this->Authentication->allowUnauthenticated(['display', 'about', 'contact']);
         }
         if (($controller === 'Shorts')) {
             $this->Authentication->allowUnauthenticated(['getShortAjax', 'watch']);

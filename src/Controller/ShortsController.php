@@ -46,6 +46,7 @@ class ShortsController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setLayout('admin-layout');
         $short = $this->Shorts->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
