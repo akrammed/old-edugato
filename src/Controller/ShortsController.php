@@ -39,6 +39,7 @@ class ShortsController extends AppController
         $this->set(compact('short'));
     }
 
+  
     /**
      * Add method
      *
@@ -50,19 +51,25 @@ class ShortsController extends AppController
         $short = $this->Shorts->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-            $data = $this->upload($data,'video','video');
-          
-            $short = $this->Shorts->patchEntity($short, $data);
-            if ($this->Shorts->save($short)) {
-                $this->Flash->success(__('The short has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $uploadResult = $this->upload($data, 'video', 'video');
+            
+            if ($uploadResult['status']) {
+                $data = $uploadResult['data'];
+                $short = $this->Shorts->patchEntity($short, $data);
+                if ($this->Shorts->save($short)) {
+                    $this->Flash->success(__('The short has been saved.'));
+    
+                    return $this->redirect(['action' => 'index']);
+                }
+                $this->Flash->error(__('The short could not be saved. Please, try again.'));
+            } else {
+                $this->Flash->error(__($uploadResult['message']));
             }
-            $this->Flash->error(__('The short could not be saved. Please, try again.'));
         }
         $shortTypes = $this->Shorts->ShortTypes->find('list', limit: 200)->all();
         $this->set(compact('short', 'shortTypes'));
     }
+    
 
     /**
      * Edit method
