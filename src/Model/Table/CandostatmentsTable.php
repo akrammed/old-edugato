@@ -49,6 +49,7 @@ class CandostatmentsTable extends Table
         ]);
         $this->hasMany('Shorts', [
             'foreignKey' => 'candostatment_id',
+            'className' => 'Shorts',
         ]);
     }
 

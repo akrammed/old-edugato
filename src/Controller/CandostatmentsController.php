@@ -15,13 +15,17 @@ class CandostatmentsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
-    public function index()
+    public function index($id)
     {
+        $this->viewBuilder()->setLayout('admin-layout');
+        $candostatment = $this->Candostatments->newEmptyEntity();
+        $learningpath = $this->Candostatments->Learningpaths->get($id, contain: ['Candostatments']);
         $query = $this->Candostatments->find()
-            ->contain(['Learningpaths']);
+            ->contain(['Learningpaths','Shorts']);
         $candostatments = $this->paginate($query);
+        // dd($candostatments);
 
-        $this->set(compact('candostatments'));
+        $this->set(compact('learningpath','candostatment','candostatments'));
     }
 
     /**
@@ -44,13 +48,16 @@ class CandostatmentsController extends AppController
      */
     public function add()
     {
+
+        $this->viewBuilder()->setLayout('admin-layout');
         $candostatment = $this->Candostatments->newEmptyEntity();
         if ($this->request->is('post')) {
-            $candostatment = $this->Candostatments->patchEntity($candostatment, $this->request->getData());
+            $data =  $this->request->getData();
+            $candostatment = $this->Candostatments->patchEntity($candostatment,$data);
             if ($this->Candostatments->save($candostatment)) {
-                $this->Flash->success(__('The candostatment has been saved.'));
+                $this->Flash->success(__('The can do statment has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index',$data['learningpath_id']]);
             }
             $this->Flash->error(__('The candostatment could not be saved. Please, try again.'));
         }
@@ -69,13 +76,14 @@ class CandostatmentsController extends AppController
     {
         $candostatment = $this->Candostatments->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $candostatment = $this->Candostatments->patchEntity($candostatment, $this->request->getData());
+            $data =  $this->request->getData();
+            $candostatment = $this->Candostatments->patchEntity($candostatment, $data);
             if ($this->Candostatments->save($candostatment)) {
-                $this->Flash->success(__('The candostatment has been saved.'));
+                $this->Flash->success(__('The can do statment has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index',$data['learningpath_id']]);
             }
-            $this->Flash->error(__('The candostatment could not be saved. Please, try again.'));
+            $this->Flash->error(__('The can do statment could not be saved. Please, try again.'));
         }
         $learningpaths = $this->Candostatments->Learningpaths->find('list', limit: 200)->all();
         $this->set(compact('candostatment', 'learningpaths'));
@@ -98,6 +106,6 @@ class CandostatmentsController extends AppController
             $this->Flash->error(__('The candostatment could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'index',$candostatment->learningpath_id]);
     }
 }

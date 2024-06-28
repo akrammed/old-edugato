@@ -17,6 +17,7 @@ class LearningpathsController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->setLayout('admin-layout');
         $query = $this->Learningpaths->find();
         $learningpaths = $this->paginate($query);
 
@@ -43,13 +44,17 @@ class LearningpathsController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setLayout('add-layout');
         $learningpath = $this->Learningpaths->newEmptyEntity();
         if ($this->request->is('post')) {
-            $learningpath = $this->Learningpaths->patchEntity($learningpath, $this->request->getData());
+            $data = $this->request->getData();
+            $data = $this->upload($data,'picture','learningpaths');
+    
+            $learningpath = $this->Learningpaths->patchEntity($learningpath, $data);
             if ($this->Learningpaths->save($learningpath)) {
-                $this->Flash->success(__('The learningpath has been saved.'));
+                $this->Flash->success(__('The learning path has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The learningpath could not be saved. Please, try again.'));
         }
@@ -65,11 +70,18 @@ class LearningpathsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->setLayout('admin-layout');
         $learningpath = $this->Learningpaths->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $learningpath = $this->Learningpaths->patchEntity($learningpath, $this->request->getData());
+            $data = $this->request->getData();
+            if ($data['picture']->getError() === UPLOAD_ERR_NO_FILE) {
+                unset($data['picture']);
+            }else{
+                     $data = $this->upload($data,'picture','learningpaths');
+            }
+            $learningpath = $this->Learningpaths->patchEntity($learningpath, $data);
             if ($this->Learningpaths->save($learningpath)) {
-                $this->Flash->success(__('The learningpath has been saved.'));
+                $this->Flash->success(__('The learning path has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
@@ -92,7 +104,7 @@ class LearningpathsController extends AppController
         if ($this->Learningpaths->delete($learningpath)) {
             $this->Flash->success(__('The learningpath has been deleted.'));
         } else {
-            $this->Flash->error(__('The learningpath could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The learning path could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

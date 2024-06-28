@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+
 use Cake\Http\Response;
 
 /**
@@ -39,7 +41,7 @@ class ShortsController extends AppController
         $this->set(compact('short'));
     }
 
-  
+
     /**
      * Add method
      *
@@ -51,25 +53,24 @@ class ShortsController extends AppController
         $short = $this->Shorts->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-            $uploadResult = $this->upload($data, 'video', 'video');
-            
-            if ($uploadResult['status']) {
-                $data = $uploadResult['data'];
-                $short = $this->Shorts->patchEntity($short, $data);
-                if ($this->Shorts->save($short)) {
-                    $this->Flash->success(__('The short has been saved.'));
-    
-                    return $this->redirect(['action' => 'index']);
-                }
-                $this->Flash->error(__('The short could not be saved. Please, try again.'));
+            if (isset($data['video'])) {
+                $data = $this->upload($data, 'video', 'video');
+                
             } else {
-                $this->Flash->error(__($uploadResult['message']));
+                unset($data['video']);
             }
+            $short = $this->Shorts->patchEntity($short, $data);
+            if ($this->Shorts->save($short)) {
+                $this->Flash->success(__('The short has been saved.'));
+                $candostatment = $this->Shorts->Candostatments->get($data['candostatment_id'], contain: ['Learningpaths', 'Shorts']);
+                return $this->redirect(['controller'=>"candostatments",'action' => 'index',$candostatment->learningpath_id]);
+            }
+            $this->Flash->error(__('The short could not be saved. Please, try again.'));
         }
         $shortTypes = $this->Shorts->ShortTypes->find('list', limit: 200)->all();
         $this->set(compact('short', 'shortTypes'));
     }
-    
+
 
     /**
      * Edit method
@@ -114,14 +115,35 @@ class ShortsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function watch($id = null) {
+        /**
+     * Delete method
+     *
+     * @param string|null $id Short id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function deleteFromCanDo($id = null,$lp)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $short = $this->Shorts->get($id);
+        if ($this->Shorts->delete($short)) {
+            $this->Flash->success(__('The short has been deleted.'));
+        } else {
+            $this->Flash->error(__('The short could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['controller'=>'candostatments','action' => 'index',$lp]);
+    }
+
+    public function watch($id = null)
+    {
         $this->viewBuilder()->setLayout('short-layout');
         $shortsList = $this->Shorts->find('list', [
             'keyField' => 'id',
-            'valueField' => 'id', 
+            'valueField' => 'id',
             'order' => ['Shorts.id' => 'ASC']
         ])->toArray();
-    
+
         if ($id !== null) {
             $shortsWithIdFirst = [];
             foreach ($shortsList as $short) {
@@ -132,21 +154,21 @@ class ShortsController extends AppController
                 }
             }
             $shortsList = $shortsWithIdFirst;
-        }else{
+        } else {
             $shortsList = array_values($shortsList);
         }
         // dd($shortsList);
         $this->set(compact('shortsList'));
     }
 
-    public function getShortAjax(){
+    public function getShortAjax()
+    {
         $this->autoRender = false;
         $id = $this->request->getData();
         $short = $this->Shorts->get($id);
         $response = new Response();
         $response = $response->withType('application/json')
-        ->withStringBody(json_encode($short));
-    return $response;
+            ->withStringBody(json_encode($short));
+        return $response;
     }
-    
 }

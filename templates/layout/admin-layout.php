@@ -77,6 +77,9 @@ $cakeDescription = 'Edugato';
                     <?php echo $this->element('admin/add-short'); ?>
                     <?php echo $this->element('admin/add-quiz'); ?>
                     <?php echo $this->element('admin/add-user'); ?>
+                    <?php echo $this->element('admin/add-canvas',['name'=>"Learning Path",'url' => "/learningpaths/add","id"=>"offcanvasEndAddLearningPath"]) ?>
+                    <?php echo $this->element('admin/add-canvas',['name'=>"Learning Path",'url' => "/learningpaths/add","id"=>"offcanvasEndEditLearningPath"]) ?>
+                    <?php echo $this->element('admin/add-canvas',['name'=>"Learning Path",'url' => "/users/add","id" => "offcanvasEndCanDoS"]) ?>
                 </div>
                 <div class="layout-overlay layout-menu-toggle"></div>
                 <?= $this->Html->script([
