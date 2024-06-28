@@ -55,10 +55,14 @@ class AppController extends Controller
                 'default' => 'flash/default'
             ]
         ]);
+
+
         $this->loadComponent('Authentication.Authentication');
+        $this->loadComponent('handelUpload');
         $this->request->getSession()->write('Config.language', 'ar');
         $this->fetchGlobalTableLocator();
         $this->fetchGlobalObject();
+
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
@@ -171,41 +175,7 @@ class AppController extends Controller
 
     public function upload($data, $field, $type)
     {
-
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $postVid = $this->request->getData($field);
-            $name = $postVid->getClientFilename();
-            $targetPath = WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $type . DS . $name;
-            if ($postVid->getSize() > 0 && $postVid->getError() == 0) {
-                $postVid->moveTo($targetPath);
-                $data[$field] = $name;
-            }
-        }
-        return $data;
-    }
-
-
-    public function uploadVid($data, $field, $type)
-    {
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $postVid = $this->request->getData($field);
-            $name = $postVid->getClientFilename();
-            $targetPath = WWW_ROOT . DS . 'img' . DS . 'uploads' . DS . $type . DS . $name;
-
-            if ($postVid->getSize() > 0 && $postVid->getError() == 0) {
-                if ($postVid->moveTo($targetPath)) { // Check if the file was successfully moved
-                    $data[$field] = $name;
-                    return ['status' => true, 'data' => $data];
-                } else {
-                    // Handle the error if the file couldn't be moved
-                    return ['status' => false, 'message' => 'File upload failed. Please try again.'];
-                }
-            } else {
-                // Handle the error if there was a problem with the file
-                return ['status' => false, 'message' => 'Invalid file upload. Please check the file and try again.'];
-            }
-        }
-        return ['status' => true, 'data' => $data];
+        return $this->handelUpload->upload($data, $field, $type);
     }
 
 }
