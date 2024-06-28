@@ -46,6 +46,10 @@ class ShortsTable extends Table
         $this->belongsTo('ShortTypes', [
             'foreignKey' => 'short_type_id',
         ]);
+
+        $this->belongsTo('Candostatments', [
+            'foreignKey' => 'candostatment_id',
+        ]);
     }
 
     /**
