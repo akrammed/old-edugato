@@ -100,6 +100,17 @@
             $('#quiz-creation-container').append(template);
 
         });
+    
+        $('#cancel-quiz-create').on('click',function(e){
+                e.preventDefault();
+                console.log(1)
+                for (let index = 1; index < 9; index++) {
+                    $('#'+index).hide();
+                }
+                $('#quiz-type-section').show();
+
+        })
+    
     });
 </script>
 <style>
