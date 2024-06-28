@@ -29,7 +29,7 @@
                     <div class="col-md-8">
                         <section class="sec" id="section">
                             <div class="card-body h-100" id="take-quiz-2">
-                                <div class="conversation h-100 w-100 d-flex justify-content-center align-items-center">
+                                <div class="conversation position-relative h-100 w-100 d-flex justify-content-center align-items-center" style="flex-direction: column;">
                                     <iframe src="<?php echo $this->Url->build('/quizs/add'); ?>" width="100%" height="100%" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -67,7 +67,6 @@
             $shortUploadContainer = $('.short-upload-container'),
             $replaceBtn = $('.replace-btn'),
             $uploadShortVideo = $('.upload-short-video');
-
         function showVideo(file) {
             $shortUploadContainer.hide();
             $shortVid.show();
@@ -121,66 +120,66 @@
     });
 </script>
 <style>
-
-.sec {
-    height: 619px;
-}
-
-
-.custom-video-container {
-    padding: 0%;
-    padding-left: 0%;
-    height: 625px;
-}
-
-.upload-short {
-    background-color: #ECEFF4;
-    border-radius: 16px 0px 0px 16px;
-}
-
-.short-upload-container {
-    height: 93%;
-    border: 1px dashed gray;
-    margin: 4%;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 7%;
-}
+    .sec {
+        height: 619px;
+    }
 
 
-.short-upload-container-text {
-    text-align: center;
-    color: black;
-}
+    .custom-video-container {
+        padding: 0%;
+        padding-left: 0%;
+        height: 625px;
+    }
 
-.upload-short-video {
-    background-color: #5C17E5;
-    color: white;
-    border: none;
-    width: 108px;
-    height: 39px;
-    border-radius: 16px;
-    margin-left: 6%;
-}
+    .upload-short {
+        background-color: #ECEFF4;
+        border-radius: 16px 0px 0px 16px;
+    }
 
-.replace-btn {
-    position: absolute;
-    top: 10px;
-    left: -50px;
-    z-index: 1;
-}
+    .short-upload-container {
+        height: 93%;
+        border: 1px dashed gray;
+        margin: 4%;
+        border-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 7%;
+    }
 
-.shortVid {
-    width: 100%;
-    height: 100%;
-    border-radius: 16px 0px 0px 16px;
-    object-fit: cover;
-}
 
-.add-short-card {
-    width: 98%;
-    margin-left: 2%;
-}
+    .short-upload-container-text {
+        text-align: center;
+        color: black;
+    }
+
+    .upload-short-video {
+        background-color: #5C17E5;
+        color: white;
+        border: none;
+        width: 108px;
+        height: 39px;
+        border-radius: 16px;
+        margin-left: 6%;
+    }
+
+    .replace-btn {
+        position: absolute;
+        top: 10px;
+        left: -50px;
+        z-index: 1;
+    }
+
+    .shortVid {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px 0px 0px 16px;
+        object-fit: cover;
+    }
+
+    .add-short-card {
+        width: 98%;
+        margin-left: 2%;
+    }
+
 </style>

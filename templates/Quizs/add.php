@@ -6,7 +6,6 @@
  * @var \Cake\Collection\CollectionInterface|string[] $quiztypes
  */
 ?>
-
 <div class="container" id="quiz-type-section">
     <h3 class="pb-1 mb-4 mt-4 text-dark fw-normal main-title">Add a Quiz Type</h3>
     <div class="row">
@@ -37,7 +36,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="row">
                 <div class="col-4 mb-4 quiz-type-col">
@@ -55,7 +53,6 @@
 </div>
 <div id="quiz-type-creation-section" style="display: none;">
     <div id="quiz-creation-container">
-        <button class="upload-short-video" id="return">Retour</button>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -69,31 +66,31 @@
             var template = '';
             switch (id) {
                 case 1:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 1.</p>';
+                    template = `<?=  $this->element('Quiz-view/choose-one-option')?>`;
                     break;
                 case 2:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 2.</p>';
+                    template = `<?=  $this->element('Quiz-view/choose-one-image')?>`;
                     break;
                 case 3:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 3.</p>';
+                    template = `<?=  $this->element('Quiz-view/order-the-words')?>`;
                     break;
                 case 4:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 4.</p>';
+                    template = `<?=  $this->element('Quiz-view/match')?>`;
                     break;
                 case 5:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 5.</p>';
+                    template = `<?=  $this->element('Quiz-view/carusel')?>`;
                     break;
                 case 6:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 6.</p>';
+                    template = `<?=  $this->element('Quiz-view/listen-order')?>`;
                     break;
                 case 7:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 7.</p>';
+                    template = `<?=  $this->element('Quiz-view/read-repeat')?>`;
                     break;
                 case 8:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 8.</p>';
+                    template = `<?=  $this->element('Quiz-view/conversation-speaking')?>`;
                     break;
                 case 9:
-                    template = '<p class="prg">Vous avez sélectionné l\'option 9.</p>';
+                    template = `<?=  $this->element('Quiz-view/conversation-ordering')?>`;
                     break;
                 default:
                     template = '<p class="prg">Option non reconnue.</p>';
@@ -102,11 +99,6 @@
             $('.prg').remove();
             $('#quiz-creation-container').append(template);
 
-        });
-        $('#return').on('click', function(e) {
-            e.preventDefault();
-            $('#quiz-type-creation-section').hide();
-            $('#quiz-type-section').show();
         });
     });
 </script>
@@ -146,12 +138,6 @@
         font-size: 18px;
         font-weight: 600 !important;
     }
-    #return {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-    }
-
     #quiz-type-creation-section {
         position: relative;
         min-height: 200px;
