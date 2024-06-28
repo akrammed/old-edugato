@@ -1,4 +1,4 @@
-function textOption(url) {
+function chooseOneOption(url) {
     var correctValue = '';
 
     $("#section-2").hide();
