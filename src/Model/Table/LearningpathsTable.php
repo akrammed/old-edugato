@@ -62,7 +62,8 @@ class LearningpathsTable extends Table
             ->allowEmptyString('path');
 
         $validator
-            ->integer('picture')
+            ->scalar('path')
+            ->maxLength('picture',255)
             ->allowEmptyString('picture');
 
         return $validator;

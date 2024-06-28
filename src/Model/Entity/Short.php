@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property string|null $description
  * @property string|null $video
  * @property int|null $short_type_id
+ * @property int|null $candostatment_id
  *
  * @property \App\Model\Entity\ShortType $short_type
  */
@@ -33,5 +34,6 @@ class Short extends Entity
         'video' => true,
         'short_type_id' => true,
         'short_type' => true,
+        'candostatment_id' => true,
     ];
 }

@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string|null $path
- * @property int|null $picture
+ * @property string|null $picture
  *
  * @property \App\Model\Entity\Candostatment[] $candostatments
  */

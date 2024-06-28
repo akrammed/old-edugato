@@ -58,7 +58,7 @@ class AppController extends Controller
 
 
         $this->loadComponent('Authentication.Authentication');
-        $this->loadComponent('handelUpload');
+        $this->loadComponent('HandelUpload');
         $this->request->getSession()->write('Config.language', 'ar');
         $this->fetchGlobalTableLocator();
         $this->fetchGlobalObject();
