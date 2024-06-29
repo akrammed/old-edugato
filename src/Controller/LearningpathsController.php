@@ -48,10 +48,11 @@ class LearningpathsController extends AppController
         $learningpath = $this->Learningpaths->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-            $data = $this->upload($data,'picture','learningpaths');
-    
+            $uploadResult = $this->upload($data,'picture','learningpaths');
+            $data = $uploadResult['data'];
             $learningpath = $this->Learningpaths->patchEntity($learningpath, $data);
-            if ($this->Learningpaths->save($learningpath)) {
+            $result = $this->Learningpaths->save($learningpath);
+            if ($result) {
                 $this->Flash->success(__('The learning path has been saved.'));
 
                 return $this->redirect(['action' => 'add']);

@@ -81,6 +81,8 @@ class ShortsController extends AppController
      */
     public function edit($id = null)
     {
+        
+        $this->viewBuilder()->setLayout('admin-layout');
         $short = $this->Shorts->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $short = $this->Shorts->patchEntity($short, $this->request->getData());

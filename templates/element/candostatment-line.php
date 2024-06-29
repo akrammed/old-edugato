@@ -64,7 +64,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
 
-                            <li><button style="background: non1e; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleEditCanDo<?= $short->id ?>">Edit</button></li>
+                            <li><a  href="  <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'edit',$short->id]) ?>"style="background: non1e; border:none" class="dropdown-item" >Edit</a></li>
                             <li><button style="background: none; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleDeleteShort<?= $short->id ?>">Delete</button></li>
                         </ul>
                     </div>
@@ -136,7 +136,7 @@
     }
 
     .shortsTitle {
-        font-family: "Poppins" !important;
+  style font-family: "Poppins" !important;
         font-size: 18px;
         font-style: normal;
         font-weight: 600;

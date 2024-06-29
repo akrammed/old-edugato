@@ -1,10 +1,4 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Short $short
- * @var string[]|\Cake\Collection\CollectionInterface $shortTypes
- */
-?><?php
 
 /**
  * @var \App\View\AppView $this
@@ -80,8 +74,18 @@
                                         </div>
                                     </div>
                                     <div id="quiz-type-creation-section" style="display: none;">
-                                        <div id="quiz-creation-container">
+
+                                        <div class="container">
+                                            <div id="quiz-creation-container">
+                                            </div>
+                                            <div id="actions" style="display:none">
+                                                <div class="col d-flex">
+                                                    <button id="cancel-quiz-create" class="cancel">Cancel</button>
+                                                    <button id="save-quiz-create" class="save">Save</button>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -111,224 +115,6 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    const $dropZone = $('#dropZone'),
-        $uploadShort = $('#upload-short'),
-        $shortVid = $('.shortVid'),
-        $shortUploadContainer = $('.short-upload-container'),
-        $replaceBtn = $('.replace-btn'),
-        $uploadShortVideo = $('.upload-short-video');
-
-    function showVideo(file) {
-        $shortUploadContainer.hide();
-        $shortVid.show();
-        $replaceBtn.show();
-        $('.upload-short').css('padding', '0%');
-        $shortVid.attr('src', URL.createObjectURL(file)).show();
-    }
-
-    function handleFileSelect(file) {
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                $shortVid.attr('src', e.target.result);
-                showVideo(file); // Display the video immediately
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-    $dropZone.on({
-        dragover: (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            $dropZone.addClass('dragover');
-        },
-        dragleave: (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            $dropZone.removeClass('dragover');
-        },
-        drop: (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            $dropZone.removeClass('dragover');
-            const files = e.originalEvent.dataTransfer.files;
-            if (files.length > 0) {
-                handleFileSelect(files[0]);
-
-                // Update hidden input
-                const dataTransfer = new DataTransfer();
-                dataTransfer.items.add(files[0]);
-                $uploadShort[0].files = dataTransfer.files;
-            }
-        }
-    });
-    $uploadShortVideo.click(function() {
-        $uploadShort.click();
-    });
-    $uploadShort.change(function() {
-        handleFileSelect(this.files[0]);
-    });
-
-
-
-    $('.quiz-icon').on('click', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        $('#quiz-type-section').hide();
-        $('#quiz-type-creation-section').show();
-        var template = '';
-        switch (id) {
-            case 1:
-                template = `<?= $this->element('Quiz-view/choose-one-option') ?>`;
-                break;
-            case 2:
-                template = `<?= $this->element('Quiz-view/choose-one-image') ?>`;
-                break;
-            case 3:
-                template = `<?= $this->element('Quiz-view/order-the-words') ?>`;
-                break;
-            case 4:
-                template = `<?= $this->element('Quiz-view/match') ?>`;
-                break;
-            case 5:
-                template = `<?= $this->element('Quiz-view/carusel') ?>`;
-                break;
-            case 6:
-                template = `<?= $this->element('Quiz-view/listen-order') ?>`;
-                break;
-            case 7:
-                template = `<?= $this->element('Quiz-view/read-repeat') ?>`;
-                break;
-            case 8:
-                template = `<?= $this->element('Quiz-view/conversation-speaking') ?>`;
-                break;
-            case 9:
-                template = `<?= $this->element('Quiz-view/conversation-ordering') ?>`;
-                break;
-            default:
-                template = '<p class="prg">Option non reconnue.</p>';
-                break;
-        }
-        $('.prg').remove();
-        $('#quiz-creation-container').append(template);
-
-    });
-
-    $('#cancel-quiz-create').on('click', function(e) {
-        e.preventDefault();
-        console.log(1)
-        for (let index = 1; index < 9; index++) {
-            $('#' + index).hide();
-        }
-        $('#quiz-type-section').show();
-
-    })
-
-});
-</script>
-<style>
-.upload-short-video {
-    background-color: #5C17E5;
-    color: white;
-    border: none;
-    width: 108px;
-    height: 39px;
-    border-radius: 16px;
-    margin-left: 6%;
-}
-
-.quiz-card-type {
-    box-shadow: none;
-    background-color: #F6F8FB;
-}
-
-.quiz-card-title {
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-}
-
-.quiz-icon {
-    cursor: pointer;
-}
-
-.quiz-type-col {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.9rem !important;
-}
-
-.main-title {
-    font-size: 18px;
-    font-weight: 600 !important;
-}
-
-#quiz-type-creation-section {
-    position: relative;
-    min-height: 200px;
-}
-
-.sec {
-    height: 619px;
-}
-
-
-.custom-video-container {
-    padding: 0%;
-    padding-left: 0%;
-    height: 625px;
-}
-
-.upload-short {
-    background-color: #ECEFF4;
-    border-radius: 16px 0px 0px 16px;
-}
-
-.short-upload-container {
-    height: 93%;
-    border: 1px dashed gray;
-    margin: 4%;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 7%;
-}
-
-
-.short-upload-container-text {
-    text-align: center;
-    color: black;
-}
-
-.upload-short-video {
-    background-color: #5C17E5;
-    color: white;
-    border: none;
-    width: 108px;
-    height: 39px;
-    border-radius: 16px;
-    margin-left: 6%;
-}
-
-.replace-btn {
-    position: absolute;
-    top: 10px;
-    left: -50px;
-    z-index: 1;
-}
-
-.shortVid {
-    width: 100%;
-    height: 100%;
-    border-radius: 16px 0px 0px 16px;
-    object-fit: cover;
-}
-
-.add-short-card {
-    width: 98%;
-    margin-left: 2%;
-}
-</style>
+<?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
+<?php echo $this->element('Quiz/Style/quiz-create-style'); ?>
+<?php echo $this->element('Shorts/Styles/short-create-style'); ?>

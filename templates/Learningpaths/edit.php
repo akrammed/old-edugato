@@ -19,7 +19,7 @@
                                     <div class="col-3">
                                         <div class="card">
                                             <div class="card-img" style="width: 100%;">
-                                                <?= $this->Html->image('uploads/learningpaths/' . $learningpath['picture'], ['class' => '', 'id' => 'pathImage', 'style' => "width:100%;height:180px"]) ?>
+                                                <?= $this->Html->image('/uploads/learningpaths/' . $learningpath['picture'], ['class' => '', 'id' => 'pathImage', 'style' => "width:100%;height:180px"]) ?>
                                             </div>
                                             <div class="card-body">
                                                 <h5 id="cardTitle" class="text-center p-2 cardTitle"><?= $learningpath->path ?></h5>

@@ -175,7 +175,7 @@ class AppController extends Controller
 
     public function upload($data, $field, $type)
     {
-        return $this->handelUpload->upload($data, $field, $type);
+        return $this->HandelUpload->upload($data, $field, $type);
     }
 
 }

@@ -8,7 +8,7 @@
 ?>
 <div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
     <div class="row">
-        <div class="col-md-10 flex" style="max-height:619px!important; border-radius: 16px; overflow-y:scroll;">
+        <div class="col-md-10 flex" style="max-height:619px!important; border-radius: 16px">
             <div class="card mb-3 add-short-card ">
                 <div class="row ">
                     <section class="sec" id="section">
