@@ -22,7 +22,7 @@
 
     #actions {
         right: 2% !important;
-        top: 135%;
+        /* top: 135%; */
     }
 
     .part-2 {
@@ -217,6 +217,12 @@
 
     .quiz h3 {
         text-align: center;
+    }
+
+    .quizContainer {
+        /* display: flex  !important; */
+        flex-direction: column !important;
+        justify-content: flex-end !important;
     }
 
     #actions {
