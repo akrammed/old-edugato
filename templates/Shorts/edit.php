@@ -24,14 +24,12 @@
 
                         </div>
                         <button class="upload-short-video replace-btn" style="display:none">Replace</button>
-                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls
-                            muted></video>
+                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
                     </div>
-                    <div class="col-md-8">
-                        <section class="sec mt-5" id="section">
+                    <div class="col-md-8" style="overflow-y: scroll;">                      
+                        <section class="sec mt-5 quizContainer" id="section">
                             <div id="take-quiz-2">
-                                <div class="conversation position-relative h-100 w-100 d-flex justify-content-center align-items-center"
-                                    style="flex-direction: column;">
+                                <div class="conversation position-relative h-100 w-100 d-flex justify-content-center align-items-center" style="flex-direction: column;">
 
                                     <div class="container" id="quiz-type-section">
                                         <h3 class="pb-1 mb-4 mt-4 text-dark fw-normal main-title">Add a Quiz Type</h3>
@@ -75,23 +73,23 @@
                                     </div>
                                     <div id="quiz-type-creation-section" style="display: none;">
 
-                                        <div class="container">
+                                        <div class="container ">
                                             <div id="quiz-creation-container">
                                             </div>
-                                            <div id="actions" style="display:none">
-                                                <div class="col d-flex">
-                                                    <button id="cancel-quiz-create" class="cancel">Cancel</button>
-                                                    <button id="save-quiz-create" class="save">Save</button>
-                                                </div>
-                                            </div>
+
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                            <div id="actions" class="mb-2" style="display:none">
+                                <div class="col d-flex">
+                                    <button id="cancel-quiz-create" class="cancel">Cancel</button>
+                                    <button id="save-quiz-create" class="save">Save</button>
+                                </div>
+                            </div>
+                        </section>                
                     </div>
-
                 </div>
             </div>
         </div>
@@ -113,8 +111,8 @@
     'hidden' => true
 ]); ?>
 
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
+<?= $this->element('Quiz-view/Scripts/add-new-one') ?>
 <?php echo $this->element('Quiz/Style/quiz-create-style'); ?>
 <?php echo $this->element('Shorts/Styles/short-create-style'); ?>
