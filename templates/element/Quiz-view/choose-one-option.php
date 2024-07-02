@@ -1,39 +1,44 @@
 <div class="container" id="1">
-    <p class="part-2"><strong>Quiz question goes here:</strong> Click on bubble to edit</p>
-
-    <div class="title">
-        <?= $this->element('icons/avatar') ?>
-        <?= $this->element('icons/talikng-bubbls') ?>
-        <input type="text" class="douaa" value="Tap the words to match">
-    </div>
-    <div style="margin-top:30%;">
+    <?= $this->element('avatar-with-bubbel', ['text' => "Tap the right word"]) ?>
+    <div style=" margin-top: 4%; margin-bottom: 28%; margin-left: 11%;">
         <p>Enter the correct option first</p>
-        <div style="display: flex;">
-            <?= $this->Form->control('correct-option', [
-                'value' => 'word',
-                'class' => 'correct-option',
-                'label' => '',
-                'id' => 'correct-option',
-                
-            ]); ?>
-            <?= $this->Form->control('false-option', [
-                'value' => 'word',
-                'class' => 'false-option',
-                'label' => '',
-                'id' => 'false-option',
+        <div class="container" style="width: 116%; margin-left:-6%">
+            <div class="row">
+                <div class="col">
+                    <?= $this->Form->control('correct-option', [
+                        'value' => 'word',
+                        'class' => 'correct-option',
+                        'label' => '',
+                        'id' => 'chooseOption1',
+                    ]); ?>
+                </div>
+                <?php
+                // Définir les options pour les autres contrôles
+                $options = [
+                    [
+                        'name' => 'false-option',
+                        'class' => 'false-option',
+                        'idPrefix' => 'chooseOption'
+                    ]
+                ];
 
-            ]); ?>
-            <?= $this->Form->control('false-option', [
-                'value' => 'word',
-                'class' => 'false-option',
-                'label' => '',
-                'id' => 'false-option',
-
-            ]); ?>
-       
+                // Boucle pour créer les autres contrôles
+                for ($i = 2; $i <= 4; $i++) {
+                    foreach ($options as $option) {
+                ?>
+                        <div class="col">
+                            <?= $this->Form->control($option['name'], [
+                                'value' => 'word',
+                                'class' => $option['class'],
+                                'label' => '',
+                                'id' => $option['idPrefix'] . $i,
+                            ]); ?>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+            </div>
         </div>
     </div>
-
-
-
 </div>

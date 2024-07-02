@@ -166,20 +166,6 @@
         line-height: 24px;
     }
 
-    .douaa::placeholder {
-        color: #9AA8BC;
-        font-family: Poppins;
-        font-size: 21px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 24px;
-        margin: auto;
-    }
-
-    .douaa:focus {
-        border: none;
-        outline: none;
-    }
 
     .ellipse {
         margin-left: 100%;
@@ -341,7 +327,6 @@
         width: 72px;
         border: none;
         height: 40px;
-        margin-left: 20%;
     }
 
     .false-option:focus {
