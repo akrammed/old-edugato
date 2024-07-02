@@ -3,6 +3,7 @@
 <div class="title">
     <?= $this->element('icons/avatar') ?>
     <?= $this->element('icons/talikng-bubbls') ?>
+    
     <div class="avatarText"><?= $text ?></div>
 </div>
 <style>
