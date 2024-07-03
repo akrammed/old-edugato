@@ -122,6 +122,7 @@
                         formData.append(`image${index}`, item.image);
                         formData.append(`word${index}`, item.word);
                     });
+                    console.log(arrayToSendCraousel)
                     $.ajax({
                         url: 'https://httpbin.org/post',
                         type: 'POST',
