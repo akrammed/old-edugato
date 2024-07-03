@@ -391,4 +391,23 @@
         right: 0;
         margin: 2%;
     }
+
+    #correct-frame {
+        display: flex;
+        width: 118px;
+        height: 141px;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-shrink: 0;
+        border-radius: 16px;
+        border: 4px solid var(--Outline-Positive, #17BF33);
+        background: #FFF;
+    }
+
+    style-option {
+        width: 78px;
+        height: 77px;
+        flex-shrink: 0;
+    }
 </style>
