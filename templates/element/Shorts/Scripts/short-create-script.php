@@ -66,7 +66,7 @@ $(document).ready(function() {
         $('#quiz-type-section').hide();
         $('#quiz-type-creation-section').show();
         $('#actions').show();
-
+        formDataQuiz.append('type', id);
         switch (id) {
             case 1:
                 template = `<?= $this->element('Quiz-view/choose-one-option') ?>`;
