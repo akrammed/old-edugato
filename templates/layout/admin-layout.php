@@ -50,6 +50,9 @@ $cakeDescription = 'Edugato';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <script>
+            const formDataQuiz = new FormData();
+    </script>
     <style>
     .poppins-medium {
         font-family: "Poppins", sans-serif !important;
@@ -94,6 +97,7 @@ $cakeDescription = 'Edugato';
     'default-layout/js/dashboards-analytics'
     ]) ?>
                 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
 </body>
 
 </html>
