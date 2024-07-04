@@ -4,7 +4,7 @@
     <div class="title">
         <?= $this->element('icons/avatar') ?>
         <?= $this->element('icons/talikng-bubbls') ?>
-        <input type="text" class="douaa" value="Tap the words to match">
+        <input type="text" class="gato-quition-bubble" value="Tap the words to match">
     </div>
     <div class="space-input">
     <?= $this->element('icons/back-space') ?>
