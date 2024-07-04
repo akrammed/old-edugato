@@ -31,7 +31,7 @@
                     <div class="col-md-8">
                         <section class="sec mt-5" id="section">
                             <div id="take-quiz-2">
-                                <div class="conversation position-relative h-100 w-100 d-flex justify-content-center align-items-center" style="flex-direction: column;">
+                                <div class="conversation " style="flex-direction: column;">
 
                                     <div class="container" id="quiz-type-section">
                                         <h3 class="pb-1 mb-4 mt-4 text-dark fw-normal main-title">Add a Quiz Type</h3>
