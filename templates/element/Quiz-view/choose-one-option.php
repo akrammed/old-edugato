@@ -42,6 +42,7 @@
                 'type' => 'hidden',
                 'value' => '1',
                 'id' => 'quiz_type',
+                'style' => 'display:none',
             ]) ?>
         </div>
     </div>

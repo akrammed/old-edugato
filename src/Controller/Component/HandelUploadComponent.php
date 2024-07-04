@@ -22,14 +22,14 @@ class HandelUploadComponent extends Component
 
 
     public function upload($data, $field, $type)
-    {
+    {   
         $postVid = $data[$field];
-
         if (!$postVid) {
             return ['status' => false, 'message' => 'No file uploaded. Please try again.'];
         }
 
         $name = $postVid->getClientFilename();
+        
         $targetPath = WWW_ROOT . 'uploads' . DS . $type . DS . $name;
         $this->setPermission('uploads');
         if ($postVid->getSize() > 0 && $postVid->getError() == 0) {
@@ -41,8 +41,9 @@ class HandelUploadComponent extends Component
             }
             $postVid->moveTo($targetPath);
             if (file_exists($targetPath)) {
-                
                 if (filesize($targetPath) === $postVid->getSize()) {
+                   
+
                     $data[$field] = $name;
                     return ['status' => true, 'data' => $data];
                 } else {
