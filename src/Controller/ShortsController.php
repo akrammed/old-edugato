@@ -71,7 +71,6 @@ class ShortsController extends AppController
         $this->set(compact('short', 'shortTypes'));
     }
 
-
     /**
      * Edit method
      *
@@ -83,18 +82,29 @@ class ShortsController extends AppController
     {
         
         $this->viewBuilder()->setLayout('admin-layout');
-        $short = $this->Shorts->get($id, contain: []);
+        $short = $this->Shorts->get($id, contain: ['Candostatments']);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $short = $this->Shorts->patchEntity($short, $this->request->getData());
-            if ($this->Shorts->save($short)) {
-                $this->Flash->success(__('The short has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $data = $this->request->getData();
+            $data['title'] = $short['title'];
+            if (isset($data['video'])) {
+                $data = $this->upload($data, 'video', 'video');
+                
+            } else {
+                unset($data['video']);
             }
-            $this->Flash->error(__('The short could not be saved. Please, try again.'));
-        }
+            if ($data['status']) {
+                $short = $this->Shorts->patchEntity($short, $data['data']);
+                $quizResult = $this->createQuiz($data['data']);
+                if ($this->Shorts->save($short)) {
+                    $this->Flash->success(__('The short has been saved.'));
+                    $candostatment = $short['candostatment'];
+                    return $this->redirect(['controller'=>"candostatments",'action' => 'index',$candostatment->learningpath_id]);
+                }
+                $this->Flash->error(__('The short could not be saved. Please, try again.'));
+            }    }
         $shortTypes = $this->Shorts->ShortTypes->find('list', limit: 200)->all();
-        $this->set(compact('short', 'shortTypes'));
+        $candostatmentId = $short['candostatment']->id;
+        $this->set(compact('short', 'shortTypes','candostatmentId'));
     }
 
     /**

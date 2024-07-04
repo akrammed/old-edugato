@@ -59,7 +59,8 @@ class AppController extends Controller
 
         $this->loadComponent('Authentication.Authentication');
         $this->loadComponent('HandelUpload');
-        $this->request->getSession()->write('Config.language', 'ar');
+        $this->loadComponent('HandelQuizCreate');
+        $this->request->getSession()->write('Config.language', 'en');
         $this->fetchGlobalTableLocator();
         $this->fetchGlobalObject();
 
@@ -176,6 +177,10 @@ class AppController extends Controller
     public function upload($data, $field, $type)
     {
         return $this->HandelUpload->upload($data, $field, $type);
+    }
+    public function createQuiz($data)
+    {
+        return $this->HandelQuizCreate->createQuiz($data);
     }
 
 }
