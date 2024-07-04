@@ -134,15 +134,17 @@
 
     };
     const ChooseoOneOption = {
+        
         init() {
             $(document).on('input', '[id^="chooseOption"]', this.inputDynamically.bind(this));
             $(document).on('input', '[id^="chooseOption"]', this.handleWordInput1.bind(this));
+           
         },
         inputDynamically(event) {
             const input = $(event.target);
-            var minWidth = 50;
+            var minWidth = 80;
             var maxWidth = 300;
-            var newWidth = (input.val().length + 1) * 16;
+            var newWidth = (input.val().length + 1) * 9
             if (newWidth < minWidth) {
                 newWidth = minWidth;
             } else if (newWidth > maxWidth) {

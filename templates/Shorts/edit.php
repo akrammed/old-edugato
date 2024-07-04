@@ -25,8 +25,10 @@
                         <div class="vid-cnt">
 
                         </div>
-                        <button type="button" class="upload-short-video replace-btn" style="display:none" onclick="$('#videoInput').click();">Replace</button>
-                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
+                        <button type="button" class="upload-short-video replace-btn" style="display:none"
+                            onclick="$('#videoInput').click();">Replace</button>
+                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls
+                            muted></video>
                     </div>
                     <div class="col-md-8">
                         <section class="sec mt-5" id="section">
@@ -73,16 +75,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="quiz-type-creation-section" style="display: none;">
+                                    <div id="quiz-type-creation-section" style="display: none;height: 580px;">
 
                                         <div class="container">
                                             <div id="quiz-creation-container">
                                             </div>
-                                            <div id="actions" style="display:none">
-                                                <div class="col d-flex">
-                                                    <button id="cancel-quiz-create" class="cancel">Cancel</button>
-                                                    <button class="save">Save</button>
-                                                </div>
+                                        </div>
+                                        <div id="actions" style="display:none">
+                                            <div class="col d-flex">
+                                                <button id="cancel-quiz-create" class="cancel">Cancel</button>
+                                                <button class="save">Save</button>
                                             </div>
                                         </div>
 
