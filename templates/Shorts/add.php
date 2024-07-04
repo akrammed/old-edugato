@@ -10,6 +10,7 @@
     <div class="row">
         <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
             <div class="card mb-3 add-short-card ">
+                <?= $this->Form->create($short, ['type' => 'file']) ?>
                 <div class="row ">
                     <div class="col-md-4 upload-short" id="dropZone">
                         <div class="short-upload-container">
@@ -23,15 +24,13 @@
                         <div class="vid-cnt">
 
                         </div>
-                        <button class="upload-short-video replace-btn" style="display:none">Replace</button>
-                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls
-                            muted></video>
+                        <button type="button" class="upload-short-video replace-btn" style="display:none" onclick="$('#videoInput').click();">Replace</button>
+                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
                     </div>
                     <div class="col-md-8">
                         <section class="sec mt-5" id="section">
                             <div id="take-quiz-2">
-                                <div class="conversation position-relative h-100 w-100 d-flex justify-content-center align-items-center"
-                                    style="flex-direction: column;">
+                                <div class="conversation position-relative h-100 w-100 d-flex justify-content-center align-items-center" style="flex-direction: column;">
 
                                     <div class="container" id="quiz-type-section">
                                         <h3 class="pb-1 mb-4 mt-4 text-dark fw-normal main-title">Add a Quiz Type</h3>
@@ -81,18 +80,26 @@
                                             <div id="actions" style="display:none">
                                                 <div class="col d-flex">
                                                     <button id="cancel-quiz-create" class="cancel">Cancel</button>
-                                                    <button id="save-quiz-create" class="save">Save</button>
+                                                    <button class="save">Save</button>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
+
                                 </div>
                             </div>
                         </section>
                     </div>
-
+                    <?= $this->Form->control('video', [
+                        'class' => 'form-control',
+                        'type' => 'file',
+                        'id' => 'upload-short',
+                        'label' => '',
+                        'hidden' => true
+                    ]); ?>
                 </div>
+                <?= $this->Form->end() ?>
             </div>
         </div>
         <div class="col-sm-2">
@@ -103,15 +110,10 @@
             </div>
 
         </div>
+
     </div>
 </div>
-<?= $this->Form->control('video', [
-    'class' => 'form-control',
-    'type' => 'file',
-    'id' => 'upload-short',
-    'label' => '',
-    'hidden' => true
-]); ?>
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

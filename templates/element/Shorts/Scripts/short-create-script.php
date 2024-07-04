@@ -41,6 +41,8 @@ $(document).ready(function() {
             e.stopPropagation();
             $dropZone.removeClass('dragover');
             const files = e.originalEvent.dataTransfer.files;
+            console.log(files);
+          
             if (files.length > 0) {
                 handleFileSelect(files[0]);
 
@@ -48,13 +50,18 @@ $(document).ready(function() {
                 const dataTransfer = new DataTransfer();
                 dataTransfer.items.add(files[0]);
                 $uploadShort[0].files = dataTransfer.files;
+                console.log(dataTransfer.files)
+                $('#videoData').val(dataTransfer.files);
             }
         }
     });
-    $uploadShortVideo.click(function() {
+    $uploadShortVideo.click(function(e) {
+        e.preventDefault();
         $uploadShort.click();
+        
     });
-    $uploadShort.change(function() {
+    $uploadShort.change(function(e) {
+        e.preventDefault();
         handleFileSelect(this.files[0]);
     });
 

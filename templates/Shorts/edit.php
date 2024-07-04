@@ -4,12 +4,14 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Short $short
  * @var \Cake\Collection\CollectionInterface|string[] $shortTypes
+ * @var int  $candostatmentId;
  */
 ?>
 <div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
     <div class="row">
         <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
             <div class="card mb-3 add-short-card ">
+                <?= $this->Form->create($short, ['type' => 'file']) ?>
                 <div class="row ">
                     <div class="col-md-4 upload-short" id="dropZone">
                         <div class="short-upload-container">
@@ -23,11 +25,11 @@
                         <div class="vid-cnt">
 
                         </div>
-                        <button class="upload-short-video replace-btn" style="display:none">Replace</button>
+                        <button type="button" class="upload-short-video replace-btn" style="display:none" onclick="$('#videoInput').click();">Replace</button>
                         <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
                     </div>
-                    <div class="col-md-8" style="overflow-y: scroll;">                      
-                        <section class="sec mt-5 quizContainer" id="section">
+                    <div class="col-md-8">
+                        <section class="sec mt-5" id="section">
                             <div id="take-quiz-2">
                                 <div class="conversation " style="flex-direction: column;">
 
@@ -73,24 +75,37 @@
                                     </div>
                                     <div id="quiz-type-creation-section" style="display: none;">
 
-                                        <div class="container ">
+                                        <div class="container">
                                             <div id="quiz-creation-container">
                                             </div>
-
+                                            <div id="actions" style="display:none">
+                                                <div class="col d-flex">
+                                                    <button id="cancel-quiz-create" class="cancel">Cancel</button>
+                                                    <button class="save">Save</button>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
+
                                 </div>
                             </div>
-                            <div id="actions" class="mb-2" style="display:none">
-                                <div class="col d-flex">
-                                    <button id="cancel-quiz-create" class="cancel">Cancel</button>
-                                    <button id="save-quiz-create" class="save">Save</button>
-                                </div>
-                            </div>
-                        </section>                
+                        </section>
                     </div>
+                    <?= $this->Form->control('video', [
+                        'class' => 'form-control',
+                        'type' => 'file',
+                        'id' => 'upload-short',
+                        'label' => false,
+                        'hidden' => true
+                    ]); ?>
+                    <?= $this->Form->control('candostatment_id',[
+                        'value'=>$candostatmentId,
+                        'hidden'=> true,
+                        'label' => false,
+                        ]) ?>
                 </div>
+                <?= $this->Form->end() ?>
             </div>
         </div>
         <div class="col-sm-2">
@@ -101,18 +116,14 @@
             </div>
 
         </div>
+
     </div>
 </div>
-<?= $this->Form->control('video', [
-    'class' => 'form-control',
-    'type' => 'file',
-    'id' => 'upload-short',
-    'label' => '',
-    'hidden' => true
-]); ?>
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<?php echo $this->element('Quiz-view/Scripts/add-new-one'); ?>
 <?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
-<?= $this->element('Quiz-view/Scripts/add-new-one') ?>
 <?php echo $this->element('Quiz/Style/quiz-create-style'); ?>
 <?php echo $this->element('Shorts/Styles/short-create-style'); ?>
