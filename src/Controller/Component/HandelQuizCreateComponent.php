@@ -13,6 +13,7 @@ use SebastianBergmann\Environment\Console;
  * HandelQuizCreate component
  *@param \App\Controller\QuizsController $quiz
  *@param \App\Controller\AppController $app
+ *@var AppController $controller
  */
 
 
@@ -24,7 +25,14 @@ class HandelQuizCreateComponent extends Component
      * @var array<string, mixed>
      */
     protected array $_defaultConfig = [];
+    protected $HandelUpload;
 
+    public function initialize(array $config): void
+    {
+        parent::initialize($config);
+        $this->HandelUpload = $this->getController()->loadComponent('HandelUpload');
+    }
+    
     public function initQuizShortData($data)
     {
         return  [
@@ -71,8 +79,11 @@ class HandelQuizCreateComponent extends Component
         return  $quizsTable->save($quiz);
     }
 
+
     public function createQuiz($data)
     {
+
+        
         $result = false;
         $message = 'Quiz was not created successfully';
         $questionsTable = TableRegistry::getTableLocator()->get('Questions');
@@ -103,6 +114,38 @@ class HandelQuizCreateComponent extends Component
                 }
                 break;
             case 2:
+                $question = $this->patchQuestionsEntity($questionsTable);
+                $question->quiz_id = $quiz->id;
+                $question->question = $data['question'];
+                $questionsTable->save($question);
+                
+                foreach ($data['images'] as $key => $value) {
+                    $name = $value->getClientFilename();
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . 'picture' . DS . $name;
+                
+                    if ($value->getSize() > 0 && $value->getError() == 0) {
+                        $value->moveTo($targetPath);
+                        
+                        $option = $this->patchOptionsEntity($optionsTable);
+                        $option->is_correct = ($key == 0) ? 1 : 0;
+                        $option->quiz_id = $quiz->id;
+                        $option->qoption = $name;
+                
+                        if ($optionsTable->save($option)) {
+                            $result = true;
+                            $message = 'Quiz created successfully';
+                        } else {
+                            $result = false;
+                            $message = 'Failed to save option';
+                            break;
+                        }
+                    } else {
+                        $result = false;
+                        $message = 'Failed to upload image';
+                        break;
+                    }
+                }
+                
                 break;
             case 3:
                 break;
@@ -129,4 +172,8 @@ class HandelQuizCreateComponent extends Component
         ];
         return $responseData;
     }
+
+
+
+
 }
