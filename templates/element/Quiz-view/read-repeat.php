@@ -5,8 +5,8 @@
         <h5 class="text-center">Or</h5>
         <button type="button" class="browseBtn" id="browseAudioLR">Browse</button>
     </div>
-    <div class="d-none mx-auto flex-column justify-content-center mt-3" id="AudioContainerLO">
-            <audio id="audioRP" controls>
+    <div class="d-none mx-auto flex-column justify-content-center mt-3" id="AudioContainerLR">
+            <audio id="audioLR" controls>
                 <source   src="" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
@@ -15,12 +15,16 @@
 
 <div class="mt-5 mx-auto w-75">
     <div class=" mt-3">
-        <input type="text" id="wordLR" class="wordAudio w-100" placeholder="Type the words from the audio right here...">
+        <?= $this->Form->control('correctWord',['id'=>'wordLR','class' => 'wordAudio w-100','placeholder'=>'Type the words from the audio right here...','label'=>false]) ?>
     </div>
 
 </div>
-<?= $this->Form->control('file', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizLR']) ?>
-
+<?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizLR']) ?>
+<?= $this->Form->control('quiz_type', [
+                'type' => 'hidden',
+                'value' => '7',
+                'id' => 'quiz_type',
+            ]) ?>
 <style>
     .browseBtn {
         border-radius: 9.117px;

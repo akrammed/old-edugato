@@ -81,16 +81,17 @@
                                             <div id="quiz-creation-container">
                                             </div>
                                         </div>
-                                        <div id="actions" style="display:none">
+                                     
+
+                                    </div>
+
+                                </div>
+                                <div id="actions" style="display:none">
                                             <div class="col d-flex">
                                                 <button id="cancel-quiz-create" class="cancel">Cancel</button>
                                                 <button class="save">Save</button>
                                             </div>
                                         </div>
-
-                                    </div>
-
-                                </div>
                             </div>
                         </section>
                     </div>

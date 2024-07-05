@@ -16,12 +16,16 @@
 
 
     </div>
-
+    <?= $this->Form->control('conversation', ['label' => false, 'class' => 'd-none', 'id' => 'conversationInput']) ?>
 
     <div class="d-flex justify-content-end mt-5">
         <button class="browseBtn" id="addConvBtn">Add Conversation</button>
     </div>
-
+    <?= $this->Form->control('quiz_type', [
+                'type' => 'hidden',
+                'value' => '8',
+                'id' => 'quiz_type',
+            ]) ?>
     <style>
         .send {
             background: #C0D3F9 !important;
