@@ -271,6 +271,7 @@
                 wordIndex++;
                 arrayCorrectWords.push(newWord);
                 $('.correctWordDiv').append(newElement);
+                $('#correctWordsInput').val(arrayCorrectWords);
                 $('#newWord').val('');
             }
         },
@@ -287,6 +288,7 @@
                 arrayExtraWords.push(newWord);
                 $('.extraWordsDiv').append(newElement);
                 $('#newWord').val('');
+                $('#extratWordsInput').val(arrayExtraWords);
             }
         },
 
@@ -328,20 +330,20 @@
             $(`#audioQuizLR`).click();
         },
         addAudioToForm(event) {
-            const audio = $('#audioQuizRP')[0].files[0];
+            const audio = $('#audioQuizLR')[0].files[0];
             formDataQuiz.append('audio', audio);
             $('#upContainerRP').removeClass('d-flex').addClass('d-none');
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                $("#audioRP").attr('src', e.target.result);
+                $("#audioLR").attr('src', e.target.result);
 
-                $('#audioRP')[0].play().catch(error => {
+                $('#audioLR')[0].play().catch(error => {
                     console.error('Error playing audio:', error);
 
                 });
 
-                $('#AudioContainerRP').removeClass('d-none').addClass('d-flex');
+                $('#AudioContainerLR').removeClass('d-none').addClass('d-flex');
             };
             reader.readAsDataURL(audio);
         },
@@ -389,7 +391,7 @@
                     response
                 };
             }
-
+            $('#conversationInput').val(JSON.stringify(conversationSpeackingArray));
         },
 
         deleteConversation(event) {
@@ -402,7 +404,7 @@
                 conversationSpeackingArray[number] = undefined;
                 $(`#conversation${number}`).remove();
             }
-
+            $('#conversationInput').val(JSON.stringify(conversationSpeackingArray));
         },
     }
 

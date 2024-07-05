@@ -21,8 +21,14 @@
                 <?php echo $this->element('icons/delete-input'); ?></span>
         </div>
     </div>
-    <?= $this->Form->control('file', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder']) ?>
-
+    <?= $this->Form->control('correctWords[]', [ 'label' => false, 'class' => 'd-none', 'id' => 'correctWordsInput']) ?>
+    <?= $this->Form->control('extraWords[]', [ 'label' => false, 'class' => 'd-none', 'id' => 'extratWordsInput']) ?>
+    <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder']) ?>
+    <?= $this->Form->control('quiz_type', [
+                'type' => 'hidden',
+                'value' => '6',
+                'id' => 'quiz_type',
+            ]) ?>
 
     <div class="mt-4">
         <h5 class="typeWords">
