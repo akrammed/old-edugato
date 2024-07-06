@@ -37,7 +37,8 @@ class ShortsController extends AppController
      */
     public function view($id = null)
     {
-        $short = $this->Shorts->get($id, contain: ['ShortTypes']);
+        $this->viewBuilder()->setLayout('admin-layout');
+        $short = $this->Shorts->get($id);
         $this->set(compact('short'));
     }
 
