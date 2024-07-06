@@ -63,7 +63,7 @@
                             <i class="bx bx-dots-vertical-rounded"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-
+                        <li><a  href="  <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'view',$short->id]) ?>"style="background: non1e; border:none" class="dropdown-item" >Preview</a></li>
                             <li><a  href="  <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'edit',$short->id]) ?>"style="background: non1e; border:none" class="dropdown-item" >Edit</a></li>
                             <li><button style="background: none; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleDeleteShort<?= $short->id ?>">Delete</button></li>
                         </ul>
