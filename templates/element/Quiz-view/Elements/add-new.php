@@ -1,5 +1,5 @@
-<div class="col addNewImage" style="height: 183px important;" >
-    <div class="cardNew courseContainter h-100">
+<div class="col addNewImage" >
+    <div class="cardNew courseContainter h-100" style="height: 183px important; width:100%">
         <div class="card-body" style="display: flex;
         flex-direction: column;  align-items: center;">
             <?= $this->element('icons/add-new') ?> 
@@ -18,7 +18,6 @@
     }
         .courseContainter{
         background-color: #F6F8FB;
-        box-shadow: 0px 3.096px 6.191px 0px rgba(0, 0, 0, 0.16);
     }
     .cardNew{
 
@@ -26,6 +25,9 @@
         /* flex-direction: column; */
         justify-content: center;
         align-items: center;
+        border-radius: 12px;
+border: 4px solid #F6F8FB;
+background: #F6F8FB;
 
     }
 </style>

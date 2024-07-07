@@ -1,4 +1,4 @@
-<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="41" height="41" class="talking-bubbls" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_3_3)">
         <circle cx="24" cy="15" r="9" fill="white" />
         <circle cx="24" cy="15" r="8.5" stroke="#9AA8BC" stroke-opacity="0.2" />

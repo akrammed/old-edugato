@@ -1,50 +1,41 @@
 <div class="container" id="1">
-
-    <div class="gato-header-quiz-create">
-        <p class="header-title-info"><strong>Quiz question goes here:</strong> Click on bubble to edit</p>
-
-        <div class="title">
-            <?= $this->element('icons/avatar') ?>
-            <?= $this->element('icons/talikng-bubbls') ?>
-            <input name="question" class="gato-quition-bubble" value="Tap the words to match">
-        </div>
-    </div>
-
-
-
-    <div class="container" style="margin-top: 30%;">
-        <div class="row">
-            <h6><strong class="text-dark option-create-sub-title">Enter the correct option first</strong></h6>
-            <?php
-            $options = [
-                [
-                    'class' => 'false-option',
-                    'idPrefix' => 'chooseOption'
-                ]
-            ];
-            for ($i = 1; $i <= 3; $i++) {
-                foreach ($options as $option) {
-            ?>
-                    <div class="col-sm-4">
-
-                        <?= $this->Form->control('options[]', [
-                            'value' => 'word',
-                            'class' => $option['class'],
-                            'label' => '',
-                            'id' => $option['idPrefix'] . $i,
-                        ]); ?>
-                    </div>
-            <?php
+    <?= $this->element('avatar-with-bubbel', ['text' => "Tap the right word"]) ?>
+    <div style=" margin-top: 22%; margin-left: 11%;">
+        <p>Enter the correct option first</p>
+        <div class="container" style="margin-left:-6%">
+            <div class="row ">
+                <div class="col-4">
+                    <?= $this->Form->control('correct-option', [
+                        'value' => 'word',
+                        'class' => 'correct-option',
+                        'label' => '',
+                        'id' => 'chooseOption1',
+                    ]); ?>
+                </div>
+                <?php
+                $options = [
+                    [
+                        'name' => 'false-option',
+                        'class' => 'false-option',
+                        'idPrefix' => 'chooseOption'
+                    ]
+                ];
+                for ($i = 2; $i <= 3; $i++) {
+                    foreach ($options as $option) {
+                ?>
+                        <div class="col-4">
+                            <?= $this->Form->control($option['name'], [
+                                'value' => 'word',
+                                'class' => $option['class'],
+                                'label' => '',
+                                'id' => $option['idPrefix'] . $i,
+                            ]); ?>
+                        </div>
+                <?php
+                    }
                 }
-            }
-            ?>
-            <?= $this->Form->control('quiz_type', [
-                'type' => 'hidden',
-                'value' => '1',
-                'id' => 'quiz_type',
-                'style' => 'display:none',
-            ]) ?>
+                ?>
+            </div>
         </div>
     </div>
-</div>
 </div>

@@ -1,12 +1,12 @@
 <div class="col" style="height: 183px !important; text-decoration:none;" id="imageCard<?= $id ?>">
-    <div class="d-flex position-absolute cursor-pointer" id="delteCardBtn<?= $id ?>" style="z-index: 999999; margin-left:19%; color:red">
+    <div class="d-flex position-absolute cursor-pointer" id="delteCardBtn<?= $id ?>" style="z-index: 999999; margin-left:16%; color:red">
         X
     </div>
-    <div class="card h-100 position-relative imageUploadCard">
+    <div class="card h-100 position-relative imageUploadCard" style="width: 100%;">
         <div class="h-75 position-relative uploadImageContainer">
             <div class="borderContour" id="brd<?= $id ?>" style="display: flex; flex-direction: column;  align-items: center;">
                 <?= $this->element('icons/image-upload') ?>
-                <div class="card-body p-1 d-flex flex-column ">
+                <div class="card-body p-1 d-flex flex-column " style=" align-items: center;">
                     <h5 class="text-center" style="font-size: 10.977px; ">Drop image here</h5>
                     <h5 class="text-center" style="font-size: 9.838px; margin-top:-10%">Or</h5>
                     <button type="button" class="browseBtn" id="browseBtn<?= $id ?>">Browse</button>
@@ -32,6 +32,14 @@
         color: white;
         border: none;
         font-size: 10.977px;
+        display: flex;
+width: 61.54px;
+height: 22.223px;
+padding: 4.558px 9.117px;
+justify-content: center;
+align-items: center;
+gap: 6.838px;
+flex-shrink: 0;
 
     }
 
@@ -47,6 +55,8 @@
 
     .imageUploadCard {
         background-color: #C0D3F9;
+        border-radius: 12px;
+border: 4px solid  #CBD4E1;
     }
 
     .uploadImageContainer {
@@ -61,13 +71,11 @@
         border: 1px solid #9AA8BC;
         box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.16);
         color: black;
-        font-family: "Lexend";
         font-size: 12px;
         font-style: normal;
         font-weight: 500;
         line-height: 24px;
         text-align: center;
-        /* 200% */
 
     }
 </style>
