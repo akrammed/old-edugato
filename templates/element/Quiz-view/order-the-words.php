@@ -4,7 +4,6 @@
         <div class="col">
             <?= $this->element('icons/back-space') ?>
         </div>
-
     </div>
     <div>
         <p style="margin-top: 10%;">List the words in the right order</p>
@@ -14,17 +13,21 @@
                 for ($i = 1; $i <= 3; $i++) {
                 ?>
                     <div class="col-4">
-                        <?= $this->Form->control('text', [
+                        <?= $this->Form->control('options[]', [
                             'value' => 'word',
                             'class' => 'false-option',
-                            'label' => '',
+                            'label' => false,
                             'id' => 'orderOption' . $i,
                         ]); ?>
                     </div>
                 <?php
                 }
+                echo $this->Form->control('quiz_type', [
+                    'type' => 'hidden',
+                    'value' => '3',
+                    'id' => 'quiz_type',
+                ]) ?>
 
-                ?>
             </div>
         </div>
 

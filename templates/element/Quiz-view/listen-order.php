@@ -21,8 +21,6 @@
                 <?php echo $this->element('icons/delete-input'); ?></span>
         </div>
     </div>
-    <?= $this->Form->control('correctWords[]', ['label' => false, 'class' => 'd-none', 'id' => 'correctWordsInput']) ?>
-    <?= $this->Form->control('extraWords[]', ['label' => false, 'class' => 'd-none', 'id' => 'extratWordsInput']) ?>
     <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder']) ?>
     <?= $this->Form->control('quiz_type', [
         'type' => 'hidden',
@@ -35,12 +33,21 @@
             Type the correct words in order here
         </h5>
         <div class="d-flex align-items-center">
-            <div class="d-flex flex-wrap correctWordDiv me-3 w-75">
+            <?php
+            for ($i = 1; $i <= 3; $i++) {
+            ?>
+                <div class="col-4">
+                    <?= $this->Form->control('correctWords[]', [
+                        'value' => 'word',
+                        'class' => 'false-option',
+                        'label' => false,
+                        'id' => 'orderOption' . $i,
+                    ]); ?>
+                </div>
 
-            </div>
-            <button class="newWord" id="addCorrectWord">
-                Add New
-            </button>
+            <?php
+            }
+            ?>
         </div>
     </div>
 
@@ -51,12 +58,27 @@
             Type the extra words here
         </h5>
         <div class="d-flex align-items-center">
-            <div class="d-flex flex-wrap w-75 extraWordsDiv me-3">
+            <div class="d-flex align-items-center">
+                <?php
+                for ($i = 1; $i <= 3; $i++) {
+                ?>
+                    <div class="col-4">
+                        <?= $this->Form->control('moreOptions[]', [
+                            'value' => 'word',
+                            'class' => 'false-option',
+                            'label' => false,
+                            'id' => 'orderOption' . $i,
+                        ]); ?>
+                    </div>
+                <?php
+                }
+                echo $this->Form->control('quiz_type', [
+                    'type' => 'hidden',
+                    'value' => '6',
+                    'id' => 'quiz_type',
+                ]) ?>
 
             </div>
-            <button class="newWord" id="addExtraWord">
-                Add New
-            </button>
         </div>
     </div>
 
@@ -139,5 +161,9 @@
         height: 91px;
         margin-top: 3%;
 
+    }
+
+    .false-option {
+        width: 95% !important;
     }
 </style>

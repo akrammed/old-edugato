@@ -3,7 +3,7 @@
 <div class="title">
     <?= $this->element('icons/avatar') ?>
     <?= $this->element('icons/talikng-bubbls') ?>
-    <?=$this->Form->control('question',['class'=>"avatarText",'placeholder'=>$text,'label'=>false])?>
+    <?=$this->Form->control('question',['class'=>"avatarText",'value'=>$text,'label'=>false])?>
 </div>
 <style>
     .avatarText {

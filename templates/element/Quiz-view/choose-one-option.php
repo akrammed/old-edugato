@@ -4,37 +4,27 @@
         <p>Enter the correct option first</p>
         <div class="container" style="margin-left:-6%">
             <div class="row ">
-                <div class="col-4">
-                    <?= $this->Form->control('correct-option', [
-                        'value' => 'word',
-                        'class' => 'correct-option',
-                        'label' => '',
-                        'id' => 'chooseOption1',
-                    ]); ?>
-                </div>
                 <?php
-                $options = [
-                    [
-                        'name' => 'false-option',
-                        'class' => 'false-option',
-                        'idPrefix' => 'chooseOption'
-                    ]
-                ];
-                for ($i = 2; $i <= 3; $i++) {
-                    foreach ($options as $option) {
+                for ($i = 0; $i < 3; $i++) {
+                    $class = $i == 0 ? 'correct-option' : 'false-option'
                 ?>
-                        <div class="col-4">
-                            <?= $this->Form->control($option['name'], [
-                                'value' => 'word',
-                                'class' => $option['class'],
-                                'label' => '',
-                                'id' => $option['idPrefix'] . $i,
-                            ]); ?>
-                        </div>
+                    <div class="col-4">
+                        <?= $this->Form->control('options[]', [
+                            'value' => 'word',
+                            'class' => $class,
+                            'label' => '',
+                            'id' => $class . $i,
+                        ]); ?>
+                    </div>
                 <?php
-                    }
                 }
                 ?>
+                <?= $this->Form->control('quiz_type', [
+                    'type' => 'hidden',
+                    'value' => '1',
+                    'id' => 'quiz_type',
+                ]) ?>
+                <style></style>
             </div>
         </div>
     </div>

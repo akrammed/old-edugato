@@ -22,7 +22,7 @@
 
 
     </div>
-    <?= $this->Form->control('image', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'image' . $id]) ?>
+    <?= $this->Form->control('images[]', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'image' . $id]) ?>
 </div>
 
 <style>
@@ -33,13 +33,13 @@
         border: none;
         font-size: 10.977px;
         display: flex;
-width: 61.54px;
-height: 22.223px;
-padding: 4.558px 9.117px;
-justify-content: center;
-align-items: center;
-gap: 6.838px;
-flex-shrink: 0;
+        width: 61.54px;
+        height: 22.223px;
+        padding: 4.558px 9.117px;
+        justify-content: center;
+        align-items: center;
+        gap: 6.838px;
+        flex-shrink: 0;
 
     }
 
@@ -56,7 +56,7 @@ flex-shrink: 0;
     .imageUploadCard {
         background-color: #C0D3F9;
         border-radius: 12px;
-border: 4px solid  #CBD4E1;
+        border: 4px solid #CBD4E1;
     }
 
     .uploadImageContainer {

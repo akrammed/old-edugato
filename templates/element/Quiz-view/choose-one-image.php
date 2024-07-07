@@ -15,7 +15,7 @@
 
                         <div id="show-image-<?= $i ?>" class="d-none"></div>
                         <div class="d-none">
-                            <?= $this->Form->control('image', [
+                            <?= $this->Form->control('images[]', [
                                 'type' => 'file',
                                 'label' => false,
                                 'class' => 'd-none',
@@ -25,6 +25,12 @@
                     </div>
                 </div>
             <?php endfor; ?>
+            <?= $this->Form->control('quiz_type', [
+                'type' => 'hidden',
+                'value' => '2',
+                'id' => 'quiz_type',
+            ]) ?>
+    <style></style>
         </div>
     </div>
 

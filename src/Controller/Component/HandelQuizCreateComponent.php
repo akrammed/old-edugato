@@ -79,11 +79,17 @@ class HandelQuizCreateComponent extends Component
         return  $quizsTable->save($quiz);
     }
 
+    public function saveQuestions($data, $questionsTable, $quiz)
+    {
+        $question = $this->patchQuestionsEntity($questionsTable);
+        $question->quiz_id = $quiz->id;
+        $question->question = $data['question'];
+        $questionsTable->save($question);
+    }
+
 
     public function createQuiz($data)
     {
-
-
         $result = false;
         $message = 'Quiz was not created successfully';
         $questionsTable = TableRegistry::getTableLocator()->get('Questions');
@@ -94,10 +100,7 @@ class HandelQuizCreateComponent extends Component
 
         switch ($data['quiz_type']) {
             case 1:
-                $question = $this->patchQuestionsEntity($questionsTable);
-                $question->quiz_id = $quiz->id;
-                $question->question = $data['question'];
-                $questionsTable->save($question);
+                $this->saveQuestions($data, $questionsTable, $quiz);
                 foreach ($data['options'] as $key => $value) {
                     $option = $this->patchOptionsEntity($optionsTable);
                     if ($key == 0) {
@@ -114,11 +117,7 @@ class HandelQuizCreateComponent extends Component
                 }
                 break;
             case 2:
-                $question = $this->patchQuestionsEntity($questionsTable);
-                $question->quiz_id = $quiz->id;
-                $question->question = $data['question'];
-                $questionsTable->save($question);
-
+                $this->saveQuestions($data, $questionsTable, $quiz);
                 foreach ($data['images'] as $key => $value) {
                     $name = $value->getClientFilename();
                     $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . 'picture' . DS . $name;
@@ -148,18 +147,96 @@ class HandelQuizCreateComponent extends Component
 
                 break;
             case 3:
+                $this->saveQuestions($data, $questionsTable, $quiz);
+                foreach ($data['options'] as $key => $value) {
+                    $option = $this->patchOptionsEntity($optionsTable);
+                    $option->quiz_id = $quiz->id;
+                    $option->qoption = $value;
+                    $option->oorder = $key + 1;
+                    if ($optionsTable->save($option)) {
+                        $result = true;
+                        $message = 'Quiz created successfully';
+                    } else {
+                        $result = false;
+                        $message = 'Failed to save option';
+                        break;
+                    }
+                }
                 break;
             case 4:
+                $this->saveQuestions($data, $questionsTable, $quiz);
+
+                $allOptions = array_merge($data['options'], $data['matches']);
+                foreach ($allOptions as $key => $value) {
+                    $option = $this->patchOptionsEntity($optionsTable);
+                    $option->quiz_id = $quiz->id;
+                    $option->qoption = $value;
+                    $option->oorder = $key < count($data['options']) ? $key + 1 : null;
+
+                    if (!$optionsTable->save($option)) {
+                        $result = false;
+                        $message = 'Failed to save option';
+                        break;
+                    } else {
+                        $result = true;
+                        $message = 'Quiz created successfully';
+                    }
+                }
                 break;
             case 5:
+                $this->saveQuestions($data, $questionsTable, $quiz);
+                foreach ($data['images'] as $key => $value) {
+                    $name = $value->getClientFilename();
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . 'picture' . DS . $name;
+
+                    if ($value->getSize() > 0 && $value->getError() == 0) {
+                        $value->moveTo($targetPath);
+                        $option = $this->patchOptionsEntity($optionsTable);
+                        $option->quiz_id = $quiz->id;
+                        $option->qoption = $name;
+
+                        if ($optionsTable->save($option)) {
+                            $result = true;
+                            $message = 'Quiz created successfully';
+                        } else {
+                            $result = false;
+                            $message = 'Failed to save option';
+                            break;
+                        }
+                    } else {
+                        $result = false;
+                        $message = 'Failed to upload image';
+                        break;
+                    }
+                }
                 break;
             case 6:
+                $this->saveQuestions($data, $questionsTable, $quiz);
+                if ($data['audio']->getSize() > 0 && $data['audio']->getError() == 0) {
+                    $name = $data['audio']->getClientFilename();
+                    $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . 'picture' . DS . $name;
+                    $data['audio']->moveTo($targetPath);
+                }
+                $allOptions = array_merge($data['correctWords'], $data['moreOptions']);
+                foreach ($allOptions as $key => $value) {
+                    $option = $this->patchOptionsEntity($optionsTable);
+                    $option->quiz_id = $quiz->id;
+                    $option->qoption = $value;
+                    $option->oorder = $key < count($data['correctWords']) ? $key + 1 : null;
+
+                    if (!$optionsTable->save($option)) {
+                        $result = false;
+                        $message = 'Failed to save option';
+                        break;
+                    } else {
+                        $result = true;
+                        $message = 'Quiz created successfully';
+                    }
+                }
                 break;
+
             case 7:
-                $question = $this->patchQuestionsEntity($questionsTable);
-                $question->quiz_id = $quiz->id;
-                $question->question = $data['question'];
-                $questionsTable->save($question);
+                $this->saveQuestions($data, $questionsTable, $quiz);
                 $name = $data['audio']->getClientFilename();
                 $targetPath = WWW_ROOT . 'img' . DS . 'uploads' . DS . 'picture' . DS . $name;
 
@@ -180,7 +257,7 @@ class HandelQuizCreateComponent extends Component
                         if ($optionsTable->save($option)) {
                             $result = true;
                             $message = 'Quiz created successfully';
-                        }else {
+                        } else {
                             $result = false;
                             $message = 'Failed to save option';
                             break;
