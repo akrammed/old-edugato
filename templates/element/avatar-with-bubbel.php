@@ -1,4 +1,4 @@
-<p class="part-2"><strong>Quiz question goes here:</strong> Click on bubble to edit</p>
+<p class="question-text"><strong>Quiz question goes here:</strong> Click on bubble to edit</p>
 
 <div class="title">
     <?= $this->element('icons/avatar') ?>
@@ -12,14 +12,21 @@
         background:  #FFF;
         box-shadow: 0px 1.114px 4.456px 0px rgba(0, 0, 0, 0.04);
         padding: 10px;
-        width: fit-content;
+        width: 340px;
         color: #9AA8BC;
-        /* Title/Large */
         font-family: "Poppins";
         font-size: 22px;
         font-style: normal;
         font-weight: 600;
         line-height: 24px;
-        /* 109.091% */
+    }
+    .avatarText:focus {
+        color:  #9AA8BC;
+        border: none;
+
+    }
+    .avatarText::placeholder {
+        color:  #9AA8BC;
+
     }
 </style>

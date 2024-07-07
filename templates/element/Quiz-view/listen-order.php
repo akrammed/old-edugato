@@ -1,18 +1,18 @@
 <div class="container w-100">
     <?= $this->element('avatar-with-bubbel', ['text' => "Listen and order the words"]) ?>
     <div class="borderContour mx-auto d-flex flex-column justify-content-center p-3" style="width: 190px;" id="upContainerLO">
-            <h5 class="text-center">Drop Audio here</h5>
-            <h5 class="text-center">Or</h5>
-            <button type="button" class="browseBtn" id="browseAudioLO">Browse</button>
+        <p class="text-center" style="font-size: 11px; font-weight: 400;">Drop Audio here</p>
+        <p class="text-center" style="font-size: 11px; font-weight: 400;">Or</p>
+        <button type="button" class="browseBtn" id="browseAudioLO">Browse</button>
 
 
 
     </div>
     <div class="d-none mx-auto flex-column justify-content-center mt-3" id="AudioContainerLO">
-            <audio id="audioLO" controls>
-                <source   src="" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
+        <audio id="audioLO" controls>
+            <source src="" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
     </div>
     <div class="input-group mt-3 correctWordInput w-100">
         <input type="text" id="newWord" class="form-control border-end-0 correctWordInput w-75" placeholder="Word">
@@ -21,14 +21,14 @@
                 <?php echo $this->element('icons/delete-input'); ?></span>
         </div>
     </div>
-    <?= $this->Form->control('correctWords[]', [ 'label' => false, 'class' => 'd-none', 'id' => 'correctWordsInput']) ?>
-    <?= $this->Form->control('extraWords[]', [ 'label' => false, 'class' => 'd-none', 'id' => 'extratWordsInput']) ?>
+    <?= $this->Form->control('correctWords[]', ['label' => false, 'class' => 'd-none', 'id' => 'correctWordsInput']) ?>
+    <?= $this->Form->control('extraWords[]', ['label' => false, 'class' => 'd-none', 'id' => 'extratWordsInput']) ?>
     <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder']) ?>
     <?= $this->Form->control('quiz_type', [
-                'type' => 'hidden',
-                'value' => '6',
-                'id' => 'quiz_type',
-            ]) ?>
+        'type' => 'hidden',
+        'value' => '6',
+        'id' => 'quiz_type',
+    ]) ?>
 
     <div class="mt-4">
         <h5 class="typeWords">
@@ -124,8 +124,10 @@
         background: #5C17E5;
         color: white;
         border: none;
-        font-size: 16px;
-
+        font-size: 7.977px;
+        width: 61.54px;
+        height: 22.223px;
+        align-self: center;
 
     }
 
@@ -134,7 +136,7 @@
         margin: 10px;
         border-radius: 4.558px;
         border: 1px dashed #728197;
-        height: 92%;
+        height: 91px;
         margin-top: 3%;
 
     }
