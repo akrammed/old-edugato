@@ -41,15 +41,16 @@
                 ]); ?>
 
             </div>
+            <div class="col-12 mt-4">
+            <?= $this->Form->button(__('Save'), ['id' => 'saveUser', 'class' => 'btn btn-md',"style" => 'background-color:#5C17E5;color: #FFF']); ?>
+
+    </div>
         </div>
 
 
 
     </div>
-    <div class="row  mt-4">
-            <?= $this->Form->button(__('Save'), ['id' => 'saveUser', 'class' => 'btn btn-md',"style" => 'background-color:#5C17E5;color: #FFF']); ?>
 
-    </div>
 
 
 
