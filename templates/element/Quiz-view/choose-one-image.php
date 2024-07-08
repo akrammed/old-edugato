@@ -1,7 +1,7 @@
 <div class="container" id="2">
     <?= $this->element('avatar-with-bubbel', ['text' => "Choose the correct image"]) ?>
-    <p style="margin-top:9% !important;     margin-left: 16%;">Upload correct image first</p>
-    <div class="col-9">
+    <p style="margin-top:9% !important;    text-align: center;">Upload correct image first</p>
+    <div class="col-12">
         <div class="row g-2">
             <?php for ($i = 1; $i <= 4; $i++) : ?>
                 <div class="col-6 d-flex <?= $i % 2 === 0 ? 'justify-content-start' : 'justify-content-end' ?>">
@@ -31,7 +31,7 @@
                 'value' => '2',
                 'id' => 'quiz_type',
             ]) ?>
-    <style></style>
+            <style></style>
         </div>
     </div>
 

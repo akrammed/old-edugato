@@ -50,7 +50,7 @@
 }
 
 .type-match::placeholder {
-    color: var(--Interactive-Secondary-Solid-Hover-Background, #CBD4E1);
+    color: #fff;
     font-family: Poppins;
     font-size: 16px;
     font-style: normal;
@@ -111,7 +111,6 @@
 }
 
 .talking-bubbls {
-    margin-top: 5%;
     margin-right: -1%;
 }
 
@@ -135,7 +134,7 @@
 }
 
 .option::placeholder {
-    color: var(--Interactive-Secondary-Solid-Hover-Background, #CBD4E1);
+    color: #fff;
     font-family: Poppins;
     font-size: 16px;
     font-style: normal;
@@ -291,8 +290,6 @@
 }
 
 .correct-option:focus {
-    color: var(--Interactive-Primary-Solid-Enabled-Foreground, #FFF);
-
     font-family: Poppins;
     font-size: 16px;
     font-style: normal;
@@ -301,6 +298,9 @@
     /* 150% */
     align-items: center;
     border: none;
+}
+.correct-option::placeholder{
+    color : #FFF;
 }
 
 .false-option {
@@ -341,6 +341,9 @@
     display: flex;
     align-items: center;
 
+}
+.false-option::placeholder{
+    color : #FFF;
 }
 
 .add-option {

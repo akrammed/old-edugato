@@ -12,13 +12,13 @@
         background: #FFF;
         box-shadow: 0px 1.114px 4.456px 0px rgba(0, 0, 0, 0.04);
         padding: 10px;
-        width: 340px;
-        color: #9AA8BC;
         font-family: "Poppins";
         font-size: 22px;
         font-style: normal;
         font-weight: 600;
         line-height: 24px;
+        margin-bottom: 11%;
+        text-align: center;
     }
 
     .avatarText:focus {
@@ -27,8 +27,4 @@
 
     }
 
-    .avatarText::placeholder {
-        color: #9AA8BC;
-
-    }
 </style>

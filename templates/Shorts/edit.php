@@ -75,7 +75,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="quiz-type-creation-section" style="display: none;height: 580px;">
+                                    <div id="quiz-type-creation-section" style="display: none;">
 
                                         <div class="container">
                                             <div id="quiz-creation-container">
