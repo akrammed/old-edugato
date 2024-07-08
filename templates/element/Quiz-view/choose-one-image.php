@@ -19,6 +19,7 @@
                                 'type' => 'file',
                                 'label' => false,
                                 'class' => 'd-none',
+                                'required' => true,
                                 'id' => 'image' . $i
                             ]) ?>
                         </div>

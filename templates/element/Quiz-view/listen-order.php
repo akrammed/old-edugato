@@ -21,7 +21,7 @@
                 <?php echo $this->element('icons/delete-input'); ?></span>
         </div>
     </div>
-    <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder']) ?>
+    <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder','required' => true,]) ?>
     <?= $this->Form->control('quiz_type', [
         'type' => 'hidden',
         'value' => '6',
@@ -38,9 +38,10 @@
             ?>
                 <div class="col-4">
                     <?= $this->Form->control('correctWords[]', [
-                        'value' => 'word',
+                        'placeholder' => 'word',
                         'class' => 'false-option',
                         'label' => false,
+                        'required' => true,
                         'id' => 'orderOption' . $i,
                     ]); ?>
                 </div>

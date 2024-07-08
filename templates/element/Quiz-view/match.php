@@ -3,7 +3,7 @@
     <div class="row" id="fields">
         <div class="col" id="options">
             <?php for ($i = 1; $i < 4; $i++) { ?>
-                <input id="type-option-<?= $i ?>" class="option" name="matches[]" type="text" placeholder="type option  here..">
+                <input id="type-option-<?= $i ?>" class="option" name="matches[]" required type="text" placeholder="type option  here..">
             <?php  } ?>
         </div>
         <div class="col" id="empties">
@@ -19,6 +19,7 @@
                     'class' => 'type-match',
                     'id' => 'type-match-' . $i,
                     'label'=> false,
+                    'required' => true,
                     'placeholder' =>'type option here..'
                 ]) ?>
             <?php  } ?>

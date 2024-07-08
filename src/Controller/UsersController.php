@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -59,7 +60,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'add']);
-            }else{
+            } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
@@ -119,7 +120,7 @@ class UsersController extends AppController
         $this->viewBuilder()->setLayout('temp-default');
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            $data =$this->request->getData();
+            $data = $this->request->getData();
 
             $user = $this->Users->patchEntity($user, $data);
             $result = $this->Users->save($user);
@@ -139,126 +140,95 @@ class UsersController extends AppController
 
 
     public function login($id = null)
-{
+    {
 
-    $this->viewBuilder()->setLayout('temp-default');
-    $result = $this->Authentication->getResult();
+        $this->viewBuilder()->setLayout('temp-default');
+        $result = $this->Authentication->getResult();
 
-    if ($result->isValid()) {
-        $currentSessionUser  = $this->Authentication->getIdentity()->getOriginalData();
+        if ($result->isValid()) {
+            return $this->redirect('/admin');
+        }
+        if ($this->request->is('post')) {
+            $this->Flash->error('Invalid username or password');
+        }
+    }
 
-        if ($id != null) {
-            $redirectUrl = Router::url([
-                'plugin' => 'Lms',
-                'controller' => 'Courses',
-                'action' => 'view',
-                '_full' => true,
-                $id
-            ]);
-        }else {
-            if ($currentSessionUser['role_id'] == 2) {
-                $redirectUrl = Router::url([
-                    'plugin' => 'Lms',
-                    'controller' => 'Courses',
-                    'action' => 'index',
-                    '_full' => true
-                ]);
-            }else {
-                $redirectUrl = Router::url([
-                    'plugin' => 'Lms',
-                    'controller' => 'Homes',
-                    'action' => 'profile',
-                    '_full' => true
-                ]);
 
-            }
+    public function logout()
+    {
 
+        $sessionLogin = $this->Authentication->getResult();
+        $user = $sessionLogin->getData();
+        $userEntity = $this->Users->get($user['id']);
+        $userEntity->is_active = 0;
+        $this->Users->save($userEntity);
+        $this->Authentication->logout();
+        return $this->redirect(['plugin' => null, 'controller' => 'Pages', 'action' => 'display']);
+    }
+    public function loginUserAjax()
+    {
+
+        $this->autoRender = false;
+        $result = false;
+        $errorString = '';
+        $data = $this->request->getData();
+        $identityData = new ArrayObject([
+            'email' => $data['email'],
+            'password' => $data['password'],
+        ]);
+        $sessionLogin = $this->Authentication->getResult();
+
+        if ($sessionLogin != null) {
+            $result = true;
         }
 
-
-        return $this->redirect($redirectUrl);;
-    }
-    if ($this->request->is('post')) {
-        $this->Flash->error('Invalid username or password');
-    }
-}
-
-
-public function logout()
-{
-
-    $sessionLogin = $this->Authentication->getResult();
-    $user = $sessionLogin->getData();
-    $userEntity = $this->Users->get($user['id']);
-    $userEntity->is_active = 0;
-    $this->Users->save($userEntity);
-    $this->Authentication->logout();
-    return $this->redirect(['plugin'=>null,'controller' => 'Pages', 'action' => 'display']);
-}
-public function loginUserAjax(){
-
-    $this->autoRender = false;
-    $result = false;
-    $errorString ='';
-    $data = $this->request->getData();
-    $identityData = new ArrayObject([
-        'email' => $data['email'],
-        'password' => $data['password'],
-    ]);
-    $sessionLogin = $this->Authentication->getResult();
-    
-    if ($sessionLogin != null) {
-        $result = true;
+        $responseData = [
+            'result' => $result,
+            'msg' => $errorString,
+            'isAdmin' => $this->Authentication->getIdentity()->getOriginalData()->role_id == 2 ? true : false,
+        ];
+        $response = new Response();
+        $response = $response->withType('application/json')
+            ->withStringBody(json_encode($responseData));
+        return $response;
     }
 
-    $responseData = [
-        'result' => $result,
-        'msg' => $errorString,
-        'isAdmin' => $this->Authentication->getIdentity()->getOriginalData()->role_id == 2 ? true : false,
-    ];
-    $response = new Response();
-    $response = $response->withType('application/json')
-        ->withStringBody(json_encode($responseData));
-return $response;
-}
 
 
+    public function registerNewUserAjax()
+    {
 
-public function registerNewUserAjax(){
+        $this->autoRender = false;
+        $result = false;
+        $data = $this->request->getData();
+        $user = $this->Users->newEmptyEntity();
+        $user = $this->Users->patchEntity($user, $data);
 
-    $this->autoRender = false;
-    $result = false;
-    $data = $this->request->getData();
-    $user = $this->Users->newEmptyEntity();
-    $user = $this->Users->patchEntity($user, $data);
-
-    $user = $this->Users->save($user);
-    $errorString = '';
-    if ($user) {
+        $user = $this->Users->save($user);
+        $errorString = '';
+        if ($user) {
             $result = true;
+        }
+        $this->Authentication->setIdentity($user);
+
+        $responseData = [
+            'result' => $result,
+            'msg' => $errorString,
+        ];
+        $response = new Response();
+        $response = $response->withType('application/json')
+            ->withStringBody(json_encode($responseData));
+        return $response;
     }
-    $this->Authentication->setIdentity($user);
-
-    $responseData = [
-        'result' => $result,
-        'msg' => $errorString,
-    ];
-    $response = new Response();
-    $response = $response->withType('application/json')
-        ->withStringBody(json_encode($responseData));
-return $response;
 
 
-}
+    public function createAjax()
+    {
 
-
-public function createAjax()
-{
-
-    $this->autoRender = false;
-    $result = false;
-    $message = '';
-    $data = $this->request->getQuery('data');
+        $this->autoRender = false;
+        $result = false;
+        $message = '';
+        $data = $this->request->getQuery('data');
         if (count($data) == 2) {
             $user = $this->Users->get($this->Authentication->getIdentity()->getOriginalData()->id);
             $user = $this->Users->patchEntity($user, $data);
@@ -270,11 +240,11 @@ public function createAjax()
                     $result = true;
                 }
             }
-        }else {
+        } else {
             $user = $this->Users->newEmptyEntity();
             $user = $this->Users->patchEntity($user, $data);
             $user->course_id = intval($data['course_id']);
-            $saveduser = $this->Users->save($user) ;
+            $saveduser = $this->Users->save($user);
             $saveduser->role_id = 1;
             if ($saveduser) {
                 $sessionLogin = $this->Authentication->setIdentity($saveduser);
@@ -282,115 +252,114 @@ public function createAjax()
                     $result = true;
                 }
             }
-
-
         }
 
 
 
 
 
-    $responseData = [
-        'result' => $result,
-        'msg' => $message,
-    ];
-    $response = new Response();
-    $response = $response->withType('application/json')
-        ->withStringBody(json_encode($responseData));
-return $response;
-}
-
-public function validateAjax(){
-    $this->autoRender = false;
-    $result = false;
-    $message = '';
-    $data = $this->request->getQuery('code');
-
-    if ($this->isvalidsellcode($data)) {
-        $result=true;
-        $message ="Valid Code";
-    }else{
-        $message= "Invalid Code";
+        $responseData = [
+            'result' => $result,
+            'msg' => $message,
+        ];
+        $response = new Response();
+        $response = $response->withType('application/json')
+            ->withStringBody(json_encode($responseData));
+        return $response;
     }
-    $responseData = [
-        'result' => $result,
-        'msg' => $message,
-    ];
-    $response = new Response();
-    $response = $response->withType('application/json')
-        ->withStringBody(json_encode($responseData));
-    return $response;
-}
+
+    public function validateAjax()
+    {
+        $this->autoRender = false;
+        $result = false;
+        $message = '';
+        $data = $this->request->getQuery('code');
+
+        if ($this->isvalidsellcode($data)) {
+            $result = true;
+            $message = "Valid Code";
+        } else {
+            $message = "Invalid Code";
+        }
+        $responseData = [
+            'result' => $result,
+            'msg' => $message,
+        ];
+        $response = new Response();
+        $response = $response->withType('application/json')
+            ->withStringBody(json_encode($responseData));
+        return $response;
+    }
 
 
-public function isvalidsellcode($code){
+    public function isvalidsellcode($code)
+    {
 
-    $csvFile = WWW_ROOT . DS .'files'.DS.'demo.csv';
-
-
-   // Initialisation de la variable pour le message de validation
-   $isValid = null ;
+        $csvFile = WWW_ROOT . DS . 'files' . DS . 'demo.csv';
 
 
-
-       // Lecture du fichier CSV
-       $csvData = array_map('str_getcsv', file($csvFile));
-
-       // Parcourir les lignes du fichier CSV
-       foreach($csvData as $key => $row) {
-           // Vérifier si le code d'achat correspond et si sa valeur de validité est 0
-           if($row[2] == $code && $row[5] == 0) {
-               // Modifier la valeur de validité à 1 dans les données en mémoire
-               $csvData[$key][5] = 1;
-
-               // Écrire les modifications dans le fichier CSV
-               $file = fopen($csvFile, 'w');
-               foreach ($csvData as $line) {
-                   fputcsv($file, $line);
-               }
-               fclose($file);
-
-               // Mettre à jour le message de validation
-               $isValid = true;
-
-               // Sortir de la boucle si le code est trouvé
-               break;
-           } elseif ($row[2] == $code && $row[5] == 1) {
-               // Affichage du message si le code est expiré
-               $isValid = false;
-               // Sortir de la boucle si le code est trouvé
-               break;
-           }
-       }
-
-       // Affichage du message si le code n'existe pas
-       if($isValid == null) {
-           $isValid = false;
-       }
-       return $isValid;
-}
+        // Initialisation de la variable pour le message de validation
+        $isValid = null;
 
 
-public function editProfile($id = null)
+
+        // Lecture du fichier CSV
+        $csvData = array_map('str_getcsv', file($csvFile));
+
+        // Parcourir les lignes du fichier CSV
+        foreach ($csvData as $key => $row) {
+            // Vérifier si le code d'achat correspond et si sa valeur de validité est 0
+            if ($row[2] == $code && $row[5] == 0) {
+                // Modifier la valeur de validité à 1 dans les données en mémoire
+                $csvData[$key][5] = 1;
+
+                // Écrire les modifications dans le fichier CSV
+                $file = fopen($csvFile, 'w');
+                foreach ($csvData as $line) {
+                    fputcsv($file, $line);
+                }
+                fclose($file);
+
+                // Mettre à jour le message de validation
+                $isValid = true;
+
+                // Sortir de la boucle si le code est trouvé
+                break;
+            } elseif ($row[2] == $code && $row[5] == 1) {
+                // Affichage du message si le code est expiré
+                $isValid = false;
+                // Sortir de la boucle si le code est trouvé
+                break;
+            }
+        }
+
+        // Affichage du message si le code n'existe pas
+        if ($isValid == null) {
+            $isValid = false;
+        }
+        return $isValid;
+    }
+
+
+    public function editProfile($id = null)
     {
         $this->autoRender = false;
         $user = $this->Users->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
-            if( ($data['profile_picture']->getClientFilename()) != '') {
-                $data = $this->upload($data,'profile_picture','picture');    
-            }else{
-                $data['profile_picture'] = $user['profile_picture'] ; 
+            if (($data['profile_picture']->getClientFilename()) != '') {
+                $data = $this->upload($data, 'profile_picture', 'picture');
+            } else {
+                $data['profile_picture'] = $user['profile_picture'];
             }
             $user = $this->Users->patchEntity($user, $data);
-            $result = $this->Users->save($user); 
+            $result = $this->Users->save($user);
             $this->Authentication->setIdentity($result);
             if ($result) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['plugin'=>'Lms','controller'=>'Homes','action' => 'profile',$id]);
+                return $this->redirect(['plugin' => 'Lms', 'controller' => 'Homes', 'action' => 'profile', $id]);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
     }
-
 }

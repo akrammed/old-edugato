@@ -22,7 +22,7 @@
 
 
     </div>
-    <?= $this->Form->control('images[]', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'image' . $id]) ?>
+    <?= $this->Form->control('images[]', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'image' . $id,'required' => true,]) ?>
 </div>
 
 <style>
