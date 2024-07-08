@@ -15,11 +15,11 @@
 
 <div class="mt-5 mx-auto w-75">
     <div class=" mt-3">
-        <?= $this->Form->control('correctWord',['id'=>'wordLR','class' => 'wordAudio w-100','placeholder'=>'Type the words from the audio right here...','label'=>false]) ?>
+        <?= $this->Form->control('correctWord',['id'=>'wordLR','class' => 'wordAudio w-100','placeholder'=>'Type the words from the audio right here...','label'=>false,'required' => true,]) ?>
     </div>
 
 </div>
-<?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizLR']) ?>
+<?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizLR','required' => true,]) ?>
 <?= $this->Form->control('quiz_type', [
                 'type' => 'hidden',
                 'value' => '7',

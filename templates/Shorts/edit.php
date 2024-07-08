@@ -25,8 +25,10 @@
                         <div class="vid-cnt">
 
                         </div>
-                        <button type="button" class="upload-short-video replace-btn" style="display:none" onclick="$('#videoInput').click();">Replace</button>
-                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
+                        <button type="button" class="upload-short-video replace-btn" style="display:none"
+                            onclick="$('#videoInput').click();">Replace</button>
+                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls
+                            muted></video>
                     </div>
                     <div class="col-md-8">
                         <section class="sec mt-5" id="section">
@@ -87,18 +89,18 @@
                                 <div id="actions" style="display:none">
                                     <div class="col d-flex">
                                         <button id="cancel-quiz-create" class="cancel">Cancel</button>
-                                        <button class="save">Save</button>
+                                        <button id="save-short-btn" class="save">Save</button>
                                     </div>
                                 </div>
                             </div>
                         </section>
                     </div>
                     <?= $this->Form->control('video', [
-                        'class' => 'form-control',
+                        'class' => 'form-control visually-hidden',
                         'type' => 'file',
                         'id' => 'upload-short',
                         'label' => false,
-                        'hidden' => true
+                        'required' => true
                     ]); ?>
                     <?= $this->Form->control('candostatment_id', [
                         'value' => $candostatmentId,
@@ -124,6 +126,7 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php echo $this->element('Quiz-view/Scripts/add-new-one'); ?>
 <?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
 <?php echo $this->element('Quiz/Style/quiz-create-style'); ?>

@@ -14,9 +14,10 @@
                 ?>
                     <div class="col-4">
                         <?= $this->Form->control('options[]', [
-                            'value' => 'word',
+                            'placeholder' => 'word',
                             'class' => 'false-option',
                             'label' => false,
+                            'required' => true,
                             'id' => 'orderOption' . $i,
                         ]); ?>
                     </div>

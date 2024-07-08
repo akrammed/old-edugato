@@ -1,5 +1,23 @@
 <script>
 $(document).ready(function() {
+
+
+    $('#save-short-btn').click(function(event) {
+        var fileInput = $('#upload-short')[0].files.length;
+        console.log(fileInput);
+        if (fileInput === 0) {
+            
+            Swal.fire({
+                icon: "error",
+                title: "Wait...",
+                text: "The video file is required"
+            });
+            return false; 
+        }
+    });;
+
+
+
     const $dropZone = $('#dropZone'),
         $uploadShort = $('#upload-short'),
         $shortVid = $('.shortVid'),
@@ -42,7 +60,7 @@ $(document).ready(function() {
             $dropZone.removeClass('dragover');
             const files = e.originalEvent.dataTransfer.files;
             console.log(files);
-          
+
             if (files.length > 0) {
                 handleFileSelect(files[0]);
 
@@ -58,7 +76,7 @@ $(document).ready(function() {
     $uploadShortVideo.click(function(e) {
         e.preventDefault();
         $uploadShort.click();
-        
+
     });
     $uploadShort.change(function(e) {
         e.preventDefault();
@@ -124,7 +142,7 @@ $(document).ready(function() {
 
     });
 
-    $('#save-quiz-create').on('click', function(e){
+    $('#save-quiz-create').on('click', function(e) {
         e.preventDefault();
     });
 

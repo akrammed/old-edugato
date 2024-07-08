@@ -1,4 +1,3 @@
-
 <style>
 .upload-short-video {
     background-color: #5C17E5;
@@ -68,6 +67,14 @@
     margin-top: 7%;
 }
 
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
 
 .short-upload-container-text {
     text-align: center;
