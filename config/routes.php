@@ -77,6 +77,7 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/edit-chapter', ['plugin'=> 'Lms','controller' => 'Chapters', 'action' => 'edit', 'edit-chapter']);
         $builder->connect('/add-chapter', ['plugin'=> 'Lms','controller' => 'Chapters', 'action' => 'add', 'add-chapter']);
         $builder->connect('/admin', ['controller' => 'Pages', 'action' => 'dashboard', 'admin']);
+        $builder->connect('/playwithgato', ['controller' => 'Pages', 'action' => 'play', 'playwithgato']);
 
 
         /*

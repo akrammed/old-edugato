@@ -13,7 +13,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-api_key = 'sk-edugato-Ky0aCLvVTmTmEECDyD9FT3BlbkFJJ5lVmCWv2hMBcm1Vvcwh'
+api_key = 'sk-api-Bc2sYgyt9VCFRh3R5w74T3BlbkFJFRTZV0JcesdQyqJUhfRt'
 
 client = OpenAI(api_key=api_key)
 
