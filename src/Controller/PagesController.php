@@ -75,6 +75,9 @@ class PagesController extends AppController
     public function dashboard() {
         $this->viewBuilder()->setLayout('admin-layout');
     }
+    public function play() {
+        $this->viewBuilder()->setLayout('admin-layout');
+    }
 
 
 }

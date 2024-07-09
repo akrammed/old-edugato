@@ -36,6 +36,18 @@
         </li>
         <li class="menu-item" style="height: 40px;">
             <?= $this->Html->link(
+                 $this->element('icons/direction right') .'<div data-i18n="Analytics" class="text-dark m-2">Play With Gato</div>',
+                '/playwithgato',
+                [
+                    'class' => 'menu-link',
+                    'style' => 'height: 40px;',
+                    'escape' => false,
+                ]
+            );
+            ?>
+        </li>
+        <li class="menu-item" style="height: 40px;">
+            <?= $this->Html->link(
                 $this->element('icons/graduated').'<div data-i18n="Analytics" class="text-dark m-2">Courses</div>',
                 '/list-courses',
                 [
