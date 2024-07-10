@@ -4,13 +4,18 @@ from pydantic import BaseModel
 from openai import OpenAI
 
 app = FastAPI()
+origins = [
+    "http://localhost",  # Include this if you are testing locally
+    "http://127.0.0.1:8000",  # Adjust according to your specific needs
+    # You can add more origins here
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8765"], 
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
-    allow_headers=["*"],
+    allow_methods=["*"],  
+    allow_headers=["*"], 
 )
 
 api_key = 'sk-api-Bc2sYgyt9VCFRh3R5w74T3BlbkFJFRTZV0JcesdQyqJUhfRt'
@@ -26,7 +31,7 @@ async def generate_assistance(prompt: UserPrompt):
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-              {"role": "system", "content": "You are Emily, an English teacher at EduGato, skilled in explaining complex english concepts with creative flair.and you know only english if somone ask you anything not about english answer with i am sorry, i can only help you in english "},
+            {"role": "system", "content": "You are Gato, an English teacher at EduGato. Suggest 6 topics for a game composed of 10 questions in English. Then, based on the user's choice, create the game, and once the user choose a topic you should give him each time one questions till 10 "},
             {"role": "user", "content": prompt.user_prompt}
         ]
     )
