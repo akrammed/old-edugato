@@ -1,20 +1,41 @@
 <script>
 $(document).ready(function() {
 
-
     $('#save-short-btn').click(function(event) {
-        var fileInput = $('#upload-short')[0].files.length;
-        console.log(fileInput);
-        if (fileInput === 0) {
-            
-            Swal.fire({
-                icon: "error",
-                title: "Wait...",
-                text: "The video file is required"
-            });
-            return false; 
-        }
-    });;
+    var fileInput = $('#upload-short')[0].files.length;
+
+    if (fileInput === 0) {
+        Swal.fire({
+            icon: "error",
+            title: "Wait...",
+            text: "The video file is required"
+        });
+        return false;
+    } else {
+        var file = $('#upload-short')[0].files[0];
+        var fileSizeMB = file.size / (1024 * 1024);
+        var uploadSpeedMBps = 0.2; 
+        var estimatedTimeMs = fileSizeMB / uploadSpeedMBps * 1000;
+
+        let timerInterval;
+        Swal.fire({
+            title: "Uploading !",
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                    let timeLeft = estimatedTimeMs - (new Date().getTime() - startTime);
+                    let minutes = Math.floor(timeLeft / 60000);
+                    let seconds = ((timeLeft % 60000) / 1000).toFixed(0);
+                    timer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }, 100);
+            }
+        });
+
+        var startTime = new Date().getTime(); // Record the start time of the upload
+    }
+});
 
 
 
