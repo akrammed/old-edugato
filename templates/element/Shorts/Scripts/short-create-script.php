@@ -115,31 +115,31 @@ $(document).ready(function() {
         formDataQuiz.append('type', id);
         switch (id) {
             case 1:
-                template = `<?= $this->element('Quiz-view/choose-one-option') ?>`;
+                template = `<?= $this->element('Quiz-create/choose-one-option') ?>`;
                 break;
             case 2:
-                template = `<?= $this->element('Quiz-view/choose-one-image') ?>`;
+                template = `<?= $this->element('Quiz-create/choose-one-image') ?>`;
                 break;
             case 3:
-                template = `<?= $this->element('Quiz-view/order-the-words') ?>`;
+                template = `<?= $this->element('Quiz-create/order-the-words') ?>`;
                 break;
             case 4:
-                template = `<?= $this->element('Quiz-view/match') ?>`;
+                template = `<?= $this->element('Quiz-create/match') ?>`;
                 break;
             case 5:
-                template = `<?= $this->element('Quiz-view/carusel') ?>`;
+                template = `<?= $this->element('Quiz-create/carusel') ?>`;
                 break;
             case 6:
-                template = `<?= $this->element('Quiz-view/listen-order') ?>`;
+                template = `<?= $this->element('Quiz-create/listen-order') ?>`;
                 break;
             case 7:
-                template = `<?= $this->element('Quiz-view/read-repeat') ?>`;
+                template = `<?= $this->element('Quiz-create/read-repeat') ?>`;
                 break;
             case 8:
-                template = `<?= $this->element('Quiz-view/conversation-speaking') ?>`;
+                template = `<?= $this->element('Quiz-create/conversation-speaking') ?>`;
                 break;
             case 9:
-                template = `<?= $this->element('Quiz-view/conversation-ordering') ?>`;
+                template = `<?= $this->element('Quiz-create/conversation-ordering') ?>`;
                 break;
             default:
                 template = '<p class="prg">Option non reconnue.</p>';

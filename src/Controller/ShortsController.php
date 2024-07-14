@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Http\Response;
+use Cake\ORM\TableRegistry;
 
 /**
  * Shorts Controller
@@ -38,8 +39,14 @@ class ShortsController extends AppController
     public function view($id = null)
     {
         $this->viewBuilder()->setLayout('admin-layout');
+        $questionsTable = TableRegistry::getTableLocator()->get('questions');
+        $optionsTable  = TableRegistry::getTableLocator()->get('options');
+        $quizsTable  = TableRegistry::getTableLocator()->get('quizs');
         $short = $this->Shorts->get($id);
-        $this->set(compact('short'));
+        $quiz = $quizsTable->get($short['quiz_id']);
+        $options = $optionsTable->find()->where(['quiz_id' => $short['quiz_id']])->toArray();
+        $questions = $questionsTable->find()->where(['quiz_id' => $short['quiz_id']])->toArray();
+        $this->set(compact(['short', 'quiz', 'options', 'questions']));
     }
 
 
@@ -56,7 +63,6 @@ class ShortsController extends AppController
             $data = $this->request->getData();
             if (isset($data['video'])) {
                 $data = $this->upload($data, 'video', 'video');
-                
             } else {
                 unset($data['video']);
             }
@@ -64,7 +70,7 @@ class ShortsController extends AppController
             if ($this->Shorts->save($short)) {
                 $this->Flash->success(__('The short has been saved.'));
                 $candostatment = $this->Shorts->Candostatments->get($data['candostatment_id'], contain: ['Learningpaths', 'Shorts']);
-                return $this->redirect(['controller'=>"candostatments",'action' => 'index',$candostatment->learningpath_id]);
+                return $this->redirect(['controller' => "candostatments", 'action' => 'index', $candostatment->learningpath_id]);
             }
             $this->Flash->error(__('The short could not be saved. Please, try again.'));
         }
@@ -81,31 +87,35 @@ class ShortsController extends AppController
      */
     public function edit($id = null)
     {
-        
+
         $this->viewBuilder()->setLayout('admin-layout');
+       
         $short = $this->Shorts->get($id, contain: ['Candostatments']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
             $data['title'] = $short['title'];
             if (isset($data['video'])) {
                 $data = $this->upload($data, 'video', 'video');
-                
             } else {
                 unset($data['video']);
             }
             if ($data['status']) {
                 $short = $this->Shorts->patchEntity($short, $data['data']);
                 $quizResult = $this->createQuiz($data['data']);
+                $short->quiz_id = $quizResult['id'];
                 if ($this->Shorts->save($short)) {
                     $this->Flash->success(__('The short has been saved.'));
                     $candostatment = $short['candostatment'];
-                    return $this->redirect(['controller'=>"candostatments",'action' => 'index',$candostatment->learningpath_id]);
+                    return $this->redirect(['controller' => "candostatments", 'action' => 'index', $candostatment->learningpath_id]);
                 }
                 $this->Flash->error(__('The short could not be saved. Please, try again.'));
-            }    }
+            }
+        }
+      
+       
         $shortTypes = $this->Shorts->ShortTypes->find('list', limit: 200)->all();
         $candostatmentId = $short['candostatment']->id;
-        $this->set(compact('short', 'shortTypes','candostatmentId'));
+        $this->set(compact('short', 'shortTypes', 'candostatmentId'));
     }
 
     /**
@@ -128,7 +138,7 @@ class ShortsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-        /**
+    /**
      * Delete method
      *
      * @param string|null $id Short id.
@@ -145,7 +155,7 @@ class ShortsController extends AppController
             $this->Flash->error(__('The short could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['controller'=>'candostatments','action' => 'index',$lp]);
+        return $this->redirect(['controller' => 'candostatments', 'action' => 'index', $lp]);
     }
 
     public function watch($id = null)
