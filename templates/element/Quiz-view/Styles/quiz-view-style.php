@@ -21,8 +21,8 @@ body {
 .avatar-container {
     display: flex;
     justify-content: center;
-    margin-top: 2%;
-    margin-left: 1%;
+    margin-top: 0%;
+    margin-left: 0%;
 }
 
 .avatar-question {
@@ -41,6 +41,7 @@ body {
 .options-list {
     display: flex;
     justify-content: center;
+    width: 90%;
 }
 
 .option-element {
@@ -59,7 +60,6 @@ body {
 .footer {
     height: 90px;
     padding: 20px 0;
-    position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -141,5 +141,7 @@ body {
         border: none;
         width: 124px;
     }
+
+    
 }
 </style>

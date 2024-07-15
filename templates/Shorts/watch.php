@@ -198,7 +198,7 @@
     }
 
     .sec {
-        height: 619px;
+        height: 100%;
     }
 
     .avatar-question {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -41,17 +42,17 @@ $cakeDescription = 'Edugato';
         'default-layout/vendor/libs/perfect-scrollbar/perfect-scrollbar',
         'default-layout/vendor/libs/apex-charts/apex-charts',
 
-        ]   ) ?>
+    ]) ?>
     <?= $this->Html->script([
-    'default-layout/vendor/js/helpers',
-    'default-layout/js/config',
+        'default-layout/vendor/js/helpers',
+        'default-layout/js/config',
     ]) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
     <script>
-            const formDataQuiz = new FormData();
+    const formDataQuiz = new FormData();
     </script>
     <style>
     .poppins-medium {
@@ -64,6 +65,12 @@ $cakeDescription = 'Edugato';
     <?= $this->Html->css('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css') ?>
     <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') ?>
     <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js') ?>
+
+    <?php echo $this->element('Quiz-view/Styles/progress-bar'); ?>
+    <?php echo $this->element('Quiz-view/Styles/quiz-view-style'); ?>
+    <?php echo $this->element('Shorts/Styles/short-view-style'); ?>
+    <?php echo $this->element('Quiz-create/Styles/quiz-create-style'); ?>
+    <?php echo $this->element('Shorts/Styles/short-create-style'); ?>
 </head>
 
 <body class="poppins-medium ">
@@ -80,23 +87,30 @@ $cakeDescription = 'Edugato';
                     <?php echo $this->element('admin/add-short'); ?>
                     <?php echo $this->element('admin/add-quiz'); ?>
                     <?php echo $this->element('admin/add-user'); ?>
-                    <?php echo $this->element('admin/add-canvas',['name'=>"Learning Path",'url' => "/learningpaths/add","id"=>"offcanvasEndAddLearningPath"]) ?>
-                    <?php echo $this->element('admin/add-canvas',['name'=>"Learning Path",'url' => "/learningpaths/add","id"=>"offcanvasEndEditLearningPath"]) ?>
-                    <?php echo $this->element('admin/add-canvas',['name'=>"Learning Path",'url' => "/users/add","id" => "offcanvasEndCanDoS"]) ?>
+                    <?php echo $this->element('admin/add-canvas', ['name' => "Learning Path", 'url' => "/learningpaths/add", "id" => "offcanvasEndAddLearningPath"]) ?>
+                    <?php echo $this->element('admin/add-canvas', ['name' => "Learning Path", 'url' => "/learningpaths/add", "id" => "offcanvasEndEditLearningPath"]) ?>
+                    <?php echo $this->element('admin/add-canvas', ['name' => "Learning Path", 'url' => "/users/add", "id" => "offcanvasEndCanDoS"]) ?>
                 </div>
+
+                <?php echo $this->element('Quiz-view/Elements/sounds-effects'); ?>
                 <div class="layout-overlay layout-menu-toggle"></div>
                 <?= $this->Html->script([
-
-    'default-layout/vendor/libs/jquery/jquery',
-    'default-layout/vendor/libs/popper/popper',
-    'default-layout/vendor/js/bootstrap',
-    'default-layout/vendor/libs/perfect-scrollbar/perfect-scrollbar',
-    'default-layout/vendor/js/menu',
-    'default-layout/vendor/libs/apex-charts/apexcharts',
-    'default-layout/js/main',
-    'default-layout/js/dashboards-analytics'
-    ]) ?>
+                    'default-layout/vendor/libs/jquery/jquery',
+                    'default-layout/vendor/libs/popper/popper',
+                    'default-layout/vendor/js/bootstrap',
+                    'default-layout/vendor/libs/perfect-scrollbar/perfect-scrollbar',
+                    'default-layout/vendor/js/menu',
+                    'default-layout/vendor/libs/apex-charts/apexcharts',
+                    'default-layout/js/main',
+                    'default-layout/js/dashboards-analytics'
+                ]) ?>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <?php echo $this->element('Quiz-view/Scripts/globalFunctionQuizView'); ?>
                 <script async defer src="https://buttons.github.io/buttons.js"></script>
+                <?php echo $this->element('Quiz-create/Scripts/add-new-one'); ?>
+                <?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
+
+
 
 </body>
 

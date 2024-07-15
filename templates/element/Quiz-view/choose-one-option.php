@@ -1,32 +1,39 @@
-<div class="container" id="1">
-    <?= $this->element('avatar-with-bubbel', ['text' => "Tap the right word"]) ?>
-    <div style="margin-top: 22%; margin-left: 11%;">
-        <p>Enter the correct option first</p>
-        <div class="container" style="margin-left:-6%">
-            <div class="row">
-                <?php
-                for ($i = 0; $i < 3; $i++) {
-                    $class = $i == 0 ? 'correct-option' : 'false-option';
-                ?>
-                    <div class="col-4">
-                        <?= $this->Form->control('options[]', [
-                            'placeholder' => 'word',
-                            'class' => $class,
-                            'label' => '',
-                            'id' => $class . $i,
-                            'required' => true, 
-                        ]); ?>
+
+
+
+<?php
+$optionsList = [];
+$i = 0;
+?>
+<div class="quiz-body">
+
+    <div class="container">
+        <div class="row">
+            <div class="content" style="margin-top: 15%;">
+                <div class="conversation">
+                    <div class="avatar-container">
+                        <?php echo $this->element('icons/avatar'); ?>
+                        <?php echo $this->element('icons/talikng-bubbls'); ?>
+                        <h2 class="avatar-question"><?= $questions[0]['question'] ?> </h2>
                     </div>
-                <?php
-                }
-                ?>
-                <?= $this->Form->control('quiz_type', [
-                    'type' => 'hidden',
-                    'value' => '1',
-                    'id' => 'quiz_type',
-                ]) ?>
-                <style></style>
+                </div>
+            </div>
+
+            <div class="options">
+                <ul class="options-list">
+                    <?php foreach ($options as $key => $value) { ?>
+                    <li class="option-element" id="option-<?= $value->id ?>">
+                        <?= $value['qoption'] ?>
+                    </li>
+                    <?php $i++;
+                        if ($value->is_correct) {
+                            $correctOption = $value->id;
+                        }
+                        array_push($optionsList, $value['qoption']);
+                    } ?>
+                </ul>
             </div>
         </div>
     </div>
 </div>
+

@@ -65,7 +65,7 @@
                 i++;
 
                 const newElement = $(
-                    `<?= $this->element('Quiz-view/Elements/card-upload-image', ['id' => '${i}']) ?>`);
+                    `<?= $this->element('Quiz-create/Elements/card-upload-image', ['id' => '${i}']) ?>`);
 
                 $('.addNewImage').before(newElement);
 
