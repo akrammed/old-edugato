@@ -1,16 +1,13 @@
 <style>
 .container-loading {
-    margin: 60px auto;
+    margin: 5% auto;
     width: 400px;
     text-align: center;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
 }
 
 .container-loading .progress {
     margin: 0 auto;
-    width: 615px;
-    margin-left: -26%;
-    margin-top: -5%;
     height: 17px;
     background-color: #ECEFF4 !important;
 }

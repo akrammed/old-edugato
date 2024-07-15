@@ -9,10 +9,10 @@ body {
 }
 
 .container-loading {
-    margin: 60px auto;
+    margin: 5% auto;
     width: 400px;
     text-align: center;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
 }
 
 .container-loading .progress {
@@ -117,16 +117,21 @@ body {
     background: rgba(0, 0, 0, 0.25);
 }
 
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .footer {
-    height: 70px;
-    border-top: 3px solid #ECEFF4;
+    height: 90px;
     padding: 20px 0;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #f8f9fa;
+    /* Example background color */
 }
 
 .container {
@@ -467,10 +472,10 @@ body {
     }
 
     .container-loading {
-        margin: 60px auto;
-        width: 374px;
+        margin: 5% auto;
+        width: 400px;
         text-align: center;
-        margin-bottom: 2%;
+        margin-bottom: 5%;
     }
 
     .correct-icon-btn {

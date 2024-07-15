@@ -123,11 +123,3 @@
     </div>
 </div>
 
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<?php echo $this->element('Quiz-create/Scripts/add-new-one'); ?>
-<?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
-<?php echo $this->element('Quiz-create/Styles/quiz-create-style'); ?>
-<?php echo $this->element('Shorts/Styles/short-create-style'); ?>

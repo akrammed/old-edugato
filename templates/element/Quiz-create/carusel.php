@@ -6,7 +6,7 @@
         <?php
 
         for ($i = 0; $i < 3; $i++) {
-            echo $this->element('Quiz-view/Elements/card-upload-image', ['id' => $i]);
+            echo $this->element('Quiz-create/Elements/card-upload-image', ['id' => $i]);
         }
 
         ?>
