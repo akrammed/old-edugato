@@ -183,6 +183,27 @@ $(document).ready(function(e) {
             });
 
             break;
+        case 3:
+            init();
+            const optionPositions = [];
+            orderingLogic(optionPositions);
+            const unsortedElements = hasWrongPositionsMatch(optionPositions);
+            if (unsortedElements === true) {
+                correctEvents();
+                optionPositions.forEach(function(element) {
+                    $(".answers li").css("background-color",
+                        "#17BF33");
+                });
+            }
+            if (unsortedElements !== true) {
+                unsortedElements.forEach(function(element) {
+                    $(".answer-list").find(`[data-count="${element }"]`).css("background-color",
+                        "red");
+                });
+                wrongEvents();
+            }
+
+            break;
 
         default:
             break;
