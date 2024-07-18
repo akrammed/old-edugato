@@ -124,7 +124,6 @@ class UsersController extends AppController
 
             $user = $this->Users->patchEntity($user, $data);
             $result = $this->Users->save($user);
-
             if ($result) {
 
                 $this->Flash->success(__('The user has been saved.'));
