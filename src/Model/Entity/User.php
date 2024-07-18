@@ -10,29 +10,29 @@ use Authentication\PasswordHasher\DefaultPasswordHasher;
  * User Entity
  *
  * @property int $id
- * @property string $first_name
- * @property string $last_name
- * @property string $gender
- * @property string $phone_number
- * @property string $email
- * @property string $username
- * @property string $password
+ * @property string|null $first_name
+ * @property string|null  $last_name
+ * @property string|null  $gender
+ * @property string|null  $phone_number
+ * @property string|null  $email
+ * @property string|null  $username
+ * @property string|null  $password
  * @property \Cake\I18n\Date|null $birth_date
- * @property string $profile_picture
- * @property string $marital_status
- * @property int $is_active
- * @property string $bio
- * @property int $role_id
- * @property int $location_id
- * @property int $course_id
- * @property int $product_id
- * @property int $attachment_id
- * @property \Cake\I18n\FrozenTime $created_at
- * @property \Cake\I18n\FrozenTime $buy_at
+ * @property string|null $profile_picture
+ * @property string|null $marital_status
+ * @property int|null $is_active
+ * @property string|null $bio
+ * @property int|null $role_id
+ * @property int|null $location_id
+ * @property int|null $course_id
+ * @property int|null $product_id
+ * @property int|null $attachment_id
+ * @property \Cake\I18n\FrozenTime|null $created_at
+ * @property \Cake\I18n\FrozenTime|null $buy_at
  *
  * @property \App\Model\Entity\Role $role
- * @property \App\Model\Entity\Location $location
- * @property \App\Model\Entity\Course $course
+ * @property \App\Model\Entity\Location|null $location
+ * @property \App\Model\Entity\Course|null $course
  */
 class User extends Entity
 {

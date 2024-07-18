@@ -69,35 +69,7 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->scalar('first_name')
-            ->maxLength('first_name', 255)
-            ->requirePresence('first_name', 'create')
-            ->notEmptyString('first_name');
-
-        $validator
-            ->scalar('last_name')
-            ->maxLength('last_name', 255)
-            ->requirePresence('last_name', 'create')
-            ->notEmptyString('last_name');
-
-
-        $validator
-            ->scalar('phone_number')
-            ->maxLength('phone_number', 255)
-            ->requirePresence('phone_number', 'create')
-            ->notEmptyString('phone_number');
-
-
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
-            ->requirePresence('password', 'create')
-            ->notEmptyString('password');
-
-
-
-
+      
 
         return $validator;
     }

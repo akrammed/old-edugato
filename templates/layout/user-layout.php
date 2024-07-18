@@ -50,15 +50,22 @@ $cakeDescription = 'Edugato';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
     <script>
-    const formDataQuiz = new FormData();
+        const formDataQuiz = new FormData();
     </script>
     <style>
-    .poppins-medium {
-        font-family: "Poppins", sans-serif !important;
-        font-weight: 700;
-        font-style: normal !important;
-        color: #27313F !important;
-    }
+        .poppins-medium {
+            font-family: "Poppins", sans-serif !important;
+            font-weight: 700;
+            font-style: normal !important;
+            color: #27313F !important;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #696cff;
+            border-color: #696cff;
+            box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
+        }
     </style>
     <?= $this->Html->css('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css') ?>
     <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') ?>

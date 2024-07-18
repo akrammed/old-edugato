@@ -19,7 +19,7 @@
                     </div>
                     <!-- /Logo -->
                     <h4 class="mb-2">Welcome to Edugato! 👋</h4>
-                    <p class="mb-4">Please sign-in to your account and start the adventure</p>
+                    <p class="mb-4">Please sign-in to your account to start learning</p>
 
                     <?= $this->Form->create(null, [
                         'class' => 'mt-35',
@@ -77,11 +77,3 @@
         </div>
     </div>
 </div>
-<style>
-.btn-primary {
-    color: #fff;
-    background-color: #696cff;
-    border-color: #696cff;
-    box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
-}
-</style>
