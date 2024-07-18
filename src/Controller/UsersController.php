@@ -117,7 +117,7 @@ class UsersController extends AppController
 
     public function create()
     {
-        $this->viewBuilder()->setLayout('temp-default');
+        $this->viewBuilder()->setLayout('user-layout');
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
@@ -142,7 +142,7 @@ class UsersController extends AppController
     public function login($id = null)
     {
 
-        $this->viewBuilder()->setLayout('temp-default');
+        $this->viewBuilder()->setLayout('user-layout');
         $result = $this->Authentication->getResult();
 
         if ($result->isValid()) {
