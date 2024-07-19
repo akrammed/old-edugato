@@ -1,9 +1,9 @@
 <div>
     <div class="d-flex position-absolute" style="z-index: 999999;">
-        <a href="  <?= $this->Url->build(['controller'=>$type, 'action'=>'edit',$id]) ?>"> <?= $this->element('icons/edit', ['color' => "#F6F8FB"]) ?></a>
+        <a href="  <?= $this->Url->build(['controller' => $type, 'action' => 'edit', $id]) ?>"> <?= $this->element('icons/edit', ['color' => "#F6F8FB"]) ?></a>
         <button type="button" style="background:none; border:none;" data-bs-toggle="modal" data-bs-target="#modalCenter"> <?= $this->element('icons/delete', ['color' => "#F6F8FB"]) ?></button>
     </div>
-   
+
     <form action="<?= $this->Url->build([
                         'plugin' => null,
                         'controller' => $type,

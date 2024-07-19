@@ -1,5 +1,5 @@
 <div class="container w-100">
-    <?= $this->element('avatar-with-bubbel', ['text' => "Listen and order the words"]) ?>
+    <?= $this->element('avatar-with-bubbel', ['text' => "Read and Repeat"]) ?>
     <div class="borderContour mx-auto d-flex flex-column justify-content-center p-3" style="width: 190px;" id="upContainerRP">
         <h5 class="text-center">Drop Audio here</h5>
         <h5 class="text-center">Or</h5>

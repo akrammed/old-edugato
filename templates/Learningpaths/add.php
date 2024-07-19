@@ -42,7 +42,7 @@
 
             </div>
             <div class="col-12 mt-4">
-            <?= $this->Form->button(__('Save'), ['id' => 'saveUser', 'class' => 'btn btn-md',"style" => 'background-color:#5C17E5;color: #FFF']); ?>
+            <?= $this->Form->button(__('Save'), ['id' => 'saveLearningPath', 'class' => 'btn btn-md',"style" => 'background-color:#5C17E5;color: #FFF']); ?>
 
     </div>
         </div>
@@ -61,6 +61,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
+        $('#saveLearningPath').on('click', function(){
+            location.reload();
+        })
         $("#idPath").on("input", function() {
             if ($(this).val() == "") {
                 $("#cardTitle").text("Path name");

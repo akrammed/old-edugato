@@ -34,22 +34,7 @@
     height: 100%;
 }
 
-.avatar-question {
-    display: flex;
-    width: 245px;
-    padding: 16px 20px;
-    align-items: center;
-    border-radius: 60px;
-    border: 1px solid var(--Outline-Container, rgba(154, 168, 188, 0.20));
-    background: var(--Background-Primary, #FFF);
-    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.04);
-    color: black !important;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px;
-}
+
 
 .custom-video-container {
     padding: 0%;

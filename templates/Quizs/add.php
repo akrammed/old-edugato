@@ -114,16 +114,6 @@
     });
 </script>
 <style>
-    .upload-short-video {
-        background-color: #5C17E5;
-        color: white;
-        border: none;
-        width: 108px;
-        height: 39px;
-        border-radius: 16px;
-        margin-left: 6%;
-    }
-
     .quiz-card-type {
         box-shadow: none;
         background-color: #F6F8FB;

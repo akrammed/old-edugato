@@ -138,6 +138,6 @@ function orderingLogic(optionPositions) {
 
         console.log(optionPositions);
     });
-
 }
+
 </script>

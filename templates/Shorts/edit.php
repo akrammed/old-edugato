@@ -25,10 +25,8 @@
                         <div class="vid-cnt">
 
                         </div>
-                        <button type="button" class="upload-short-video replace-btn" style="display:none"
-                            onclick="$('#videoInput').click();">Replace</button>
-                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls
-                            muted></video>
+                        <button type="button" class="upload-short-video replace-btn" style="display:none" onclick="$('#videoInput').click();">Replace</button>
+                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
                     </div>
                     <div class="col-md-8">
                         <section class="sec mt-5" id="section">
@@ -90,23 +88,26 @@
                                     <div class="col d-flex">
                                         <button id="cancel-quiz-create" class="cancel">Cancel</button>
                                         <button id="save-short-btn" class="save">Save</button>
+                                        <?= $this->Form->control('video', [
+                                            'class' => 'form-control visually-hidden',
+                                            'type' => 'file',
+                                            'id' => 'upload-short',
+                                            'label' => false,
+                                            'required' => true,
+                                            'style' => 'display:none'
+                                        ]); ?>
+                                        <?= $this->Form->control('candostatment_id', [
+                                            'value' => $candostatmentId,
+                                            'hidden' => true,
+                                            'label' => false,
+                                            'style' => 'display:none'
+                                        ]) ?>
                                     </div>
                                 </div>
                             </div>
                         </section>
                     </div>
-                    <?= $this->Form->control('video', [
-                        'class' => 'form-control visually-hidden',
-                        'type' => 'file',
-                        'id' => 'upload-short',
-                        'label' => false,
-                        'required' => true
-                    ]); ?>
-                    <?= $this->Form->control('candostatment_id', [
-                        'value' => $candostatmentId,
-                        'hidden' => true,
-                        'label' => false,
-                    ]) ?>
+
                 </div>
                 <?= $this->Form->end() ?>
             </div>
@@ -122,4 +123,3 @@
 
     </div>
 </div>
-
