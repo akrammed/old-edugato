@@ -14,13 +14,7 @@
             Your browser does not support the audio element.
         </audio>
     </div>
-    <div class="input-group mt-3 correctWordInput w-100">
-        <input type="text" id="newWord" class="form-control border-end-0 correctWordInput w-75" placeholder="Word">
-        <div class="input-group-append cursor-pointer" id="clearInput">
-            <span class="input-group-text border-start-0 correctWordInput">
-                <?php echo $this->element('icons/delete-input'); ?></span>
-        </div>
-    </div>
+ 
     <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder','required' => true,]) ?>
     <?= $this->Form->control('quiz_type', [
         'type' => 'hidden',

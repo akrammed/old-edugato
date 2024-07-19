@@ -21,9 +21,8 @@ class CandostatmentsController extends AppController
         $candostatment = $this->Candostatments->newEmptyEntity();
         $learningpath = $this->Candostatments->Learningpaths->get($id, contain: ['Candostatments']);
         $query = $this->Candostatments->find()
-            ->contain(['Learningpaths','Shorts']);
+            ->contain(['Learningpaths','Shorts'])->where(['learningpath_id'=> $id]);
         $candostatments = $this->paginate($query);
-        // dd($candostatments);
 
         $this->set(compact('learningpath','candostatment','candostatments'));
     }

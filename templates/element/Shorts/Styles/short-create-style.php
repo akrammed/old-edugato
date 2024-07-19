@@ -54,6 +54,7 @@
 .upload-short {
     background-color: #ECEFF4;
     border-radius: 16px 0px 0px 16px;
+    height: 600px;
 }
 
 .short-upload-container {
@@ -81,15 +82,6 @@
     color: black;
 }
 
-.upload-short-video {
-    background-color: #5C17E5;
-    color: white;
-    border: none;
-    width: 108px;
-    height: 39px;
-    border-radius: 16px;
-    margin-left: 6%;
-}
 
 .replace-btn {
     position: absolute;

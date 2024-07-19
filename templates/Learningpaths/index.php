@@ -18,15 +18,15 @@
 
                                 <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
                                     <?php
-                                   
+
                                     foreach ($learningpaths as $lp) {
-                                        echo $this->element('course-card',['img'=>$lp->picture,'title'=>$lp->path,'controller'=>'candostatments','id'=>$lp->id,'type'=>"learningpaths"]);
+                                        echo $this->element('course-card', ['img' => $lp->picture, 'title' => $lp->path, 'controller' => 'candostatments', 'id' => $lp->id, 'type' => "learningpaths"]);
                                     }
-                                    
-                                    
-                                    echo $this->element('add-new',["canvas" => "#offcanvasEndAddLearningPath"])?>
-                                
-                          
+
+
+                                    echo $this->element('add-new', ["canvas" => "#offcanvasEndAddLearningPath"]) ?>
+
+
                                 </div>
                             </div>
                         </div>
@@ -51,61 +51,6 @@
         font-style: normal;
         font-weight: 600;
         line-height: 24px;
-    }
-
-
-
-
-    .custom-video-container {
-        padding: 0%;
-        padding-left: 0%;
-        height: 625px;
-    }
-
-    .upload-short {
-        background-color: #ECEFF4;
-        border-radius: 16px 0px 0px 16px;
-    }
-
-    .short-upload-container {
-        height: 93%;
-        border: 1px dashed gray;
-        margin: 4%;
-        border-radius: 7px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 7%;
-    }
-
-
-    .short-upload-container-text {
-        text-align: center;
-        color: black;
-    }
-
-    .upload-short-video {
-        background-color: #5C17E5;
-        color: white;
-        border: none;
-        width: 108px;
-        height: 39px;
-        border-radius: 16px;
-        margin-left: 6%;
-    }
-
-    .replace-btn {
-        position: absolute;
-        top: 10px;
-        left: -50px;
-        z-index: 1;
-    }
-
-    .shortVid {
-        width: 100%;
-        height: 100%;
-        border-radius: 16px 0px 0px 16px;
-        object-fit: cover;
     }
 
     .add-short-card {

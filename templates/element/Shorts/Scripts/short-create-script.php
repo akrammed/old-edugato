@@ -160,6 +160,7 @@ $(document).ready(function() {
         $('#quiz-creation-container').html('');
         $('#quiz-type-section').show();
         $('#actions').hide();
+        $('#quiz-type-creation-section').hide();
 
     });
 
