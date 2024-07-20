@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -84,6 +85,7 @@ async def delete_file(category: str, filename: str):
         return JSONResponse(content={"status": "success", "message": f"File '{filename}' deleted."})
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to delete file: {e}")
+
 
 if __name__ == "__main__":
     import uvicorn
