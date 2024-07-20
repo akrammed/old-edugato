@@ -41,6 +41,7 @@ class CandostatmentsTable extends Table
         parent::initialize($config);
 
         $this->setTable('candostatments');
+        $this->setAlias('Candostatments');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 

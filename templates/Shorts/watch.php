@@ -1,55 +1,43 @@
-<div class="layout-wrapper layout-content-navbar" id="main">
-    <div class="layout-container">
-        <!-- Side bar -->
-        <?php echo $this->element('aside'); ?>
-        <!-- Container -->
-        <div class="layout-page">
-            <!-- Navbar I-->
-            <?php echo $this->element('nav'); ?>
-
-            <!-- Content -->
-            <div class="content-wrapper">
-                <div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
-                    <div class="row">
-                        <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
-                            <div class="card mb-3">
-                                <div class="row ">
-                                    <div class="col-md-4" id="scrolledDiv">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <section class="sec" id="section">
-                                            <div class="card-body h-100" id="take-quiz-2">
-                                                <div class="conversation h-100 w-100 d-flex justify-content-center align-items-center">
-                                                    <div class="avatar-container d-flex flex-row align-items-center">
-                                                        <?php echo $this->element('icons/avatar'); ?>
-                                                        <?php echo $this->element('icons/talikng-bubbls'); ?>
-
-                                                        <h2 class="avatar-question">Focus ! a quiz is coming !</h2>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
-                                    </div>
-
-                                </div>
-                            </div>
+<!-- Content -->
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
+        <div class="row">
+            <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
+                <div class="card mb-3">
+                    <div class="row ">
+                        <div class="col-md-4" id="scrolledDiv">
                         </div>
-                        <div class="col-sm-2">
-                            <div class="card mb-3" style="min-height: 499px !important; border-radius: 16px; ">
-                                <div class="row g-0">
+                        <div class="col-md-8">
+                            <section class="sec" id="section">
+                                <div class="card-body h-100" id="take-quiz-2">
+                                    <div class="conversation h-100 w-100 d-flex justify-content-center align-items-center">
+                                        <div class="avatar-container d-flex flex-row align-items-center">
+                                            <?php echo $this->element('icons/avatar'); ?>
+                                            <?php echo $this->element('icons/talikng-bubbls'); ?>
 
+                                            <h2 class="avatar-question">Focus ! a quiz is coming !</h2>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-block">
-                                <button id="btnScrollUp" class="mb-1" style="background-color: #F6F8FB; border:none;">
-                                    <?php echo $this->element('icons/arrow-top'); ?>
-                                </button><br>
-                                <button id="btnScrollDown" style="background-color: #F6F8FB; border:none;">
-                                    <?php echo $this->element('icons/arrow-down'); ?>
-                                </button>
-                            </div>
+                            </section>
                         </div>
+
                     </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card mb-3" style="min-height: 499px !important; border-radius: 16px; ">
+                    <div class="row g-0">
+
+                    </div>
+                </div>
+                <div class="d-block">
+                    <button id="btnScrollUp" class="mb-1" style="background-color: #F6F8FB; border:none;">
+                        <?php echo $this->element('icons/arrow-top'); ?>
+                    </button><br>
+                    <button id="btnScrollDown" style="background-color: #F6F8FB; border:none;">
+                        <?php echo $this->element('icons/arrow-down'); ?>
+                    </button>
                 </div>
             </div>
         </div>
@@ -67,7 +55,7 @@
         var lastScrollTop = 0;
         debounceLog(firstShortId);
         verifyI(i);
- 
+
         $(document).keydown(function(event) {
             if (event.key === 'ArrowUp') {
                 scroll("up");

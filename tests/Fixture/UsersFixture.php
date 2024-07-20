@@ -27,7 +27,7 @@ class UsersFixture extends TestFixture
                 'email' => 'Lorem ipsum dolor sit amet',
                 'username' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
-                'birth_date' => '2024-01-23',
+                'birth_date' => '2024-07-20',
                 'profile_picture' => 'Lorem ipsum dolor sit amet',
                 'marital_status' => 'Lorem ipsum dolor sit amet',
                 'is_active' => 1,
@@ -37,8 +37,7 @@ class UsersFixture extends TestFixture
                 'course_id' => 1,
                 'product_id' => 1,
                 'attachment_id' => 1,
-                'created' => '2024-01-23',
-                'modified' => '2024-01-23',
+                'courses_user_id' => 1,
             ],
         ];
         parent::init();

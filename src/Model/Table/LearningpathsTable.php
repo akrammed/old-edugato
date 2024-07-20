@@ -46,6 +46,9 @@ class LearningpathsTable extends Table
         $this->hasMany('Candostatments', [
             'foreignKey' => 'learningpath_id',
         ]);
+        $this->hasMany('CoursesUsers', [
+            'foreignKey' => 'learningpath_id',
+        ]);
     }
 
     /**
@@ -62,8 +65,8 @@ class LearningpathsTable extends Table
             ->allowEmptyString('path');
 
         $validator
-            ->scalar('path')
-            ->maxLength('picture',255)
+            ->scalar('picture')
+            ->maxLength('picture', 255)
             ->allowEmptyString('picture');
 
         return $validator;
