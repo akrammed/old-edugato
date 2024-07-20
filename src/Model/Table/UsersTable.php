@@ -14,6 +14,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\RolesTable&\Cake\ORM\Association\BelongsTo $Roles
  * @property \App\Model\Table\LocationsTable&\Cake\ORM\Association\BelongsTo $Locations
  * @property \Lms\Model\Table\CoursesTable&\Cake\ORM\Association\BelongsTo $Courses
+ * @property \Lms\Model\Table\CoursesTable&\Cake\ORM\Association\BelongsToMany $Courses
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -28,8 +29,6 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User> deleteManyOrFail(iterable $entities, array $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsersTable extends Table
 {
@@ -47,8 +46,6 @@ class UsersTable extends Table
         $this->setDisplayField('first_name');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
-
         $this->belongsTo('Roles', [
             'foreignKey' => 'role_id',
         ]);
@@ -56,8 +53,18 @@ class UsersTable extends Table
             'foreignKey' => 'location_id',
         ]);
         $this->belongsTo('Courses', [
-            'className' => 'Lms.Courses',
             'foreignKey' => 'course_id',
+        ]);
+        $this->belongsTo('CoursesUsers', [
+            'foreignKey' => 'courses_user_id',
+        ]);
+        $this->hasMany('ShortTypes', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->belongsToMany('Courses', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'course_id',
+            'joinTable' => 'courses_users',
         ]);
     }
 
@@ -69,7 +76,83 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-      
+        $validator
+            ->scalar('first_name')
+            ->maxLength('first_name', 255)
+            ->allowEmptyString('first_name');
+
+        $validator
+            ->scalar('last_name')
+            ->maxLength('last_name', 255)
+            ->allowEmptyString('last_name');
+
+        $validator
+            ->scalar('gender')
+            ->allowEmptyString('gender');
+
+        $validator
+            ->scalar('phone_number')
+            ->maxLength('phone_number', 255)
+            ->allowEmptyString('phone_number');
+
+        $validator
+            ->email('email')
+            ->allowEmptyString('email');
+
+        $validator
+            ->scalar('username')
+            ->maxLength('username', 255)
+            ->allowEmptyString('username');
+
+        $validator
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->allowEmptyString('password');
+
+        $validator
+            ->date('birth_date')
+            ->allowEmptyDate('birth_date');
+
+        $validator
+            ->scalar('profile_picture')
+            ->maxLength('profile_picture', 255)
+            ->allowEmptyString('profile_picture');
+
+        $validator
+            ->scalar('marital_status')
+            ->allowEmptyString('marital_status');
+
+        $validator
+            ->allowEmptyString('is_active');
+
+        $validator
+            ->scalar('bio')
+            ->maxLength('bio', 1000)
+            ->allowEmptyString('bio');
+
+        $validator
+            ->integer('role_id')
+            ->allowEmptyString('role_id');
+
+        $validator
+            ->integer('location_id')
+            ->allowEmptyString('location_id');
+
+        $validator
+            ->integer('course_id')
+            ->allowEmptyString('course_id');
+
+        $validator
+            ->integer('product_id')
+            ->allowEmptyString('product_id');
+
+        $validator
+            ->integer('attachment_id')
+            ->allowEmptyString('attachment_id');
+
+        $validator
+            ->integer('courses_user_id')
+            ->allowEmptyString('courses_user_id');
 
         return $validator;
     }
@@ -88,6 +171,7 @@ class UsersTable extends Table
         $rules->add($rules->existsIn('role_id', 'Roles'), ['errorField' => 'role_id']);
         $rules->add($rules->existsIn('location_id', 'Locations'), ['errorField' => 'location_id']);
         $rules->add($rules->existsIn('course_id', 'Courses'), ['errorField' => 'course_id']);
+        $rules->add($rules->existsIn('courses_user_id', 'CoursesUsers'), ['errorField' => 'courses_user_id']);
 
         return $rules;
     }

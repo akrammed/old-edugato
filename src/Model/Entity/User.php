@@ -4,19 +4,18 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use Authentication\PasswordHasher\DefaultPasswordHasher;
 
 /**
  * User Entity
  *
  * @property int $id
  * @property string|null $first_name
- * @property string|null  $last_name
- * @property string|null  $gender
- * @property string|null  $phone_number
- * @property string|null  $email
- * @property string|null  $username
- * @property string|null  $password
+ * @property string|null $last_name
+ * @property string|null $gender
+ * @property string|null $phone_number
+ * @property string|null $email
+ * @property string|null $username
+ * @property string|null $password
  * @property \Cake\I18n\Date|null $birth_date
  * @property string|null $profile_picture
  * @property string|null $marital_status
@@ -27,12 +26,11 @@ use Authentication\PasswordHasher\DefaultPasswordHasher;
  * @property int|null $course_id
  * @property int|null $product_id
  * @property int|null $attachment_id
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $buy_at
+ * @property int|null $courses_user_id
  *
  * @property \App\Model\Entity\Role $role
- * @property \App\Model\Entity\Location|null $location
- * @property \App\Model\Entity\Course|null $course
+ * @property \App\Model\Entity\Location $location
+ * @property \Lms\Model\Entity\Course $course
  */
 class User extends Entity
 {
@@ -63,11 +61,10 @@ class User extends Entity
         'course_id' => true,
         'product_id' => true,
         'attachment_id' => true,
+        'courses_user_id' => true,
         'role' => true,
         'location' => true,
         'course' => true,
-        'created_at' => true,
-        'buy_at' => true,
     ];
 
     /**
@@ -78,9 +75,4 @@ class User extends Entity
     protected array $_hidden = [
         'password',
     ];
-    protected function _setPassword(string $password)
-    {
-        $hasher = new DefaultPasswordHasher();
-        return $hasher->hash($password);
-    }
 }
