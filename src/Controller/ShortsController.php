@@ -61,8 +61,9 @@ class ShortsController extends AppController
         $short = $this->Shorts->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
+
             if (isset($data['video'])) {
-                $data = $this->upload($data, 'video', 'video');
+                $data = $data['video']->getClientFilename();
             } else {
                 unset($data['video']);
             }
@@ -70,7 +71,7 @@ class ShortsController extends AppController
             if ($this->Shorts->save($short)) {
                 $this->Flash->success(__('The short has been saved.'));
                 $candostatment = $this->Shorts->Candostatments->get($data['candostatment_id'], contain: ['Learningpaths', 'Shorts']);
-                return $this->redirect(['controller' => "candostatments", 'action' => 'index', $candostatment->learningpath_id]);
+                $this->set(compact('$candostatment'));
             }
             $this->Flash->error(__('The short could not be saved. Please, try again.'));
         }
@@ -89,30 +90,28 @@ class ShortsController extends AppController
     {
 
         $this->viewBuilder()->setLayout('admin-layout');
-       
+
         $short = $this->Shorts->get($id, contain: ['Candostatments']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
             $data['title'] = $short['title'];
             if (isset($data['video'])) {
-                $data = $this->upload($data, 'video', 'video');
+                $data['video'] = $data['video']->getClientFilename();
             } else {
                 unset($data['video']);
             }
-            if ($data['status']) {
-                $short = $this->Shorts->patchEntity($short, $data['data']);
-                $quizResult = $this->createQuiz($data['data']);
-                $short->quiz_id = $quizResult['id'];
-                if ($this->Shorts->save($short)) {
-                    $this->Flash->success(__('The short has been saved.'));
-                    $candostatment = $short['candostatment'];
-                    return $this->redirect(['controller' => "candostatments", 'action' => 'index', $candostatment->learningpath_id]);
-                }
-                $this->Flash->error(__('The short could not be saved. Please, try again.'));
+            $short = $this->Shorts->patchEntity($short, $data);
+            $quizResult = $this->createQuiz($data);
+            $short->quiz_id = $quizResult['id'];
+            if ($this->Shorts->save($short)) {
+                $this->Flash->success(__('The short has been saved.'));
+                $candostatment = $short['candostatment'];
+                return $this->redirect(['controller' => "candostatments", 'action' => 'index', $candostatment->learningpath_id]);
             }
+            $this->Flash->error(__('The short could not be saved. Please, try again.'));
         }
-      
-       
+
+
         $shortTypes = $this->Shorts->ShortTypes->find('list', limit: 200)->all();
         $candostatmentId = $short['candostatment']->id;
         $this->set(compact('short', 'shortTypes', 'candostatmentId'));

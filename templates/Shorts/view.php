@@ -40,7 +40,7 @@ foreach ($options as  $key => $o) {
                                         <video
                                             style="border-radius: 10px 0px 0px 16px; width: 100%; height: 100%; object-fit: cover;"
                                             id="" class="s courseImage course-img img-fluid"
-                                            src="<?php echo $this->Url->build('/uploads/video/' . $short->video) ?>"
+                                            src="<?php echo $this->Url->build('/uploads/videos/' . $short->video) ?>"
                                             controls autoplay loop disablePictureInPicture
                                             controlslist="nodownload noplaybackrate">
                                         </video>

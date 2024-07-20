@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
             <div class="card mb-3 add-short-card ">
-                <?= $this->Form->create($short, ['type' => 'file']) ?>
+                <?= $this->Form->create($short, ['type' => 'file', 'id' => 'short-edit', 'enctype' => 'multipart/form-data']) ?>
                 <div class="row ">
                     <div class="col-md-4 upload-short" id="dropZone">
                         <div class="short-upload-container">
@@ -88,6 +88,7 @@
                                     <div class="col d-flex">
                                         <button id="cancel-quiz-create" class="cancel">Cancel</button>
                                         <button id="save-short-btn" class="save">Save</button>
+                                        <button id="send-short-btn" type="submit" class="send" hidden></button>
                                         <?= $this->Form->control('video', [
                                             'class' => 'form-control visually-hidden',
                                             'type' => 'file',
@@ -123,3 +124,28 @@
 
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    $('#save-short-btn').on('click', function(event) {
+        event.preventDefault();
+        var files = $('#upload-short')[0].files;
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            formData.append('files', files[i]);
+        }
+        console.log(formData);
+        axios.post('http://127.0.0.1:8000/upload/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(function(response) {
+                console.log('Response:', response.data);
+                $('#send-short-btn').click();
+            })
+            .catch(function(error) {
+                console.error('There was an error uploading the file!', error);
+            });
+    });
+</script>
