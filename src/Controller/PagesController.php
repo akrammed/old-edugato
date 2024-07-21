@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -14,12 +15,14 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
+use Cake\ORM\TableRegistry;
 use Cake\View\Exception\MissingTemplateException;
 
 /**
@@ -72,12 +75,21 @@ class PagesController extends AppController
         }
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
+        $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->viewBuilder()->setLayout('admin-layout');
+        $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
+        $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
+        $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
+        $userId = $currentSessionUser ? $currentSessionUser->id : null;
+        $where = ['user_id' => $userId];
+        $learningPaths = $courseUserTable->find()->where($where)->first();
+        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->toArray();
+        $this->set(compact(['candostatments','currentSessionUser']));
+    }
+    public function play()
+    {
         $this->viewBuilder()->setLayout('admin-layout');
     }
-    public function play() {
-        $this->viewBuilder()->setLayout('admin-layout');
-    }
-
-
 }

@@ -113,11 +113,3 @@
 
     </div>
 </div>
-
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<?php echo $this->element('Quiz-view/Scripts/add-new-one'); ?>
-<?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
-<?php echo $this->element('Quiz/Style/quiz-create-style'); ?>
-<?php echo $this->element('Shorts/Styles/short-create-style'); ?>

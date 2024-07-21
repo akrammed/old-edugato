@@ -76,20 +76,20 @@ $cakeDescription = 'Edugato';
 <body class="poppins-medium ">
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <?php echo $this->element('admin/aside'); ?>
+            <?php echo $this->element('dashboard/aside'); ?>
             <div class="layout-page">
-                <?php echo $this->element('admin/nav'); ?>
+                <?php echo $this->element('dashboard/nav'); ?>
                 <div class="content-wrapper">
 
                     <?= $this->Flash->render() ?>
                     <?= $this->fetch('content') ?>
-                    <?php echo $this->element('admin/add-course'); ?>
-                    <?php echo $this->element('admin/add-short'); ?>
-                    <?php echo $this->element('admin/add-quiz'); ?>
-                    <?php echo $this->element('admin/add-user'); ?>
-                    <?php echo $this->element('admin/add-canvas', ['name' => "Learning Path", 'url' => "/learningpaths/add", "id" => "offcanvasEndAddLearningPath"]) ?>
-                    <?php echo $this->element('admin/add-canvas', ['name' => "Learning Path", 'url' => "/learningpaths/add", "id" => "offcanvasEndEditLearningPath"]) ?>
-                    <?php echo $this->element('admin/add-canvas', ['name' => "Learning Path", 'url' => "/users/add", "id" => "offcanvasEndCanDoS"]) ?>
+                    <?php echo $this->element('dashboard/add-course'); ?>
+                    <?php echo $this->element('dashboard/add-short'); ?>
+                    <?php echo $this->element('dashboard/add-quiz'); ?>
+                    <?php echo $this->element('dashboard/add-user'); ?>
+                    <?php echo $this->element('dashboard/add-canvas', ['name' => "Learning Path", 'url' => "/learningpaths/add", "id" => "offcanvasEndAddLearningPath"]) ?>
+                    <?php echo $this->element('dashboard/add-canvas', ['name' => "Learning Path", 'url' => "/learningpaths/add", "id" => "offcanvasEndEditLearningPath"]) ?>
+                    <?php echo $this->element('dashboard/add-canvas', ['name' => "Learning Path", 'url' => "/users/add", "id" => "offcanvasEndCanDoS"]) ?>
                 </div>
 
                 <?php echo $this->element('Quiz-view/Elements/sounds-effects'); ?>
