@@ -10,15 +10,15 @@
             </div>
             <button type="button" class="btn btn-secondary btn-sm" id="browseAudioLO">Browse</button>
         </div>
-        <div class="d-none mx-auto flex-column align-items-center mt-3" id="AudioContainerLO">
+        <div class="d-none flex-column align-items-center" id="AudioContainerLO">
             <audio id="audioLO" controls>
                 <source src="" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
         </div>
-        <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder','required' => true,]) ?>
-        <?= $this->Form->control('quiz_type', ['type' => 'hidden','value' => '6','id' => 'quiz_type',])?>
     </div>
+    <?= $this->Form->control('audio', ['type' => 'file', 'label' => false, 'class' => 'd-none', 'id' => 'audioQuizListenOrder','required' => true,]) ?>
+    <?= $this->Form->control('quiz_type', ['type' => 'hidden','value' => '6','id' => 'quiz_type',])?>
     <p class="text-center text-lg fw-semibold">
         Type the correct words in order here
     </p>

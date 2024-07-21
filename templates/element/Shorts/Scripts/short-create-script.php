@@ -72,7 +72,7 @@ $(document).ready(function() {
         $shortUploadContainer.hide();
         $shortVid.show();
         $replaceBtn.show();
-        $('.upload-short').css('padding', '0%');
+        $('.svideo-container').css('padding', '0%');
         $shortVid.attr('src', URL.createObjectURL(file)).show();
     }
 

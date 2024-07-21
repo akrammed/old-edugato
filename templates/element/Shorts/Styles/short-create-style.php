@@ -1,14 +1,14 @@
 <style>
 .svideo-container {
     background-color: hsl(var(--muted-color));
-    padding: 1rem;
     flex-shrink: 0;
+    padding: 1rem;
 }
 .svideo-card {
     border: 2px dashed hsla(var(--foreground-color), 0.4);
     height: 100%;
     display: flex;
-    padding: 16px 30px 30px;
+    padding: 1rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -40,6 +40,9 @@
     padding: 1rem;
     border-radius: 1rem;
     background-color: hsl(var(--muted-color));
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .upload-card__container {
@@ -51,7 +54,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    flex-grow: 1;
 }
 
 .quiz-card-title {

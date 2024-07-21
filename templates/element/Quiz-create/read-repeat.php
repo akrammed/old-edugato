@@ -10,7 +10,7 @@
             </div>
             <button type="button" class="btn btn-secondary btn-sm" id="browseAudioLR">Browse</button>
         </div>
-        <div class="d-none mx-auto flex-column align-items-center mt-3" id="AudioContainerLR">
+        <div class="d-none flex-column align-items-center" id="AudioContainerLR">
             <audio id="audioLR" controls>
                 <source   src="" type="audio/mp3">
                 Your browser does not support the audio element.

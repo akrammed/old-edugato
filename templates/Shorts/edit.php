@@ -27,7 +27,7 @@
                         </div>
                         <div class="vid-cnt">
                         </div>
-                        <button type="button" class="btn btn-secondary position-absolute" id="replace-btn" style="display:none; left: 32px; top: 32px;" onclick="$('#videoInput').click();">Replace</button>
+                        <button type="button" class="btn btn-secondary position-absolute" id="replace-btn" style="display:none; left: 16px; top: 16px; z-index: 999" onclick="$('#upload-short').click();">Replace</button>
                         <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
                     </div>
                     <section class="quiz-section flex-basis-lg-60 p-rem-2">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div id="quiz-type-creation-section" class="flex-grow-1 d-flex flex-column" style="display: none;">
-                            <div id="quiz-creation-container" class="flex-grow-1 d-flex flex-column gap-rem-4 gap-xxl-rem-">
+                            <div id="quiz-creation-container" class="flex-grow-1 d-flex flex-column gap-rem-4 gap-xxl-rem-2">
                             </div>
                         </div>
                         <div id="actions" style="display:none">
