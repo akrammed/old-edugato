@@ -1,30 +1,7 @@
-<p class="question-text"><strong>Quiz question goes here:</strong> Click on bubble to edit</p>
-
-<div class="title">
-    <?= $this->element('icons/avatar') ?>
-    <?= $this->element('icons/talikng-bubbls') ?>
-    <?= $this->Form->control('question', ['class' => "avatarText", 'value' => $text, 'label' => false, 'required' => true,]) ?>
+<div class="space-y-6 flex-shrink-0">
+    <p class="text-center text-xs fw-medium"><strong>Quiz question goes here:</strong> Click on bubble to edit</p>
+    <div class="d-flex gap-4 justify-content-center">
+        <?= $this->element('icons/avatar') ?>
+        <?= $this->Form->control('question', ['class' => "avatarText", 'value' => $text, 'label' => false, 'required' => true]) ?>
+    </div>
 </div>
-<style>
-    .avatarText {
-        border-radius: 33.423px;
-        border: 0.557px solid rgba(154, 168, 188, 0.20);
-        background: #FFF;
-        box-shadow: 0px 1.114px 4.456px 0px rgba(0, 0, 0, 0.04);
-        padding: 10px;
-        font-family: "Poppins";
-        font-size: 22px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 24px;
-        margin-bottom: 11%;
-        text-align: center;
-    }
-
-    .avatarText:focus {
-        color: #9AA8BC;
-        border: none;
-
-    }
-
-</style>

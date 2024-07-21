@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Short $short
@@ -7,121 +6,97 @@
  * @var int  $candostatmentId;
  */
 ?>
-<div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
-    <div class="row">
-        <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
-            <div class="card mb-3 add-short-card ">
-                <?= $this->Form->create($short, ['type' => 'file', 'id' => 'short-edit', 'enctype' => 'multipart/form-data']) ?>
-                <div class="row ">
-                    <div class="col-md-4 upload-short" id="dropZone">
-                        <div class="short-upload-container">
-                            <div class="short-upload-container-body">
-                                <?php echo $this->element('icons/drop-element'); ?>
-                                <h6 class="short-upload-container-text">Drop Video here <br>
-                                    or</h6>
-                                <button class="upload-short-video">Browse</button>
+<div id="scContent" class="d-flex flex-column flex-xl-row gap-3 flex-grow-1 pb-3 pb-px-lg-26">
+    <div class="flex-basis-xl-70 flex-basis-xxl-75 d-flex flex-column flex-shring-0">
+        <div class="card flex-grow-1 rounded-rem-1 overflow-hidden">
+            <?= $this->Form->create($short, [
+                'type' => 'file',
+                'class' => 'flex-grow-1',
+            ]) ?>
+                <div class="d-flex flex-column flex-lg-row flex-xl-column flex-xxl-row min-h-100">
+                    <div class="svideo-container flex-basis-lg-40" id="dropZone">
+                        <div class="svideo-card" id="short-upload-container">
+                            <?php echo $this->element('icons/drop-element'); ?>
+                            <p class="text-lg lh-1 mt-2 fw-semibold">Drop Video here</p>
+                            <div class="divider divider--sm">
+                                <span class="divider__line"></span>
+                                <span class="divider__text">OR</span>
+                                <span class="divider__line"></span>
                             </div>
+                            <button class="btn btn-secondary" id="upload-short-video">Browse</button>
                         </div>
                         <div class="vid-cnt">
-
                         </div>
-                        <button type="button" class="upload-short-video replace-btn" style="display:none" onclick="$('#videoInput').click();">Replace</button>
+                        <button type="button" class="btn btn-secondary position-absolute" id="replace-btn" style="display:none; left: 32px; top: 32px;" onclick="$('#videoInput').click();">Replace</button>
                         <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
                     </div>
-                    <div class="col-md-8">
-                        <section class="sec mt-5" id="section">
-                            <div id="take-quiz-2">
-                                <div class="conversation " style="flex-direction: column;">
-
-                                    <div class="container" id="quiz-type-section">
-                                        <h3 class="pb-1 mb-4 mt-4 text-dark fw-normal main-title">Add a Quiz Type</h3>
-                                        <div>
-                                            <div class="row ">
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/text-option-icon'); ?>
-                                                </div>
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/image-option-icon'); ?>
-                                                </div>
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/order-the-words-icon'); ?>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row">
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/match-icon'); ?>
-                                                </div>
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/carusel-icon'); ?>
-                                                </div>
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/listen-order-icon'); ?>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/read-repeat-icon'); ?>
-                                                </div>
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/conversation-speaking-icon'); ?>
-                                                </div>
-                                                <div class="col-4 mb-4 quiz-type-col">
-                                                    <?php echo $this->element('icons/conversation-ordering-icon'); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="quiz-type-creation-section" style="display: none;">
-
-                                        <div class="container">
-                                            <div id="quiz-creation-container">
-                                            </div>
-                                        </div>
-
-
-                                    </div>
+                    <section class="quiz-section flex-basis-lg-60 p-rem-2">
+                        <div id="quiz-type-section">
+                            <h4 class="text-center">Add a Quiz Type</h4>
+                            <div class="d-flex gap-4 flex-wrap justify-content-center pt-rem-2">
+                                <div class="quiz-card">
+                                     <?= $this->element('icons/text-option-icon'); ?>
+                                </div>
+                                <div class="quiz-card">
+                                    <?= $this->element('icons/image-option-icon'); ?>
+                                </div>
+                                <div class="quiz-card">
+                                <?= $this->element('icons/order-the-words-icon'); ?>
+                                </div>
+                                <div class="quiz-card">
+                                <?= $this->element('icons/match-icon'); ?>
 
                                 </div>
-                                <div id="actions" style="display:none">
-                                    <div class="col d-flex">
-                                        <button id="cancel-quiz-create" class="cancel">Cancel</button>
-                                        <button id="save-short-btn" class="save">Save</button>
-                                        <button id="send-short-btn" type="submit" class="send" hidden></button>
-                                        <?= $this->Form->control('video', [
-                                            'class' => 'form-control visually-hidden',
-                                            'type' => 'file',
-                                            'id' => 'upload-short',
-                                            'label' => false,
-                                            'required' => true,
-                                            'style' => 'display:none'
-                                        ]); ?>
-                                        <?= $this->Form->control('candostatment_id', [
-                                            'value' => $candostatmentId,
-                                            'hidden' => true,
-                                            'label' => false,
-                                            'style' => 'display:none'
-                                        ]) ?>
-                                    </div>
+                                <div class="quiz-card">
+                                <?= $this->element('icons/carusel-icon'); ?>
+                                </div>
+                                <div class="quiz-card">
+                                <?= $this->element('icons/listen-order-icon'); ?>
+                                </div>
+                                <div class="quiz-card">
+                                <?= $this->element('icons/read-repeat-icon'); ?>
+                                </div>
+                                <div class="quiz-card">
+                                <?= $this->element('icons/conversation-speaking-icon'); ?>
+                                </div>
+                                <div class="quiz-card">
+                                <?= $this->element('icons/conversation-ordering-icon'); ?>
                                 </div>
                             </div>
-                        </section>
-                    </div>
-
+                        </div>
+                        <div id="quiz-type-creation-section" class="flex-grow-1 d-flex flex-column" style="display: none;">
+                            <div id="quiz-creation-container" class="flex-grow-1 d-flex flex-column gap-rem-4 gap-xxl-rem-">
+                            </div>
+                        </div>
+                        <div id="actions" style="display:none">
+                            <button id="cancel-quiz-create" class="cancel">Cancel</button>
+                            <button id="save-short-btn" class="save">Save</button>
+                            <button id="send-short-btn" type="submit" class="send" hidden></button>
+                            <?= $this->Form->control('video', [
+                                'class' => 'form-control visually-hidden',
+                                'type' => 'file',
+                                'id' => 'upload-short',
+                                'label' => false,
+                                'required' => true,
+                                'style' => 'display:none',
+                            ]) ?>
+                            <?= $this->Form->control('candostatment_id', [
+                                'value' => $candostatmentId,
+                                'hidden' => true,
+                                'label' => false,
+                                'style' => 'display:none',
+                            ]) ?>
+                        </div>
+                    </section>
                 </div>
-                <?= $this->Form->end() ?>
-            </div>
+            <?= $this->Form->end() ?>
         </div>
-        <div class="col-sm-2">
-            <div class="card mb-3 " style="min-height: 499px !important; border-radius: 16px; ">
-                <div class="row g-0">
-
-                </div>
-            </div>
-
+    </div>
+    <div class="flex-basis-xl-30 flex-basis-xxl-25 d-flex flex-xl-column gap-3 flex-shring-0" style="min-height: 320px;">
+        <div class="card flex-basis-75 rounded-rem-1">
         </div>
-
+        <div class="flex-basis-35">
+        </div>
     </div>
 </div>
 

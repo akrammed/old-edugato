@@ -110,9 +110,7 @@
 
                         reader.onload = function(e) {
                             $(`#imageUploadedDiv${number}`).html(`
-                                <div class="d-flex position-absolute" style="z-index: 999999;">
-                                    <button type="button" class="browseBtn" id="replaceBtn${number}">Replace</button>
-                                </div>
+                                <button type="button" class="btn btn-xs btn-secondary position-absolute" style="left: 8px; top: 8px;" id="replaceBtn${number}">Replace</button>
                                 <img id="imageUploaded${number}" class="img-fluid" style="border-radius: 8px 8px 0px 0px; width: 100%; height: 100%;" src="${e.target.result}" alt="Uploaded Image">
                             `);
                             imageWithCorrectWord[number] = {
@@ -163,8 +161,6 @@
                 $(document).on('click', '[id^="option-image-"]', this.uploadImage.bind(this));
                 $(document).on('change', '[id^="image"]', this.placeImage.bind(this));
                 $(document).on('click', '[id^="imageUploaded"]', this.replaceImage.bind(this));
-                $(document).on('click', '#save-quiz-create', this.sendToBackEnd.bind(this));
-
             },
             uploadImage(event) {
                 const imageId = $(event.target).attr('id');
@@ -179,26 +175,26 @@
             placeImage(event) {
                 let input = $(event.target);
                 const numberMatch = input.attr('id').match(/image(\d+)/);
-                const number = numberMatch[1];
-                $(`#option-image-${number}`).hide();
-                $(`#show-image-${number}`).removeClass('d-none');
 
-                if (input[0].files && input[0].files[0]) {
-                    const reader = new FileReader();
+                if (numberMatch) {
+                    const number = numberMatch[1];
 
-                    reader.onload = function(e) {
+                    $(`#option-image-${number}`).hide();
+                    $(`#show-image-${number}`).removeClass('d-none');
 
-                        $(`#show-image-${number}`).html(`
-                                <img id="imageUploaded${number}" class="img-fluid" style=" height: 135px; border-radius: 14px; width:100%" src="${e.target.result}" alt="Uploaded Image">
+                    if (input[0].files && input[0].files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            $(`#show-image-${number}`).html(`
+                                <img id="imageUploaded${number}" class="img-fluid" style="height: 135px; border-radius: 14px; width:100%;" src="${e.target.result}" alt="Uploaded Image">
                             `);
-                        arrayTosendChooseOneImage[number] = e.target.result;
-
-                    };
-
-                    reader.readAsDataURL(input[0].files[0]);
+                            arrayTosendChooseOneImage[number] = e.target.result;
+                        };
+                        reader.readAsDataURL(input[0].files[0]);
+                    }
+                } else {
+                    console.error('No match found for image number in the input ID.');
                 }
-
-                console.error("Error: Invalid image ID format.");
             },
             replaceImage(event) {
                 const buttonId = $(event.target).attr('id');
@@ -407,7 +403,6 @@
             addAudioToForm(event) {
                 const audio = $('#audioQuizLR')[0].files[0];
                 formDataQuiz.append('audio', audio);
-                $('#upContainerRP').removeClass('d-flex').addClass('d-none');
 
                 const reader = new FileReader();
                 reader.onload = function(e) {
