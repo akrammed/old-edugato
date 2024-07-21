@@ -55,13 +55,13 @@ class ShortsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
+   
     public function add()
     {
         $this->viewBuilder()->setLayout('admin-layout');
         $short = $this->Shorts->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-
             if (isset($data['video'])) {
                 $data = $data['video']->getClientFilename();
             } else {
@@ -71,14 +71,13 @@ class ShortsController extends AppController
             if ($this->Shorts->save($short)) {
                 $this->Flash->success(__('The short has been saved.'));
                 $candostatment = $this->Shorts->Candostatments->get($data['candostatment_id'], contain: ['Learningpaths', 'Shorts']);
-                $this->set(compact('$candostatment'));
+                return $this->redirect(['controller' => "candostatments", 'action' => 'index', $candostatment->learningpath_id]);
             }
             $this->Flash->error(__('The short could not be saved. Please, try again.'));
         }
         $shortTypes = $this->Shorts->ShortTypes->find('list', limit: 200)->all();
         $this->set(compact('short', 'shortTypes'));
     }
-
     /**
      * Edit method
      *
