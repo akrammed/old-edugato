@@ -14,8 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
-?>
+$cakeDescription = 'CakePHP: the rapid development php framework'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +25,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>

@@ -1,56 +1,78 @@
 <script>
 $(document).ready(function() {
-
     $('#save-short-btn').click(function(event) {
-    var fileInput = $('#upload-short')[0].files.length;
-
-    if (fileInput === 0) {
-        Swal.fire({
-            icon: "error",
-            title: "Wait...",
-            text: "The video file is required"
-        });
-        return false;
-    } else {
-        var file = $('#upload-short')[0].files[0];
-        var fileSizeMB = file.size / (1024 * 1024);
-        var uploadSpeedMBps = 0.2; 
-        var estimatedTimeMs = fileSizeMB / uploadSpeedMBps * 1000;
-
-        let timerInterval;
-        Swal.fire({
-            title: "Uploading !",
-            allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
-                const timer = Swal.getPopup().querySelector("b");
-                timerInterval = setInterval(() => {
-                    let timeLeft = estimatedTimeMs - (new Date().getTime() - startTime);
-                    let minutes = Math.floor(timeLeft / 60000);
-                    let seconds = ((timeLeft % 60000) / 1000).toFixed(0);
-                    timer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                }, 100);
-            }
-        });
-
-        var startTime = new Date().getTime(); // Record the start time of the upload
-    }
-});
-
-
+        var fileInput = $('#upload-short')[0].files.length;
+        if (fileInput === 0) {
+            Swal.fire({
+                icon: "error",
+                title: "Wait...",
+                text: "The video file is required"
+            });
+            return false;
+        } else {
+            var file = $('#upload-short')[0].files[0];
+            var fileSizeMB = file.size / (1024 * 1024);
+            var uploadSpeedMBps = 0.2;
+            var estimatedTimeMs = fileSizeMB / uploadSpeedMBps * 1000;
+            let timerInterval;
+            var startTime = new Date().getTime();
+            Swal.fire({
+                title: "Uploading!",
+                html: "Time left: <b></b>",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        let timeElapsed = new Date().getTime() - startTime;
+                        let timeLeft = Math.max(0, estimatedTimeMs - timeElapsed);
+                        let minutes = Math.floor(timeLeft / 60000);
+                        let seconds = ((timeLeft % 60000) / 1000).toFixed(0);
+                        timer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                        if (timeLeft <= 0) {
+                            clearInterval(timerInterval);
+                            Swal.fire({
+                                icon: "success",
+                                title: "Upload Complete",
+                                text: "The video has been successfully uploaded."
+                            });
+                        }
+                    }, 100);
+                }
+            }).then((result) => {
+                clearInterval(timerInterval);
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Timeout",
+                        text: "The upload process took too long."
+                    });
+                }
+            });
+            setTimeout(() => {
+                clearInterval(timerInterval);
+                Swal.close();
+                Swal.fire({
+                    icon: "success",
+                    title: "Upload Complete",
+                    text: "The video has been successfully uploaded."
+                });
+            }, estimatedTimeMs);
+        }
+    });
 
     const $dropZone = $('#dropZone'),
         $uploadShort = $('#upload-short'),
         $shortVid = $('.shortVid'),
-        $shortUploadContainer = $('.short-upload-container'),
-        $replaceBtn = $('.replace-btn'),
-        $uploadShortVideo = $('.upload-short-video');
+        $shortUploadContainer = $('#short-upload-container'),
+        $replaceBtn = $('#replace-btn'),
+        $uploadShortVideo = $('#upload-short-video');
 
     function showVideo(file) {
         $shortUploadContainer.hide();
         $shortVid.show();
         $replaceBtn.show();
-        $('.upload-short').css('padding', '0%');
+        $('.svideo-container').css('padding', '0%');
         $shortVid.attr('src', URL.createObjectURL(file)).show();
     }
 

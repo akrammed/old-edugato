@@ -1,6 +1,6 @@
-<div class="container" id="2">
-    <?= $this->element('avatar-with-bubbel', ['text' => "Choose the correct image"]) ?>
-    <p style="margin-top:9% !important;    text-align: center;">Upload correct image first</p>
+<?= $this->element('avatar-with-bubbel', ['text' => "Choose the correct image"]) ?>
+<div class="flex-grow-1 d-flex justify-content-center flex-column gap-4">
+    <p class="text-center text-lg fw-semibold">Upload correct image first</p>
     <div class="col-12">
         <div class="row g-2">
             <?php for ($i = 1; $i <= 4; $i++) : ?>
@@ -12,7 +12,6 @@
                             <path d="M46.376 9.82544V19.1059C46.3731 23.6337 50.0865 27.3122 54.6762 27.3215H63.5776" stroke="#728197" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M30.0787 35.9077H29.8708M30.034 36.7393C29.566 36.7393 29.1865 36.3646 29.1865 35.9026C29.1865 35.4406 29.566 35.0662 30.034 35.0662C30.5021 35.0662 30.8815 35.4406 30.8815 35.9026C30.8815 36.3646 30.5021 36.7393 30.034 36.7393Z" stroke="#728197" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-
                         <div id="show-image-<?= $i ?>" class="d-none"></div>
                         <div class="d-none">
                             <?= $this->Form->control('images[]', [
@@ -31,8 +30,6 @@
                 'value' => '2',
                 'id' => 'quiz_type',
             ]) ?>
-            <style></style>
         </div>
     </div>
-
 </div>
