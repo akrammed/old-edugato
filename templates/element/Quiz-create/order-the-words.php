@@ -1,40 +1,28 @@
-<div class="container" id="1">
-    <?= $this->element('avatar-with-bubbel', ['text' => "Tap the words to order"]) ?>
-    <div class="row space-input">
-        <div class="col">
-            <?= $this->element('icons/back-space') ?>
-        </div>
+<?= $this->element('avatar-with-bubbel', ['text' => "Tap the words to order"]) ?>
+<div class="flex-grow-1 d-flex justify-content-center flex-column gap-4">
+    <div class="space-input">
+        <?= $this->element('icons/back-space') ?>
     </div>
-    <div>
-        <p style="margin-top: 10%;">List the words in the right order</p>
-        <div class="container d-flex">
-            <div class="row" id="list-word-input">
-                <?php
-                for ($i = 1; $i <= 3; $i++) {
-                ?>
-                    <div class="col-4">
-                        <?= $this->Form->control('options[]', [
-                            'placeholder' => 'word',
-                            'class' => 'false-option',
-                            'label' => false,
-                            'required' => true,
-                            'id' => 'orderOption' . $i,
-                        ]); ?>
-                    </div>
-                <?php
-                }
-                echo $this->Form->control('quiz_type', [
-                    'type' => 'hidden',
-                    'value' => '3',
-                    'id' => 'quiz_type',
-                ]) ?>
-
+    <p class="text-center text-lg fw-semibold">List the words in the right order</p>
+    <div id="list-word-input" class="d-flex gap-4 flex-wrap">
+        <?php
+        for ($i = 1; $i <= 3; $i++) {
+        ?>
+            <div style="flex: 1; min-width: 120px;">
+                <?= $this->Form->control('options[]', [
+                    'placeholder' => 'word',
+                    'class' => 'false-option',
+                    'label' => false,
+                    'required' => true,
+                    'id' => 'orderOption' . $i,
+                ]); ?>
             </div>
-        </div>
-
-
-
+        <?php
+        }
+        echo $this->Form->control('quiz_type', [
+            'type' => 'hidden',
+            'value' => '3',
+            'id' => 'quiz_type',
+        ]) ?>
     </div>
-
-
 </div>
