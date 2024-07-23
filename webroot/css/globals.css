@@ -1,0 +1,167 @@
+@font-face {
+    font-family: "Clash Grotesk";
+    src:
+        url("../font/ClashGrotesk-Variable.woff2") format("woff2"),
+        url("../font/ClashGrotesk-Variable.woff") format("woff"),
+        url("../font/ClashGrotesk-Variable.ttf") format("truetype");
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+:root {
+    --foreground-color: 0254, 23%, 11%;
+    --background-color: 00, 0%, 100%;
+    --primary-color: 244, 92%, 66%;
+    --secondary-color: 260, 82%, 49%;
+    --destructive-color: 0, 77%, 54%;
+    --accent-color: 00, 0%, 94%;
+    --muted-color: 216, 50%, 95%;
+    --border-color: 0, 0%, 91%;
+    --success-color: 85, 60%, 60%;
+    --warning-color: 27, 93%, 61%;
+}
+
+body {
+    font-family: "Clash Grotesk", sans-serif;
+    overflow-x: hidden;
+    color: hsl(var(--foreground-color));
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Colros */
+
+.color-primary {
+    color: hsl(var(--primary-color));
+}
+
+.color-success {
+    color: hsl(var(--success-color));
+}
+
+.color-warning {
+    color: hsl(var(--warning-color));
+}
+
+.bg-warning\/30 {
+    background-color: hsla(var(--warning-color), 0.3);
+}
+
+.bg-success\/30 {
+    background-color: hsla(var(--success-color), 0.3);
+}
+
+.bg-accent {
+    background-color: hsl(var(--accent-color));
+}
+
+.border-primary {
+    border-color: hsl(var(--primary-color)) !important;
+}
+
+/* Typography */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+h4,
+h6 {
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h6 {
+    font-size: 0.875rem;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.text-base {
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.text-xl {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.text-2xl {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+@media (min-width: 1399.98px) {
+    h4 {
+        font-size: 28px;
+    }
+
+    h6 {
+        font-size: 16px;
+    }
+
+    .text-xs {
+        font-size: 0.875rem;
+    }
+
+    .text-sm {
+        font-size: 1rem;
+    }
+
+    .text-base {
+        font-size: 1.125rem;
+    }
+
+    .text-lg {
+        font-size: 1.25rem;
+    }
+
+    .text-xl {
+        font-size: 1.625rem;
+    }
+
+    .text-2xl {
+        font-size: 2.125rem;
+    }
+}
+
+/* Globals */
+
+.opacity-60 {
+    opacity: 0.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}

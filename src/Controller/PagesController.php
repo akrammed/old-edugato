@@ -78,14 +78,14 @@ class PagesController extends AppController
     public function dashboard()
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
-        $this->viewBuilder()->setLayout('admin-layout');
+        // $this->viewBuilder()->setLayout('admin-layout');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
         $userId = $currentSessionUser ? $currentSessionUser->id : null;
         $where = ['user_id' => $userId];
         $learningPaths = $courseUserTable->find()->where($where)->first();
-        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->toArray();
+        $candostatments = !empty($learningPaths) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->toArray() : [];
         $this->set(compact(['candostatments','currentSessionUser']));
     }
     public function play()
