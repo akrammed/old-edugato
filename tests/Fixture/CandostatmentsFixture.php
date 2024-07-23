@@ -22,6 +22,8 @@ class CandostatmentsFixture extends TestFixture
                 'id' => 1,
                 'title' => 'Lorem ipsum dolor sit amet',
                 'learningpath_id' => 1,
+                'is_active' => 1,
+                'is_done' => 1,
             ],
         ];
         parent::init();

@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg" style="height: 100px;">
   <div class="container-lg d-flex justify-content-between gap-4">
-    <a class="navbar-brand" href="#">
+    
+    <a class="navbar-brand" href="<?= $this->Url->build(['controller'=>'pages', 'action'=>'display']) ?>">
         <?= $this->Html->image('new-logo.svg', ['class' => 'img-fluid']) ?>
     </a>
     <div class="d-flex align-items-center gap-2 gap-lg-8">
@@ -13,7 +14,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="btn btn-primary-gradient gap-1.5">
+                    <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'play', 'playwithgato']) ?>" class="btn btn-primary-gradient gap-1.5">
                         <?= $this->element('icons/filter-icon', ['class' => 'w-6 h-6']) ?>
                         Play with Gato AI
                     </a>

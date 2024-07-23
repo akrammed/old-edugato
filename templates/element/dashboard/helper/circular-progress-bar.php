@@ -6,7 +6,7 @@
         <span class="progress-bar border-primary"></span>
     </span>
     <div class="progress-value w-100 h-100 rounded-circle d-flex flex-column gap-1 align-items-center justify-content-center">
-        <p class="text-base">A1 Level</p>
+        <p class="text-base"><?= $currentLearningPath->path ?></p>
         <p class="text-2xl lh-1"><?= $value ?>%</p>
     </div>
 </div>

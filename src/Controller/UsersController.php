@@ -10,6 +10,7 @@ use Cake\Http\Response;
 use Cake\ORM\TableRegistry;
 use Cake\Routing\Router;
 use Lms\Controller\Component\HandelpurchasCourseComponent;
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 
 /**
  * Users Controller
@@ -92,7 +93,7 @@ class UsersController extends AppController
                 $data['profile_picture'] = $user['profile_picture'];
                 $profilePicture = $data['profile_picture'];
             }
-            $data['password'] = empty($data['password']) ? $user['password'] : $data['password'];
+            $data['password'] = empty($data['password']) ? $user['password'] : (new DefaultPasswordHasher())->hash($data['password']) ;
             $this->Authentication->getIdentity()->getOriginalData()->profile_picture = $profilePicture;
             $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
