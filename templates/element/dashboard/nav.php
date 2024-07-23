@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg" style="height: 100px;">
   <div class="container-lg d-flex justify-content-between gap-4">
     <a class="navbar-brand" href="#">
-        <img src="/img/new-logo.svg" alt="logo" width="87.1px" height="44px" class="img-fluid">
+        <?= $this->Html->image('new-logo.svg', ['class' => 'img-fluid']) ?>
     </a>
     <div class="d-flex align-items-center gap-2 gap-lg-8">
         <?php if (!isset($layer) || $layer !== "edit-profile"): ?>
