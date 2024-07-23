@@ -158,7 +158,7 @@ class ShortsController extends AppController
 
     public function watch($id = null, $learningPathId = null)
     {
-        $this->viewBuilder()->setLayout('admin-layout');
+        $this->viewBuilder()->setLayout('dashboard-layout');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();

@@ -85,7 +85,7 @@ class PagesController extends AppController
         $userId = $currentSessionUser ? $currentSessionUser->id : null;
         $where = ['user_id' => $userId];
         $learningPaths = $courseUserTable->find()->where($where)->first();
-        $currentLearningPath = $learningpathsTable->get($learningPaths->learningpath_id);
+        $currentLearningPath = !empty($learningPaths) ? $learningpathsTable->get($learningPaths->learningpath_id) : null;
         $candostatments = !empty($learningPaths) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->toArray() : [];
 
         $activeCandostatments = !empty($learningPaths) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id , 'is_active'])->first() : [];
