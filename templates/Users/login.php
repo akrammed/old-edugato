@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-3 form-password-toggle">
                         <div class="d-flex justify-content-between">
-                            <a href="auth-forgot-password-basic.html">
+                            <a href="#">
                                 <small>Forgot Password?</small>
                             </a>
                         </div>

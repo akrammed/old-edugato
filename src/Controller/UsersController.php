@@ -79,21 +79,26 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $this->viewBuilder()->setLayout('admin-layout');
-        $user = $this->Users->get($id, contain: []);
+        $this->viewBuilder()->setLayout('dashboard-layout');
+        $user = $this->Users->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
-            $user = $this->Users->patchEntity($user, $data);
+            if (($data['profile_picture']->getClientFilename()) != '') {
+                $data = $this->upload($data, 'profile_picture', 'picture');
+                $profilePicture = $data['data']['profile_picture'];
+            } else {
+                $data['profile_picture'] = $user['profile_picture'];
+                $profilePicture = $data['profile_picture'];
+            }
+            $this->Authentication->getIdentity()->getOriginalData()->profile_picture = $profilePicture;
+            $user = $this->Users->patchEntity($user, $data['data']);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'edit', $id]);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $roles = $this->Users->Roles->find('list', limit: 200)->all();
-        $locations = $this->Users->Locations->find('list', limit: 200)->all();
-        $courses = $this->Users->Courses->find('list', limit: 200)->all();
-        $this->set(compact('user', 'roles', 'locations', 'courses'));
+        $this->set(compact('user'));
     }
 
     /**

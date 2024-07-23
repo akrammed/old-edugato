@@ -34,11 +34,12 @@
                 <li class="nav-item">
                     <?= $this->Html->link( __('إختبر مستواك'),'https://test.edugato.net',['class' => ' nav-btn btn me-md-4 edugato-btn-bleu']) ?>
                 </li>
+                
                 <li class="nav-item">
-                <button data-popup="login-pop-up" class="btn nav-btn edugato-btn-light show-popup "><?= __('تسجيل الدخول')?></button>
+                <a href="<?= $this->Url->build(['controller'=>'Users', 'action'=>'login']) ?>"  class="btn nav-btn edugato-btn-light  "><?= __('تسجيل الدخول')?></a>
                </li>
                 <li class="nav-item">
-                <button data-popup="register-pop-up" class="btn nav-btn btn-primary edugato-btn show-popup"><?=__('إنشاء حساب')?></button>
+                <a href="<?= $this->Url->build(['controller'=>'Users', 'action'=>'create']) ?>"  class="btn nav-btn btn-primary edugato-btn "><?=__('إنشاء حساب')?></a>
                  </li>
                    
                 <?php
