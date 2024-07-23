@@ -78,7 +78,6 @@ class PagesController extends AppController
     public function dashboard()
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
-        // $this->viewBuilder()->setLayout('admin-layout');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();

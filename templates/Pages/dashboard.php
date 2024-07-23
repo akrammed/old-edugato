@@ -1,10 +1,5 @@
 <?php 
-/**
- * @var array candostatments
- */
-$id = 1;
-// switch ($currentSessionUser->role_id) {
-switch ($id) {
+switch ($currentSessionUser->role_id) {
     case 2:
         echo $this->element('dashboard/admin');
         break;

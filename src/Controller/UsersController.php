@@ -80,7 +80,8 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
-        $user = $this->Users->get($id);
+        $this->set('layer', 'edit-profile');
+        $user = $this->Users->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
             if (($data['profile_picture']->getClientFilename()) != '') {
