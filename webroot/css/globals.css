@@ -10,14 +10,14 @@
 }
 
 :root {
-    --foreground-color: 0254, 23%, 11%;
+    --foreground-color: 0, 0%, 20%;
     --background-color: 00, 0%, 100%;
     --primary-color: 244, 92%, 66%;
     --secondary-color: 260, 82%, 49%;
     --destructive-color: 0, 77%, 54%;
     --accent-color: 00, 0%, 94%;
-    --muted-color: 216, 50%, 95%;
-    --border-color: 0, 0%, 91%;
+    --muted-color: 200, 4%, 55%;
+    --border-color: 200, 23%, 92%;
     --success-color: 85, 60%, 60%;
     --warning-color: 27, 93%, 61%;
 }
@@ -34,6 +34,15 @@ body {
 
 .color-primary {
     color: hsl(var(--primary-color));
+    &:hover,
+    &:active,
+    &:focus {
+        color: hsl(var(--primary-color)) !important;
+    }
+}
+
+.color-muted {
+    color: hsl(var(--muted-color));
 }
 
 .color-success {
@@ -94,7 +103,9 @@ h6 {
     font-weight: 400;
 }
 
-.text-base {
+.text-base,
+label,
+.form-control {
     font-size: 1rem;
     line-height: 1.2;
     font-weight: 500;
@@ -115,6 +126,11 @@ h6 {
     font-size: 2rem;
 }
 
+.text-3xl {
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
 @media (min-width: 1399.98px) {
     h4 {
         font-size: 28px;
@@ -132,7 +148,9 @@ h6 {
         font-size: 1rem;
     }
 
-    .text-base {
+    .text-base,
+    label,
+    .form-control {
         font-size: 1.125rem;
     }
 
@@ -147,6 +165,16 @@ h6 {
     .text-2xl {
         font-size: 2.125rem;
     }
+
+    .text-3xl {
+        font-size: 2.625rem;
+    }
+}
+
+/* Images */
+
+.object-cover {
+    object-fit: cover;
 }
 
 /* Globals */

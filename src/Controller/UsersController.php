@@ -80,18 +80,21 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->set('layer', 'edit-profile');
         $user = $this->Users->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
             if (($data['profile_picture']->getClientFilename()) != '') {
-                $data = $this->upload($data, 'profile_picture', 'picture');
+                $data = $this->upload($data, 'profile_picture', 'pictures');
                 $profilePicture = $data['data']['profile_picture'];
+                $data = $data['data'];
             } else {
                 $data['profile_picture'] = $user['profile_picture'];
                 $profilePicture = $data['profile_picture'];
             }
+            $data['password'] = empty($data['password']) ? $user['password'] : $data['password'];
             $this->Authentication->getIdentity()->getOriginalData()->profile_picture = $profilePicture;
-            $user = $this->Users->patchEntity($user, $data['data']);
+            $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'edit', $id]);
