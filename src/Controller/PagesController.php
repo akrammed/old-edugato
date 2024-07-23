@@ -80,12 +80,16 @@ class PagesController extends AppController
         $this->viewBuilder()->setLayout('dashboard-layout');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
+        $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
         $userId = $currentSessionUser ? $currentSessionUser->id : null;
         $where = ['user_id' => $userId];
         $learningPaths = $courseUserTable->find()->where($where)->first();
+        $currentLearningPath = $learningpathsTable->get($learningPaths->learningpath_id);
         $candostatments = !empty($learningPaths) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->toArray() : [];
-        $this->set(compact(['candostatments','currentSessionUser']));
+
+        $activeCandostatments = !empty($learningPaths) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id , 'is_active'])->first() : [];
+        $this->set(compact(['candostatments','currentSessionUser','currentLearningPath', 'activeCandostatments']));
     }
     public function play()
     {

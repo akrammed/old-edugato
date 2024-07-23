@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string|null $title
  * @property int|null $learningpath_id
+ * @property int|null $is_active
+ * @property int|null $is_done
  *
  * @property \App\Model\Entity\Learningpath $learningpath
  * @property \App\Model\Entity\Short[] $shorts
@@ -29,6 +31,8 @@ class Candostatment extends Entity
     protected array $_accessible = [
         'title' => true,
         'learningpath_id' => true,
+        'is_active' => true,
+        'is_done' => true,
         'learningpath' => true,
         'shorts' => true,
     ];

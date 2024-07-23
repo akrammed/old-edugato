@@ -41,7 +41,6 @@ class CandostatmentsTable extends Table
         parent::initialize($config);
 
         $this->setTable('candostatments');
-        $this->setAlias('Candostatments');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
@@ -50,7 +49,6 @@ class CandostatmentsTable extends Table
         ]);
         $this->hasMany('Shorts', [
             'foreignKey' => 'candostatment_id',
-            'className' => 'Shorts',
         ]);
     }
 
@@ -71,6 +69,12 @@ class CandostatmentsTable extends Table
             ->integer('learningpath_id')
             ->allowEmptyString('learningpath_id');
 
+        $validator
+            ->allowEmptyString('is_active');
+
+        $validator
+            ->allowEmptyString('is_done');
+
         return $validator;
     }
 
@@ -83,7 +87,7 @@ class CandostatmentsTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn(['learningpath_id'], 'Learningpaths'), ['errorField' => 'learningpath_id']);
+        $rules->add($rules->existsIn('learningpath_id', 'Learningpaths'), ['errorField' => 'learningpath_id']);
 
         return $rules;
     }
