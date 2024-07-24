@@ -161,14 +161,17 @@ class ShortsController extends AppController
         $this->viewBuilder()->setLayout('dashboard-layout');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
+        $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
         $userId = $currentSessionUser ? $currentSessionUser->id : null;
         $where = ['user_id' => $userId];
         if ($learningPathId !== null) {
             $where['learningpath_id'] = $learningPathId;
+            $learningPaths = $courseUserTable->find()->where($where)->first();
+        }else{
+            $learningPaths = $learningpathsTable->find()->where(['is_free IS' => 1])->first();
         }
-        $learningPaths = $courseUserTable->find()->where($where)->first();
-        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id'=>$learningPaths->learningpath_id])->first();
+        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->first();
         $this->set(compact('candostatments'));
     }
 

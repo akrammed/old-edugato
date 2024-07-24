@@ -31,6 +31,15 @@
                 ]);
                 ?>
             </div>
+            <div class="form-group mt-3">
+                <?= $this->Form->control('is_free', [
+                    'class' => '',
+                    'lable' => __('Free'),
+                    'type' => 'checkbox',
+
+                ]);
+                ?>
+            </div>
 
             <div class="form-group mt-3">
                 <?= $this->Form->control('picture', [
