@@ -4,14 +4,10 @@ from pydantic import BaseModel
 from openai import OpenAI
 
 app = FastAPI()
-origins = [
-    "http://localhost", 
-    "http://127.0.0.1:8000",  
-]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

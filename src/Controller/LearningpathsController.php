@@ -49,6 +49,9 @@ class LearningpathsController extends AppController
         if ($this->request->is('post')) {
             $data = $this->request->getData();
             $uploadResult = $this->upload($data,'picture','learningpaths');
+            if (isset($data['is_free']) && $data['is_free'] == 1) {
+                $this->Learningpaths->updateAll(['is_free' => 0], ['is_free' => 1]);
+            }
             $data = $uploadResult['data'];
             $learningpath = $this->Learningpaths->patchEntity($learningpath, $data);
             $result = $this->Learningpaths->save($learningpath);
@@ -72,24 +75,35 @@ class LearningpathsController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('admin-layout');
-        $learningpath = $this->Learningpaths->get($id, contain: []);
+        $learningpath = $this->Learningpaths->get($id, ['contain' => []]);
+    
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
+            
             if ($data['picture']->getError() === UPLOAD_ERR_NO_FILE) {
                 unset($data['picture']);
-            }else{
-                     $data = $this->upload($data,'picture','learningpaths');
+            } else {
+                $data = $this->upload($data, 'picture', 'learningpaths');
             }
+    
+            if (isset($data['is_free']) && $data['is_free'] == 1) {
+                $this->Learningpaths->updateAll(['is_free' => 0], ['is_free' => 1]);
+            }
+    
             $learningpath = $this->Learningpaths->patchEntity($learningpath, $data);
+            
             if ($this->Learningpaths->save($learningpath)) {
                 $this->Flash->success(__('The learning path has been saved.'));
-
+    
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The learningpath could not be saved. Please, try again.'));
+            
+            $this->Flash->error(__('The learning path could not be saved. Please, try again.'));
         }
+    
         $this->set(compact('learningpath'));
     }
+    
 
     /**
      * Delete method

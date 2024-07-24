@@ -159,27 +159,20 @@ class ShortsController extends AppController
     public function watch($id = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
-        $this->set('layer', 'shorts');
-        $shortsList = $this->Shorts->find('list', [
-            'keyField' => 'id',
-            'valueField' => 'id',
-            'order' => ['Shorts.id' => 'ASC']
-        ])->toArray();
-
-        if ($id !== null) {
-            $shortsWithIdFirst = [];
-            foreach ($shortsList as $short) {
-                if ($short == $id) {
-                    array_unshift($shortsWithIdFirst, $short);
-                } else {
-                    $shortsWithIdFirst[] = $short;
-                }
-            }
-            $shortsList = $shortsWithIdFirst;
-        } else {
-            $shortsList = array_values($shortsList);
+        $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
+        $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
+        $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');
+        $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
+        $userId = $currentSessionUser ? $currentSessionUser->id : null;
+        $where = ['user_id' => $userId];
+        if ($learningPathId !== null) {
+            $where['learningpath_id'] = $learningPathId;
+            $learningPaths = $courseUserTable->find()->where($where)->first();
+        }else{
+            $learningPaths = $learningpathsTable->find()->where(['is_free IS' => 1])->first();
         }
-        $this->set(compact('shortsList'));
+        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->first();
+        $this->set(compact('candostatments'));
     }
 
     public function getShortAjax()

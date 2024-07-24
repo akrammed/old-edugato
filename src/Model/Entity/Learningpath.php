@@ -11,8 +11,10 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string|null $path
  * @property string|null $picture
+ * @property int|null $is_free
  *
  * @property \App\Model\Entity\Candostatment[] $candostatments
+ * @property \App\Model\Entity\CoursesUser[] $courses_users
  */
 class Learningpath extends Entity
 {
@@ -28,6 +30,8 @@ class Learningpath extends Entity
     protected array $_accessible = [
         'path' => true,
         'picture' => true,
+        'is_free' => true,
         'candostatments' => true,
+        'courses_users' => true,
     ];
 }
