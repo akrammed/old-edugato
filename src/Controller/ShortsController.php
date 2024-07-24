@@ -156,7 +156,7 @@ class ShortsController extends AppController
         return $this->redirect(['controller' => 'candostatments', 'action' => 'index', $lp]);
     }
 
-    public function watch($id = null, $learningPathId = null)
+    public function watch($id = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');

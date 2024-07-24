@@ -78,6 +78,7 @@ class PagesController extends AppController
     public function dashboard()
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->set('layer', 'dashboard');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');

@@ -1,50 +1,29 @@
-<!-- Content -->
-<div class="content-wrapper">
-    <div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
-        <div class="row">
-            <div class="col-md-10 w" style="min-height:619px!important; border-radius: 16px ">
-                <div class="card mb-3">
-                    <div class="row ">
-                        <div class="col-md-4" id="scrolledDiv">
-                        </div>
-                        <div class="col-md-8">
-                            <section class="sec" id="section">
-                                <div class="card-body h-100" id="take-quiz-2">
-                                    <div class="conversation h-100 w-100 d-flex justify-content-center align-items-center">
-                                        <div class="avatar-container d-flex flex-row align-items-center">
-                                            <?php echo $this->element('icons/avatar'); ?>
-                                            <?php echo $this->element('icons/talikng-bubbls'); ?>
-
-                                            <h2 class="avatar-question">Focus ! a quiz is coming !</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-
+<div class="flex-grow-1 d-flex flex-column" id="scContent">
+    <div class="flex-grow-1 d-flex flex-column flex-lg-row gap-4">
+        <div class="flex-grow-1 card d-flex flex-col flex-lg-row overflow-hidden">
+            <div class="d-flex align-items-center justify-content-center bg-foreground position-relative">
+                <button id="scrollToBottom" class="z-3 btn btn-primary btn-icon position-absolute rounded-lg d-lg-none" style="right: 1rem; top: 1rem; font-size: 1.25rem;"><i class="fa-solid fa-angle-down"></i></button>
+                <div class="bg-foreground flex-grow-1 overflow-hidden" id="scrolledDiv" style="max-width: 447.2px; aspect-ratio: 9 / 16; height: fit-content;"></div>
+            </div>
+            <section class="flex-grow-1 py-12 px-4 py-4" id="section">
+                <div id="take-quiz-2" class="h-100 d-flex justify-content-center align-items-center" style="min-height: 360px;">
+                    <div>
+                        <p class="text-xl" style="transform: translateX(2.5rem);">Focus ! a quiz is coming !</p>
+                        <div style="transform: translateX(-2.5rem); width: fit-content;"><?php echo $this->element('icons/avatar'); ?></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card mb-3" style="min-height: 499px !important; border-radius: 16px; ">
-                    <div class="row g-0">
-
-                    </div>
-                </div>
-                <div class="d-block">
-                    <button id="btnScrollUp" class="mb-1" style="background-color: #F6F8FB; border:none;">
-                        <?php echo $this->element('icons/arrow-top'); ?>
-                    </button><br>
-                    <button id="btnScrollDown" style="background-color: #F6F8FB; border:none;">
-                        <?php echo $this->element('icons/arrow-down'); ?>
-                    </button>
-                </div>
-            </div>
+            </section>
+        </div>
+        <div class="flex-shrink-0 d-flex flex-lg-column justify-content-center gap-1">
+            <button id="btnScrollUp" class="btn-reset">
+                <?php echo $this->element('icons/arrow-top'); ?>
+            </button>
+            <button id="btnScrollDown" class="btn-reset">
+                <?php echo $this->element('icons/arrow-down'); ?>
+            </button>
         </div>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         const shortsArray = <?= json_encode($shortsList) ?>;
@@ -55,7 +34,6 @@
         var lastScrollTop = 0;
         debounceLog(firstShortId);
         verifyI(i);
-
         $(document).keydown(function(event) {
             if (event.key === 'ArrowUp') {
                 scroll("up");
@@ -63,16 +41,13 @@
                 scroll("down");
             }
         });
-
         $('#btnScrollUp').click(function() {
             scroll("up");
         });
         $('#btnScrollDown').click(function() {
             scroll("down");
         });
-
         var timeout;
-
         function scroll(type) {
             if (type === "down") {
                 i++;
@@ -89,9 +64,7 @@
                     verifyI(i);
                 }
             }
-
         }
-
         function debounceLog(shortId) {
             clearTimeout(timeout);
             timeout = setTimeout(function() {
@@ -120,21 +93,14 @@
                         window.history.replaceState({
                             path: updatedUrl
                         }, '', updatedUrl);
-
-
                         var videoElement =
-                            '<video style="border-radius: 10px 0px 0px 16px; width: 100%; height: 100%; object-fit: cover;"' +
+                            '<video style="width: 100%; height: 100%; object-fit: cover;"' +
                             ' id="' + response.id + '"' +
-                            ' class="s courseImage course-img img-fluid"' +
                             ' src="https://www.edugato.net/img/uploads/video/' + response
                             .video + '"' +
                             ' controls autoplay loop disablePictureInPicture controlslist="nodownload noplaybackrate">' +
                             '</video>';
-
-
-                        $('#scrolledDiv').html(
-                            '<div class="video-container custom-video-container">' +
-                            videoElement + '</div>');
+                        $('#scrolledDiv').html(videoElement);
                     },
                     error: function(xhr, status, error) {
                         ajaxSent = false;
@@ -143,7 +109,6 @@
                 });
             }, 150);
         }
-
         function verifyI(i) {
             if (i == 0) {
                 $('#btnScrollUp').prop('disabled', true);
@@ -156,59 +121,10 @@
                 $('#btnScrollDown').prop('disabled', false);
             }
         }
+        $('#scrollToBottom').click(function() {
+            $('html, body').animate({
+                scrollTop: $('#section').offset().top
+            }, 0);
+        });
     });
 </script>
-<style>
-    #main {
-
-        overflow: hidden;
-        /* Prevents scrolling in both directions */
-
-    }
-
-    .hidden-section {
-        display: none;
-    }
-
-    #scrolledDiv {
-        scroll-behavior: smooth;
-    }
-
-    #scrolledDiv {
-        overflow-y: scroll;
-        scrollbar-width: none;
-        overflow: hidden;
-    }
-
-    #scrolledDiv::-webkit-scrollbar {
-        display: none;
-        /* Hide scrollbar for Chrome, Safari, and Opera */
-    }
-
-    .sec {
-        height: 100%;
-    }
-
-    .avatar-question {
-        display: flex;
-        width: 245px;
-        padding: 16px 20px;
-        align-items: center;
-        border-radius: 60px;
-        border: 1px solid var(--Outline-Container, rgba(154, 168, 188, 0.20));
-        background: var(--Background-Primary, #FFF);
-        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.04);
-        color: black !important;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 18px;
-    }
-
-    .custom-video-container {
-        padding: 0%;
-        padding-left: 0%;
-        height: 625px;
-    }
-</style>

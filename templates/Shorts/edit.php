@@ -7,14 +7,14 @@
  */
 ?>
 <div id="scContent" class="d-flex flex-column flex-xl-row gap-3 flex-grow-1 pb-3 pb-px-lg-26">
-    <div class="flex-basis-xl-70 flex-basis-xxl-75 d-flex flex-column flex-shring-0">
+    <div class="lex-grow-1 d-flex flex-column">
         <div class="card flex-grow-1 rounded-rem-1 overflow-hidden">
             <?= $this->Form->create($short, [
                 'type' => 'file',
                 'class' => 'flex-grow-1',
             ]) ?>
                 <div class="d-flex flex-column flex-lg-row flex-xl-column flex-xxl-row min-h-100">
-                    <div class="svideo-container flex-basis-lg-40" id="dropZone">
+                    <div class="svideo-container min-w-40" id="dropZone">
                         <div class="svideo-card" id="short-upload-container">
                             <?php echo $this->element('icons/drop-element'); ?>
                             <p class="text-lg lh-1 mt-2 fw-semibold">Drop Video here</p>
@@ -30,7 +30,7 @@
                         <button type="button" class="btn btn-secondary position-absolute" id="replace-btn" style="display:none; left: 16px; top: 16px; z-index: 999" onclick="$('#upload-short').click();">Replace</button>
                         <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
                     </div>
-                    <section class="quiz-section flex-basis-lg-60 p-rem-2">
+                    <section class="quiz-section flex-grow-1 p-rem-2">
                         <div id="quiz-type-section">
                             <h4 class="text-center">Add a Quiz Type</h4>
                             <div class="d-flex gap-4 flex-wrap justify-content-center pt-rem-2">
@@ -92,10 +92,10 @@
             <?= $this->Form->end() ?>
         </div>
     </div>
-    <div class="flex-basis-xl-30 flex-basis-xxl-25 d-flex flex-xl-column gap-3 flex-shring-0" style="min-height: 320px;">
-        <div class="card flex-basis-75 rounded-rem-1">
+    <div class="min-w-30 d-flex flex-xl-column gap-3 flex-shring-0" style="min-height: 320px;">
+        <div class="card h-75 rounded-rem-1">
         </div>
-        <div class="flex-basis-35">
+        <div class="h-25">
         </div>
     </div>
 </div>
