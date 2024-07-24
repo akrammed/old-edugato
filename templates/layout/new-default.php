@@ -1,4 +1,4 @@
-<?php $cakeDescription = 'CakePHP: the rapid development php framework'; ?>
+<?php $cakeDescription = 'Edugato'; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,15 +11,15 @@
             'normalize.min',
             'bootstrap.min',
             'fontawesome.min',
-            'globals',
             'custom',
+            'globals',
         ]) ?>
         <?= $this->fetch('meta') ?>
         <?= $this->fetch('css') ?>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <?= $this->Html->script('jquery') ?>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
         <div class="d-flex flex-column min-h-screen">

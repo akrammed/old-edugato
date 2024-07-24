@@ -1,11 +1,11 @@
 <style>
 .svideo-container {
-    background-color: hsl(var(--muted-color));
+    background-color: #ECEFF4;
     flex-shrink: 0;
     padding: 1rem;
 }
 .svideo-card {
-    border: 2px dashed hsla(var(--foreground-color), 0.4);
+    border: 2px dashed #728197;
     height: 100%;
     display: flex;
     padding: 1rem;

@@ -81,7 +81,6 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
-        $this->set('layer', 'edit-profile');
         $user = $this->Users->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
