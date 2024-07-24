@@ -55,7 +55,7 @@ class ShortsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-   
+
     public function add()
     {
         $this->viewBuilder()->setLayout('admin-layout');
@@ -156,33 +156,43 @@ class ShortsController extends AppController
         return $this->redirect(['controller' => 'candostatments', 'action' => 'index', $lp]);
     }
 
-    public function watch($id = null)
+    public function watch( $candoId = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
+        $shortsTable = TableRegistry::getTableLocator()->get('Shorts');
         $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
         $userId = $currentSessionUser ? $currentSessionUser->id : null;
-        $where = ['user_id' => $userId];
-        if ($learningPathId !== null) {
-            $where['learningpath_id'] = $learningPathId;
-            $learningPaths = $courseUserTable->find()->where($where)->first();
-        }else{
+        if ($candoId !== null) {
+            $where['id'] = $candoId;
+        } else {
             $learningPaths = $learningpathsTable->find()->where(['is_free IS' => 1])->first();
+            $where = ['learningpath_id IS' => $learningPaths->id];
         }
-        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->first();
-        $this->set(compact('candostatments'));
+        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where($where)->first();
+        $shorts = $shortsTable->find()->where(['candostatment_id IS' => $candoId ])->toArray();
+        $this->set(compact(['candostatments','shorts']));
     }
 
-    public function getShortAjax()
+    public function getQuizAjax()
     {
         $this->autoRender = false;
+        $questionsTable = TableRegistry::getTableLocator()->get('questions');
+        $optionsTable  = TableRegistry::getTableLocator()->get('options');
         $id = $this->request->getData();
-        $short = $this->Shorts->get($id);
+        $quiz = $this->Quizs->get($id);
+        $options = $optionsTable->find()->where(['quiz_id' => $id])->toArray();
+        $questions = $questionsTable->find()->where(['quiz_id' => $id])->toArray();
+        $responseData = [
+            'quiz' => $quiz,
+            'options' => $options,
+            'questions' => $questions
+        ];
         $response = new Response();
         $response = $response->withType('application/json')
-            ->withStringBody(json_encode($short));
+            ->withStringBody(json_encode($responseData));
         return $response;
     }
 }
