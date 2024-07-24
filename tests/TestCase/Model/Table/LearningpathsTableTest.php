@@ -26,6 +26,7 @@ class LearningpathsTableTest extends TestCase
     protected array $fixtures = [
         'app.Learningpaths',
         'app.Candostatments',
+        'app.CoursesUsers',
     ];
 
     /**

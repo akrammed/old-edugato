@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Learningpaths Model
  *
  * @property \App\Model\Table\CandostatmentsTable&\Cake\ORM\Association\HasMany $Candostatments
+ * @property \App\Model\Table\CoursesUsersTable&\Cake\ORM\Association\HasMany $CoursesUsers
  *
  * @method \App\Model\Entity\Learningpath newEmptyEntity()
  * @method \App\Model\Entity\Learningpath newEntity(array $data, array $options = [])
@@ -68,6 +69,9 @@ class LearningpathsTable extends Table
             ->scalar('picture')
             ->maxLength('picture', 255)
             ->allowEmptyString('picture');
+
+        $validator
+            ->allowEmptyString('is_free');
 
         return $validator;
     }

@@ -38,6 +38,15 @@
                                             ]);
                                             ?>
                                         </div>
+                                        <div class="form-group mt-3">
+                                            <?= $this->Form->control('is_free', [
+                                                'class' => '',
+                                                'lable' => __('Free'),
+                                                'type' => 'checkbox',
+
+                                            ]);
+                                            ?>
+                                        </div>
 
                                         <div class="form-group mt-3">
                                             <?= $this->Form->control('picture', [
@@ -49,8 +58,8 @@
 
                                         </div>
                                         <div class="d-flex justify-content-between mt-4">
-                                            <?= $this->Form->button(__('Back'), ['class' => 'btn btn-md ','style' => 'background-color:#E0EDFF;color: #5C17E5']); ?>
-                                            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-md ','style'=>'background-color:#5C17E5;color: #FFF']); ?>
+                                            <?= $this->Form->button(__('Back'), ['class' => 'btn btn-md ', 'style' => 'background-color:#E0EDFF;color: #5C17E5']); ?>
+                                            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-md ', 'style' => 'background-color:#5C17E5;color: #FFF']); ?>
                                         </div>
 
                                     </div>
@@ -130,6 +139,4 @@
         font-weight: 600;
         line-height: 24px;
     }
-
-
 </style>

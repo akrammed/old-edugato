@@ -22,6 +22,7 @@ class LearningpathsFixture extends TestFixture
                 'id' => 1,
                 'path' => 'Lorem ipsum dolor sit amet',
                 'picture' => 'Lorem ipsum dolor sit amet',
+                'is_free' => 1,
             ],
         ];
         parent::init();
