@@ -17,7 +17,10 @@ class CandostatmentsController extends AppController
      */
     public function index($id)
     {
-        $this->viewBuilder()->setLayout('admin-layout');
+        $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->set('sidebar', 'dashboard/aside');
+        $this->set('layer', 'shorts');
+        $this->set('altBackground', true);
         $candostatment = $this->Candostatments->newEmptyEntity();
         $learningpath = $this->Candostatments->Learningpaths->get($id, contain: ['Candostatments']);
         $query = $this->Candostatments->find()

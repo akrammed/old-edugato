@@ -12,6 +12,7 @@
 :root {
     --foreground-color: 0, 0%, 20%;
     --background-color: 00, 0%, 100%;
+    --background-alt-color: 216, 38%, 97%;
     --primary-color: 244, 92%, 66%;
     --secondary-color: 260, 82%, 49%;
     --destructive-color: 0, 77%, 54%;
@@ -53,6 +54,10 @@ body {
     color: hsl(var(--warning-color));
 }
 
+.color-destructive {
+    color: hsl(var(--destructive-color));
+}
+
 .bg-background {
     background-color: hsl(var(--background-color));
 }
@@ -67,6 +72,10 @@ body {
 
 .bg-accent {
     background-color: hsl(var(--accent-color));
+}
+
+.bg-background-alt {
+    background-color: hsl(var(--background-alt-color));
 }
 
 .bg-foreground {
@@ -208,4 +217,15 @@ a {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 2px;
+}
+
+.shadow-md {
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.shadow-lg {
+    box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

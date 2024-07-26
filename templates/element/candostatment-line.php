@@ -1,19 +1,13 @@
-<div class="position-relative" style="margin-bottom: 20px;">
-
-    <div class="d-flex align-items-center">
+<div class="position-relative d-flex flex-column gap-4">
+    <div class="d-flex align-items-center gap-2">
         <div>
-            <div class="demo-inline-spacing">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary btn-icon rounded-pill dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
-                        <?= $i ?>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-
-                        <li><button style="background: none; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleEditCanDo<?= $cd->id ?>">Edit</button></li>
-                        <li><button style="background: none; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleDeleteCanDo<?= $cd->id ?>">Delete</button></li>
-                    </ul>
-                </div>
-            </div>
+            <button type="button" class="btn btn-icon rounded-pill shadow-md border text-lg" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $i ?>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><button style="background: none; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleEditCanDo<?= $cd->id ?>">Edit</button></li>
+                <li><button style="background: none; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleDeleteCanDo<?= $cd->id ?>">Delete</button></li>
+            </ul>
             <form action="<?= $this->Url->build([
                                 'plugin' => null,
                                 'controller' => $type,
@@ -47,35 +41,19 @@
                 </div>
             </form>
         </div>
-        <div class="" style="margin-top: 3.5%;">
-            <h3 class="canDSTitle"><?= $cd->title ?></h3>
-
-        </div>
-
+        <h3 class="text-xl fw-medium"><?= h($cd->title) ?></h3>
     </div>
-    <div class="ms-5">
+    <div class="ms-5 d-flex flex-column gap-4">
         <?php foreach ($cd->shorts as $short) {
         ?>
-            <div class="d-flex align-items-center" style="margin-top: -3%;">
-                <div class="demo-inline-spacing">
-                    <div class="btn-group">
-                        <button type="button" class="border-0" style="background:none;" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bx bx-dots-vertical-rounded"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a  href="  <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'view',$short->id]) ?>"style="background: non1e; border:none" class="dropdown-item" >Preview</a></li>
-                            <li><a  href="  <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'edit',$short->id]) ?>"style="background: non1e; border:none" class="dropdown-item" >Edit</a></li>
-                            <li><button style="background: none; border:none" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaleDeleteShort<?= $short->id ?>">Delete</button></li>
-                        </ul>
-                    </div>
-                </div>
+            <div>
                 <form action="<?= $this->Url->build([
-                                    'plugin' => null,
-                                    'controller' => "shorts",
-                                    'action' => 'deleteFromCanDo',
-                                    $short->id,
-                                    $cd->learningpath_id
-                                ]) ?>" method="post">
+                                        'plugin' => null,
+                                        'controller' => "shorts",
+                                        'action' => 'deleteFromCanDo',
+                                        $short->id,
+                                        $cd->learningpath_id
+                                    ]) ?>" method="post">
                     <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">
                     <div class="modal fade" id="modaleDeleteShort<?= $short->id ?>" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -102,44 +80,29 @@
                         </div>
                     </div>
                 </form>
-                <h4 class="shortsTitle" style="margin-top: 3.5%;"><?= $short->title ?></h4>
-            </div>
-
+                <div class="d-flex align-items-center gap-4 justify-content-between text-base" style="max-width: 320px;">
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn-reset color-destructive flex-shrink-0" data-bs-toggle="modal" data-bs-target="#modaleDeleteShort<?= $short->id ?>"><i class="fa-solid fa-trash-can"></i></button>
+                        <h4 class="text-lg"><?= $short->title ?></h4>
+                    </div>
+                    <div class="d-flex align-items-center gap-4">
+                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'view',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0" >Preview</a>
+                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'edit',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0" >Edit</a>
+                    </div>
+                </div>
+            </div> 
         <?php
         }
         ?>
     </div>
-
-    <div class="d-flex align-items-center ms-3">
-        <div class="d-flex mt-3 ms-2">
-            <button style="background: none; border:none" class="me-3">
-                <h5 class="titleAddSection" data-bs-toggle="modal" data-bs-target="#modalAddShortTitle<?= $cd->id ?>">Add component</h5>
-            </button>
-            <button style="background: none; border:none">
-                <h5 class="titleAddSection">Import component</h5>
-            </button>
-        </div>
-
+    <div class="d-flex align-items-center justify-content-between text-base gap-4 ms-5" style="max-width: 320px;">
+        <button class="btn-reset color-primary fw-medium" data-bs-toggle="modal" data-bs-target="#modalAddShortTitle<?= $cd->id ?>">
+            Add component
+        </button>
+        <button class="btn-reset color-primary fw-medium">
+            Import component
+        </button>
     </div>
-
 </div>
 <?= $this->element('modals/edit-cando', ['candostatment' => $cd]) ?>
 <?= $this->element('modals/add-short-title', ['cd' => $cd]) ?>
-
-<style>
-    .canDSTitle {
-        font-family: "Poppins" !important;
-        font-size: 22px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 24px;
-    }
-
-    .shortsTitle {
-  style font-family: "Poppins" !important;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 24px;
-    }
-</style>

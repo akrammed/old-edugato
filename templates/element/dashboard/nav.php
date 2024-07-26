@@ -45,6 +45,11 @@
                 <li class="nav-item ms-2">
                     <?= $this->element('dashboard/helper/user-menu') ?>
                 </li>
+                <?php if (!empty($sidebar) && $sidebar): ?>
+                    <button id="toggleSidebarButton" class="d-xl-none btn btn-primary btn-icon">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                <?php endif;?>
             </ul>
         </div>
     </div>

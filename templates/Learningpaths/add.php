@@ -1,22 +1,12 @@
-<?php
-
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Learningpath $learningpath
-
- */
-?>
 <div class="container">
     <?= $this->Form->create($learningpath,['type' => 'file']) ?>
     <div class="row">
         <div class="col-6">
             <div class="card">
-                <div class="card-img">
-                    <img src="https://th.bing.com/th/id/OIP.hRXzfT4tS2O-p--lIw8cBwAAAA?rs=1&pid=ImgDetMain" alt="" id="pathImage" class="img-fluid">
+                <div class="w-100" style="height: 200px;">
+                    <img src="https://th.bing.com/th/id/OIP.hRXzfT4tS2O-p--lIw8cBwAAAA?rs=1&pid=ImgDetMain" alt="" id="pathImage" class="w-100 h-100" style="object-fit: cover;">
                 </div>
-                <div class="card-body">
-                    <h5 id="cardTitle" class="text-center p-2 cardTitle">Path Name</h5>
-                </div>
+                <p class="text-xl font-meduim text-center py-4 mb-0">Path Name</h5>
             </div>
         </div>
         <div class="col-6">
@@ -40,7 +30,6 @@
                 ]);
                 ?>
             </div>
-
             <div class="form-group mt-3">
                 <?= $this->Form->control('picture', [
                     'label' => __('Picture '),
@@ -52,22 +41,25 @@
             </div>
             <div class="col-12 mt-4">
             <?= $this->Form->button(__('Save'), ['id' => 'saveLearningPath', 'class' => 'btn btn-md',"style" => 'background-color:#5C17E5;color: #FFF']); ?>
-
     </div>
         </div>
-
-
-
     </div>
-
-
-
-
-
 </div>
 <?= $this->Form->end() ?>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    [type=checkbox] {
+        width: 1rem;
+        height: 1rem;
+        border: 1px solid hsl(var(--primary-color));
+    }
+</style>
 <script>
     $(document).ready(function() {
         $('#saveLearningPath').on('click', function(){
@@ -100,15 +92,3 @@
         });
     });
 </script>
-
-<style>
-    .cardTitle {
-        color: #000;
-        font-family: "Poppins";
-        font-size: 17.026px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 18.574px;
-        /* 109.091% */
-    }
-</style>

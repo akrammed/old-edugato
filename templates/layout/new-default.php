@@ -22,10 +22,20 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-        <div class="d-flex flex-column min-h-screen">
+        <?php if ($this->fetch('sidebar')): ?>
+            <div class="d-flex <?= isset($altBackground) ? 'bg-background-alt' : '';?>">
+                <?= $this->fetch('sidebar') ?>
+                <div class="d-flex flex-column min-h-screen flex-grow-1 pl-xl-68">
+                    <?= $this->fetch('navbar') ?>
+                    <?= $this->fetch('content') ?>
+                </div>
+            </div>
+        <?php else: ?>
+        <div class="d-flex flex-column min-h-screen <?= isset($altBackground) ? 'bg-background-alt' : '';?> ">
             <?= $this->fetch('navbar') ?>
             <?= $this->fetch('content') ?>
         </div>
+        <?php endif; ?>
         <?= $this->Html->script([
             'bootstrap.bundle.min',
             'fontawesome.min'

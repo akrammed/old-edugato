@@ -85,7 +85,6 @@
     margin-bottom: 10%;
     margin-right: -35%;
     color: #9AA8BC;
-    font-family: Poppins;
     font-size: 22px;
     font-style: normal;
     font-weight: 600;
@@ -137,7 +136,6 @@
 #actions {
     display: flex;
     align-items: center;
-    justify-content: end;
 }
 
 .cancel {
@@ -191,7 +189,6 @@
 }
 
 .correct-option:focus {
-    font-family: Poppins;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -216,7 +213,6 @@
     color: var(--Interactive-Primary-Solid-Enabled-Foreground, #FFF);
 
     /* Label/Large */
-    font-family: Poppins;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -233,7 +229,6 @@
     color: var(--Interactive-Primary-Solid-Enabled-Foreground, #FFF);
 
     /* Label/Large */
-    font-family: Poppins;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -266,7 +261,6 @@
     color: var(--Background-Secondary-Inverse, #27313F);
 
     /* Label/Large */
-    font-family: Poppins;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;

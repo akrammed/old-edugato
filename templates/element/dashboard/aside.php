@@ -1,100 +1,38 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="border-radius: 16px;">
-    <div class="app-brand demo">
-        <?= $this->Html->link(
-            $this->Html->image('logo.png', ['class' => 'img-cover', 'style' => 'width: 100px;']),
-            '/home',
-            ['escape' => false, 'class' => 'app-brand-link']
-        ) ?>
-    </div>
-
-    <div class="menu-inner-shadow"></div>
-
-    <ul class="menu-inner py-1">
-        <li class="menu-item" style="height: 40px;">
-            <?= $this->Html->link(
-                 $this->element('icons/home').'<div data-i18n="Analytics" class="text-dark m-2">Dashboard</div>',
-                '/admin',
-                [
-                    'class' => 'menu-link',
-                    'style' => 'height: 40px;',
-                    'escape' => false,
-                ]
-            );
-            ?>
-        </li>
-        <li class="menu-item" style="height: 40px;">
-            <?= $this->Html->link(
-                 $this->element('icons/direction right') .'<div data-i18n="Analytics" class="text-dark m-2">Learning Paths</div>',
-                '/learning-paths',
-                [
-                    'class' => 'menu-link',
-                    'style' => 'height: 40px;',
-                    'escape' => false,
-                ]
-            );
-            ?>
-        </li>
-        <li class="menu-item" style="height: 40px;">
-            <?= $this->Html->link(
-                 $this->element('icons/direction right') .'<div data-i18n="Analytics" class="text-dark m-2">Play With Gato</div>',
-                '/playwithgato',
-                [
-                    'class' => 'menu-link',
-                    'style' => 'height: 40px;',
-                    'escape' => false,
-                ]
-            );
-            ?>
-        </li>
-        <li class="menu-item" style="height: 40px;">
-            <?= $this->Html->link(
-                $this->element('icons/graduated').'<div data-i18n="Analytics" class="text-dark m-2">Courses</div>',
-                '/list-courses',
-                [
-                    'class' => 'menu-link',
-                    'style' => 'height: 40px;',
-                    'escape' => false,
-                ]
-            );
-            ?>
-        </li>
-       
-       
-        <li class="menu-header small text-dark">
-            <span class="menu-header-text">Users</span>
-        </li>
-        <li class="menu-item ">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user text-dark"></i>
-                <div data-i18n="Courses" class="text-dark">Users</div>
+<div id="dashboardSidebar" data-is-open="false" class="position-fixed flex-shrink-0 h-100 px-8 w-68 z-3 bg-background -translate-x-100 translate-x-xl-0" style="top: 0px; left: 0px; padding-top: 132px; transition: all 0.5s; border-right: 1px solid hsl(var(--border-color));">
+    <ul class="text-lg d-flex flex-column gap-4 reset-list">
+        <li class="nav-item">
+            <a href="#" class="nav-link align-middle px-0">
+                <?= $this->element('icons/home-icon', ['class' => 'w-6 h-6']) ?> Dashboard
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <?= $this->Html->link(
-                        '<div data-i18n="Courses List" class="text-dark">Users List</div>',
-                        ['plugin' => null, 'controller' => 'Users', 'action' => 'index'],
-                        [
-                            'class' => 'menu-link',
-                            'escape' => false,
-                        ]
-                    );
-                    ?>
-                </li>
-                <li class="menu-item">
-                    <?= $this->Html->link(
-                        '<div data-i18n="Account Settings" class="text-dark">add User</div>',
-                        '#',
-                        [
-                            'class' => 'menu-link',
-                            'data-bs-toggle' => 'offcanvas',
-                            'data-bs-target' => '#offcanvasEndUser',
-                            'aria-controls' => 'offcanvasEnd',
-                            'escape' => false,
-                        ]
-                    ); ?>
-                </li>
-
-            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link align-middle px-0">
+                <?= $this->element('icons/direction-icon', ['class' => 'w-6 h-6']) ?> Learning Paths
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link align-middle px-0">
+                <?= $this->element('icons/filter-icon', ['class' => 'w-6 h-6']) ?> Play With Gato
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link align-middle px-0">
+                <?= $this->element('icons/graduated-icon', ['class' => 'w-6 h-6']) ?> Courses
+            </a>
         </li>
     </ul>
-</aside>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#toggleSidebarButton').on('click', function() {
+            var $sidebar = $('#dashboardSidebar');
+            var isOpen = $sidebar.attr('data-is-open') === 'true';
+
+            if (isOpen) {
+                $sidebar.removeClass('sidebar-open').attr('data-is-open', 'false');
+            } else {
+                $sidebar.addClass('sidebar-open').attr('data-is-open', 'true');
+            }
+        });
+    });
+</script>

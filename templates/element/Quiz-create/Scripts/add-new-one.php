@@ -101,17 +101,14 @@
 
                 if (numberMatch) {
                     const number = numberMatch[1];
-
-                    $(`#brd${number}`).hide();
                     $(`#imageUploadedDiv${number}`).removeClass('d-none');
-
+                    $(`#carousel${number}UploadContainer`).addClass('d-none');
                     if (input[0].files && input[0].files[0]) {
                         const reader = new FileReader();
-
                         reader.onload = function(e) {
                             $(`#imageUploadedDiv${number}`).html(`
-                                <button type="button" class="btn btn-xs btn-secondary position-absolute" style="left: 8px; top: 8px;" id="replaceBtn${number}">Replace</button>
-                                <img id="imageUploaded${number}" class="img-fluid" style="border-radius: 8px 8px 0px 0px; width: 100%; height: 100%;" src="${e.target.result}" alt="Uploaded Image">
+                                <button type="button" class="btn btn-secondary btn-sm btn-sm--fix position-absolute" style="left: 0.5rem; top: 0.5rem;" id="replaceBtn${number}">Replace</button>
+                                <img id="imageUploaded${number}" class="w-100 h-100" style="object-fil: cover;" src="${e.target.result}" alt="Uploaded Image">
                             `);
                             imageWithCorrectWord[number] = {
                                 image: e.target.result,
@@ -323,6 +320,7 @@
                     });
 
                     $('#AudioContainerLO').removeClass('d-none').addClass('d-flex');
+                    $('#upContainerRP').addClass('d-none')
                 };
                 reader.readAsDataURL(audio);
             },
@@ -412,8 +410,8 @@
                         console.error('Error playing audio:', error);
 
                     });
-
                     $('#AudioContainerLR').removeClass('d-none').addClass('d-flex');
+                    $('#upContainerRP').addClass('d-none')
                 };
                 reader.readAsDataURL(audio);
             },

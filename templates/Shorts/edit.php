@@ -1,71 +1,98 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Short $short
- * @var \Cake\Collection\CollectionInterface|string[] $shortTypes
- * @var int  $candostatmentId;
- */
-?>
-<div id="scContent" class="d-flex flex-column flex-xl-row gap-3 flex-grow-1 pb-3 pb-px-lg-26">
-    <div class="lex-grow-1 d-flex flex-column">
-        <div class="card flex-grow-1 rounded-rem-1 overflow-hidden">
+<script>const formDataQuiz = new FormData();</script>
+<?php echo $this->element('Quiz-view/Scripts/globalFunctionQuizView'); ?>
+<?php echo $this->element('Quiz-create/Scripts/add-new-one'); ?>
+<?php echo $this->element('Shorts/Scripts/short-create-script'); ?>
+<?php echo $this->element('Quiz-view/Styles/progress-bar'); ?>
+<?php echo $this->element('Quiz-view/Styles/quiz-view-style'); ?>
+<?php echo $this->element('Shorts/Styles/short-view-style'); ?>
+<?php echo $this->element('Quiz-create/Styles/quiz-create-style'); ?>
+<?php echo $this->element('Shorts/Styles/short-create-style'); ?>
+<?php echo $this->element('dashboard/add-course'); ?>
+<?php echo $this->element('dashboard/add-short'); ?>
+<?php echo $this->element('dashboard/add-quiz'); ?>
+<?php echo $this->element('dashboard/add-user'); ?>
+<?php echo $this->element('dashboard/add-canvas', [
+    'name' => 'Learning Path',
+    'url' => '/learningpaths/add',
+    'id' => 'offcanvasEndAddLearningPath',
+]); ?>
+<?php echo $this->element('dashboard/add-canvas', [
+    'name' => 'Learning Path',
+    'url' => '/learningpaths/add',
+    'id' => 'offcanvasEndEditLearningPath',
+]); ?>
+<?php echo $this->element('dashboard/add-canvas', [
+    'name' => 'Learning Path',
+    'url' => '/users/add',
+    'id' => 'offcanvasEndCanDoS',
+]); ?>
+    <?php echo $this->element(
+'Quiz-view/Elements/sounds-effects'
+); ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div id="scContent" class="flex-grow-1 d-flex flex-column">
+    <div class="flex-grow-1 d-flex flex-column flex-xxl-row gap-4">
+        <div class="flex-grow-1 card overflow-hidden">
             <?= $this->Form->create($short, [
                 'type' => 'file',
                 'class' => 'flex-grow-1',
             ]) ?>
-                <div class="d-flex flex-column flex-lg-row flex-xl-column flex-xxl-row min-h-100">
-                    <div class="svideo-container min-w-40" id="dropZone">
-                        <div class="svideo-card" id="short-upload-container">
-                            <?php echo $this->element('icons/drop-element'); ?>
-                            <p class="text-lg lh-1 mt-2 fw-semibold">Drop Video here</p>
-                            <div class="divider divider--sm">
-                                <span class="divider__line"></span>
-                                <span class="divider__text">OR</span>
-                                <span class="divider__line"></span>
-                            </div>
-                            <button class="btn btn-secondary" id="upload-short-video">Browse</button>
-                        </div>
-                        <div class="vid-cnt">
-                        </div>
-                        <button type="button" class="btn btn-secondary position-absolute" id="replace-btn" style="display:none; left: 16px; top: 16px; z-index: 999" onclick="$('#upload-short').click();">Replace</button>
-                        <video class="shortVid course-img img-fluid" style="display:none" src="" autoplay="" controls muted></video>
-                    </div>
-                    <section class="quiz-section flex-grow-1 p-rem-2">
-                        <div id="quiz-type-section">
-                            <h4 class="text-center">Add a Quiz Type</h4>
-                            <div class="d-flex gap-4 flex-wrap justify-content-center pt-rem-2">
-                                <div class="quiz-card">
-                                     <?= $this->element('icons/text-option-icon'); ?>
+                <div class="d-flex flex-column flex-lg-row">
+                    <div class="d-flex align-items-center justify-content-center position-relative" style="background-color: #ECEFF4;" id="video-container">
+                        <div class="svideo-container d-flex align-items-center justify-content-center bg-foreground position-relative" style="aspect-ratio: 9 / 16; height: calc(100dvh - 102px - 2rem); width: fit-content; max-width: 500px;" id="dropZone">
+                            <div class="svideo-card flex-grow-1" id="short-upload-container">
+                                <?php echo $this->element('icons/drop-element'); ?>
+                                <p class="text-lg lh-1 mt-2 fw-semibold">Drop Video here</p>
+                                <div class="divider divider--sm">
+                                    <span class="divider__line"></span>
+                                    <span class="divider__text">OR</span>
+                                    <span class="divider__line"></span>
                                 </div>
-                                <div class="quiz-card">
+                                <button class="btn btn-secondary" id="upload-short-video">Browse</button>
+                            </div>
+                            <button type="button" class="btn btn-primary position-absolute z-3" id="replace-btn" style="display:none; left: 1rem; top: 1rem;" onclick="$('#upload-short').click();">Replace</button>
+                            <video id="short-video" class="w-100 h-100" style="display:none; object-fit: cover; object-position: center;" src="" autoplay="" controls muted></video>
+                        </div>
+                    </div>
+                    <section class="quiz-section flex-grow-1 pt-8 pb-4 px-4">
+                        <div id="quiz-type-section" class="w-100">
+                            <h4 class="text-center">Add a Quiz Type</h4>
+                            <div class="row row-cols-3 pt-4">
+                                <div class="quiz-type-card">
+                                    <?= $this->element('icons/text-option-icon'); ?>
+                                </div>
+                                <div class="quiz-type-card">
                                     <?= $this->element('icons/image-option-icon'); ?>
                                 </div>
-                                <div class="quiz-card">
+                                <div class="quiz-type-card">
                                 <?= $this->element('icons/order-the-words-icon'); ?>
                                 </div>
-                                <div class="quiz-card">
+                                <div class="pt-2 quiz-type-card">
                                 <?= $this->element('icons/match-icon'); ?>
 
                                 </div>
-                                <div class="quiz-card">
+                                <div class="pt-2 quiz-type-card">
                                 <?= $this->element('icons/carusel-icon'); ?>
                                 </div>
-                                <div class="quiz-card">
+                                <div class="pt-2 quiz-type-card">
                                 <?= $this->element('icons/listen-order-icon'); ?>
                                 </div>
-                                <div class="quiz-card">
+                                <div class="pt-2 quiz-type-card">
                                 <?= $this->element('icons/read-repeat-icon'); ?>
                                 </div>
-                                <div class="quiz-card">
+                                <div class="pt-2 quiz-type-card">
                                 <?= $this->element('icons/conversation-speaking-icon'); ?>
                                 </div>
-                                <div class="quiz-card">
+                                <!-- <div class="pt-2 quiz-type-card">
                                 <?= $this->element('icons/conversation-ordering-icon'); ?>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
-                        <div id="quiz-type-creation-section" class="flex-grow-1 d-flex flex-column" style="display: none;">
-                            <div id="quiz-creation-container" class="flex-grow-1 d-flex flex-column gap-rem-4 gap-xxl-rem-2">
+                        <div id="quiz-type-creation-section" class="flex-grow-1 d-none flex-column w-100">
+                            <div class="flex-grow-1 d-flex flex-column gap-rem-4 gap-xxl-rem-2">
+                                <?= $this->element('avatar-with-bubbel', ['text' => "Listen and order the words"]) ?>
+                                <div id="quiz-creation-container" class="flex-grow-1 d-flex justify-content-center flex-column gap-4 mt-8"></div>
                             </div>
                         </div>
                         <div id="actions" style="display:none">
@@ -91,15 +118,12 @@
                 </div>
             <?= $this->Form->end() ?>
         </div>
-    </div>
-    <div class="min-w-30 d-flex flex-xl-column gap-3 flex-shring-0" style="min-height: 320px;">
-        <div class="card h-75 rounded-rem-1">
-        </div>
-        <div class="h-25">
+        <div class="min-w-20 flex-shrink-0 d-flex flex-xxl-column" style="min-height: 220px;">
+            <div class="card rounded-rem-1" style="flex-basis: 70%;">
+            </div>
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     $('#save-short-btn').on('click', function(event) {

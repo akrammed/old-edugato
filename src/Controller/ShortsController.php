@@ -88,8 +88,10 @@ class ShortsController extends AppController
     public function edit($id = null)
     {
 
-        $this->viewBuilder()->setLayout('admin-layout');
-
+        $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->set('sidebar', 'dashboard/aside');
+        $this->set('layer', 'shorts');
+        $this->set('altBackground', true);
         $short = $this->Shorts->get($id, contain: ['Candostatments']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
@@ -159,6 +161,9 @@ class ShortsController extends AppController
     public function watch( $candoId = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->set('layer', 'shorts');
+        $this->set('sidebar', 'dashboard/aside');
+        $this->set('altBackground', true);
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $shortsTable = TableRegistry::getTableLocator()->get('Shorts');
@@ -169,7 +174,7 @@ class ShortsController extends AppController
             $where['id'] = $candoId;
         } else {
             $learningPaths = $learningpathsTable->find()->where(['is_free IS' => 1])->first();
-            $where = ['learningpath_id IS' => $learningPaths->id];
+            $where = !empty($learningPaths) ? ['learningpath_id IS' => $learningPaths->id] : '';
         }
         $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where($where)->first();
         $shorts = $shortsTable->find()->where(['candostatment_id IS' => $candoId ])->toArray();
