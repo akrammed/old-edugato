@@ -1,5 +1,5 @@
 <?php 
-    $layers = ['dashboard', 'shorts'];
+    $layers = ['dashboard', 'shorts', 'admin'];
     $liHideClass = (!empty($layer) && in_array($layer, $layers)) ? ' d-none d-lg-block' : '';
 ?>
 <nav class="navbar navbar-expand-lg" style="height: 100px;">
@@ -9,7 +9,7 @@
     </a>
     <div class="d-flex align-items-center gap-2 gap-lg-8 flex-grow-1 justify-content-end">
         <div class="d-flex align-items-center gap-2 gap-lg-8">
-            <?php if (!empty($layer) && in_array($layer, $layers)): ?>
+            <?php if (!empty($layer) && in_array($layer, $layers) && $layer !== 'admin'): ?>
                 <ul class="d-flex reset-list gap-2">
                     <?php if ($layer === 'dashboard'): ?>
                         <li class="nav-item">

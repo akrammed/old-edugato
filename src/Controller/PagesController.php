@@ -78,7 +78,9 @@ class PagesController extends AppController
     public function dashboard()
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
-        $this->set('layer', 'dashboard');
+        $this->set('layer', 'admin');
+        $this->set('sidebar', 'dashboard/aside');
+        $this->set('altBackground', true);
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');
@@ -93,6 +95,9 @@ class PagesController extends AppController
     }
     public function play()
     {
-        $this->viewBuilder()->setLayout('admin-layout');
+        $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->set('layer', 'admin');
+        $this->set('sidebar', 'dashboard/aside');
+        $this->set('altBackground', true);
     }
 }

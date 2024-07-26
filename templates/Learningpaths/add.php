@@ -60,6 +60,7 @@
         border: 1px solid hsl(var(--primary-color));
     }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#saveLearningPath').on('click', function(){

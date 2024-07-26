@@ -90,7 +90,7 @@ class ShortsController extends AppController
 
         $this->viewBuilder()->setLayout('dashboard-layout');
         $this->set('sidebar', 'dashboard/aside');
-        $this->set('layer', 'shorts');
+        $this->set('layer', 'admin');
         $this->set('altBackground', true);
         $short = $this->Shorts->get($id, contain: ['Candostatments']);
         if ($this->request->is(['patch', 'post', 'put'])) {

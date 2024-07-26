@@ -86,8 +86,8 @@
                         <h4 class="text-lg"><?= $short->title ?></h4>
                     </div>
                     <div class="d-flex align-items-center gap-4">
-                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'view',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0" >Preview</a>
-                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'edit',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0" >Edit</a>
+                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'view',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0 color-primary" >Preview</a>
+                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'edit',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0 color-primary" >Edit</a>
                     </div>
                 </div>
             </div> 
