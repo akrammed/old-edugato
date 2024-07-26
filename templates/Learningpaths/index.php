@@ -1,60 +1,42 @@
-<?php
-
-/**
- * @var \App\View\AppView $this
- * 
- * @var iterable<\App\Model\Entity\Learningpath> $learningpath
- */
-?>
-<div class="container-xxl flex-grow-1 mt-3 content-container" id="scContent">
-    <div class="row">
-        <div class="col-md-10 flex" style="max-height:619px!important; border-radius: 16px">
-            <div class="card mb-3 add-short-card ">
-                <div class="row ">
-                    <section class="sec" id="section">
-                        <div class="card-body h-100" id="take-quiz-2">
-                            <div class="conversation h-100 w-100">
-                                <h3 class="pb-1 mb-4 mt-4 text-dark canDSTitle">Manage learning paths</h3>
-
-                                <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-                                    <?php
-
-                                    foreach ($learningpaths as $lp) {
-                                        echo $this->element('course-card', ['img' => $lp->picture, 'title' => $lp->path, 'controller' => 'candostatments', 'id' => $lp->id, 'type' => "learningpaths"]);
-                                    }
-
-
-                                    echo $this->element('add-new', ["canvas" => "#offcanvasEndAddLearningPath"]) ?>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+<?php echo $this->element('dashboard/add-course'); ?>
+<?php echo $this->element('dashboard/add-short'); ?>
+<?php echo $this->element('dashboard/add-quiz'); ?>
+<?php echo $this->element('dashboard/add-user'); ?>
+<?php echo $this->element('dashboard/add-canvas', [
+    'name' => 'Learning Path',
+    'url' => '/learningpaths/add',
+    'id' => 'offcanvasEndAddLearningPath',
+]); ?>
+<?php echo $this->element('dashboard/add-canvas', [
+    'name' => 'Learning Path',
+    'url' => '/learningpaths/add',
+    'id' => 'offcanvasEndEditLearningPath',
+]); ?>
+<?php echo $this->element('dashboard/add-canvas', [
+    'name' => 'Learning Path',
+    'url' => '/users/add',
+    'id' => 'offcanvasEndCanDoS',
+]); ?>
+                        
+<div class="flex-grow-1 d-flex flex-column" id="scContent">
+    <div class="flex-grow-1 d-flex flex-column flex-xl-row gap-4">
+        <div class="flex-grow-1 card overflow-hidden d-flex flex-column">
+            <section class="flex-grow-1 p-8" id="section">
+                <div id="take-quiz-2">
+                    <h3 class="text-xl mb-8">Manage learning paths</h3>
+                    <div class="row row-cols-3 row-cols-lg-4 row-cols-xl-3 row-cols-xxl-4 g-4 mb-4">
+                        <?php
+                        foreach ($learningpaths as $lp) {
+                            echo $this->element('course-card', ['img' => $lp->picture, 'title' => $lp->path, 'controller' => 'candostatments', 'id' => $lp->id, 'type' => "learningpaths"]);
+                        }
+                        echo $this->element('add-new', ["canvas" => "#offcanvasEndAddLearningPath"]) ?>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
-        <div class="col-sm-2">
-            <div class="card mb-3 " style="min-height: 499px !important; border-radius: 16px; ">
-                <div class="row g-0">
-
-                </div>
+        <div class="min-w-20 flex-shrink-0 d-flex flex-xl-column" style="min-height: 220px;">
+            <div class="card rounded-rem-1" style="flex-basis: 70%;">
             </div>
-
         </div>
     </div>
 </div>
-<style>
-    .canDSTitle {
-        font-family: "Poppins" !important;
-        font-size: 22px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 24px;
-    }
-
-    .add-short-card {
-        width: 98%;
-        margin-left: 2%;
-    }
-</style>

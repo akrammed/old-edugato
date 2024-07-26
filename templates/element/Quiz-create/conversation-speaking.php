@@ -1,22 +1,19 @@
-<?= $this->element('avatar-with-bubbel', ['text' => "Listen and order the words"]) ?>
-<div class="flex-grow-1 d-flex justify-content-center flex-column gap-4">
-    <?php for ($i = 0; $i < 3; $i++) { ?>
-    <div class="justify-content-between d-flex flex-column align-items-center" id="conversation<?=$i?>">
-        <div class="d-flex">
-            <button class="position-absolute left-0" id="deleteConversation<?=$i?>"
-                style="background:none; border:none;"><?= $this->element('icons/delete', ['color' => "red"]); ?></button>
-            <input id="qustion<?= $i ?>" class="wordAudio send" required type="text"
-                placeholder="type option 1 here..">
-        </div>
-        <div class="mt-2">
-            <input id="response<?= $i ?>" class="wordAudio recive" required type="text"
-                placeholder="type option 1 here..">
-        </div>
+<?php for ($i = 0; $i < 3; $i++) { ?>
+<div class="justify-content-between d-flex flex-column align-items-center" id="conversation<?=$i?>">
+    <div class="d-flex align-items-center position-relative">
+        <button class="position-absolute btn-reset" id="deleteConversation<?=$i?>"
+            style="left: 0.5rem"><?= $this->element('icons/delete', ['color' => "red"]); ?></button>
+        <input id="qustion<?= $i ?>" class="wordAudio send" required type="text"
+            placeholder="type option 1 here..">
     </div>
-    <?php } ?>
-    <?= $this->Form->control('conversation', ['label' => false, 'class' => 'd-none', 'id' => 'conversationInput']) ?>
-    <?= $this->Form->control('quiz_type', ['type' => 'hidden','value' => '8','id' => 'quiz_type']) ?>
+    <div class="mt-2">
+        <input id="response<?= $i ?>" class="wordAudio recive" required type="text"
+            placeholder="type option 1 here..">
+    </div>
 </div>
+<?php } ?>
+<?= $this->Form->control('conversation', ['type' => 'hidden', 'class' => 'd-none', 'id' => 'conversationInput']) ?>
+<?= $this->Form->control('quiz_type', ['type' => 'hidden','value' => '8','id' => 'quiz_type']) ?>
 <style>
 .send {
     background: #C0D3F9 !important;

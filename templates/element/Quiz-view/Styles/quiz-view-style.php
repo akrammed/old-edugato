@@ -1,7 +1,6 @@
 <style>
 body {
     background-color: #F6F8FB !important;
-    font-family: "Poppins", sans-serif !important;
     font-weight: 700;
     font-style: normal !important;
     color: #27313F !important;

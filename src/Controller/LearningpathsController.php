@@ -17,7 +17,10 @@ class LearningpathsController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->setLayout('admin-layout');
+        $this->viewBuilder()->setLayout('dashboard-layout');
+        $this->set('sidebar', 'dashboard/aside');
+        $this->set('layer', 'shorts');
+        $this->set('altBackground', true);
         $query = $this->Learningpaths->find();
         $learningpaths = $this->paginate($query);
 

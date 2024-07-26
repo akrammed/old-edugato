@@ -1,9 +1,4 @@
 <div>
-    <div class="d-flex position-absolute" style="z-index: 999999;">
-        <a href="  <?= $this->Url->build(['controller' => $type, 'action' => 'edit', $id]) ?>"> <?= $this->element('icons/edit', ['color' => "#F6F8FB"]) ?></a>
-        <button type="button" style="background:none; border:none;" data-bs-toggle="modal" data-bs-target="#modalCenter"> <?= $this->element('icons/delete', ['color' => "#F6F8FB"]) ?></button>
-    </div>
-
     <form action="<?= $this->Url->build([
                         'plugin' => null,
                         'controller' => $type,
@@ -36,42 +31,21 @@
             </div>
         </div>
     </form>
-    <a href="<?= $this->Url->build([
+    <div class="position-relative card overflow-hidden h-100 shadow-md">
+        <div class="d-flex position-absolute z-1" style="left: 0.5rem; top: 0.5rem;">
+            <a href="  <?= $this->Url->build(['controller' => $type, 'action' => 'edit', $id]) ?>"> <?= $this->element('icons/edit', ['color' => "#F6F8FB"]) ?></a>
+            <button type="button" style="background:none; border:none;" data-bs-toggle="modal" data-bs-target="#modalCenter"> <?= $this->element('icons/delete', ['color' => "#F6F8FB"]) ?></button>
+        </div>
+        <a href="<?= $this->Url->build([
                     'plugin' => null,
                     'controller' => $controller,
                     'action' => 'index',
                     $id
-                ]) ?>" class="col" style="height: 195.029px !important; text-decoration:none; ">
-        <div class="card courseContainter h-100 ">
-            <?= $this->Html->image('/uploads/learningpaths/' . $img, ['class' => 'course-img-top', 'style' => 'height: 142.402px !important;', 'alt' => "Card image cap"]) ?>
-            <div class="card-body p-1">
-                <h5 class="text-center p-2 cardTitle"><?= $title ?></h5>
+                ]) ?>" class="d-flex flex-column">
+            <div class="w-100" style="height: 200px;">
+                <?= $this->Html->image('/uploads/learningpaths/' . $img, ['class' => 'w-100 h-100', 'style' => 'object-fit: cover', 'alt' => "Card image cap"]) ?>
             </div>
-        </div>
-    </a>
+            <span class="text-center text-base py-4"><?= h($title) ?></h5>
+        </a>
+    </div>
 </div>
-
-<style>
-    .courseContainter {
-        background-color: #F6F8FB;
-        box-shadow: 0px 3.096px 6.191px 0px rgba(0, 0, 0, 0.16);
-    }
-
-    .cardTitle {
-        color: #000;
-        font-family: "Poppins";
-        font-size: 17.026px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 18.574px;
-        /* 109.091% */
-    }
-
-    .canDSTitle {
-        font-family: "Poppins" !important;
-        font-size: 22px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 24px;
-    }
-</style>
