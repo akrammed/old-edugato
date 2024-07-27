@@ -18,6 +18,7 @@
     --destructive-color: 0, 77%, 54%;
     --accent-color: 00, 0%, 94%;
     --muted-color: 200, 4%, 55%;
+    --light-color: 218, 27%, 94%;
     --border-color: 200, 23%, 92%;
     --success-color: 85, 60%, 60%;
     --warning-color: 27, 93%, 61%;
@@ -62,12 +63,20 @@ body {
     background-color: hsl(var(--background-color));
 }
 
+.bg-primary\/30 {
+    background-color: hsla(var(--primary-color), 0.3);
+}
+
 .bg-warning\/30 {
     background-color: hsla(var(--warning-color), 0.3);
 }
 
 .bg-success\/30 {
     background-color: hsla(var(--success-color), 0.3);
+}
+
+.bg-light {
+    background-color: hsl(var(--light-color)) !important;
 }
 
 .bg-accent {
@@ -132,6 +141,7 @@ label,
 .nav-link {
     font-size: 1.125rem;
     font-weight: 500;
+    line-height: 1.2;
 }
 
 .text-xl {
@@ -140,13 +150,13 @@ label,
 }
 
 .text-2xl {
-    font-weight: 600;
-    font-size: 2rem;
+    font-weight: 500;
+    font-size: 1.75rem;
 }
 
 .text-3xl {
     font-weight: 600;
-    font-size: 2.5rem;
+    font-size: 2.25rem;
 }
 
 @media (min-width: 1399.98px) {
@@ -228,4 +238,23 @@ a {
     box-shadow:
         0 10px 15px -3px rgb(0 0 0 / 0.1),
         0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* WebKit Browsers (Chrome, Safari) */
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 1rem;
+    border: 1px solid #9aa8bc;
+    border-radius: 2rem;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #b6c2d3;
+    border-radius: 2rem;
+    border: 4px solid transparent;
+    background-clip: content-box;
 }

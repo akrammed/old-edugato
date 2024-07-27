@@ -1,48 +1,15 @@
-<div class="container">
-    <div class="row" style="margin-top: 20%;">
-        <p class="question-text"><strong>Quiz question :</strong> Read the sentence And Repeat it</p>
-        <div class="content" style="margin-top: 4%;">
-            <div class="conversation">
-                <div class="avatar-container">
-                    <?php echo $this->element('icons/avatar'); ?>
-                    <?php echo $this->element('icons/talikng-bubbls'); ?>
-                    <h2 class="avatar-question"><?= $options[1]['qoption'] ?> </h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="options">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="options">
-                            <div style="display: grid;cursor:pointer;
-    justify-content: center;" id="startRecordingDiv">
-                                <button id="recordButton"
-                                    class="record-btn-style"><?php echo $this->element('icons/start-record'); ?>
-                                </button>
-                            </div>
-                            <?php echo $this->element('icons/record-animation'); ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="d-flex flex-column gap-4">
+    <p class="text-xl">Listen and repeat the words</p>
+    <div class="d-flex align-items-center justify-content-center gap-4">
+        <?php echo $this->element('icons/avatar'); ?>
+        <div class="bg-primary/30 px-4 py-2 rounded-xl d-flex align-items-center gap-1">
+            <p class="text-base">My first name is David.</p>
+            <button class="btn-reset ms-1 mb-0.5"><?= $this->element('icons/volume-up-icon', ['class' => 'w-5 h-5']) ?></button>
+            <button class="btn-reset mb-0.5"><?= $this->element('icons/speed-test-icon', ['class' => 'w-5 h-5']) ?></button>
         </div>
     </div>
 </div>
-<style>
-.record-btn-style {
-    width: 70px;
-    height: 70px;
-    background-color: #5C17E5;
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0px 0px 10px gray;
-}
-
-.options {
-    height: 200px;
-    display: grid;
-    align-items: center;
-}
-</style>
+<button id="recordButton" class="btn btn-primary p-0 mt-8" style="height: 4.5rem; width: 4.5rem;">
+    <?php echo $this->element('icons/start-record'); ?>
+</button>
+<!-- <?php echo $this->element('icons/record-animation'); ?> -->
