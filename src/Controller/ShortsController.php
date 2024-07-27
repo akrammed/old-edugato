@@ -200,4 +200,20 @@ class ShortsController extends AppController
             ->withStringBody(json_encode($responseData));
         return $response;
     }
+    public function uploadShortVidAjax()
+    {
+        $this->autoRender = false;
+        $file = $this->request->getData('file');
+        $data['video'] = $file;
+       
+        $data = $this->upload($data, 'video', 'video');
+        $responseArray = [
+            'status' => $data['status']
+        ];
+    
+        $response = new Response();
+        $response = $response->withType('application/json')
+            ->withStringBody(json_encode($responseArray));
+        return $response;
+    }
 }

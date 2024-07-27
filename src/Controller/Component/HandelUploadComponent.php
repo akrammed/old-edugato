@@ -85,7 +85,6 @@ class HandelUploadComponent extends Component
     public function setPermission($file){
         $directory = WWW_ROOT . $file;
         $perms = fileperms($directory);
-        echo "Permissions for $directory: " . substr(sprintf('%o', $perms), -4) . "<br>";
         if (!is_writable($directory)) {
             chmod($directory, 0755);
         }
