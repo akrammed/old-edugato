@@ -17,16 +17,17 @@ class CandostatmentsController extends AppController
      */
     public function index($id)
     {
-        $this->viewBuilder()->setLayout('dashboard-layout');
-        $this->set('sidebar', 'dashboard/aside');
+        $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
+        $isAdmin = ($currentSessionUser ? $currentSessionUser->role_id : null) === 2;
+        $this->viewBuilder()->setLayout($isAdmin ? 'new-admin-layout' : 'dashboard-layout');
         $this->set('layer', 'admin');
-        $this->set('altBackground', true);
+        $this->set('sidebar', $isAdmin ? 'dashboard/admin-aside' : 'dashboard/aside');
+        $this->set('altBackground', !$isAdmin);
         $candostatment = $this->Candostatments->newEmptyEntity();
         $learningpath = $this->Candostatments->Learningpaths->get($id, contain: ['Candostatments']);
         $query = $this->Candostatments->find()
             ->contain(['Learningpaths','Shorts'])->where(['learningpath_id'=> $id]);
         $candostatments = $this->paginate($query);
-
         $this->set(compact('learningpath','candostatment','candostatments'));
     }
 

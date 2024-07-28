@@ -88,10 +88,12 @@ class ShortsController extends AppController
     public function edit($id = null)
     {
 
-        $this->viewBuilder()->setLayout('dashboard-layout');
-        $this->set('sidebar', 'dashboard/aside');
+        $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
+        $isAdmin = ($currentSessionUser ? $currentSessionUser->role_id : null) === 2;
+        $this->viewBuilder()->setLayout($isAdmin ? 'new-admin-layout' : 'dashboard-layout');
         $this->set('layer', 'admin');
-        $this->set('altBackground', true);
+        $this->set('sidebar', $isAdmin ? 'dashboard/admin-aside' : 'dashboard/aside');
+        $this->set('altBackground', !$isAdmin);
         $short = $this->Shorts->get($id, contain: ['Candostatments']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
