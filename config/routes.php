@@ -23,7 +23,6 @@
 
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
-
 /*
  * This file is loaded in the context of the `Application` class.
   * So you can use  `$this` to reference the application class instance
@@ -78,6 +77,9 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/add-chapter', ['plugin'=> 'Lms','controller' => 'Chapters', 'action' => 'add', 'add-chapter']);
         $builder->connect('/admin', ['controller' => 'Pages', 'action' => 'dashboard', 'admin']);
         $builder->connect('/playwithgato', ['controller' => 'Pages', 'action' => 'play', 'playwithgato']);
+        $builder->connect('/generate', ['controller' => 'Assistants', 'action' => 'generate']);
+        $builder->connect('/select_topic', ['controller' => 'Assistants', 'action' => 'selectTopic']);
+        $builder->connect('/next_question', ['controller' => 'Assistants', 'action' => 'nextQuestion']);
 
 
         /*
@@ -100,6 +102,7 @@ return function (RouteBuilder $routes): void {
          */
         $builder->fallbacks();
     });
+
 
 
     $routes->scope('/api', function (RouteBuilder $builder) {
