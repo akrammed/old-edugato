@@ -10,6 +10,11 @@
         </a>
     <?php endif; ?>
     <div class="d-flex align-items-center gap-2 gap-lg-8 flex-grow-1 justify-content-end">
+        <?php if (isset($layer) && $layer === 'admin'): ?>
+            <button id="toggleSidebarButton" class="d-xl-none btn btn-primary btn-icon me-auto">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        <?php endif; ?>
         <div class="d-flex align-items-center gap-2 gap-lg-8">
             <?php if (!empty($layer) && in_array($layer, $layers) && $layer !== 'admin'): ?>
                 <ul class="d-flex reset-list gap-2">
@@ -49,7 +54,7 @@
                 <li class="nav-item ms-2">
                     <?= $this->element('dashboard/helper/user-menu') ?>
                 </li>
-                <?php if (!empty($sidebar) && $sidebar): ?>
+                <?php if (!empty($sidebar) && $sidebar && (isset($layer) && $layer !== 'admin')): ?>
                     <button id="toggleSidebarButton" class="d-xl-none btn btn-primary btn-icon">
                         <i class="fa-solid fa-bars"></i>
                     </button>

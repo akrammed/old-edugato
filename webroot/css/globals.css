@@ -63,6 +63,15 @@ body {
     background-color: hsl(var(--background-color));
 }
 
+.bg-primary\/10 {
+    background-color: hsla(var(--primary-color), 0.1);
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: hsla(var(--primary-color), 0.1) !important;
+    }
+}
+
 .bg-primary\/30 {
     background-color: hsla(var(--primary-color), 0.3);
 }

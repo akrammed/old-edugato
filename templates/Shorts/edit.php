@@ -31,7 +31,6 @@
 <?php echo $this->element(
     'Quiz-view/Elements/sounds-effects'
 ); ?>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div id="scContent" class="flex-grow-1 d-flex flex-column">
     <div class="flex-grow-1 d-flex flex-column flex-xxl-row gap-4">

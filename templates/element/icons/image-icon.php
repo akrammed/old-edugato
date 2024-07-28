@@ -1,0 +1,5 @@
+i<svg width="68" height="68" viewBox="0 0 68 68" fill="none" <?= !empty($class) ? 'class="' . h($class) . '"' : '' ?> xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 22.7475V45.2662C8.5 53.6092 13.7212 59.4943 22.0641 59.4943H45.9632C54.3062 59.4943 59.4997 53.6092 59.4997 45.2662V22.7475C59.4997 14.4046 54.2787 8.52209 45.9632 8.52209H22.0641C13.7212 8.52209 8.5 14.4046 8.5 22.7475Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.3381 26.008C19.3381 28.6833 21.5065 30.8545 24.1845 30.8545C26.8599 30.8545 29.0312 28.6833 29.0312 26.008C29.0312 23.3327 26.8599 21.1615 24.1845 21.1615C21.5065 21.1615 19.3381 23.3327 19.3381 26.008Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M59.4994 45.3231L49.2773 35.5419C46.5689 32.9463 42.2875 33.029 39.6644 35.7071L17.5617 58.3635" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
