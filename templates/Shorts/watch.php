@@ -39,7 +39,7 @@
         function updateVideo(index) {
             console.log('Updating to video index:', index);
             const videoElement = $('#short-vid-display');
-            const newSrc = "<?php echo $this->Url->build('/uploads/videos/') ?>" + shortsArray[index].video;
+            const newSrc = "<?php echo $this->Url->build('/uploads/video/') ?>" + shortsArray[index].video;
             console.log('New video source:', newSrc);
             videoElement.attr('src', newSrc);
             videoElement[0].load();
