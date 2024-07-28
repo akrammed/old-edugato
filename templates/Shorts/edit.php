@@ -55,7 +55,7 @@
                             <video id="short-video" class="w-100 h-100" style="display:none; object-fit: cover; object-position: center;" src="" autoplay="" controls muted></video>
                         </div>
                     </div>
-                    <section class="quiz-section flex-grow-1 pt-8 pb-4 px-4">
+                    <section class="quiz-section flex-grow-1 pt-8 pb-4 px-4 bg-background-alt/10">
                         <div id="quiz-type-section" class="w-100">
                             <h4 class="text-center">Add a Quiz Type</h4>
                             <div class="row row-cols-3 pt-4">
@@ -117,10 +117,6 @@
                     </section>
                 </div>
             <?= $this->Form->end() ?>
-        </div>
-        <div class="min-w-20 flex-shrink-0 d-flex flex-xxl-column" style="min-height: 220px;">
-            <div class="card rounded-rem-1" style="flex-basis: 70%;">
-            </div>
         </div>
     </div>
 </div>

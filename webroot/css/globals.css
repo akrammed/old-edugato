@@ -87,6 +87,10 @@ body {
     background-color: hsl(var(--background-alt-color));
 }
 
+.bg-background-alt\/10 {
+    background-color: hsla(var(--background-alt-color), 0.1);
+}
+
 .bg-foreground {
     background-color: hsl(var(--foreground-color));
 }

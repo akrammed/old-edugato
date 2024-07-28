@@ -1,5 +1,5 @@
 <div>
-    <a class=" card overflow-hidden h-100 shadow-md" href="#" data-bs-toggle="offcanvas" data-bs-target="<?=$canvas?>" aria-controls="offcanvasEnd">
+    <a class="card overflow-hidden h-100 shadow-md" href="#">
         <div class="cardNew courseContainter h-100">
             <div class="d-flex flex-column">
                 <div class="w-100 d-flex align-items-center justify-content-center" style="height: 200px; background-color: #ECEFF4;">

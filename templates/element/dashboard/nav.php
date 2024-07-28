@@ -4,9 +4,11 @@
 ?>
 <nav class="navbar navbar-expand-lg" style="height: 100px;">
   <div class="container-xl d-flex justify-content-between gap-8">
-    <a href="#" style="padding-bottom: 2px;">
-        <?= $this->Html->image('new-logo.svg', ['class' => 'img-fluid']) ?>
-    </a>
+    <?php if (isset($layer) && $layer !== 'admin'): ?>
+        <a href="#" style="padding-bottom: 2px;">
+            <?= $this->Html->image('new-logo.svg', ['class' => 'img-fluid']) ?>
+        </a>
+    <?php endif; ?>
     <div class="d-flex align-items-center gap-2 gap-lg-8 flex-grow-1 justify-content-end">
         <div class="d-flex align-items-center gap-2 gap-lg-8">
             <?php if (!empty($layer) && in_array($layer, $layers) && $layer !== 'admin'): ?>
@@ -36,12 +38,14 @@
                 </ul>
             <?php endif; ?>
             <ul class="d-flex reset-list gap-2">
-                <li class="nav-item<?= $liHideClass; ?>">
-                    <?= $this->element('dashboard/helper/pstatus-card', ['icon' => 'energy-icon', 'text' => '26']) ?>
-                </li>
-                <li class="nav-item<?= $liHideClass; ?>">
-                    <?= $this->element('dashboard/helper/pstatus-card', ['icon' => 'cup-icon', 'text' => '115']) ?>
-                </li>
+                <?php if (isset($layer) && $layer !== 'admin'): ?>
+                    <li class="nav-item<?= $liHideClass; ?>">
+                        <?= $this->element('dashboard/helper/pstatus-card', ['icon' => 'energy-icon', 'text' => '26']) ?>
+                    </li>
+                    <li class="nav-item<?= $liHideClass; ?>">
+                        <?= $this->element('dashboard/helper/pstatus-card', ['icon' => 'cup-icon', 'text' => '115']) ?>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item ms-2">
                     <?= $this->element('dashboard/helper/user-menu') ?>
                 </li>
