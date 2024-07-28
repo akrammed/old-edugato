@@ -532,6 +532,12 @@ input {
     transform: translateX(0%);
 }
 
+.admin-active-link,
+.admin-active-link:hover {
+    color: hsl(var(--primary-color));
+    background-color: hsl(var(--background-color));
+}
+
 .border {
     border: 1px solid hsl(var(--border-color)) !important;
 }
