@@ -1,4 +1,4 @@
-<div id="dashboardSidebar" data-is-open="false" class="position-fixed flex-shrink-0 h-100 px-8 w-68 z-3 bg-background -translate-x-100 translate-x-xl-0" style="top: 0px; left: 0px; padding-top: 132px; transition: all 0.5s; border-right: 1px solid hsl(var(--border-color));">
+<div id="dashboardSidebar" data-is-open="false" class="position-fixed flex-shrink-0 h-100 px-8 w-60 z-3 bg-background -translate-x-100 translate-x-xl-0" style="top: 0px; left: 0px; padding-top: 132px; transition: all 0.5s; border-right: 1px solid hsl(var(--border-color));">
     <ul class="text-lg d-flex flex-column gap-4 reset-list">
         <li class="nav-item">
             <a href="<?= $this->Url->build('/admin') ?>" class="nav-link align-middle px-0">

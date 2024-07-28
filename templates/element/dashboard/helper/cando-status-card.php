@@ -9,6 +9,6 @@
     data-bs-custom-class="custom-tooltip"
     data-bs-title="<?= $description; ?>">
     <?=
-        $this->element('icons/' . $icon, ['class' => 'w-7 h-7 w-xl-8 xl-h-8 ' . $iconClass]);
+        $this->element('icons/' . $icon, ['class' => 'w-7 h-7 w-xl-8 h-xl-8 ' . $iconClass]);
     ?>
 </div>

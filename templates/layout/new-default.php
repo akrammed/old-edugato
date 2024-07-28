@@ -23,15 +23,15 @@
     </head>
     <body>
         <?php if ($this->fetch('sidebar')): ?>
-            <div class="d-flex <?= isset($altBackground) ? 'bg-background-alt' : '';?>">
+            <div class="d-flex <?= isset($altBackground) && $altBackground ? 'bg-background-alt' : '';?>">
                 <?= $this->fetch('sidebar') ?>
-                <div class="d-flex flex-column min-h-screen flex-grow-1 pl-xl-68">
+                <div class="d-flex flex-column min-h-screen flex-grow-1 pl-xl-60">
                     <?= $this->fetch('navbar') ?>
                     <?= $this->fetch('content') ?>
                 </div>
             </div>
         <?php else: ?>
-        <div class="d-flex flex-column min-h-screen <?= isset($altBackground) ? 'bg-background-alt' : '';?> ">
+        <div class="d-flex flex-column min-h-screen <?= isset($altBackground) && $altBackground ? 'bg-background-alt' : '';?> ">
             <?= $this->fetch('navbar') ?>
             <?= $this->fetch('content') ?>
         </div>

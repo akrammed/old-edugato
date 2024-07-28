@@ -1,10 +1,4 @@
 <style>
-body {
-    background-color: #F6F8FB !important;
-    font-weight: 700;
-    font-style: normal !important;
-    color: #27313F !important;
-}
 
 .quiz-title-row {
     display: grid;

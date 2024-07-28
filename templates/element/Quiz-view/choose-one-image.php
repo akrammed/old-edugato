@@ -1,40 +1,16 @@
-<div class="quiz-body">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="content" style="margin-top: 1%;">
-                <div class="conversation">
-                    <div class="avatar-container">
-                        <?php echo $this->element('icons/monkey'); ?>
-                        <?php echo $this->element('icons/talikng-bubbls'); ?>
-                        <h2 class="avatar-question avatar-question-image"><?= $questions[0]['question'] ?> </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="options">
-                <div class="container image-groupe">
-                    <div class="row images-quiz-row">
-                        <?php
-                            $i = 0;
-                            foreach ($options as $key => $value) {
-                                if ($value->is_correct == 1) {
-                                    $correctImg = $i;
-                                    $correct = 'Option-' . $key;
-                                }
-                                echo '<div class="col-sm-4  image-card" >';
-                                echo  $this->Html->image('/img/uploads/picture/' . $value->qoption, ['alt' => 'Option ' . $key, 'id' => 'Option-' . $key, 'class' => 'Option-' . $key . ' image-view clickable img-custom img-option']);
-                                echo '</div>';
-                                $i++;
-                            };
-                            ?>
-                    </div>
-                </div>
-            </div>
-
+<div class="d-flex flex-column border-b-2 px-2">
+    <p class="text-xl">Choose the correct image</p>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="pt-4">
+            <?php echo $this->element('icons/monkey'); ?>
         </div>
+        <p class="text-lg pb-4">Can I have the banana, please?</p>
     </div>
-
-    </section>
+</div>
+<div class="d-grid grid-cols-4 mt-8 gap-4 max-w-2xl w-100 grid-short-cards-4">
+    <?php for($i = 0; $i < 4; $i++): ?>
+        <div class="border-4 rounded-md h-44 h-lg-40 h-xl-44 short-card-h-4">
+                <?= $this->Html->image('uploads/picture/banana.png', ['class' => 'w-100 h-100', 'style' => 'object-fit: contain;']); ?>
+        </div>
+    <?php endfor; ?>
 </div>

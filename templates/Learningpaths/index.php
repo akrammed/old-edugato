@@ -20,7 +20,7 @@
                         
 <div class="flex-grow-1 d-flex flex-column" id="scContent">
     <div class="flex-grow-1 d-flex flex-column flex-xl-row gap-4">
-        <div class="flex-grow-1 card overflow-hidden d-flex flex-column">
+        <div class="flex-grow-1 overflow-hidden d-flex flex-column">
             <section class="flex-grow-1 p-8" id="section">
                 <div id="take-quiz-2">
                     <h3 class="text-xl mb-8">Manage learning paths</h3>
@@ -33,10 +33,6 @@
                     </div>
                 </div>
             </section>
-        </div>
-        <div class="min-w-20 flex-shrink-0 d-flex flex-xl-column" style="min-height: 220px;">
-            <div class="card rounded-rem-1" style="flex-basis: 70%;">
-            </div>
         </div>
     </div>
 </div>

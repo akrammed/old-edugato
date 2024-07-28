@@ -17,10 +17,13 @@ class LearningpathsController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->setLayout('dashboard-layout');
-        $this->set('sidebar', 'dashboard/aside');
+
+        $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
+        $isAdmin = ($currentSessionUser ? $currentSessionUser->role_id : null) === 2;
+        $this->viewBuilder()->setLayout($isAdmin ? 'new-admin-layout' : 'dashboard-layout');
         $this->set('layer', 'admin');
-        $this->set('altBackground', true);
+        $this->set('sidebar', $isAdmin ? 'dashboard/admin-aside' : 'dashboard/aside');
+        $this->set('altBackground', !$isAdmin);
         $query = $this->Learningpaths->find();
         $learningpaths = $this->paginate($query);
 

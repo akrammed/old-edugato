@@ -58,18 +58,18 @@
                         <button type="button" class="btn btn-primary position-absolute z-3" id="replace-btn" style="display:none; left: 1rem; top: 1rem;" onclick="$('#upload-short').click();">Replace</button>
                         <video id="short-video" class="w-100 h-100" style="display:none; object-fit: cover; object-position: center;" src="" autoplay="" controls muted></video>
                     </div>
-                </div>
-                <section class="quiz-section flex-grow-1 pt-8 pb-4 px-4">
-                    <div id="quiz-type-section" class="w-100">
-                        <h4 class="text-center">Add a Quiz Type</h4>
-                        <div class="row row-cols-3 pt-4">
-                            <div class="quiz-type-card">
-                                <?= $this->element('icons/text-option-icon'); ?>
-                            </div>
-                            <div class="quiz-type-card">
-                                <?= $this->element('icons/image-option-icon'); ?>
-                            </div>
-                            <div class="quiz-type-card">
+
+                    <section class="quiz-section flex-grow-1 pt-8 pb-4 px-4 bg-background-alt/10">
+                        <div id="quiz-type-section" class="w-100">
+                            <h4 class="text-center">Add a Quiz Type</h4>
+                            <div class="row row-cols-3 pt-4">
+                                <div class="quiz-type-card">
+                                    <?= $this->element('icons/text-option-icon'); ?>
+                                </div>
+                                <div class="quiz-type-card">
+                                    <?= $this->element('icons/image-option-icon'); ?>
+                                </div>
+                                <div class="quiz-type-card">
                                 <?= $this->element('icons/order-the-words-icon'); ?>
                             </div>
                             <div class="pt-2 quiz-type-card">
@@ -121,10 +121,6 @@
                 </section>
             </div>
             <?= $this->Form->end() ?>
-        </div>
-        <div class="min-w-20 flex-shrink-0 d-flex flex-xxl-column" style="min-height: 220px;">
-            <div class="card rounded-rem-1" style="flex-basis: 70%;">
-            </div>
         </div>
     </div>
 </div>
