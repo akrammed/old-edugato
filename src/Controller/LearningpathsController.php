@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Http\Response;
+
 /**
  * Learningpaths Controller
  *
@@ -129,5 +131,27 @@ class LearningpathsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function createLearningPathsAjax()
+    {
+        $this->autoRender = false;
+        $data = $this->request->getData('data');
+        $learningpath = $this->Learningpaths->newEmptyEntity();
+        $uploadResult = $this->upload($data,'picture','learningpaths');
+        if (isset($data['is_free']) && $data['is_free'] == 1) {
+            $this->Learningpaths->updateAll(['is_free' => 0], ['is_free' => 1]);
+        }
+        $data = $uploadResult['data'];
+        $learningpath = $this->Learningpaths->patchEntity($learningpath, $data);
+        $result  = $this->Learningpaths->save($learningpath) !== false ? true : false;
+        $responseArray = [
+            'status' => $result
+        ];
+
+        $response = new Response();
+        $response = $response->withType('application/json')
+            ->withStringBody(json_encode($responseArray));
+        return $response;
     }
 }
