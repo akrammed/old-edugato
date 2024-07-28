@@ -87,6 +87,9 @@ input {
         background-color: hsla(var(--primary-color), 0.9) !important;
         transform: translateY(0);
     }
+    &:disabled {
+        background-color: hsla(var(--primary-color), 0.6) !important;
+    }
 }
 
 .btn-light {

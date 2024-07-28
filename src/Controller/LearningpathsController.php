@@ -136,7 +136,7 @@ class LearningpathsController extends AppController
     public function createLearningPathsAjax()
     {
         $this->autoRender = false;
-        $data = $this->request->getData('data');
+        $data = $this->request->getData();
         $learningpath = $this->Learningpaths->newEmptyEntity();
         $uploadResult = $this->upload($data,'picture','learningpaths');
         if (isset($data['is_free']) && $data['is_free'] == 1) {

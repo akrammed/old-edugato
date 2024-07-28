@@ -25,7 +25,14 @@
                     </div>
                 </div>
             </div>
-            <?= $this->Form->create(null, ['class' => 'px-4 flex-1 w-50 d-flex flex-column']) ?>
+            <?= $this->Form->create(null, [
+                'id' => 'add-learningpath-form',
+                'class' => 'px-4 flex-1 w-50 d-flex flex-column',
+                'url' => ['controller' => 'Learningpaths', 'action' => 'createLearningPathsAjax'],
+                'type' => 'file',
+                'method' => 'post',
+                'enctype' => 'multipart/form-data'
+            ]) ?>
                 <div class="h-16 d-flex align-items-center flex-shrink-0">
                     <p class="text-lg">Path Settings</p>
                 </div>
@@ -42,11 +49,11 @@
                                         <span class="divider__line"></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm btn-sm--fix" id="upload-learningpath-image-btn">Browse</button>
-                                    <?= $this->Form->control('image', ['type' => 'file', 'class' => 'd-none', 'label' => false, 'id' => 'file-upload']) ?>
+                                    <?= $this->Form->control('picture', ['type' => 'file', 'class' => 'd-none', 'label' => false, 'id' => 'file-upload']) ?>
                                 </div> 
                             </div>
                             <div class="px-4">
-                                <?= $this->Form->control('title', [
+                                <?= $this->Form->control('path', [
                                     'type' => 'text',
                                     'class' => 'w-100 border text-base',
                                     'placeholder' => 'Enter path name...',
@@ -62,8 +69,8 @@
                                 <?= $this->Form->control('visibility', [
                                     'type' => 'radio',
                                     'options' => [
-                                        '1' => 'Draft',
-                                        '0' => 'Published'
+                                        '0' => 'Draft',
+                                        '1' => 'Published'
                                     ],
                                     'class' => 'h-fit me-2',
                                     'label' => false,
@@ -74,11 +81,11 @@
                         <div class="d-flex flex-column gap-2">
                             <p class="text-lg">Pricing</p>
                             <div class="form-group mt-1">
-                                <?= $this->Form->control('pricing', [
+                                <?= $this->Form->control('is_free', [
                                     'type' => 'radio',
                                     'options' => [
-                                        '1' => 'Free',
-                                        '0' => 'Paid'
+                                        '0' => 'Free',
+                                        '1' => 'Paid'
                                     ],
                                     'class' => 'h-fit me-2',
                                     'label' => false,
@@ -101,23 +108,83 @@
 </div>
 <script>
     $(document).ready(function() {
+        let imageUploaded = false;
+        let titleValue = '', visibilityChecked, pricingChecked;
+
         $("#to-step2-btn").click(function() {
             $("#step1").removeClass("d-flex").addClass("d-none");
             $("#step2").removeClass("d-none").addClass("d-flex");
             $("#to-step2-btn, #cancel-btn").removeClass("d-flex").addClass("d-none");
             $("#to-step1-btn, #save-btn").removeClass("d-none").addClass("d-flex");
+            // checkSaveButtonState();
         });
+
         $("#to-step1-btn").click(function() {
             $("#step2").removeClass("d-flex").addClass("d-none");
             $("#step1").removeClass("d-none").addClass("d-flex");
             $("#to-step1-btn, #save-btn").removeClass("d-flex").addClass("d-none");
             $("#to-step2-btn, #cancel-btn").removeClass("d-none").addClass("d-flex");
         });
-        $("#save-btn").click(function() {
-            // Add your save logic here
-            // For example, you might want to submit a form:
-            // $("#your-form-id").submit();
+
+        $('#add-learningpath-form').on('submit', function(e) {
+            e.preventDefault();
+            if ($('#save-btn').prop('disabled')) {
+                return;
+            }
+
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.status) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Learning path created successfully!',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+                        $('#add-new-learningpath').modal('hide');
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed to create learning path. Please try again.',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    Swal.fire({
+                        toast: true,
+                        icon: 'error',
+                        title: 'An error occurred. Please try again.',
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+                }
+            });
         });
+
         function handleFileSelect(e) {
             e.preventDefault();
             let file;
@@ -131,6 +198,8 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     $('#pathname-image-container').html(`<img src="${e.target.result}" alt="Uploaded image" style="width: 100%; height: 100%; object-fit: cover;">`);
+                    imageUploaded = true;
+                    checkNextButtonState();
                 };
                 reader.readAsDataURL(file);
             }
@@ -155,9 +224,37 @@
         });
         $('#file-upload').change(handleFileSelect);
 
-        // Update title when input changes
-        $('input[name="title"]').on('input', function() {
-            $('#path-name-title').text(!$(this).val().trim() ? 'Path Name' : $(this).val());
+        // Update inputes when they changes
+        $('input[name="path"]').on('input', function() {
+            titleValue = $(this).val();
+            $('#path-name-title').text(!titleValue.trim() ? 'Path Name' : titleValue);
+            checkNextButtonState();
         });
-    });
+
+        $('input[name="visibility"]').on('change', function() {
+            visibilityChecked = $(this).is(':checked');
+            checkSaveButtonState();
+        });
+
+        $('input[name="is_free"]').on('change', function() {
+            pricingChecked = $(this).is(':checked');
+            checkSaveButtonState();
+        });
+
+        function checkNextButtonState() {
+            if (imageUploaded && !!titleValue.trim()) {
+                $('#to-step2-btn').prop('disabled', false);
+            } else {
+                $('#to-step2-btn').prop('disabled', true);
+            }
+        }
+
+        function checkSaveButtonState() {
+            $('#save-btn').prop('disabled', !(visibilityChecked && pricingChecked));
+        }
+
+        // Initial state
+        $('#to-step2-btn').prop('disabled', true);
+        $('#save-btn').prop('disabled', true);
+});
 </script>
