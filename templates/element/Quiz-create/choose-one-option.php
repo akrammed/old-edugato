@@ -1,5 +1,5 @@
 <p class="text-center text-lg">Enter the correct option first</p>
-<div class="d-flex gap-3">
+<div class="d-flex flex-wrap gap-3">
     <?php for ($i = 0; $i < 3; $i++) {
         $class = $i == 0 ? 'correct-option' : 'false-option'; ?>
         <div style="flex: 1; min-width: 120px;">

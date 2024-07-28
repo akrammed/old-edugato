@@ -1,3 +1,4 @@
+<?php dd($shorts) ?>
 <div class="flex-grow-1 d-flex flex-column" id="scContent">
     <div class="flex-grow-1 d-flex flex-column flex-lg-row gap-4">
         <div class="flex-grow-1 card d-flex flex-col flex-lg-row overflow-hidden">
@@ -6,16 +7,14 @@
                     style="right: 1rem; top: 1rem; font-size: 1.25rem;"><i class="fa-solid fa-angle-down"></i></button>
                 <div class="bg-foreground flex-grow-1"
                     style="aspect-ratio: 9 / 16; height: calc(100dvh - 102px - 2rem); width: fit-content; max-width: 500px;">
-                    <video id="short-vid-display" class="w-100 h-100" style="object-fit: cover; object-position: center;" controls autoplay loop disablePictureInPicture
-                        controlslist="nodownload noplaybackrate"
-                        src="<?php echo $this->Url->build('/uploads/videos/' . $shorts[0]->video) ?>"></video>
+                    <video id="short-vid-display" class="w-100 h-100" style="object-fit: cover; object-position: center;" controls autoplay loop disablePictureInPicture controlslist="nodownload noplaybackrate" src="<?php echo $this->Url->build('/uploads/videos/' . $shorts[0]->video) ?>"></video>
                 </div>
             </div>
             <section class="flex-grow-1 py-8 px-4" id="section">
-                <div id="take-quiz-2" class="h-100 d-flex justify-content-center align-items-center"
-                    style="min-height: 360px;">
-                    <div>
-
+                <div id="take-quiz-2" class="h-100 d-flex flex-column gap-4 justify-content-between align-items-center" style="min-height: 360px;">
+                    <?= $this->element('Quiz-view/Elements/header') ?>
+                    <div class="d-flex flex-column gap-6 justify-content-center align-items-center flex-grow-1 w-100">
+                        <?= $this->element('Quiz-view/conversation-speaking') ?>
                     </div>
                 </div>
             </section>
@@ -72,5 +71,24 @@
                 scrollTop: $('#section').offset().top
             }, 0);
         });
+
+        function fetchQuiz(id) {
+            $.ajax({
+                url: '/shorts/getQuizAjax',
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Quiz:', response.quiz);
+                    console.log('Options:', response.options);
+                    console.log('Questions:', response.questions);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching quiz:', error);
+                }
+            });
+        }
+
+        fetchQuiz(shortsArray[currentIndex].quiz_id);
+
     });
 </script>

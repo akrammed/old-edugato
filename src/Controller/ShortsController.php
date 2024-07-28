@@ -158,27 +158,51 @@ class ShortsController extends AppController
         return $this->redirect(['controller' => 'candostatments', 'action' => 'index', $lp]);
     }
 
-    public function watch( $candoId = null)
+    public function watch($candoId = null)
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
         $this->set('layer', 'shorts');
         $this->set('sidebar', 'dashboard/aside');
         $this->set('altBackground', true);
+    
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $shortsTable = TableRegistry::getTableLocator()->get('Shorts');
         $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');
+        $quizzesTable = TableRegistry::getTableLocator()->get('Quizs');
+        $questionsTable = TableRegistry::getTableLocator()->get('Questions');
+        $optionsTable = TableRegistry::getTableLocator()->get('Options');
+    
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
         $userId = $currentSessionUser ? $currentSessionUser->id : null;
+    
         if ($candoId !== null) {
             $where['id'] = $candoId;
         } else {
             $learningPaths = $learningpathsTable->find()->where(['is_free IS' => 1])->first();
             $where = !empty($learningPaths) ? ['learningpath_id IS' => $learningPaths->id] : '';
         }
-        $candostatments =  $CandostatmentsTable->find()->contain(['Shorts'])->where($where)->first();
-        $shorts = $shortsTable->find()->where(['candostatment_id IS' => $candoId ])->toArray();
-        $this->set(compact(['candostatments','shorts']));
+    
+        $candostatments = $CandostatmentsTable->find()->contain(['Shorts'])->where($where)->first();
+        $shorts = $shortsTable->find()->where(['candostatment_id IS' => $candoId])->toArray();
+    
+        // Fetch quizzes, questions, and options for each short
+        foreach ($shorts as $short) {
+            if (!empty($short->quiz_id)) {
+                $quiz = $quizzesTable->get($short->quiz_id);
+                $questions = $questionsTable->find()->where(['quiz_id' => $short->quiz_id])->toArray();
+                $options = $optionsTable->find()->where(['quiz_id' => $short->quiz_id])->toArray();
+                
+                // Adding questions and options to the quiz object
+                $quiz->questions = $questions;
+                $quiz->options = $options;
+    
+                $short->quiz = $quiz;
+            } else {
+                $short->quiz = null;
+            }
+        }
+        $this->set(compact(['candostatments', 'shorts']));
     }
 
     public function getQuizAjax()
@@ -200,4 +224,5 @@ class ShortsController extends AppController
             ->withStringBody(json_encode($responseData));
         return $response;
     }
+
 }
