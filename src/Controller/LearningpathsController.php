@@ -82,7 +82,12 @@ class LearningpathsController extends AppController
      */
     public function edit($id = null)
     {
-        $this->viewBuilder()->setLayout('admin-layout');
+        $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
+        $isAdmin = ($currentSessionUser ? $currentSessionUser->role_id : null) === 2;
+        $this->viewBuilder()->setLayout($isAdmin ? 'new-admin-layout' : 'dashboard-layout');
+        $this->set('layer', 'admin');
+        $this->set('sidebar', $isAdmin ? 'dashboard/admin-aside' : 'dashboard/aside');
+        $this->set('altBackground', !$isAdmin);
         $learningpath = $this->Learningpaths->get($id, ['contain' => []]);
     
         if ($this->request->is(['patch', 'post', 'put'])) {

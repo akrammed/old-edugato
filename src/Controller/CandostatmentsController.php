@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
+
 /**
  * Candostatments Controller
  *
@@ -28,7 +30,9 @@ class CandostatmentsController extends AppController
         $query = $this->Candostatments->find()
             ->contain(['Learningpaths','Shorts'])->where(['learningpath_id'=> $id]);
         $candostatments = $this->paginate($query);
-        $this->set(compact('learningpath','candostatment','candostatments'));
+        $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
+        $activeCandostatments = $CandostatmentsTable->find()->where(['learningpath_id IS'=>$learningpath->id , 'is_active'])->first();
+        $this->set(compact('learningpath','candostatment','candostatments','activeCandostatments'));
     }
 
     /**
@@ -57,6 +61,7 @@ class CandostatmentsController extends AppController
         if ($this->request->is('post')) {
             $data =  $this->request->getData();
             $candostatment = $this->Candostatments->patchEntity($candostatment,$data);
+            $candostatment->is_active = count($this->Candostatments->find()->toArray()) === 0 ? 1 : 0;
             if ($this->Candostatments->save($candostatment)) {
                 $this->Flash->success(__('The can do statment has been saved.'));
 
