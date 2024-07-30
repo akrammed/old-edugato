@@ -80,6 +80,7 @@ input {
 
 .btn-primary {
     background-color: hsl(var(--primary-color));
+    border: 1px solid hsl(var(--border-color)) !important;
     color: hsl(var(--background-color));
     &:hover,
     &:active,
@@ -89,6 +90,70 @@ input {
     }
     &:disabled {
         background-color: hsla(var(--primary-color), 0.6) !important;
+    }
+}
+
+.btn-primary--fix {
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: hsl(var(--primary-color)) !important;
+        transform: translateY(0);
+    }
+}
+
+.btn-disabled-option {
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: hsl(var(--primary-color)) !important;
+        cursor: default;
+    }
+}
+
+.btn-correct {
+    background-color: hsl(var(--success-color)) !important;
+    color: hsl(var(--background-color)) !important;
+    cursor: default;
+    &:hover,
+    &:active,
+    &:focus,
+    &:disabled {
+        background-color: hsl(var(--success-color)) !important;
+        transform: translateY(0);
+        opacity: 1 !important;
+    }
+}
+
+.btn-incorrect {
+    background-color: hsl(var(--destructive-color)) !important;
+    color: hsl(var(--background-color)) !important;
+    cursor: default;
+    &:hover,
+    &:active,
+    &:focus,
+    &:disabled {
+        background-color: hsl(var(--destructive-color)) !important;
+        transform: translateY(0);
+        opacity: 1 !important;
+    }
+}
+
+.btn-ghosted {
+    background-color: transparent;
+    border: 1px solid hsl(var(--border-color));
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+    color: transparent;
+    cursor: default;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: transparent !important;
+        border: 1px solid hsl(var(--border-color)) !important;
+        color: transparent !important;
+        transform: translateY(0);
     }
 }
 
@@ -371,6 +436,10 @@ input {
     max-width: 42rem;
 }
 
+.max-w-50 {
+    max-width: 50%;
+}
+
 .h-2 {
     height: 0.5rem;
 }
@@ -561,6 +630,14 @@ input {
     border: 2px dashed #728197;
 }
 
+.border-success {
+    border-color: hsl(var(--success-color)) !important;
+}
+
+.border-destructive {
+    border-color: hsl(var(--destructive-color)) !important;
+}
+
 .radio {
     display: flex;
     flex-direction: column;
@@ -569,6 +646,14 @@ input {
 
 .flex-1 {
     flex: 1 1 0%;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.left-0 {
+    left: 0;
 }
 
 @media (min-width: 1199.98px) {
@@ -601,6 +686,10 @@ input {
 
 .pb-4 {
     padding-bottom: 1rem !important;
+}
+
+.pb-6 {
+    padding-bottom: 1.5rem;
 }
 
 .pb-8 {

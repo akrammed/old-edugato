@@ -50,10 +50,9 @@ foreach ($options as  $key => $o) {
                                     <section class="sec" id="section">
                                         <div class=" h-100 d-flex flex-column" id="take-quiz-view-2">
                                             <div class="card-body flex-grow-1">
-                                                <?php echo $this->element('Quiz-view/Elements/header'); ?>
                                                 <div id="quiz-view-container"></div>
                                             </div>
-                                            <?php echo $this->element('Quiz-view/Elements/footer'); ?>
+                                           
 
                                         </div>
                                     </section>

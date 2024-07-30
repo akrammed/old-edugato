@@ -20,7 +20,7 @@
     --muted-color: 200, 4%, 55%;
     --light-color: 218, 27%, 94%;
     --border-color: 200, 23%, 92%;
-    --success-color: 85, 60%, 60%;
+    --success-color: 130, 79%, 42%;
     --warning-color: 27, 93%, 61%;
 }
 
@@ -49,6 +49,10 @@ body {
 
 .color-success {
     color: hsl(var(--success-color));
+    &:hover,
+    &:active {
+        color: hsl(var(--success-color)) !important;
+    }
 }
 
 .color-warning {
@@ -57,10 +61,18 @@ body {
 
 .color-destructive {
     color: hsl(var(--destructive-color));
+    &:hover,
+    &:active {
+        color: hsl(var(--destructive-color)) !important;
+    }
 }
 
 .bg-background {
     background-color: hsl(var(--background-color));
+    &:hover,
+    &:active {
+        background-color: hsl(var(--background-color)) !important;
+    }
 }
 
 .bg-primary\/10 {
@@ -78,6 +90,14 @@ body {
 
 .bg-warning\/30 {
     background-color: hsla(var(--warning-color), 0.3);
+}
+
+.bg-destructive\/10 {
+    background-color: hsla(var(--destructive-color), 0.1);
+}
+
+.bg-success\/10 {
+    background-color: hsla(var(--success-color), 0.1);
 }
 
 .bg-success\/30 {
@@ -251,6 +271,14 @@ a {
     box-shadow:
         0 10px 15px -3px rgb(0 0 0 / 0.1),
         0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor {
+    cursor: default;
 }
 
 /* WebKit Browsers (Chrome, Safari) */

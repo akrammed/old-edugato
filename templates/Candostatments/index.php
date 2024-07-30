@@ -10,7 +10,7 @@
                            Add can do statment
                         </button>
                         <p> Or </p>
-                        <button class="btn-reset color-primary">Preview path</button>
+                        <a class="btn-reset color-primary" href="<?= $this->Url->build(['controller' => 'Shorts', 'action' => 'watch',$activeCandostatments->id]) ?>">Preview path</a>
                     </div>
                     <div class="d-flex flex-column gap-4">
                         <?php

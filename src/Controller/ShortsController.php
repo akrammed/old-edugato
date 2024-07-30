@@ -164,7 +164,6 @@ class ShortsController extends AppController
     {
         $this->viewBuilder()->setLayout('dashboard-layout');
         $this->set('layer', 'shorts');
-        $this->set('sidebar', 'dashboard/aside');
         $this->set('altBackground', true);
     
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
@@ -176,17 +175,16 @@ class ShortsController extends AppController
         $optionsTable = TableRegistry::getTableLocator()->get('Options');
     
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
-        $userId = $currentSessionUser ? $currentSessionUser->id : null;
-    
+        $userId = $currentSessionUser ? $currentSessionUser->id : null;   
         if ($candoId !== null) {
             $where['id'] = $candoId;
         } else {
             $learningPaths = $learningpathsTable->find()->where(['is_free IS' => 1])->first();
-            $where = !empty($learningPaths) ? ['learningpath_id IS' => $learningPaths->id] : '';
+            $where = !empty($learningPaths) ? ['learningpath_id IS' => $learningPaths->id, 'is_active IS' => 1] : '';
         }
     
         $candostatments = $CandostatmentsTable->find()->contain(['Shorts'])->where($where)->first();
-        $shorts = $shortsTable->find()->where(['candostatment_id IS' => $candoId])->toArray();
+        $shorts = $shortsTable->find()->where(['candostatment_id IS' => $candostatments->id])->toArray();
     
         // Fetch quizzes, questions, and options for each short
         foreach ($shorts as $short) {
@@ -243,4 +241,5 @@ class ShortsController extends AppController
             ->withStringBody(json_encode($responseArray));
         return $response;
     }
+
 }
