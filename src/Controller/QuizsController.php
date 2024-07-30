@@ -178,4 +178,41 @@ class QuizsController extends AppController
                 }
             return $data;
         }
+
+        public function getOptionsQuizAnswer()
+        {
+            $this->autoRender = false;
+            $data = $this->request->getData();
+            $optionsTable  = TableRegistry::getTableLocator()->get('options');
+            $mismatchedOptions = [];
+    
+            foreach ($data['options'] as $o) {
+                $option = $optionsTable->find()->where(['id' => $o->id])->first();
+                if (in_array($data['quiz-type'], [3, 4, 6])) {
+                    if ($option->oorder != $o->order) {
+                        $mismatchedOptions[] = $option;
+                    }
+                } elseif ($data['quiz-type'] == 1) {
+                    if ($option->is_correct != $o->is_correct) {
+                        $mismatchedOptions[] = $option;
+                    }
+                }
+            }
+    
+            if (empty($mismatchedOptions)) {
+                $responseData = [
+                    'status' => true
+                ];
+            } else {
+                $responseData = [
+                    'status' => false,
+                    'mismatchedOptions' => $mismatchedOptions
+                ];
+            }
+    
+            $response = new Response();
+            $response = $response->withType('application/json')
+                ->withStringBody(json_encode($responseData));
+            return $response;
+        }
 }
