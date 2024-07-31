@@ -16,6 +16,7 @@ $elementMap = [
 if (array_key_exists($quizType, $elementMap)) {
     echo $this->element($elementMap[$quizType], [
         'question' => $currentShort['quiz']['questions'][0]['question'],
+        'questions' => $currentShort['quiz']['questions'],
         'options' => $currentShort['quiz']['options'],
         'currentShortData' => $currentShortData
     ]);

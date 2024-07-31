@@ -222,23 +222,36 @@ class QuizsController extends AppController
         $currentStep = $session->read('current_step');
         $shortsData = $session->read('shorts_data');
         $isCorrect = $this->request->getData('isCorrect');
+        $multiLength = empty($this->request->getData('multiLength')) ? 1 : $this->request->getData('multiLength');
+        $selectedOptions = $shortsData[$currentStep]['selected_option_id'];
+        $selectedLength = (empty($selectedOptions) ? 0 : ($multiLength == 1 ? 1 : count($selectedOptions)));
 
-        if (!empty($shortsData[$currentStep]['selected_option_id'])) {         
+        $currentShort = $session->read('shorts')[$currentStep];
+        $options = $currentShort['quiz']['options'];
+        $questions = $currentShort['quiz']['questions'];
+
+
+        if ($multiLength <= $selectedLength && !empty($selectedOptions)) {         
             return $this->response->withType('application/json')
                 ->withStringBody(json_encode(['alreadyAnswered' => true]));
         }
 
-        $optionId = $this->request->getData('id');
-          
+        $option = $options[$selectedLength];
+        $nextOption = $selectedLength + 1 < count($options) ? $options[$selectedLength + 1] : null;
+        $nextQuestion = ($multiLength > 1 && $selectedLength + 1 < count($questions)) ? $questions[$selectedLength + 1] : null;
+
         $view = new \Cake\View\View($this->request, $this->response);
         $answerAlert = $view->element('Quiz-view/Elements/answer-alert', ['isCorrect' => $isCorrect == "true"]);
+        $chatElement = (($multiLength > 1) && ($isCorrect == "true")) ? $view->element('Quiz-view/Elements/chat-message' , ['dir' => 'r', 'msg' => $option->qoption]): null;
+        $chatBotElement = ( !empty($nextQuestion) && ($isCorrect == "true")) ? $view->element('Quiz-view/Elements/chat-message' , ['msg' => $nextQuestion->question]): null;
         
-        $shortsData[$currentStep]['selected_option_id'] = $optionId;
+        $shortsData[$currentStep]['selected_option_id'] = (empty($selectedOptions) && $multiLength == 1 ? $option['id'] : ((empty($selectedOptions) && $isCorrect == 'true') ? [$option] : [...$selectedOptions, $option]));
+
         $shortsData[$currentStep]['correct_option_id'] = $isCorrect;
         $session->write('shorts_data', $shortsData);
 
         $this->response = $this->response->withType('application/json')
-            ->withStringBody(json_encode(['isCorrect' => $isCorrect == "true", 'answerAlert' => $answerAlert, 'navigable' => $currentStep < count($shortsData) - 1]));
+            ->withStringBody(json_encode(['isCorrect' => $isCorrect == "true", 'answerAlert' => $answerAlert, 'navigable' => $currentStep < count($shortsData) - 1, 'chatElement' => $chatElement, 'chatBotElement' => $chatBotElement, 'nextOption' => $nextOption]));
         return $this->response;
     }
 

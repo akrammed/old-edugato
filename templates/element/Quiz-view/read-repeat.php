@@ -25,7 +25,7 @@
     'method' => 'post',
     'class' => 'w-100 d-flex justify-content-center'
 ]) ?>
-<button id="recordButton" type="button" <?= isset($currentShortData['selected_option_id']) ? 'disabled="disabled"' : '' ?> data-is-recording="false" class="btn btn-primary p-0 mt-8<?= getDefaultclass($currentShortData['selected_option_id'], $currentShortData['correct_option_id']); ?>" style="height: 4.5rem; width: 4.5rem;">
+<button id="recordButton" type="button" <?= isset($currentShortData['selected_option_id']) ? 'disabled="disabled"' : '' ?> class="btn btn-primary p-0 mt-8<?= getDefaultclass($currentShortData['selected_option_id'], $currentShortData['correct_option_id']); ?>" style="height: 4.5rem; width: 4.5rem;">
     <?= $this->element('icons/start-record'); ?>
 </button>
 <?= $this->Form->end() ?>
@@ -132,8 +132,6 @@
         function stopRecording() {
             if (recognition) {
                 recognition.stop();
-            } else {
-                alert('No active recording session.');
             }
         }
     })

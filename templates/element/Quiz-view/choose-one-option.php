@@ -25,7 +25,7 @@
 ]) ?>
 <div class="d-flex flex-wrap gap-3 w-100 max-w-xl">
     <?php foreach ($options as $index => $option): ?>
-        <p class="btn btn-primary flex-1 clickable-option<?= getDefaultclass($option['id'], $currentShortData['selected_option_id'], $currentShortData['correct_option_id']); ?>" data-option-id="<?= $option['id']; ?>"><?= $option->qoption; ?></p>
+        <p class="btn btn-primary flex-1 btn-responsive clickable-option<?= getDefaultclass($option['id'], $currentShortData['selected_option_id'], $currentShortData['correct_option_id']); ?>" data-option-id="<?= $option['id']; ?>"><?= $option->qoption; ?></p>
     <?php endforeach; ?>
 </div>
 <?= $this->Form->end() ?>

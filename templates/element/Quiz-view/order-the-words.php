@@ -38,7 +38,7 @@
 <div class="w-100 max-w-xl">
     <div id="quiz-answer-container" class="border-b-2 d-flex flex-wrap gap-3" style="min-height: 120px;">
         <?php if(isset($currentShortData['selected_option_id'])): foreach ($currentShortData['selected_option_id'] as $option): ?>
-            <p class="btn btn-primary cursor-pointer removable-option btn-disabled-option<?= getDefaultclass(getElementById($currentShortData['selected_option_id'], $option['id']) , $currentShortData['correct_option_id']); ?>" data-clone-option-id="<?= $option['id']; ?>"><?= $option['qoption']; ?></p>
+            <p class="btn btn-primary cursor-pointer removable-option btn-responsive h-fit btn-disabled-option<?= getDefaultclass(getElementById($currentShortData['selected_option_id'], $option['id']) , $currentShortData['correct_option_id']); ?>" data-clone-option-id="<?= $option['id']; ?>"><?= $option['qoption']; ?></p>
         <?php endforeach; endif; ?>
     </div>
     <?= $this->Form->create(null, [
@@ -49,7 +49,7 @@
     ]) ?>
     <div id="quiz-options-container" class="d-flex flex-wrap gap-3 w-100">
         <?php foreach ($options as $index => $option): ?>
-            <p class="btn btn-primary clickable-option <?= isset($currentShortData['selected_option_id']) ? 'btn-ghosted btn-disabled-option': '' ?>" data-option-id="<?= $option['id']; ?>"><?= $option->qoption; ?></p>
+            <p class="btn btn-primary btn-responsive clickable-option <?= isset($currentShortData['selected_option_id']) ? 'btn-ghosted btn-disabled-option': '' ?>" data-option-id="<?= $option['id']; ?>"><?= $option->qoption; ?></p>
         <?php endforeach; ?>
     </div>
     <?= $this->Form->end() ?>
@@ -72,7 +72,7 @@
             $clone.removeClass('clickable-option')
                 .removeAttr('option-id')
                 .attr('data-clone-option-id', optionId)
-                .addClass('removable-option');
+                .addClass('removable-option h-fit');
             $('#quiz-answer-container').append($clone);
             $(this).addClass('btn-ghosted');
             selectedOptions.push({

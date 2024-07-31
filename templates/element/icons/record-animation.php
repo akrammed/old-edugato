@@ -7,6 +7,10 @@
   height: 24px;
 }
 
+.record-icon--sm {
+  width: 16px;
+  height: 16px;
+}
 .record-icon::before,
 .record-icon::after,
 .record-icon span {

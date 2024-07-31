@@ -48,9 +48,11 @@ updateSessionWithShorts($shorts);
 $currentStep = $_SESSION['current_step'];
 $currentShort = $shorts[$currentStep];
 $currentShortData = $_SESSION['shorts_data'][$currentStep];
+$IsCompletedconversion = ($currentShort['quiz']['quiztype_id'] == 8 ? (empty($currentShortData['selected_option_id']) ? false : (count($currentShortData['selected_option_id']) == count($currentShort['quiz']['options']))) : true);
+
 
 $upButtonAttrs = ($currentStep == 0) ? ['class' => 'btn-reset disabled', 'disabled' => true] : ['class' => 'btn-reset'];
-$downButtonAttrs = ($currentStep == $totalSteps || !$_SESSION['shorts_data'][$currentStep]['selected_option_id']) 
+$downButtonAttrs = ($currentStep == $totalSteps || !$_SESSION['shorts_data'][$currentStep]['selected_option_id'] || !$IsCompletedconversion) 
     ? ['class' => 'btn-reset disabled', 'disabled' => true] 
     : ['class' => 'btn-reset'];
 ?>

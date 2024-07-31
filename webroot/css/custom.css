@@ -260,6 +260,14 @@ input {
     font-size: 0.875rem;
 }
 
+.btn-responsive {
+    height: auto;
+    line-height: 1.2;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    min-width: 4rem;
+}
+
 @media (min-width: 1399.98px) {
     .btn {
         font-size: 1.125rem;
@@ -296,6 +304,10 @@ input {
         width: 2rem;
         height: 2rem;
         font-size: 0.875rem;
+    }
+
+    .btn-responsive {
+        height: auto;
     }
 }
 
@@ -776,6 +788,10 @@ input {
 
 .mb-8 {
     margin-bottom: 1.75rem;
+}
+
+.mb-12 {
+    margin-bottom: 2.75rem;
 }
 
 .space-y-1 > * + * {
