@@ -65,7 +65,9 @@
                 data: data,
                 dataType: 'json', 
                 success: function(response) {
-                    console.log(response);
+                    if (response.navigable) (
+                        $('#btnScrollDown').removeClass('disabled').attr('disabled', false)
+                    )
                     if (response.isCorrect) {
                         $('#recordButton').addClass("btn-correct").attr('disabled', true);
                         $('#correctSound').delay(50).get(0).play();
@@ -105,7 +107,8 @@
 
                     recognition.onerror = function(event) {
                         alert('Speech recognition error: ' + event.error);
-                        desactivateRecordAnimation()
+                        desactivateRecordAnimation();
+                        recognition = null;
                     };
 
                     recognition.onend = function() {
@@ -118,7 +121,7 @@
                     alert('Speech recognition is not supported in this browser.');
                 }
             } else {
-                alert('Microphone access is already granted.');
+                console.log('Microphone access is already granted.');
             }
         }
 

@@ -8,7 +8,7 @@
         <p class="text-lg color-destructive">Oops, that wasn't it!</p>
         <?php endif ?>
     </div>
-    <!-- <?php if (!$isCorrect): ?>
+    <?php if (!$isCorrect): ?>
         <?= $this->Form->create(null, [
             'url' => ['controller' => 'Quizs', 'action' => 'retryQuiz'],
             'id' => 'short-retry-form',
@@ -16,7 +16,7 @@
         ]) ?>
             <button id="retry-btn" class="btn border bg-background border-destructive color-destructive">Retry</button>
         <?= $this->Form->end() ?>
-    <?php endif; ?> -->
+    <?php endif; ?>
 </div>
 <style>
     .transform-translateY {
@@ -35,31 +35,28 @@
             $('#answer-alert').addClass('show');
         }, 100);
 
-        // $('#retry-btn').click(function() {
-        //     event.preventDefault();
-
-        //     // if ($(this).hasClass('is-answered') || isAnswered) {
-        //     //     return;
-        //     // }
-        //     var form = $('#short-retry-form');
-        //     $.ajax({
-        //         url: form.attr('action'),
-        //         type: 'POST',
-        //         data: form.serialize(),
-        //         dataType: 'json',
-        //         success: function(response) {
-        //             if (response.isRetryable) {
-        //                 $('#answer-alert').remove();
-        //                 $('.clickable-option').removeClass('border-success border-destructive').addClass('cursor-pointer')
-        //                 $('#btnScrollDown').addClass('disabled')
-        //             } else {
-        //                 alert("not allowed")
-        //             }
-        //         },
-        //         error: function() {
-        //             alert('An error occurred. Please try again.');
-        //         }
-        //     });
-        // });
+        $('#retry-btn').click(function() {
+            event.preventDefault();
+            var form = $('#short-retry-form');
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: form.serialize(),
+                dataType: 'json',
+                success: function(response) {
+                    $('#answer-alert').remove();
+                    if (response.isRetryable) {
+                        $('.clickable-option, .removable-option').removeClass('border-success border-destructive btn-disabled-option btn-correct btn-incorrect').addClass('cursor-pointer').prop('disabled', false);
+                        $('#recordButton').removeClass("btn-correct btn-incorrect").attr('disabled', false);
+                        $('#btnScrollDown').addClass('disabled').attr('disabled', true);
+                    } else {
+                        alert("not allowed")
+                    }
+                },
+                error: function() {
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
     });
 </script>
