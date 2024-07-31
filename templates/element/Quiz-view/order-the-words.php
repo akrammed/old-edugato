@@ -62,7 +62,7 @@
             $('.clickable-option, .removable-option').prop('disabled', true).addClass('btn-disabled-option');
         }
 
-        let selectedOptions = [];
+        var selectedOptions = [];
         const totalOptions = <?= count($options) ?>;
 
         $('.clickable-option').click(function() {

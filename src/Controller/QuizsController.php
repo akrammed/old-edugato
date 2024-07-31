@@ -300,26 +300,25 @@ class QuizsController extends AppController
         return $response;
     }
 
-    // public function retryQuiz() {
-    //     $session = $this->request->getSession();
-    //     $currentStep = $session->read('current_step');
-    //     $shortsData = $session->read('shorts_data');
+    public function retryQuiz() {
+        $session = $this->request->getSession();
+        $currentStep = $session->read('current_step');
+        $shortsData = $session->read('shorts_data');
 
-    //     if ($shortsData[$currentStep]['attempts_left'] > 0) {
-    //         $shortsData[$currentStep]['quiz_id'] = null;
-    //         $shortsData[$currentStep]['is_answered'] = 0;
-    //         $shortsData[$currentStep]['is_correct'] = 0;
-    //         $shortsData[$currentStep]['attempts_left']--;
-    //         $session->write('shorts_data', $shortsData);
-    //         $this->response = $this->response->withType('application/json')
-    //             ->withStringBody(json_encode(['isRetryable' => true]));
-    //         return $this->response;
-    //     } 
+        // if ($shortsData[$currentStep]['attempts_left'] > 0) {
+        $shortsData[$currentStep]['selected_option_id'] = null;
+        $shortsData[$currentStep]['correct_option_id'] = null;
+            // $shortsData[$currentStep]['attempts_left']--;
+        $session->write('shorts_data', $shortsData);
+        $this->response = $this->response->withType('application/json')
+            ->withStringBody(json_encode(['isRetryable' => true]));
+        return $this->response;
+        // } 
 
-    //     $this->response = $this->response->withType('application/json')
-    //         ->withStringBody(json_encode(['isRetryable' => false]));
-    //     return $this->response;
-    // }
+        // $this->response = $this->response->withType('application/json')
+        //     ->withStringBody(json_encode(['isRetryable' => false]));
+        // return $this->response;
+    }
 
     public function navigate()
     {
