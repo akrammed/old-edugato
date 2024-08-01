@@ -7,7 +7,7 @@
         <?= $this->Html->image("$avatar", ['class' => 'w-100 h-100', 'style' => 'object-fit: cover;']); ?>
     </div>
     <p class="px-4 py-2 rounded-xl text-base h-fit <?= $dir === 'l' ? 'bg-primary/30' : 'bg-accent' ?>">
-        My first name is David.
+        <?= $msg ?>
         <?php if ($dir === 'l'): ?>
             <button class="btn-reset mb-0.5"><?= $this->element('icons/volume-up-icon', ['class' => 'w-5 h-5']) ?></button>
         <?php endif; ?>

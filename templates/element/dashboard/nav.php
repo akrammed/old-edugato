@@ -28,7 +28,7 @@
                     <?php endif; ?>
                     <?php if ($layer === 'shorts'): ?>
                         <li class="nav-item">
-                            <a href="#" class="btn btn-light gap-1.5">
+                            <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'dashboard', 'admin']) ?>" class="btn btn-light gap-1.5">
                                 <?= $this->element('icons/home-icon', ['class' => 'w-6 h-6']) ?>
                                 Return Home
                             </a>

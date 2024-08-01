@@ -53,10 +53,10 @@
     <div id="quiz-answer-container" class="border-b-2 pb-6 d-flex flex-column flex-wrap gap-3">
         <?php foreach ($questions as $index => $question): ?>
             <div class="d-flex justify-content-between gap-3">
-                <p class="btn btn-primary cursor btn-primary--fix rounded-2xl" data-option-id="<?= $question['id']; ?>"><?= $question->qoption; ?></p>
+                <p class="btn btn-primary btn-responsive cursor btn-primary--fix rounded-2xl" data-option-id="<?= $question['id']; ?>"><?= $question->qoption; ?></p>
                 <div class="flex-1 max-w-50" id="answer-container-<?= $question['id']; ?>" data-is-free="<?= isset($defaultAnswers) ? 'false' : 'true' ?>" data-order="<?= $index + 1 ?>">
                     <?php if(isset($defaultAnswers)): ?>
-                        <p class="btn btn-primary cursor-pointer removable-option btn-disabled-option<?= getDefaultclass(getElementById($defaultAnswers, getElementByOrder($defaultAnswers, $index + 1 )['id']) , $currentShortData['correct_option_id']); ?>" data-clone-option-id="<?= getElementByOrder($defaultAnswers, $index + 1 )['id']; ?>"><?= getElementByOrder($defaultAnswers, $index + 1 )['qoption']; ?></p>
+                        <p class="btn btn-primary btn-responsive cursor-pointer removable-option btn-disabled-option<?= getDefaultclass(getElementById($defaultAnswers, getElementByOrder($defaultAnswers, $index + 1 )['id']) , $currentShortData['correct_option_id']); ?>" data-clone-option-id="<?= getElementByOrder($defaultAnswers, $index + 1 )['id']; ?>"><?= getElementByOrder($defaultAnswers, $index + 1 )['qoption']; ?></p>
                     <?php else: ?>
                     <p class="btn btn-ghosted rounded-2xl"></p>
                     <?php endif; ?>
@@ -72,7 +72,7 @@
     ]) ?>
     <div id="quiz-options-container" class="d-flex flex-wrap gap-3 w-100">
         <?php foreach ($answers as $index => $answer): ?>
-            <p class="btn btn-primary clickable-option rounded-2xl<?= isset($currentShortData['selected_option_id']) ? ' btn-ghosted btn-disabled-option': '' ?>" data-option-id="<?= $answer['id']; ?>"><?= $answer->qoption; ?></p>
+            <p class="btn btn-primary btn-responsive clickable-option rounded-2xl<?= isset($currentShortData['selected_option_id']) ? ' btn-ghosted btn-disabled-option': '' ?>" data-option-id="<?= $answer['id']; ?>"><?= $answer->qoption; ?></p>
         <?php endforeach; ?>
     </div>
     <?= $this->Form->end() ?>
