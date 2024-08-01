@@ -14,10 +14,10 @@
     --background-color: 00, 0%, 100%;
     --background-alt-color: 216, 38%, 97%;
     --primary-color: 244, 92%, 66%;
-    --secondary-color: 260, 82%, 49%;
+    --secondary-color: 348, 97%, 65%;
     --destructive-color: 0, 77%, 54%;
     --accent-color: 00, 0%, 94%;
-    --muted-color: 200, 4%, 55%;
+    --muted-color: 210, 5%, 35%;
     --light-color: 218, 27%, 94%;
     --border-color: 200, 23%, 92%;
     --success-color: 130, 79%, 42%;
@@ -34,6 +34,15 @@ body {
 
 /* Colros */
 
+.color-background {
+    color: hsl(var(--background-color));
+    &:hover,
+    &:active,
+    &:focus {
+        color: hsl(var(--background-color)) !important;
+    }
+}
+
 .color-primary {
     color: hsl(var(--primary-color));
     &:hover,
@@ -41,6 +50,23 @@ body {
     &:focus {
         color: hsl(var(--primary-color)) !important;
     }
+}
+
+.color-secondary {
+    color: hsl(var(--secondary-color));
+    &:hover,
+    &:active,
+    &:focus {
+        color: hsl(var(--secondary-color)) !important;
+    }
+}
+
+.color-primary-gradient {
+    background: hsl(var(--secondary-color));
+    background: linear-gradient(90deg, hsl(302, 61%, 67%), hsl(243, 92%, 66%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .color-muted {
@@ -124,6 +150,10 @@ body {
     background-color: hsl(var(--foreground-color));
 }
 
+.bg-secondary {
+    background-color: hsl(var(--secondary-color)) !important;
+}
+
 .border-primary {
     border-color: hsl(var(--primary-color)) !important;
 }
@@ -192,6 +222,12 @@ label,
     font-size: 2.25rem;
 }
 
+.text-6xl {
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
 @media (min-width: 1399.98px) {
     h4 {
         font-size: 28px;
@@ -218,6 +254,10 @@ label,
     .text-lg,
     .nav-link {
         font-size: 1.25rem;
+    }
+
+    .text-6xl {
+        font-size: 3.75rem;
     }
 }
 
@@ -262,15 +302,19 @@ a {
     text-underline-offset: 2px;
 }
 
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+}
+
 .shadow-md {
     box-shadow:
         0 4px 6px -1px rgb(0 0 0 / 0.1),
-        0 2px 4px -2px rgb(0 0 0 / 0.1);
+        0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
 }
 .shadow-lg {
     box-shadow:
         0 10px 15px -3px rgb(0 0 0 / 0.1),
-        0 4px 6px -4px rgb(0 0 0 / 0.1);
+        0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
 }
 
 .cursor-pointer {
@@ -279,6 +323,18 @@ a {
 
 .cursor {
     cursor: default;
+}
+
+.reset-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.reset-list li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 /* WebKit Browsers (Chrome, Safari) */

@@ -29,12 +29,14 @@
                 <div class="d-flex flex-column min-h-screen flex-grow-1 pl-xl-60">
                     <?= $this->fetch('navbar') ?>
                     <?= $this->fetch('content') ?>
+                    <?= $this->fetch('footer') ?>
                 </div>
             </div>
         <?php else: ?>
         <div class="d-flex flex-column min-h-screen <?= isset($altBackground) && $altBackground ? 'bg-background-alt' : '';?> ">
             <?= $this->fetch('navbar') ?>
             <?= $this->fetch('content') ?>
+            <?= $this->fetch('footer') ?>
         </div>
         <?php endif; ?>
         <?= $this->Html->script([

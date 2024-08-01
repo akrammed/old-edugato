@@ -6,7 +6,7 @@
             <span class="divider__text">OR</span>
             <span class="divider__line"></span>
         </div>
-        <button type="button" class="btn btn-secondary btn-sm btn-sm--fix" id="browseAudioLO">Browse</button>
+        <button type="button" class="btn btn-primary btn-sm btn-sm--fix" id="browseAudioLO">Browse</button>
     </div>
     <div class="d-none align-items-center justify-content-center flex-grow-1" id="AudioContainerLO">
         <audio id="audioLO" controls>

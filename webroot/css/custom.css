@@ -27,6 +27,15 @@ input {
     font-weight: 400 !important;
 }
 
+.input input.input--lg {
+    height: 48px;
+    font-weight: 500 !important;
+}
+
+textarea {
+    padding: 20px;
+}
+
 .changed-input {
     background-color: #f2f9fc;
     cursor: not-allowed;
@@ -69,7 +78,7 @@ input {
     align-items: center;
     justify-content: center;
     padding: 0 32px;
-    border-radius: 0.75rem;
+    border-radius: 2rem;
     box-sizing: border-box;
     font-weight: 500;
     border: none;
@@ -182,6 +191,21 @@ input {
     }
 }
 
+.btn-border--secondary {
+    border: 1px solid hsl(var(--secondary-color));
+    color: hsl(var(--secondary-color));
+    box-shadow: none;
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: transparent !important;
+        border: 1px solid hsl(var(--secondary-color)) !important;
+        color: hsl(var(--secondary-color)) !important;
+        transform: translateY(0);
+        outline: none;
+    }
+}
+
 .btn-destructive {
     background-color: hsl(var(--destructive-color)) !important;
     color: hsl(var(--background-color));
@@ -225,11 +249,18 @@ input {
     }
 }
 
+.btn-lg,
+.btn-group-lg > .btn {
+    padding: 0 40px;
+    font-size: 1.125rem;
+    height: 48px;
+}
+
 .btn-sm,
 .btn-group-sm > .btn {
     padding: 0 20px;
     font-size: 0.875rem;
-    border-radius: 0.375rem;
+    border-radius: 1.5rem;
     height: 32px;
 }
 
@@ -237,7 +268,7 @@ input {
 .btn-group-xs > .btn {
     padding: 0 12px;
     font-size: 0.75rem;
-    border-radius: 0.25rem;
+    border-radius: 1.25rem;
     height: 28px;
 }
 
@@ -287,6 +318,13 @@ input {
         font-size: 0.875rem;
         border-radius: 0.375rem;
         height: 32px;
+    }
+
+    .btn-lg,
+    .btn-group-sm > .btn {
+        padding: 0 44px;
+        font-size: 1.25rem;
+        height: 52px;
     }
 
     .btn-icon {
@@ -418,6 +456,10 @@ input {
 
 .w-60 {
     width: 15rem;
+}
+
+.w-fit {
+    width: fit-content;
 }
 
 .min-w-20 {
@@ -557,18 +599,6 @@ input {
     display: none;
 }
 
-.reset-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.reset-list li {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
 .card {
     border: 1px solid hsl(var(--border-color));
     border-radius: 1rem;
@@ -632,6 +662,9 @@ input {
 
 .border-4 {
     border: 4px solid hsl(var(--border-color)) !important;
+}
+.border-b {
+    border-bottom: 1px solid hsl(var(--border-color)) !important;
 }
 
 .border-b-2 {
@@ -731,6 +764,21 @@ input {
     padding-bottom: 1rem !important;
 }
 
+.py-6 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
 .px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -739,11 +787,6 @@ input {
 .px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
-}
-
-.py-8 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
 }
 
 .p-8 {
@@ -788,6 +831,10 @@ input {
 
 .mb-8 {
     margin-bottom: 1.75rem;
+}
+
+.mb-10 {
+    margin-bottom: 2.25rem;
 }
 
 .mb-12 {
