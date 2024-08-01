@@ -1,5 +1,6 @@
-<?php $isAdmin = $currentSessionUser->role_id === 2 ?>
-<?php $this->extend('new-default'); 
+<?php 
+$isAdmin = $currentSessionUser->role_id === 2;
+$this->extend('new-default'); 
 if (!empty($sidebar) && $isAdmin) {
     $this->assign('sidebar', $this->element($sidebar));
 }

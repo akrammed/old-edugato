@@ -107,7 +107,7 @@
                         const reader = new FileReader();
                         reader.onload = function(e) {
                             $(`#imageUploadedDiv${number}`).html(`
-                                <button type="button" class="btn btn-secondary btn-sm btn-sm--fix position-absolute" style="left: 0.5rem; top: 0.5rem;" id="replaceBtn${number}">Replace</button>
+                                <button type="button" class="btn btn-primary btn-sm btn-sm--fix position-absolute" style="left: 0.5rem; top: 0.5rem;" id="replaceBtn${number}">Replace</button>
                                 <img id="imageUploaded${number}" class="w-100 h-100" style="object-fil: cover;" src="${e.target.result}" alt="Uploaded Image">
                             `);
                             imageWithCorrectWord[number] = {

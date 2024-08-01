@@ -48,7 +48,7 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
-        $this->viewBuilder()->setLayout('temp-default');
+        $this->viewBuilder()->setLayout('landing-layout');
         if (!$path) {
             return $this->redirect('/');
         }
@@ -80,9 +80,8 @@ class PagesController extends AppController
         $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
         $isAdmin = ($currentSessionUser ? $currentSessionUser->role_id : null) === 2;
         $this->viewBuilder()->setLayout($isAdmin ? 'new-admin-layout' : 'dashboard-layout');
-        $this->set('layer', 'admin');
+        $this->set('layer', $isAdmin ? 'admin' : 'dashboard');
         $this->set('sidebar', $isAdmin ? 'dashboard/admin-aside' : 'dashboard/aside');
-        $this->set('altBackground', !$isAdmin);
         $courseUserTable = TableRegistry::getTableLocator()->get('CoursesUsers');
         $CandostatmentsTable = TableRegistry::getTableLocator()->get('Candostatments');
         $learningpathsTable = TableRegistry::getTableLocator()->get('Learningpaths');

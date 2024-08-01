@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg" style="height: 100px;">
   <div class="container-xl d-flex justify-content-between gap-8">
     <?php if (isset($layer) && $layer !== 'admin'): ?>
-        <a href="#" style="padding-bottom: 2px;">
+        <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', '']) ?>" style="padding-bottom: 2px;">
             <?= $this->Html->image('new-logo.svg', ['class' => 'img-fluid']) ?>
         </a>
     <?php endif; ?>

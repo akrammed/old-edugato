@@ -15,7 +15,7 @@
                         <span class="divider__text">OR</span>
                         <span class="divider__line"></span>
                     </div>
-                    <button type="button" class="btn btn-secondary btn-sm btn-sm--fix" id="browseBtn<?= $id ?>">Browse</button>
+                    <button type="button" class="btn btn-primary btn-sm btn-sm--fix" id="browseBtn<?= $id ?>">Browse</button>
                 </div>
             </div>
             <div class="d-none position-relative w-100" style="height: 154px;" id="imageUploadedDiv<?= $id ?>">

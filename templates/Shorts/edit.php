@@ -50,7 +50,7 @@
                                 <span class="divider__text">OR</span>
                                 <span class="divider__line"></span>
                             </div>
-                            <button class="btn btn-secondary" id="upload-short-video">Browse</button>
+                            <button class="btn btn-primary" id="upload-short-video">Browse</button>
                         </div>
                         <button type="button" class="btn btn-primary position-absolute z-3" id="replace-btn" style="display:none; left: 1rem; top: 1rem;" onclick="$('#upload-short').click();">Replace</button>
                         <video id="short-video" class="w-100 h-100" style="display:none; object-fit: cover; object-position: center;" src="" autoplay="" controls muted></video>
