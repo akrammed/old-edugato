@@ -7,10 +7,8 @@
                     <div class="d-flex align-items-center text-lg gap-2 mb-8">
                         <?= $this->element('icons/plus', ['class' => 'w-12 h-12 color-primary']) ?>
                         <button class="btn-reset color-primary" data-bs-toggle="modal" data-bs-target="#modalAddCanDo">
-                           Add can do statment
+                            Add can do statment
                         </button>
-                        <p> Or </p>
-                        <a class="btn-reset color-primary" href="<?= $this->Url->build(['controller' => 'Shorts', 'action' => 'watch',$activeCandostatments->id]) ?>">Preview path</a>
                     </div>
                     <div class="d-flex flex-column gap-4">
                         <?php

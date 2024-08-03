@@ -100,4 +100,12 @@ class PagesController extends AppController
         $this->set('sidebar', 'dashboard/aside');
         $this->set('altBackground', true);
     }
+    public function comingsoon()
+    {
+        $currentSessionUser = $this->Authentication->getIdentity()->getOriginalData();
+        $isAdmin = ($currentSessionUser ? $currentSessionUser->role_id : null) === 2;
+        $this->viewBuilder()->setLayout($isAdmin ? 'new-admin-layout' : 'dashboard-layout');
+        $this->set('layer', $isAdmin ? 'admin' : 'dashboard');
+        $this->set('sidebar', $isAdmin ? 'dashboard/admin-aside' : 'dashboard/aside');
+    }
 }

@@ -42,18 +42,25 @@
             </form>
         </div>
         <h3 class="text-xl fw-medium"><?= h($cd->title) ?></h3>
+        <?php
+        if (count($cd['shorts' ]) != 0) {
+        ?>
+            <a class="btn-reset fw-medium color-primary" href="<?= $this->Url->build(['controller' => 'Shorts', 'action' => 'watch', $cd->id]) ?>">Preview</a>
+        <?php
+        }
+        ?>
     </div>
     <div class="ms-5 d-flex flex-column gap-4">
         <?php foreach ($cd->shorts as $short) {
         ?>
             <div>
                 <form action="<?= $this->Url->build([
-                                        'plugin' => null,
-                                        'controller' => "shorts",
-                                        'action' => 'deleteFromCanDo',
-                                        $short->id,
-                                        $cd->learningpath_id
-                                    ]) ?>" method="post">
+                                    'plugin' => null,
+                                    'controller' => "shorts",
+                                    'action' => 'deleteFromCanDo',
+                                    $short->id,
+                                    $cd->learningpath_id
+                                ]) ?>" method="post">
                     <input type="hidden" name="_csrfToken" value="<?= $this->request->getAttribute('csrfToken') ?>">
                     <div class="modal fade" id="modaleDeleteShort<?= $short->id ?>" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -86,11 +93,11 @@
                         <h4 class="text-lg"><?= $short->title ?></h4>
                     </div>
                     <div class="d-flex align-items-center gap-4">
-                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'view',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0 color-primary" >Preview</a>
-                        <a  href=" <?= $this->Url->build(['controller'=>'Shorts', 'action'=>'edit',$short->id]) ?>"style="background: non1e; border:none" class="flex-shrink-0 color-primary" >Edit</a>
+                        <a href=" <?= $this->Url->build(['controller' => 'Shorts', 'action' => 'view', $short->id]) ?>" style="background: non1e; border:none" class="flex-shrink-0 color-primary">Preview</a>
+                        <a href=" <?= $this->Url->build(['controller' => 'Shorts', 'action' => 'edit', $short->id]) ?>" style="background: non1e; border:none" class="flex-shrink-0 color-primary">Edit</a>
                     </div>
                 </div>
-            </div> 
+            </div>
         <?php
         }
         ?>
