@@ -80,6 +80,7 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/generate', ['controller' => 'Assistants', 'action' => 'generate']);
         $builder->connect('/select_topic', ['controller' => 'Assistants', 'action' => 'selectTopic']);
         $builder->connect('/next_question', ['controller' => 'Assistants', 'action' => 'nextQuestion']);
+        $builder->connect('/comingsoon', ['controller' => 'Pages', 'action' => 'comingsoon']);
 
 
         /*

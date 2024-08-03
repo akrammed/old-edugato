@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-lg" style="height: 100px;">
   <div class="container-xl d-flex justify-content-between gap-8">
     <?php if (isset($layer) && $layer !== 'admin'): ?>
-        <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', '']) ?>" style="padding-bottom: 2px;">
+        <a href="<?= $this->Url->build('/admin') ?>" style="padding-bottom: 2px;">
             <?= $this->Html->image('new-logo.svg', ['class' => 'img-fluid']) ?>
         </a>
     <?php endif; ?>
@@ -20,7 +20,7 @@
                 <ul class="d-flex reset-list gap-2">
                     <?php if ($layer === 'dashboard'): ?>
                         <li class="nav-item">
-                            <a href="#" class="btn btn-primary gap-1.5">
+                            <a href="<?= $this->Url->build(['controller' => 'Shorts', 'action' => 'watch']) ?>" class="btn btn-primary gap-1.5">
                                 <?= $this->element('icons/scroll-icon', ['class' => 'w-6 h-6']) ?>
                                 Start Scrolling
                             </a>
@@ -35,7 +35,7 @@
                         </li>
                     <?php endif; ?>
                     <li class="nav-item">
-                        <a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'play', 'playwithgato']) ?>" class="btn btn-primary-gradient gap-1.5">
+                        <a href="<?= $this->Url->build('/comingsoon') ?>" class="btn btn-primary-gradient gap-1.5">
                             <?= $this->element('icons/filter-icon', ['class' => 'w-6 h-6']) ?>
                             Play with Gato AI
                         </a>
