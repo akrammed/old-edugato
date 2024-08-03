@@ -228,39 +228,6 @@ label,
     line-height: 1.2;
 }
 
-@media (min-width: 1399.98px) {
-    h4 {
-        font-size: 28px;
-    }
-
-    h6 {
-        font-size: 16px;
-    }
-
-    .text-xs {
-        font-size: 0.875rem;
-    }
-
-    .text-sm {
-        font-size: 1rem;
-    }
-
-    .text-base,
-    label,
-    .form-control {
-        font-size: 1.125rem;
-    }
-
-    .text-lg,
-    .nav-link {
-        font-size: 1.25rem;
-    }
-
-    .text-6xl {
-        font-size: 3.75rem;
-    }
-}
-
 /* Border Radius */
 
 .rounded-md {

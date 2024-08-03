@@ -17,41 +17,41 @@
                         'hidden' => true,
                         'id' => 'profile-picture']);?>
             </div>
-            <div class="mt-10 space-y-4">
+            <div class="mt-8 space-y-2">
                 <div class="d-flex justify-content-between gap-4">
                     <?= $this->Form->control('first_name', [
-                        'class' => 'form-control mt-2',
+                        'class' => 'form-control form-control--sm mt-1',
                         'lable' => __('First Name'),
                         'type' => 'text',
                         'placeholder' => __('Enter first name here...')]);?>
                     <?= $this->Form->control('last_name', [
                         'label' => __('Last Name'),
-                        'class' => 'form-control mt-2',
+                        'class' => 'form-control form-control--sm mt-1',
                         'type' => 'text',
                         'placeholder' => __('Enter last name here...')]); ?>
                 </div>
                 <div class="position-relative">
                     <?= $this->Form->control('email', [
                         'type' => 'email',
-                        'class' => 'form-control mt-2 changed-input',
+                        'class' => 'form-control form-control--sm mt-1 changed-input',
                         'label' => __('Email'),
                         'placeholder' => __('Enter email here...'),
                         'readonly' => true,
                         'id' => 'email'
                     ]); ?>
-                    <button type="button" class="position-absolute toggle-btn text-base color-primary btn px-0" style="right: 1rem; bottom: 0px;">Change</button>
+                    <button type="button" class="position-absolute toggle-btn text-base color-primary btn px-0 btn-sm" style="right: 1rem; bottom: 0px; font-size: 1rem !important;">Change</button>
                 </div>
                 <div class="position-relative">
                     <?= $this->Form->control('password', [
                         'type' => 'password',
-                        'class' => 'form-control mt-2 changed-input',
+                        'class' => 'form-control form-control--sm mt-1 changed-input',
                         'label' => __('Password'),
                         'placeholder' => __('Enter password here...'),
                         'readonly' => true,
                         'id' => 'password',
                         'value' => ''
                     ]); ?>
-                    <button type="button" class="position-absolute toggle-btn text-base color-primary btn px-0" style="right: 1rem; bottom: 0;">Change</button>
+                    <button type="button" class="position-absolute toggle-btn text-base color-primary btn px-0 btn-sm" style="right: 1rem; bottom: 0; font-size: 1rem !important">Change</button>
                 </div>
             </div>
             <?= $this->Form->button(__('Save Changes'), ['id' => 'saveUser', 'class' => 'btn btn-primary mt-6']); ?>
