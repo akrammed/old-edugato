@@ -84,8 +84,8 @@
                                 <?= $this->Form->control('is_free', [
                                     'type' => 'radio',
                                     'options' => [
-                                        '0' => 'Free',
-                                        '1' => 'Paid'
+                                        '1' => 'Free',
+                                        '0' => 'Paid'
                                     ],
                                     'class' => 'h-fit me-2',
                                     'label' => false,

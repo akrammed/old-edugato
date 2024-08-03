@@ -129,8 +129,9 @@ class UsersController extends AppController
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-
+            $data['password'] = empty($data['password']) ? $user['password'] : (new DefaultPasswordHasher())->hash($data['password']) ;
             $user = $this->Users->patchEntity($user, $data);
+            
             $result = $this->Users->save($user);
             if ($result) {
 
