@@ -52,9 +52,9 @@ $IsCompletedconversion = ($currentShort['quiz']['quiztype_id'] == 8 ? (empty($cu
 
 
 $upButtonAttrs = ($currentStep == 0) ? ['class' => 'btn-reset disabled', 'disabled' => true] : ['class' => 'btn-reset'];
-$downButtonAttrs = ($currentStep == $totalSteps || !$_SESSION['shorts_data'][$currentStep]['selected_option_id'] || !$IsCompletedconversion) 
-    ? ['class' => 'btn-reset disabled', 'disabled' => true] 
-    : ['class' => 'btn-reset'];
+// $downButtonAttrs = ($currentStep == $totalSteps || !$_SESSION['shorts_data'][$currentStep]['selected_option_id'] || !$IsCompletedconversion) 
+//     ? ['class' => 'btn-reset disabled'] 
+//     : ['class' => 'btn-reset'];
 ?>
 
 <div class="flex-grow-1 d-flex flex-column" id="scContent">
@@ -84,12 +84,30 @@ $downButtonAttrs = ($currentStep == $totalSteps || !$_SESSION['shorts_data'][$cu
             'class' => 'flex-shrink-0 d-flex flex-lg-column justify-content-center gap-1'
         ]) ?>
             <?= $this->Html->tag('button', $this->element('icons/arrow-top'), ['id' => 'btnScrollUp', 'data-direction' => 'prev'] + $upButtonAttrs) ?>
-            <?= $this->Html->tag('button', $this->element('icons/arrow-down'), ['id' => 'btnScrollDown', 'data-direction' => 'next'] + $downButtonAttrs) ?>
+            <?= $this->Html->tag('button', $this->element('icons/arrow-down'), ['id' => 'btnScrollDown', 'data-direction' => 'next', 'class' => "btn-reset"]) ?>
         <?= $this->Form->end() ?>
     </div>
 </div>
 <?= $this->element('Quiz-view/Elements/sounds-effects') ?>
 <script>
+    let countdown = 5;
+    let countdownTimer, requiredCounter;
+
+    function clearCountdown() {
+        clearTimeout(countdownTimer);
+        countdown = 5;
+    }
+
+    function updateCountdown() {
+        $('#countdown').text(countdown);
+        if (countdown > 0) {
+            countdown--;
+            countdownTimer = setTimeout(updateCountdown, 1000);
+        } else {
+            $('#btnScrollDown').trigger('click');
+        }
+    }
+
     $(document).ready(function() {
         function updateVideo(url) {
             const videoElement = $('#short-vid-display');
@@ -98,22 +116,20 @@ $downButtonAttrs = ($currentStep == $totalSteps || !$_SESSION['shorts_data'][$cu
             videoElement[0].load();
         }
 
-        $('#btnScrollUp, #btnScrollDown').click(function() {
-            event.preventDefault();
-
+        function navigateQuiz(direction) {
+            clearCountdown();
             $('#answer-alert').remove();
-            var action = $(this).data('direction');
             var form = $('#short-navigation-form');
             $.ajax({
                 url: form.attr('action'),
                 type: 'POST',
-                data: form.serialize() + '&action=' + action,
+                data: form.serialize() + '&action=' + direction,
                 dataType: 'json',
                 success: function(response) {
                     if (response.success) {
-                        $('#quiz-display-container').html(response.element)
-                        updateVideo(response.videoUrl)
-                        if (action == 'next') {
+                        $('#quiz-display-container').html(response.element);
+                        updateVideo(response.videoUrl);
+                        if (direction === 'next') {
                             $('#btnScrollUp').removeClass('disabled').attr('disabled', false);
                             if (!response.navigable) {
                                 $('#btnScrollDown').addClass('disabled').attr('disabled', true);
@@ -122,16 +138,22 @@ $downButtonAttrs = ($currentStep == $totalSteps || !$_SESSION['shorts_data'][$cu
                             $('#btnScrollDown').removeClass('disabled').attr('disabled', false);
                             if (!response.navigable) {
                                 $('#btnScrollUp').addClass('disabled').attr('disabled', true);
-                            }                         
+                            }
                         }
                     } else {
-                        alert('failed');
+                        $('#quizzes-section').append(response.alertItem);
                     }
                 },
                 error: function() {
                     alert('An error occurred. Please try again.');
                 }
             });
+        }
+
+        $('#btnScrollUp, #btnScrollDown').click(function(event) {
+            event.preventDefault();
+            const direction = $(this).data('direction');
+            navigateQuiz(direction);
         });
 
         $('#scrollToBottom').click(function() {

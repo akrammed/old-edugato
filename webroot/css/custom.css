@@ -814,7 +814,11 @@ textarea {
 }
 
 .mt-8 {
-    margin-top: 1.75rem;
+    margin-top: 2rem;
+}
+
+.mt-10 {
+    margin-top: 2.5rem;
 }
 
 .mt-12 {
@@ -883,6 +887,10 @@ textarea {
 
 .gap-8 {
     gap: 2rem;
+}
+
+.gap-10 {
+    gap: 2.5rem;
 }
 
 .gap-12 {

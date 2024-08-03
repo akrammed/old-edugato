@@ -1,5 +1,5 @@
 <div class="max-w-xl mx-auto">
-    <div class="d-flex flex-column gap-12">
+    <div class="d-flex flex-column gap-6">
         <div class="space-y-2">
             <a class="link color-muted d-flex align-items-center gap-3 text-lg" href="<?= $this->Url->build('/admin') ?>"><i class="fa-solid fa-chevron-left"></i> Back to Dashboard</a>
             <h2 class="text-3xl"><?= __('Edit Profile') ?></h2>
@@ -8,7 +8,7 @@
             <div class="d-flex flex-column align-items-center gap-4">
                 <?php
                     $profile =  $currentSessionUser->profile_picture != null ? '/uploads/pictures/' . $currentSessionUser->profile_picture : 'profile.png';
-                    echo $this->Html->image($profile, ['alt' => 'textalternatif','id'=>'pathImage', 'class' => 'img-fluid rounded-lg w-40 h-40 object-cover']);
+                    echo $this->Html->image($profile, ['alt' => 'textalternatif','id'=>'pathImage', 'class' => 'img-fluid rounded-lg object-cover', 'style' => 'width: 8rem; height: 8rem']);
                 ?>
                 <?= $this->Form->control('profile_picture', [
                         'class' => 'form-control',
@@ -17,7 +17,7 @@
                         'hidden' => true,
                         'id' => 'profile-picture']);?>
             </div>
-            <div class="mt-12 space-y-4">
+            <div class="mt-10 space-y-4">
                 <div class="d-flex justify-content-between gap-4">
                     <?= $this->Form->control('first_name', [
                         'class' => 'form-control mt-2',
