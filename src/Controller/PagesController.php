@@ -89,9 +89,10 @@ class PagesController extends AppController
         $where = ['user_id' => $userId];
         $learningPaths = $courseUserTable->find()->where($where)->first();
         $currentLearningPath = !empty($learningPaths) ? $learningpathsTable->get($learningPaths->learningpath_id) : $learningpathsTable->find()->where(['is_free IS' => 1])->first();
-        $candostatments = !empty($learningPaths) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id])->toArray() : [];
-        $activeCandostatments = !empty($learningPaths) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS'=>$learningPaths->learningpath_id , 'is_active'])->first() : [];
-        $this->set(compact(['candostatments','currentSessionUser','currentLearningPath', 'activeCandostatments']));
+        $candostatments = !empty($currentLearningPath) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS' => $currentLearningPath->id])->toArray() : [];
+        $activeCandostatments = !empty($currentLearningPath) ? $CandostatmentsTable->find()->contain(['Shorts'])->where(['learningpath_id IS' => $currentLearningPath->id, 'is_active IS' => 1])->first() : [];
+
+        $this->set(compact(['candostatments', 'currentSessionUser', 'currentLearningPath', 'activeCandostatments']));
     }
     public function play()
     {
