@@ -65,9 +65,9 @@
                 data: data,
                 dataType: 'json', 
                 success: function(response) {
-                    if (response.navigable) (
-                        $('#btnScrollDown').removeClass('disabled').attr('disabled', false)
-                    )
+                    // if (response.navigable) (
+                    //     $('#btnScrollDown').removeClass('disabled').attr('disabled', false)
+                    // )
                     if (response.isCorrect) {
                         $('#recordButton').addClass("btn-correct").attr('disabled', true);
                         $('#correctSound').delay(50).get(0).play();

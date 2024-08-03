@@ -133,9 +133,9 @@ $isDone = count($options) == $totalAnswred;
                         } else {
                             $('#conversation-footer').addClass('invisible')
                             $('#quizzes-section').append(response.answerAlert);
-                            if (response.navigable) (
-                                $('#btnScrollDown').removeClass('disabled').attr('disabled', false)
-                            )
+                            // if (response.navigable) (
+                            //     $('#btnScrollDown').removeClass('disabled').attr('disabled', false)
+                            // )
                         }
                         conversationContainer.append(response.chatElement)
                         if (response?.chatBotElement) {

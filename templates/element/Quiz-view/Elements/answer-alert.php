@@ -5,14 +5,14 @@
     $newOption = $currentShort['quiz']['options'][0]['qoption'];
 ?>
 
-<div id="answer-alert" class="px-4 position-absolute bottom-0 right-0 h-20 w-100 d-flex align-items-center justify-content-between transition-transform transform-translateY <?= $isCorrect ? 'bg-success/10' : 'bg-destructive/10' ?>">
+<div id="answer-alert" class="px-4 position-absolute bottom-0 right-0 h-20 w-100 d-flex align-items-center justify-content-between transform-translateY <?= $isCorrect ? 'bg-success/10' : 'bg-destructive/10' ?>">
     <div class="d-flex align-items-center gap-2">
         <?php if ($isCorrect): ?>
         <div style="cursor: default;" class="btn btn-icon bg-background rounded-lg bg-backgrouond border border-success color-success"><i class="fa-solid fa-check"></i></div>
-        <p class="text-lg color-success">That's correct!</p>
+        <p class="text-lg color-success">That's correct! Next Short in: <span id="countdown">5</span>s</p>
         <?php else: ?>
         <div style="cursor: default;" class="btn btn-icon bg-background rounded-lg bg-backgrouond border border-destructive color-destructive"><i class="fa-solid fa-x"></i></div>
-        <p class="text-lg color-destructive">Oops, that wasn't it!</p>
+        <p class="text-lg color-destructive">Oops, that wasn't it! Next Short in: <span id="countdown">5</span>s</p>
         <?php endif ?>
     </div>
     <?= $this->Form->create(null, [
@@ -26,8 +26,6 @@
 <style>
     .transform-translateY {
         transform: translateY(100%);
-    }
-    .transition-transform {
         transition: transform 0.5s ease-in-out;
     }
     .transform-translateY.show {
@@ -38,10 +36,13 @@
     $(document).ready(function() {
         setTimeout(function() {
             $('#answer-alert').addClass('show');
+            $('#required-alert').remove()
+            clearTimeout(requiredCounter);
         }, 100);
-
+        updateCountdown();
         $('#retry-btn').click(function() {
             event.preventDefault();
+            clearCountdown();
             var form = $('#short-retry-form');
             $.ajax({
                 url: form.attr('action'),
@@ -59,7 +60,7 @@
                         }
                         $('.clickable-option, .removable-option').removeClass('border-success border-destructive btn-disabled-option btn-correct btn-incorrect').addClass('cursor-pointer').prop('disabled', false);
                         $('#recordButton').removeClass("btn-correct btn-incorrect").attr('disabled', false);
-                        $('#btnScrollDown').addClass('disabled').attr('disabled', true);
+                        // $('#btnScrollDown').addClass('disabled')
                     } else {
                         alert("not allowed")
                     }

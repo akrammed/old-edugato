@@ -50,9 +50,9 @@
                 dataType: 'json',
                 success: function(response) {
                     if(!!response?.alreadyAnswered) return;
-                    if (response.navigable) (
-                        $('#btnScrollDown').removeClass('disabled').attr('disabled', false)
-                    )
+                    // if (response.navigable) (
+                    //     $('#btnScrollDown').removeClass('disabled').attr('disabled', false)
+                    // )
                     $('.clickable-option').removeClass('btn-correct btn-incorrect cursor-pointer')
                     if (optionId == response.correctOption) {
                         $(`[data-option-id=${optionId}]`).addClass('btn-correct');

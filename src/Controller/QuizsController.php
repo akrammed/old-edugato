@@ -344,6 +344,7 @@ class QuizsController extends AppController
         $shortsData = $session->read('shorts_data');
     
         $view = new \Cake\View\View($this->request, $this->response);
+        $answerAlert = $view->element('Quiz-view/Elements/required-alert'); 
   
         if ($action === 'next') {
             if ($currentStep < count($shortsData) - 1 && !!$shortsData[$currentStep]['selected_option_id']) {
@@ -352,7 +353,7 @@ class QuizsController extends AppController
                 $currentShort = $session->read('shorts')[$currentStep];
                 $currentShortData = $shortsData[$currentStep];
                 $element = $view->element('Quiz-view/Elements/get-quiz-element', ['quizType' => $currentShort['quiz']['quiztype_id'], 'currentShortData' => $currentShortData, 'currentShort' => $currentShort]);
-                $this->response = $this->response->withType('application/json')->withStringBody(json_encode(['success' => true, 'element' => $element, 'videoUrl' => $currentShort['video'], 'navigable' => $currentStep < count($shortsData) - 1 && $currentShortData['selected_option_id']]));
+                $this->response = $this->response->withType('application/json')->withStringBody(json_encode(['success' => true, 'element' => $element, 'videoUrl' => $currentShort['video'], 'navigable' => $currentStep < count($shortsData) - 1 ]));
                 return $this->response;
             }
         }
@@ -369,7 +370,7 @@ class QuizsController extends AppController
             }
         }
 
-        $this->response = $this->response->withType('application/json')->withStringBody(json_encode(['success' => false]));
+        $this->response = $this->response->withType('application/json')->withStringBody(json_encode(['success' => false, 'alertItem' => $answerAlert]));
         return $this->response;
     }
 }
